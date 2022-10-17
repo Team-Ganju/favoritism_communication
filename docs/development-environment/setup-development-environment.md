@@ -149,6 +149,12 @@ flutter doctor --android-licenses
 flutter doctorで Android の項目が[✓]になっていることを確認します。
 
 
+## getコマンドが叩けるようにする
+
+`get_cli`というパッケージを使って`get`コマンドが使えるようにします。
+
+次の[README](../getx/get_cli.md)を参考にしてください。
+
 
 ## 参考
 - [【Flutter】環境構築（macOS）](https://b1san-blog.com/post/flutter/flutter-setup/)
