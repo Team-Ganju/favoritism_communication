@@ -1,16 +1,68 @@
 # favoritism_communication
 
-A new Flutter project.
+偏愛マップでマッチングして、チャットやゲームをして誰とでも共通の好きなことで仲良くなるためのアプリ
 
-## Getting Started
+[企画資料](https://docs.google.com/presentation/d/1LxMSLHyVTsuxiJAP1ZouPC1TwuA1Yk-DCf8RU-pRduM/edit#slide=id.g35f391192_00)
 
-This project is a starting point for a Flutter application.
+## 事前準備
 
-A few resources to get you started if this is your first Flutter project:
+- コマンドプロンプトを短くしておく  
+[【zsh】絶対やるべき！ターミナルでgitのブランチ名を表示&補完【git-prompt / git-completion】](https://qiita.com/mikan3rd/items/d41a8ca26523f950ea9d)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Githubのアカウント取得
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- ローカルにgitconfigの設定をする
+
+gitconfigの設定確認を下記コマンドでする
+
+git config --global --edit
+ユーザ名とメールアドレスを設定しておく
+
+※下記のMy Nameとmyname@example.comは自身のGithubアカウントにする
+
+```
+git config --global user.name "My Name"
+git config --global user.email myname@example.com
+```
+
+- SSHKeyを生成してGithubに登録
+
+下記リンクを参考にSSHKeyを生成してGithubに登録しておいてください
+
+[GitHubでssh接続する手順ー公開鍵・秘密鍵の生成からー](https://qiita.com/shizuma/items/2b2f873a0034839e47ce)
+
+- 必須ではないけど、git aliasを設定しておくと長いコマンド撃たなくていい
+
+[【git】aliasの設定方法](https://qiita.com/chihiro/items/04813c707cc665de67c5)
+
+## 開発環境
+
+- Flutter-3.3.4-stable(バージョンアップがあれば都度対応)
+- GetX
+- JAVA openJDK 11
+- Node.js latest
+- Firebase
+    - LocalではFirebase Local Emulator Suiteを使う
+- VSCode
+- Xcode
+- Android Studio
+
+## 開発環境構築
+
+- これからPJTに参加する人はこちらの[README](./docs/development-environment/setup-development-environment.md)を見ながら環境構築を。
+
+## コミュニケーションツール
+
+- Slack
+    - Flutter大学 チャンネル: #共同開発10_偏愛コミュニケーション
+- [Gather](https://app.gather.town/app/CY1l1sdAwjczATVs/favoritism_communication)
+- Zoom
+    - 今後必要になれば
+
+## 課題共有ツール
+
+- [Jira Software](https://team-ganju.atlassian.net/jira/software/projects/HAFI/boards/1)
+
+## オンラインホワイトボード(画面レイアウト図やメモなど)
+
+- [Miro](https://miro.com/app/board/uXjVPNQ7qZ4=/)
