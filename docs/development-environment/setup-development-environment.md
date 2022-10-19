@@ -6,6 +6,9 @@
 git clone git@github.com:Team-Ganju/favoritism_communication.git
 ```
 
+※VS Code, Xcode, Android Studioのインストールとセットアップができていれば  
+以下のasdfのインストールのみでOKです。
+
 ## asdfでFlutter, java, nodejsをインストールする
 
 このPJTではasdfをバージョン管理ツールとして使用します。
