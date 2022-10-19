@@ -61,7 +61,7 @@ git config --global user.email myname@example.com
 
 ## 課題共有ツール
 
-- [Jira Software](https://team-ganju.atlassian.net/jira/software/projects/HAFI/boards/1)
+- [Jira Software](https://joint-dev.atlassian.net/jira/software/c/projects/FC/boards/1)
 
 ## オンラインホワイトボード(画面レイアウト図やメモなど)
 
