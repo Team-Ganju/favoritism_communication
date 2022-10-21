@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/modules/components/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -8,10 +9,11 @@ class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ChatView'),
-        centerTitle: true,
+    return const Scaffold(
+      appBar: NavBar(
+        title: 'トーク',
+        backgroundColor: Colors.pinkAccent,
+        hasBackButton: false,
       ),
       body: Center(
         child: Text(
