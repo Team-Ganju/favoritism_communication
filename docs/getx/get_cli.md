@@ -6,7 +6,7 @@
 flutter pub global activate get_cli
 ```
 
-下のようにwarningが出たら指示の通りパスを通すためのコマンドを叩いておきます。
+下のようにwarningが出たら指示の通りパスを通すために`.zsrc`または`.bashrc`に追記します。
 
 ```
 Warning: Pub installs executables into /opt/homebrew/Caskroom/flutter/3.3.4/flutter/.pub-cache/bin, which is not on your path.
