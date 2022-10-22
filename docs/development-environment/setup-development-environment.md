@@ -52,6 +52,12 @@ asdf current
 
 [【Flutter】asdfでのFlutter 3.0.0のインストールに手こずった話](https://blog.dalt.me/3318)
 
+VS CodeにasdfのPATHも設定する必要があります。
+
+[こちらの記事](https://zenn.dev/riscait/articles/asdf-flutter#vscode%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A)を参考に設定してください。
+
+参考: [(元記事)asdfでFlutter SDKのバージョンをアプリ毎に管理する](https://zenn.dev/riscait/articles/asdf-flutter)
+
 
 ## VSCodeのセットアップ
 
