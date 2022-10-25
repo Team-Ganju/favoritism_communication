@@ -66,3 +66,7 @@ git config --global user.email myname@example.com
 ## オンラインホワイトボード(画面レイアウト図やメモなど)
 
 - [Miro](https://miro.com/app/board/uXjVPNQ7qZ4=/)
+
+## デモアプリ
+
+- [デモアプリについて](./docs/demo/demo.md)
