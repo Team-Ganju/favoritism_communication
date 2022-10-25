@@ -70,3 +70,7 @@ git config --global user.email myname@example.com
 ## デモアプリ
 
 - [デモアプリについて](./docs/demo/demo.md)
+
+## 開発方針
+
+[開発方針について](./docs/development-policy/development-policy.md)
