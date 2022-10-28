@@ -12,6 +12,100 @@ class ChatView extends GetView<ChatController> {
 
   final chatController = Get.put(ChatController());
 
+  //TODO: チャット画面実装時にグループトークリストとの繋ぎこみを作成
+  //TODO: 動作確認のためテスト値を入れている。本来は[]で初期化。
+  List<TalkMemberCard> individualTalkMemberCardList = [
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
+      mostRecentMessage:
+          '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'Aさん',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+  ];
+  //TODO: チャット画面実装時にグループトークリストとの繋ぎこみを作成
+  //TODO: 動作確認のためテスト値を入れている。本来は[]で初期化。
+  List<TalkMemberCard> groupTalkMemberCardList = [
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'グループA',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'グループB',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'グループC',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'グループD',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+    TalkMemberCard(
+      //TODO: サンプルのため後で削除
+      roomName: 'グループE',
+      mostRecentMessage: '私も〇〇好きです',
+      profileImageURL: null,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +115,7 @@ class ChatView extends GetView<ChatController> {
         hasBackButton: false,
         trailing: <Widget>[
           IconButton(
-            //TODO: トーク画面実装時にonpressedの画面切替処理を実装
+            //TODO: チャット画面実装時にonpressedの画面切替処理を実装
             onPressed: () {
               chatController.flagInversion(chatController.isGroupTalk);
             },
@@ -29,6 +123,7 @@ class ChatView extends GetView<ChatController> {
               () => chatController.isGroupTalk.value
                   ? const Icon(
                       Icons.groups,
+                      //TODO: アイコンサイズを32に統一する
                       color: Colors.blue,
                     )
                   : Icon(
@@ -57,13 +152,21 @@ class ChatView extends GetView<ChatController> {
           ),
         ],
       ),
-      body: const Center(
-        child: TalkMemberCard(
-          //TODO: サンプルのため後で削除
-          roomName: '123456789012345678901234567890',
-          mostRecentMessage:
-              '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890',
-          profileImageURL: null,
+      body: Obx(
+        () => ListView(
+          children: chatController.isGroupTalk.value
+              ? groupTalkMemberCardList
+              : individualTalkMemberCardList,
+        ),
+      ),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(
+          bottom: 100,
+        ),
+        child: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.blue,
+          child: const Icon(Icons.person_add_alt_1),
         ),
       ),
     );
