@@ -29,7 +29,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.chat,
-      page: () => const ChatView(),
+      page: () => ChatView(),
       binding: ChatBinding(),
     ),
     GetPage(

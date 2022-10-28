@@ -14,10 +14,10 @@ class DashboardView extends GetView<DashboardController> {
       body: Obx(
         () => IndexedStack(
           index: controller.tabIndex.value,
-          children: const [
-            HomeView(),
+          children: [
+            const HomeView(),
             ChatView(),
-            MypageView(),
+            const MypageView(),
           ],
         ),
       ),

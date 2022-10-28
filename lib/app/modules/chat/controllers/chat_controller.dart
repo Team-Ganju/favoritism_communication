@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 
 class ChatController extends GetxController {
-  //TODO: Implement ChatController
+  final isGroupTalk = false.obs;
 
-  final count = 0.obs;
-
-
-
-  void increment() => count.value++;
+  RxBool? flagInversion(flag) {
+    flag.value = !flag.value;
+    return flag;
+  }
 }
