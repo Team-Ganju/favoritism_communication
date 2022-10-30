@@ -1,8 +1,8 @@
-import 'package:favoritism_communication/experimental/pages/home/home_binding.dart';
-import 'package:favoritism_communication/experimental/pages/home/home_view.dart';
 import 'package:get/get.dart';
 
-part 'app_routes.dart';
+import '../pages/home/home_binding.dart';
+import '../pages/home/home_view.dart';
+part 'demo_app_routes.dart';
 
 class DemoAppPages {
   DemoAppPages._();
