@@ -14,7 +14,7 @@
 以下のコマンドで動かすことができます。
 
 ```
-flutter run -t lib/experimental/main_demo.dart
+flutter run -t experimental/main_demo.dart
 ```
 
 ※シミュレータを立ち上げておく必要があります。
