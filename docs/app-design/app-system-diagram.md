@@ -2,8 +2,7 @@
 
 本アプリのシステム構成は以下の図の通りです。
 
-![app-system-diagram](https://user-images.githubusercontent.com/25321380/198871778-ca865aed-842b-4a60-aea1-f5fa5e7f8d78.png)
-
+![app-system-diagram](https://user-images.githubusercontent.com/25321380/198879949-0a9b78b6-d43c-46b3-a736-bc3bd744bce8.png)
 
 ## 注釈や懸念事項等
 
