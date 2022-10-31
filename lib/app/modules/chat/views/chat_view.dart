@@ -13,7 +13,7 @@ class ChatView extends GetView<ChatController> {
 
   //FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
   //       動作確認のためテスト値を入れている。本来は[]で初期化。
-  List<TalkMemberCard> individualTalkMemberCardList = [
+  final List<TalkMemberCard> individualTalkMemberCardList = [
     const TalkMemberCard(
       roomName: '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
       mostRecentMessage:
@@ -64,7 +64,7 @@ class ChatView extends GetView<ChatController> {
 
   //FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
   //       動作確認のためテスト値を入れている。本来は[]で初期化。
-  List<TalkMemberCard> groupTalkMemberCardList = [
+  final List<TalkMemberCard> groupTalkMemberCardList = [
     const TalkMemberCard(
       roomName: 'グループA',
       mostRecentMessage: '私も〇〇好きです',
