@@ -1,6 +1,5 @@
-import 'package:favoritism_communication/app/modules/chat/views/chat_view.dart';
-import 'package:favoritism_communication/app/modules/home/views/home_view.dart';
-import 'package:favoritism_communication/app/modules/mypage/views/mypage_view.dart';
+import 'package:favoritism_communication/app/modules/tab_root/tab_root_view.dart';
+import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,10 +13,10 @@ class DashboardView extends GetView<DashboardController> {
       body: Obx(
         () => IndexedStack(
           index: controller.tabIndex.value,
-          children: [
-            const HomeView(),
-            ChatView(),
-            const MypageView(),
+          children: const [
+            TabRootView(initialRoot: Routes.home),
+            TabRootView(initialRoot: Routes.chat),
+            TabRootView(initialRoot: Routes.mypage)
           ],
         ),
       ),

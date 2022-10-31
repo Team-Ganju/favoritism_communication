@@ -38,7 +38,7 @@ git config --global user.email myname@example.com
 ## 開発環境
 
 - Flutter-3.3.4-stable(バージョンアップがあれば都度対応)
-- GetX
+- [GetX](https://pub.dev/packages/get)
 - JAVA openJDK 11
 - Node.js latest
 - Firebase
@@ -62,7 +62,20 @@ git config --global user.email myname@example.com
 ## 課題共有ツール
 
 - [Jira Software](https://joint-dev.atlassian.net/jira/software/c/projects/FC/boards/1)
+    - [JIRA運用マニュアル](./docs/jira/jira_operation_manual.md)
 
 ## オンラインホワイトボード(画面レイアウト図やメモなど)
 
 - [Miro](https://miro.com/app/board/uXjVPNQ7qZ4=/)
+
+## デモアプリ
+
+- [デモアプリについて](./docs/demo/demo.md)
+
+## 開発方針
+
+[開発方針について](./docs/development-policy/development-policy.md)
+
+## 設計関連
+
+- [アプリのシステム構成図](./docs/app-design/app-system-diagram.md)
