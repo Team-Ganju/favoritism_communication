@@ -10,7 +10,6 @@ class HomeView extends GetView<HomeController> {
     return const Scaffold(
       appBar: NavBar(
         backgroundColor: Colors.pinkAccent,
-        hasBackButton: false,
         title: 'ホーム',
       ),
       body: Center(

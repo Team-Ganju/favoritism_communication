@@ -13,7 +13,6 @@ class ChatView extends GetView<ChatController> {
       appBar: NavBar(
         title: 'トーク',
         backgroundColor: Colors.pinkAccent,
-        hasBackButton: false,
       ),
       body: Center(
         child: Text(
