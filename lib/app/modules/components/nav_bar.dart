@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 /// iOS風ナビバー
 class NavBar extends StatelessWidget implements PreferredSizeWidget {
