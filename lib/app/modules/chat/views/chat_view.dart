@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/modules/components/nav_bar.dart';
 import 'package:favoritism_communication/app/modules/chat/views/talk_member_card.dart';
+import 'package:favoritism_communication/app/modules/create_chat_group/views/create_chat_group_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -147,8 +148,17 @@ class ChatView extends GetView<ChatController> {
           bottom: 100,
         ),
         child: FloatingActionButton(
-          //TODO: トーク画面実装時にonpressedの画面切替処理を実装
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return const CreateChatGroupView();
+                },
+                fullscreenDialog: true,
+              ),
+            );
+          },
           backgroundColor: Colors.blue,
           child: const Icon(Icons.person_add_alt_1),
         ),
