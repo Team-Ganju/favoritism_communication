@@ -15,7 +15,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
   final Widget? leading;
   final Widget? child;
-  final Widget? trailing;
+  final List<Widget>? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: title != null ? Text(title ?? '') : child,
       leading: leading,
+      actions: trailing,
     );
   }
 
