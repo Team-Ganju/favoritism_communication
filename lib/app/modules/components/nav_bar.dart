@@ -16,7 +16,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
   final bool hasBackButton;
   final Widget? child;
-  final Widget? trailing;
+  final List<Widget>? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,17 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0.0,
       backgroundColor: backgroundColor,
       centerTitle: true,
-      title: title != null ? Text(title ?? '') : child,
+      shape: const Border(
+        bottom: BorderSide(
+          color: Colors.black,
+        ),
+      ),
+      title: title != null
+          ? Text(
+              title ?? '',
+              style: const TextStyle(color: Colors.black),
+            )
+          : child,
       leading: hasBackButton
           ? IconButton(
               icon: const Icon(
@@ -36,6 +46,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
               iconSize: 30,
             )
           : null,
+      actions: trailing,
     );
   }
 
