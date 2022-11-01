@@ -95,8 +95,7 @@ class ChatView extends GetView<ChatController> {
     return Scaffold(
       appBar: NavBar(
         title: 'トーク',
-        backgroundColor: Colors.white,
-        hasBackButton: false,
+        backgroundColor: Colors.pinkAccent,
         trailing: <Widget>[
           IconButton(
             //TODO: トーク画面実装時にonpressedの画面切替処理を実装
