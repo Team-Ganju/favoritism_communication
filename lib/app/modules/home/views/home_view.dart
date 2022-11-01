@@ -1,5 +1,5 @@
+import 'package:favoritism_communication/app/modules/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/modules/components/nav_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
                   color: Colors.grey.shade300,
                 ),
               ),
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               elevation: 0,
               child: Column(
                 children: [
@@ -52,16 +52,40 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ],
                         ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            foregroundColor: Colors.blueAccent,
-                            shape: const StadiumBorder(
-                                side: BorderSide(color: Colors.blueAccent)),
-                            elevation: 0,
-                          ),
-                          onPressed: () {},
-                          child: Text('フォローする'),
+                        Obx(
+                          () => controller.isFollowed.value
+                              ? ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: Size(
+                                        MediaQuery.of(context).size.width * 0.3,
+                                        25),
+                                    backgroundColor: Colors.blueAccent,
+                                    foregroundColor: Colors.white,
+                                    shape: const StadiumBorder(),
+                                    elevation: 0,
+                                  ),
+                                  onPressed: () {
+                                    controller.unFollow();
+                                  },
+                                  child: const Text('フォロー中'),
+                                )
+                              : ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    fixedSize: Size(
+                                        MediaQuery.of(context).size.width * 0.3,
+                                        25),
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: Colors.blueAccent,
+                                    shape: const StadiumBorder(
+                                        side: BorderSide(
+                                            color: Colors.blueAccent)),
+                                    elevation: 0,
+                                  ),
+                                  onPressed: () {
+                                    controller.follow();
+                                  },
+                                  child: const Text('フォローする'),
+                                ),
                         ),
                       ],
                     ),
@@ -80,86 +104,50 @@ class HomeView extends GetView<HomeController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        const SizedBox(height: 10.0),
                         Wrap(
                           runSpacing: 4.0,
                           spacing: 4.0,
-                          children: [
-                            Chip(
-                              label: Text('旅行'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                          children: const [
+                            CustomChip(
+                              chipTitle: '観光地',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('映画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: '映画',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('漫画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: '本',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('漫画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: '音楽',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('漫画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: 'ご飯',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('漫画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: 'スポーツ',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('漫画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: 'ホゲホゲ',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('漫画'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: 'カテゴリは10個まで',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('ホゲホゲホゲ。これくらいの長さまでは書いてOK'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: 'これくらいの長さまでは書いてOK。20字程度。',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
-                            Chip(
-                              label: Text('その他はユーザが決めれる'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
-                            ),
-                            Chip(
-                              label: Text('ホゲホゲホゲホゲ'),
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              backgroundColor:
-                                  Color.fromARGB(255, 245, 245, 222),
+                            CustomChip(
+                              chipTitle: 'その他はユーザが決めれる',
+                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
                             ),
                           ],
                         )
