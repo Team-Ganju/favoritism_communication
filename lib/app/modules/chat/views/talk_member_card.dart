@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TalkMemberCard extends Card {
+class TalkMemberCard extends StatelessWidget {
   const TalkMemberCard({
     Key? key,
     required this.roomName,

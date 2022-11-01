@@ -6,91 +6,89 @@ import 'package:get/get.dart';
 
 import '../controllers/chat_controller.dart';
 
+//FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
+//       動作確認のためテスト値を入れている。本来は[]で初期化。
+List<TalkMemberCard> _individualTalkMemberCardList = [
+  const TalkMemberCard(
+    roomName: '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
+    mostRecentMessage:
+        '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'Aさん',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+];
+
+//FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
+//       動作確認のためテスト値を入れている。本来は[]で初期化。
+List<TalkMemberCard> _groupTalkMemberCardList = [
+  const TalkMemberCard(
+    roomName: 'グループA',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'グループB',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'グループC',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'グループD',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+  const TalkMemberCard(
+    roomName: 'グループE',
+    mostRecentMessage: '私も〇〇好きです',
+    profileImageURL: null,
+  ),
+];
+
 class ChatView extends GetView<ChatController> {
-  ChatView({Key? key}) : super(key: key);
-
-  final chatController = Get.put(ChatController());
-
-  //FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
-  //       動作確認のためテスト値を入れている。本来は[]で初期化。
-  final List<TalkMemberCard> individualTalkMemberCardList = [
-    const TalkMemberCard(
-      roomName: '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
-      mostRecentMessage:
-          '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'Aさん',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-  ];
-
-  //FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
-  //       動作確認のためテスト値を入れている。本来は[]で初期化。
-  final List<TalkMemberCard> groupTalkMemberCardList = [
-    const TalkMemberCard(
-      roomName: 'グループA',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'グループB',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'グループC',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'グループD',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-    const TalkMemberCard(
-      roomName: 'グループE',
-      mostRecentMessage: '私も〇〇好きです',
-      profileImageURL: null,
-    ),
-  ];
+  const ChatView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -103,10 +101,10 @@ class ChatView extends GetView<ChatController> {
           IconButton(
             //TODO: トーク画面実装時にonpressedの画面切替処理を実装
             onPressed: () {
-              chatController.flagInversion(chatController.isGroupTalk);
+              controller.switchTalkPartner();
             },
             icon: Obx(
-              () => chatController.isGroupTalk.value
+              () => controller.isGroupTalk.value
                   ? const Icon(
                       Icons.groups,
                       size: 32,
@@ -122,10 +120,10 @@ class ChatView extends GetView<ChatController> {
           IconButton(
             //TODO: トーク画面実装時にonpressedの画面切替処理を実装
             onPressed: () {
-              chatController.flagInversion(chatController.isGroupTalk);
+              controller.switchTalkPartner();
             },
             icon: Obx(
-              () => chatController.isGroupTalk.value
+              () => controller.isGroupTalk.value
                   ? Icon(
                       Icons.person,
                       color: Colors.grey.shade300,
@@ -140,9 +138,9 @@ class ChatView extends GetView<ChatController> {
       ),
       body: Obx(
         () => ListView(
-          children: chatController.isGroupTalk.value
-              ? groupTalkMemberCardList
-              : individualTalkMemberCardList,
+          children: controller.isGroupTalk.value
+              ? _groupTalkMemberCardList
+              : _individualTalkMemberCardList,
         ),
       ),
       floatingActionButton: Container(
