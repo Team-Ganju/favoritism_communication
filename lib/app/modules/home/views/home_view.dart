@@ -12,7 +12,6 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: Colors.grey[100],
       appBar: const NavBar(
         backgroundColor: Colors.pinkAccent,
-        hasBackButton: false,
         title: 'ホーム',
       ),
       body: Center(

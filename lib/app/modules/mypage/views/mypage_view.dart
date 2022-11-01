@@ -11,7 +11,6 @@ class MypageView extends GetView<MypageController> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: NavBar(
-        hasBackButton: false,
         backgroundColor: Colors.pinkAccent,
         title: 'プロフィール',
       ),
