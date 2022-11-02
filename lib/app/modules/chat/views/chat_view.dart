@@ -1,6 +1,5 @@
 import 'package:favoritism_communication/app/modules/components/nav_bar.dart';
 import 'package:favoritism_communication/app/modules/chat/views/talk_member_card.dart';
-import 'package:favoritism_communication/app/modules/create_chat_group/views/create_chat_group_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
