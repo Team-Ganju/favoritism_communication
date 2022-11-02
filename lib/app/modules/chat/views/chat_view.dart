@@ -149,14 +149,8 @@ class ChatView extends GetView<ChatController> {
         ),
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const CreateChatGroupView();
-                },
-                fullscreenDialog: true,
-              ),
+            Get.toNamed(
+              '/create-chat-group',
             );
           },
           backgroundColor: Colors.blue,

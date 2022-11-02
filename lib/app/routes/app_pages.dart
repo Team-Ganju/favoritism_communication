@@ -43,6 +43,7 @@ class AppPages {
       name: _Paths.createChatGroup,
       page: () => const CreateChatGroupView(),
       binding: CreateChatGroupBinding(),
+      fullscreenDialog: true,
     ),
   ];
 }
