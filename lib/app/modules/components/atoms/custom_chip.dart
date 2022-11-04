@@ -16,6 +16,11 @@ class CustomChip extends StatelessWidget {
       label: Text(chipTitle),
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       backgroundColor: backgroundColor,
+      shape: const StadiumBorder(
+        side: BorderSide(
+          color: Color.fromARGB(132, 207, 205, 205),
+        ),
+      ),
     );
   }
 }
