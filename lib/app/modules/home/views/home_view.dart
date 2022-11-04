@@ -36,7 +36,8 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Row(
                           children: const [
-                            // fixme: あとでコンポーネント化する
+                            // fixme1: あとでatomic designでコンポーネント化する。
+                            // fixme2: Firestorageで画像が取得できるようになったら修正
                             CircleAvatar(
                               backgroundColor: Colors.grey,
                               child: Icon(
@@ -52,6 +53,7 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ],
                         ),
+                        // todo: フォロ-ボタンをatomic designにしたい。あとでコンポーネント化考える
                         Obx(
                           () => controller.isFollowed.value
                               ? ElevatedButton(
@@ -105,6 +107,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         const SizedBox(height: 10.0),
+                        // fixme: あとでatomic design適用する(moleculesかOrganisms)
                         Wrap(
                           runSpacing: 4.0,
                           spacing: 4.0,
