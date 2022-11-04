@@ -147,8 +147,11 @@ class ChatView extends GetView<ChatController> {
           bottom: 100,
         ),
         child: FloatingActionButton(
-          //TODO: トーク画面実装時にonpressedの画面切替処理を実装
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed(
+              '/create-chat-group',
+            );
+          },
           backgroundColor: Colors.blue,
           child: const Icon(Icons.person_add_alt_1),
         ),

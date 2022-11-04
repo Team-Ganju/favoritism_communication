@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/chat/bindings/chat_binding.dart';
 import '../modules/chat/views/chat_view.dart';
+import '../modules/create_chat_group/bindings/create_chat_group_binding.dart';
+import '../modules/create_chat_group/views/create_chat_group_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -36,6 +38,12 @@ class AppPages {
       name: _Paths.mypage,
       page: () => const MypageView(),
       binding: MypageBinding(),
+    ),
+    GetPage(
+      name: _Paths.createChatGroup,
+      page: () => const CreateChatGroupView(),
+      binding: CreateChatGroupBinding(),
+      fullscreenDialog: true,
     ),
   ];
 }
