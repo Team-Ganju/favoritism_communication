@@ -1,11 +1,16 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final RxBool isFollowed = false.obs;
 
-  final count = 0.obs;
+  /// todo: フォローするor解除するは処理が異なってくるのでメソッドを分ける
+  /// フォローするメソッド
+  void follow() {
+    isFollowed.value = true;
+  }
 
-
-
-  void increment() => count.value++;
+  /// フォロー解除メソッド
+  void unFollow() {
+    isFollowed.value = false;
+  }
 }
