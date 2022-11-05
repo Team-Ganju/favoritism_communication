@@ -1,5 +1,5 @@
-import 'package:favoritism_communication/app/modules/components/atoms/atoms.dart';
-import 'package:favoritism_communication/app/modules/components/nav_bar.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';

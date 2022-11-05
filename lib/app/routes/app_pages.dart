@@ -1,15 +1,15 @@
 import 'package:get/get.dart';
 
-import '../modules/chat/bindings/chat_binding.dart';
-import '../modules/chat/views/chat_view.dart';
-import '../modules/create_chat_group/bindings/create_chat_group_binding.dart';
-import '../modules/create_chat_group/views/create_chat_group_view.dart';
-import '../modules/dashboard/bindings/dashboard_binding.dart';
-import '../modules/dashboard/views/dashboard_view.dart';
-import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/views/home_view.dart';
-import '../modules/mypage/bindings/mypage_binding.dart';
-import '../modules/mypage/views/mypage_view.dart';
+import '../components/pages/chat/bindings/chat_binding.dart';
+import '../components/pages/chat/views/chat_view.dart';
+import '../components/pages/create_chat_group/bindings/create_chat_group_binding.dart';
+import '../components/pages/create_chat_group/views/create_chat_group_view.dart';
+import '../components/pages/dashboard/bindings/dashboard_binding.dart';
+import '../components/pages/dashboard/views/dashboard_view.dart';
+import '../components/pages/home/bindings/home_binding.dart';
+import '../components/pages/home/views/home_view.dart';
+import '../components/pages/mypage/bindings/mypage_binding.dart';
+import '../components/pages/mypage/views/mypage_view.dart';
 
 part 'app_routes.dart';
 
