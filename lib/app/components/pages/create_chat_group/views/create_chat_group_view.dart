@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:favoritism_communication/app/modules/components/nav_bar.dart';
+import 'package:favoritism_communication/app/components/nav_bar.dart';
 
 import 'package:get/get.dart';
 
