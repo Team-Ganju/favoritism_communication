@@ -1,4 +1,4 @@
-import 'package:favoritism_communication/app/components/nav_bar.dart';
+import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';

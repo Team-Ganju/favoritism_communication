@@ -1,4 +1,4 @@
-import 'package:favoritism_communication/app/components/nav_bar.dart';
+import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/pages/chat/views/talk_member_card.dart';
 import 'package:flutter/material.dart';
 
