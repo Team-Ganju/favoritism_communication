@@ -119,7 +119,7 @@ Android 用に Android Studio の設定を行います。 Android Studio がイ�
 
 - プラグインの追加
 
-メニューバーの「Android Studio > Performances」を選択します。 画面の「Plugins」を選択し、「Dart」と「Flutter」プラグインを検索して追加（Apply）します。
+メニューバーの「Android Studio > Preferences...」を選択します。 画面の「Plugins」を選択し、「Dart」と「Flutter」プラグインを検索して追加（Apply）します。
 
 
 - SDK の追加
