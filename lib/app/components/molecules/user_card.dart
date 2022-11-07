@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../pages/home/controllers/home_controller.dart';
 
-// TODO 画像URL、ユーザ名、フォロー有無、好きなカテゴリリストを引数として追加する
 class UserCard extends Card {
   UserCard(
-    // TODO HomeControllerへの依存部分を切り離す
-    BuildContext context, String title, String instruction, HomeController controller)
+    BuildContext context, UserCardData userCardData, HomeController controller)
       : super(
          shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
@@ -25,21 +23,21 @@ class UserCard extends Card {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          children: const [
+                          children: [
                             // fixme1: あとでatomic designでコンポーネント化する。
                             // fixme2: Firestorageで画像が取得できるようになったら修正
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundColor: Colors.grey,
                               child: Icon(
                                 Icons.person,
                                 color: Colors.white,
                               ),
                             ),
-                            SizedBox(width: 15),
+                            const SizedBox(width: 15),
                             Text(
                               // fixme: ユーザ名がFiresstoreから取れるようになったら修正
-                              'ユーザネーム',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                              userCardData.userName,
+                              style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -101,48 +99,9 @@ class UserCard extends Card {
                         Wrap(
                           runSpacing: 4.0,
                           spacing: 4.0,
-                          children: const [
-                            CustomChip(
-                              chipTitle: '観光地',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: '映画',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: '本',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: '音楽',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: 'ご飯',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: 'スポーツ',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: 'ホゲホゲ',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: 'カテゴリは10個まで',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: 'これくらいの長さまでは書いてOK。20字程度。',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                            CustomChip(
-                              chipTitle: 'その他はユーザが決めれる',
-                              backgroundColor: Color.fromRGBO(255, 250, 205, 1),
-                            ),
-                          ],
+                          children: userCardData.categories.map((item) {
+                            return CustomChip(chipTitle: item.categoryName, backgroundColor: item.categoryColor);
+                          }).toList()
                         )
                       ],
                     ),
@@ -150,4 +109,24 @@ class UserCard extends Card {
                 ],
               )
       );
+}
+
+class CategoryData {
+  final String categoryName;
+  final Color categoryColor;
+
+  const CategoryData(
+    this.categoryName,
+    this.categoryColor
+  );
+}
+
+class UserCardData {
+  final String userName;
+  final List<CategoryData> categories;
+
+  const UserCardData(
+    this.userName,
+    this.categories
+  );
 }
