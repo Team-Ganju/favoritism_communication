@@ -39,7 +39,6 @@ class HomeView extends GetView<HomeController> {
 }
 
 List<String> getRandomCategoryList() {
-  // ランダムなカテゴリを返す
   var categories = ['観光地', '映画', '本', '音楽', 'ご飯', 'スポーツ', 'ホゲホゲ', 'カテゴリは10個まで', 'これくらいの長さまでは書いてOK。20字程度。', 'その他はユーザが決めれる'];
   var indexList = [];
   for (var i = 0; i < categories.length; i++) {
