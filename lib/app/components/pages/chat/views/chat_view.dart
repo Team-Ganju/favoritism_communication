@@ -143,6 +143,7 @@ class ChatView extends GetView<ChatController> {
         ),
       ),
       floatingActionButton: Container(
+        //FIXME: ボタン位置は端末サイズを基準に指定するように修正
         margin: const EdgeInsets.only(
           bottom: 100,
         ),
