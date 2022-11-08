@@ -30,11 +30,21 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Colors.pinkAccent,
         title: 'ホーム',
       ),
-      body: ListView(
+      body: NotificationListener<ScrollNotification>(
+        child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
           children: userCardList
         ),
-      );
+        onNotification: (ScrollNotification notification) {
+            print('OverscrollNotification:${notification is OverscrollNotification}');
+            print('maxScrollExtent:${notification.metrics.maxScrollExtent}');
+            print('pixels:${notification.metrics.pixels}');
+            print('outOfRange:${notification.metrics.outOfRange}');
+
+            return false;
+        }
+      ),
+    );
   }
 }
 
