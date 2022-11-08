@@ -6,7 +6,6 @@ import '../../../molecules/user_card.dart';
 import 'dart:math' as math;
 
 class HomeView extends GetView<HomeController> {
-  static const tempCategoryNameList = ['観光地', '映画', '本', '音楽', 'ご飯', 'スポーツ', 'ホゲホゲ', 'カテゴリは10個まで', 'これくらいの長さまでは書いてOK。20字程度。', 'その他はユーザが決めれる'];
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class HomeView extends GetView<HomeController> {
         UserCardData(
           item,
           getRandomCategoryList().map((item) {
-            return CategoryData(item, const Color.fromRGBO(255, 250, 205, 1));
+            return CategoryData(item, getRandomColor());
           }).toList()
         ),
         controller
@@ -57,4 +56,12 @@ List<String> getRandomCategoryList() {
   return indexList.map((item) {
     return categories[item];
   }).toList();
+}
+
+Color getRandomColor() {
+  var rand = math.Random();
+  var red = rand.nextInt(100) + 155;
+  var green = rand.nextInt(100) + 155;
+  var blue = rand.nextInt(100) + 155;
+  return Color.fromRGBO(red, green, blue, 1);
 }
