@@ -41,13 +41,15 @@ class HomeView extends GetView<HomeController> {
 List<String> getRandomCategoryList() {
   var categories = ['観光地', '映画', '本', '音楽', 'ご飯', 'スポーツ', 'ホゲホゲ', 'カテゴリは10個まで', 'これくらいの長さまでは書いてOK。20字程度。', 'その他はユーザが決めれる'];
   var indexList = [];
-  for (var i = 0; i < categories.length; i++) {
+  var rand = math.Random();
+  var categoryNum = rand.nextInt(categories.length);
+  categoryNum = categoryNum < 5 ? 5 : categoryNum;
+  for (var i = 0; i < categoryNum; i++) {
     indexList.add(i);
   }
-  var rand = math.Random();
-  for (var i = 0; i < categories.length; i++) {
-    var first = rand.nextInt(categories.length);
-    var second = rand.nextInt(categories.length);
+  for (var i = 0; i < categoryNum; i++) {
+    var first = rand.nextInt(categoryNum);
+    var second = rand.nextInt(categoryNum);
     var temp = indexList[first];
     indexList[first] = indexList[second];
     indexList[second] = temp;
