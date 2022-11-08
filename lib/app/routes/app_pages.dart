@@ -48,7 +48,7 @@ class AppPages {
       fullscreenDialog: true,
     ),
     GetPage(
-      name: _Paths.PROFILE,
+      name: _Paths.profile,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
     ),
