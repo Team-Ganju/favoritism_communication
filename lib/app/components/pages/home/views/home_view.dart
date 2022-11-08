@@ -30,6 +30,42 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Colors.pinkAccent,
         title: 'ホーム',
       ),
+      body: Stack(
+        children: [
+          NotificationListener<ScrollNotification>(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
+              children: userCardList
+            ),
+            onNotification: (ScrollNotification notification) {
+                print('OverscrollNotification:${notification is OverscrollNotification}');
+                print('maxScrollExtent:${notification.metrics.maxScrollExtent}');
+                print('pixels:${notification.metrics.pixels}');
+                print('outOfRange:${notification.metrics.outOfRange}');
+
+                return false;
+            }
+          ),
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(
+                    MediaQuery.of(context).size.width * 0.3,
+                    25),
+                backgroundColor: const Color.fromRGBO(236, 188, 179, 1),
+                foregroundColor: Colors.white,
+                shape: const StadiumBorder(),
+                elevation: 0,
+              ),
+              onPressed: () {
+                controller.unFollow();
+              },
+              child: const Text('TOPに戻る'),
+            )
+          )
+        ],
+      )
+      /*
       body: NotificationListener<ScrollNotification>(
         child: ListView(
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
@@ -43,7 +79,7 @@ class HomeView extends GetView<HomeController> {
 
             return false;
         }
-      ),
+      ),*/
     );
   }
 }
