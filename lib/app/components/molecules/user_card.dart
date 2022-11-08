@@ -5,7 +5,7 @@ import '../pages/home/controllers/home_controller.dart';
 
 class UserCard extends Card {
   UserCard(
-    BuildContext context, UserCardData userCardData, HomeController controller)
+    BuildContext context, UserCardData userCardData, HomeController controller, {super.key})
       : super(
          shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
