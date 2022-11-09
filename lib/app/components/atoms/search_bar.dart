@@ -8,12 +8,19 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: FormBuilderTextField(
         name: '検索',
         decoration: InputDecoration(
           hintText: '検索',
           prefixIcon: Icon(Icons.search),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.grey,
+            ),
+            borderRadius: BorderRadius.circular(45),
+          ),
         ),
         onChanged: (text) => search(text),
       ),
