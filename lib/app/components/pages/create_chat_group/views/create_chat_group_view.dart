@@ -6,12 +6,23 @@ import 'package:get/get.dart';
 
 import '../controllers/create_chat_group_controller.dart';
 
+//FIXME: firebaseからデータを取得するようになったらは削除
+List<String> searchedTargetList = [
+  'Aさん',
+  'ABさん',
+  'ABCさん',
+  'Bさん',
+  'BAさん',
+  'BACさん',
+  'Cさん'
+];
+
 class CreateChatGroupView extends GetView<CreateChatGroupController> {
   const CreateChatGroupView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NavBar(
+      appBar: const NavBar(
         title: '友達を選択',
         backgroundColor: Colors.pink,
       ),
@@ -19,9 +30,9 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SearchBar(),
+            child: SearchBar(searchTarget: searchedTargetList),
           ),
-          Expanded(
+          const Expanded(
             child: Center(
               child: Text(
                 'CreateChatGroupView is working',
