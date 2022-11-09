@@ -8,11 +8,9 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: FormBuilderTextField(
-        name: '検索',
-        decoration: InputDecoration(
+    return FormBuilderTextField(
+      name: '検索',
+      decoration: InputDecoration(
           hintText: '検索',
           prefixIcon: Icon(Icons.search),
           enabledBorder: OutlineInputBorder(
@@ -21,9 +19,11 @@ class SearchBar extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(45),
           ),
-        ),
-        onChanged: (text) => search(text),
-      ),
+          focusedBorder: UnderlineInputBorder(
+            //FIXME: テキスト入力時の下線の色は外部ファイルから指定
+            borderSide: BorderSide(color: Colors.grey),
+          )),
+      onChanged: (text) => search(text),
     );
   }
 

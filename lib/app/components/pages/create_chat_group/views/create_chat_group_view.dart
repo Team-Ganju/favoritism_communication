@@ -17,7 +17,10 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
       ),
       body: Column(
         children: [
-          SearchBar(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SearchBar(),
+          ),
           Expanded(
             child: Center(
               child: Text(
