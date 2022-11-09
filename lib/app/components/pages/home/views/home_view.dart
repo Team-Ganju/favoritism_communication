@@ -50,11 +50,11 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
         onNotification: (ScrollNotification notification) {
-          print(
+          debugPrint(
               'OverscrollNotification:${notification is OverscrollNotification}');
-          print('maxScrollExtent:${notification.metrics.maxScrollExtent}');
-          print('pixels:${notification.metrics.pixels}');
-          print('outOfRange:${notification.metrics.outOfRange}');
+          debugPrint('maxScrollExtent:${notification.metrics.maxScrollExtent}');
+          debugPrint('pixels:${notification.metrics.pixels}');
+          debugPrint('outOfRange:${notification.metrics.outOfRange}');
 
           return false;
         },
