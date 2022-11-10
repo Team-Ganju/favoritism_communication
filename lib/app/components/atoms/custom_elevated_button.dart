@@ -41,7 +41,9 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         //FIXME: isMemberSelectedがtrueの場合に、選択されたメンバーの情報を受け取って次画面へ遷移する処理を追加
-        onPressed: onPressed,
+        onPressed: () {
+          onPressed?.call();
+        },
         child: Text(
           buttonText,
           style: const TextStyle(
