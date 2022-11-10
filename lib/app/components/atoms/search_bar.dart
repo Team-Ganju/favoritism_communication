@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import 'package:get/get.dart';
+
 class SearchBar extends StatelessWidget {
   const SearchBar({
     Key? key,
     required this.searchTarget,
+    required this.listController,
   }) : super(key: key);
 
   final List<String> searchTarget;
+  final RxList listController;
 
-  static const _searchIntervalMilliSecond = 5000;
+  static const _searchIntervalMilliSecond = 1000; //1秒
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +41,15 @@ class SearchBar extends StatelessWidget {
   List<String> _prefixSearch(List<String> searchTargetList, String? text) {
     //HACK: 現在は大文字・小文字を区別しているが、区別しない方が良い場合は修正
     List<String> searchedResultList = [];
-    searchedResultList =
-        searchTargetList.where((element) => element.startsWith(text!)).toList();
+
+    if (text == null || text == '') {
+      //処理なし：searchedResultListは空のまま
+    } else {
+      searchedResultList = searchTargetList
+          .where((element) => element.startsWith(text))
+          .toList();
+    }
+
     return searchedResultList;
   }
 
@@ -53,7 +64,7 @@ class SearchBar extends StatelessWidget {
         final DateTime nowDatetime = DateTime.now();
         if (nowDatetime.difference(lastPressedDatetime).inMilliseconds >
             _searchIntervalMilliSecond) {
-          _prefixSearch(searchTarget, text);
+          listController.value = _prefixSearch(searchTarget, text);
         }
       },
     );

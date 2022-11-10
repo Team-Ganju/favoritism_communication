@@ -30,13 +30,21 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SearchBar(searchTarget: searchedTargetList),
+            child: SearchBar(
+              searchTarget: searchedTargetList,
+              listController: controller.searchResult,
+            ),
           ),
-          const Expanded(
-            child: Center(
-              child: Text(
-                'CreateChatGroupView is working',
-                style: TextStyle(fontSize: 20),
+          Expanded(
+            child: Obx(
+              () => ListView.builder(
+                itemCount: controller.searchResult.length,
+                itemBuilder: (context, index) {
+                  return SeachedResultListTile(
+                    index: index,
+                    text: controller.searchResult.elementAt(index),
+                  );
+                },
               ),
             ),
           ),
