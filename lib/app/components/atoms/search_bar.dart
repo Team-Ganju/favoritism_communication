@@ -28,9 +28,10 @@ class SearchBar extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(45),
           ),
-          focusedBorder: const UnderlineInputBorder(
+          focusedBorder: OutlineInputBorder(
             //FIXME: テキスト入力時の下線の色は外部ファイルから指定
             borderSide: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.circular(45),
           )),
       onChanged: (text) {
         _waitInputAndSearch(text);
