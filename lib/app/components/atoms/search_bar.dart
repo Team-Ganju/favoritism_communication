@@ -39,18 +39,18 @@ class SearchBar extends StatelessWidget {
     );
   }
 
+  //前方一致検索
   List<String> _prefixSearch(List<String> searchTargetList, String? text) {
-    //HACK: 現在は大文字・小文字を区別しているが、区別しない方が良い場合は修正
     List<String> searchedResultList = [];
 
     if (text == null || text == '') {
       //処理なし：searchedResultListは空のまま
     } else {
       searchedResultList = searchTargetList
-          .where((element) => element.startsWith(text))
+          .where(
+              (element) => element.toLowerCase().startsWith(text.toLowerCase()))
           .toList();
     }
-
     return searchedResultList;
   }
 
