@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
                 itemBuilder: (context, index) {
                   final UserCardData userCardData =
                       controller.userCardDataList[index];
-                  return CustomUserCard(
+                  return UserCard(
                     userCardData: userCardData,
                     followAction: Obx(
                       () => controller.userCardDataList[index].isFollowed

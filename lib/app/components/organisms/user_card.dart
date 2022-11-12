@@ -1,8 +1,8 @@
 import 'package:favoritism_communication/app/components/molecules/molecules.dart';
 import 'package:flutter/material.dart';
 
-class CustomUserCard extends StatelessWidget {
-  const CustomUserCard({
+class UserCard extends StatelessWidget {
+  const UserCard({
     super.key,
     required this.followAction,
     required this.userCardData,
