@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/bindings/initial_binding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale("ja", "JP"),
       ],
+      initialBinding: InitialBinding(),
       initialRoute: AppPages.initial,
       getPages: AppPages.routes,
     );
