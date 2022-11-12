@@ -1,5 +1,5 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
-import 'package:favoritism_communication/app/components/pages/chat/views/talk_member_card.dart';
+import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -143,6 +143,7 @@ class ChatView extends GetView<ChatController> {
         ),
       ),
       floatingActionButton: Container(
+        //FIXME: ボタン位置は端末サイズを基準に指定するように修正
         margin: const EdgeInsets.only(
           bottom: 100,
         ),
