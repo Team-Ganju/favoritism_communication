@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           Locale("ja", "JP"),
         ],
         initialRoute: AppPages.initial,
+        initialBinding: InitialBinding(),
         getPages: AppPages.routes,
       ),
     );
