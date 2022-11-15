@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/search_bar.dart';
 import 'package:favoritism_communication/app/components/organisms/search_result_list_tile.dart';
 
@@ -62,7 +63,15 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
               ),
             ),
           ),
+          const CustomFooter(),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: CustomElevatedButton(
+        buttonText: 'トークに移動する',
+        initialActiveFlag: controller.isMemberSelected.value,
+        //FIXME: 遷移先の画面ができたら遷移処理を実装
+        onPressed: controller.isMemberSelected.value ? () {} : null,
       ),
     );
   }

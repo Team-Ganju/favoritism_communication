@@ -10,6 +10,8 @@ import '../components/pages/home/bindings/home_binding.dart';
 import '../components/pages/home/views/home_view.dart';
 import '../components/pages/mypage/bindings/mypage_binding.dart';
 import '../components/pages/mypage/views/mypage_view.dart';
+import '../components/pages/profile/bindings/profile_binding.dart';
+import '../components/pages/profile/views/profile_view.dart';
 
 part 'app_routes.dart';
 
@@ -44,6 +46,11 @@ class AppPages {
       page: () => const CreateChatGroupView(),
       binding: CreateChatGroupBinding(),
       fullscreenDialog: true,
+    ),
+    GetPage(
+      name: _Paths.profile,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

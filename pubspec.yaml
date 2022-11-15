@@ -9,13 +9,24 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.5
   flutter_form_builder: 7.7.0
-
-  flutter_localizations:
+  form_builder_validators: ^8.3.0
+  pull_to_refresh: 2.0.0
+  get_storage: 2.0.3
+  webview_flutter: 3.0.4
+  flutter_link_previewer: 3.2.0
+  firebase_core: 2.2.0
+  firebase: 9.0.3
+  firebase_auth: 4.1.2
+  flutter_easyloading: 3.0.5
+  flutter_native_splash: 2.2.14
+  flutter_launcher_icons: 0.10.0
+  cloud_firestore: 4.0.5
+  firebase_storage: 11.0.5
+  cloud_functions: 4.0.4
+  flutter_localizations: 
     sdk: flutter
-
   flutter: 
     sdk: flutter
-  form_builder_validators: ^8.3.0
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
