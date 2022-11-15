@@ -10,6 +10,7 @@ dependencies:
   get: 4.6.5
   flutter_form_builder: 7.7.0
   form_builder_validators: ^8.3.0
+  pull_to_refresh: 2.0.0
   get_storage: 2.0.3
   webview_flutter: 3.0.4
   flutter_link_previewer: 3.2.0
