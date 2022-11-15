@@ -19,6 +19,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilderTextField(
       name: '検索',
+      keyboardType: TextInputType.text,
       decoration: InputDecoration(
           hintText: '検索',
           prefixIcon: const Icon(Icons.search),
