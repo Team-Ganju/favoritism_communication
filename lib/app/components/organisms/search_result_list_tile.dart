@@ -6,11 +6,13 @@ class SeachResultListTile extends StatelessWidget {
     required this.index,
     required this.text,
     this.onPressed,
+    this.onTap,
   });
 
   final int index;
   final String text;
   final VoidCallback? onPressed;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,8 @@ class SeachResultListTile extends StatelessWidget {
       title: Text(
         text,
       ),
+      //TODO: メンバー選択処理実装
+      onTap: onTap,
     );
   }
 }
