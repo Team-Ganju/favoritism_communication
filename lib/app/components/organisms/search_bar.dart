@@ -18,7 +18,7 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
-      name: '検索',
+      name: '検索バー',
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
           hintText: '検索',
@@ -31,7 +31,7 @@ class SearchBar extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             //FIXME: テキスト入力時の下線の色は外部ファイルから指定
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
             borderRadius: BorderRadius.circular(45),
           )),
       onChanged: (text) {
@@ -56,15 +56,15 @@ class SearchBar extends StatelessWidget {
   }
 
   void _waitInputAndSearch(String? text) {
-    //実行開始時の時間を更新
-    DateTime lastPressedDatetime = DateTime.now();
+    //前回テキスト変更時Datetimeを更新
+    DateTime lastChangedDatetime = DateTime.now();
 
     //一定時間間隔(_searchIntervalMilliSecond)以内にテキストの変更を検知した場合は_prefixSearchの実行を待つ
     Future.delayed(
       const Duration(milliseconds: _searchIntervalMilliSecond),
       () {
         final DateTime nowDatetime = DateTime.now();
-        if (nowDatetime.difference(lastPressedDatetime).inMilliseconds >
+        if (nowDatetime.difference(lastChangedDatetime).inMilliseconds >
             _searchIntervalMilliSecond) {
           listController.value = _prefixSearch(searchTarget, text);
         }
