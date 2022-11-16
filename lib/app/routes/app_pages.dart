@@ -12,6 +12,8 @@ import '../components/pages/mypage/bindings/mypage_binding.dart';
 import '../components/pages/mypage/views/mypage_view.dart';
 import '../components/pages/profile/bindings/profile_binding.dart';
 import '../components/pages/profile/views/profile_view.dart';
+import '../components/pages/talk_room/bindings/talk_room_binding.dart';
+import '../components/pages/talk_room/views/talk_room_view.dart';
 
 part 'app_routes.dart';
 
@@ -51,6 +53,11 @@ class AppPages {
       name: _Paths.profile,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.talk_room,
+      page: () => const TalkRoomView(),
+      binding: TalkRoomBinding(),
     ),
   ];
 }

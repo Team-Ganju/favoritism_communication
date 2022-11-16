@@ -9,6 +9,7 @@ abstract class Routes {
   static const mypage = _Paths.mypage;
   static const createChatGroup = _Paths.createChatGroup;
   static const profile = _Paths.profile;
+  static const talk_room = _Paths.talk_room;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const mypage = '/mypage';
   static const createChatGroup = '/create-chat-group';
   static const profile = '/profile';
+  static const talk_room = '/talk-room';
 }
