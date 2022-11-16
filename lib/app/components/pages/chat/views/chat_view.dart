@@ -99,40 +99,16 @@ class ChatView extends GetView<ChatController> {
         backgroundColor: Colors.pinkAccent,
         trailing: <Widget>[
           IconButton(
-            //TODO: トーク画面実装時にonpressedの画面切替処理を実装
-            onPressed: () {
-              controller.switchTalkPartner();
-            },
-            icon: Obx(
-              () => controller.isGroupTalk.value
-                  ? const Icon(
-                      Icons.groups,
-                      size: 32,
-                      color: Colors.blue,
-                    )
-                  : Icon(
-                      Icons.groups,
-                      size: 32,
-                      color: Colors.grey.shade300,
-                    ),
+            icon: Icon(
+              Icons.person_add_alt_1,
+              size: 30,
             ),
-          ),
-          IconButton(
-            //TODO: トーク画面実装時にonpressedの画面切替処理を実装
+            color: Colors.grey,
             onPressed: () {
-              controller.switchTalkPartner();
+              Get.toNamed(
+                '/create-chat-group',
+              );
             },
-            icon: Obx(
-              () => controller.isGroupTalk.value
-                  ? Icon(
-                      Icons.person,
-                      color: Colors.grey.shade300,
-                    )
-                  : const Icon(
-                      Icons.person,
-                      color: Colors.blue,
-                    ),
-            ),
           ),
         ],
       ),
@@ -163,7 +139,7 @@ class ChatView extends GetView<ChatController> {
                         backgroundColor: controller.isGroupTalk.value
                             ? Colors.yellow
                             : Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
                           controller.switchTalkPartner();
                         },
@@ -179,7 +155,7 @@ class ChatView extends GetView<ChatController> {
                         backgroundColor: controller.isGroupTalk.value
                             ? Colors.white
                             : Colors.yellow,
-                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
                           controller.switchTalkPartner();
                         },
@@ -198,21 +174,6 @@ class ChatView extends GetView<ChatController> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: Container(
-        //FIXME: ボタン位置は端末サイズを基準に指定するように修正
-        margin: const EdgeInsets.only(
-          bottom: 100,
-        ),
-        child: FloatingActionButton(
-          onPressed: () {
-            Get.toNamed(
-              '/create-chat-group',
-            );
-          },
-          backgroundColor: Colors.blue,
-          child: const Icon(Icons.person_add_alt_1),
-        ),
       ),
     );
   }
