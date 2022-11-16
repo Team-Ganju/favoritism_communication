@@ -99,7 +99,7 @@ class ChatView extends GetView<ChatController> {
         backgroundColor: Colors.pinkAccent,
         trailing: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.person_add_alt_1,
               size: 30,
             ),
@@ -128,34 +128,34 @@ class ChatView extends GetView<ChatController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Obx(() => CustomActionChip(
-                        avatar: Icon(
+                        avatar: const Icon(
                           Icons.groups,
                           size: 26,
                           color: Colors.grey,
                         ),
-                        label: Text('グループ'),
-                        labelPadding: EdgeInsets.symmetric(horizontal: 13.0),
+                        label: const Text('グループ'),
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 13.0),
                         side: BorderSide.none,
                         backgroundColor: controller.isGroupTalk.value
                             ? Colors.yellow
                             : Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 25.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
                           controller.switchTalkPartner();
                         },
                       )),
                   Obx(() => CustomActionChip(
-                        avatar: Icon(
+                        avatar: const Icon(
                           Icons.person,
                           color: Colors.grey,
                         ),
-                        label: Text('ペアトーク'),
-                        labelPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                        label: const Text('ペアトーク'),
+                        labelPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                         side: BorderSide.none,
                         backgroundColor: controller.isGroupTalk.value
                             ? Colors.white
                             : Colors.yellow,
-                        padding: EdgeInsets.symmetric(horizontal: 25.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
                           controller.switchTalkPartner();
                         },
