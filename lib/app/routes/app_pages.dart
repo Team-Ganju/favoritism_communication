@@ -55,7 +55,7 @@ class AppPages {
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: _Paths.talk_room,
+      name: _Paths.talkRoom,
       page: () => const TalkRoomView(),
       binding: TalkRoomBinding(),
     ),

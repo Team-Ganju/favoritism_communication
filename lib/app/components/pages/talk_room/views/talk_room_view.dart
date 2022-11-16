@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart'
+    as atoms;
 
 import 'package:get/get.dart';
 
@@ -9,11 +12,12 @@ class TalkRoomView extends GetView<TalkRoomController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('TalkRoomView'),
-        centerTitle: true,
+      appBar: NavBar(
+        title: Get.arguments[0], //TalkMemberCard.roomName
+        leading: const atoms.BackButton(),
+        backgroundColor: Colors.pink,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'TalkRoomView is working',
           style: TextStyle(fontSize: 20),
