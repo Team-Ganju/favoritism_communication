@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -135,12 +136,68 @@ class ChatView extends GetView<ChatController> {
           ),
         ],
       ),
-      body: Obx(
-        () => ListView(
-          children: controller.isGroupTalk.value
-              ? _groupTalkMemberCardList
-              : _individualTalkMemberCardList,
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 45,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(45),
+                color: Colors.white,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Obx(() => CustomActionChip(
+                        avatar: Icon(
+                          Icons.groups,
+                          size: 26,
+                          color: Colors.grey,
+                        ),
+                        label: Text('グループ'),
+                        labelPadding: EdgeInsets.symmetric(horizontal: 13.0),
+                        side: BorderSide.none,
+                        backgroundColor: controller.isGroupTalk.value
+                            ? Colors.yellow
+                            : Colors.white,
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        onPressed: () {
+                          controller.switchTalkPartner();
+                        },
+                      )),
+                  Obx(() => CustomActionChip(
+                        avatar: Icon(
+                          Icons.person,
+                          color: Colors.grey,
+                        ),
+                        label: Text('ペアトーク'),
+                        labelPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                        side: BorderSide.none,
+                        backgroundColor: controller.isGroupTalk.value
+                            ? Colors.white
+                            : Colors.yellow,
+                        padding: EdgeInsets.symmetric(horizontal: 20.0),
+                        onPressed: () {
+                          controller.switchTalkPartner();
+                        },
+                      )),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Obx(
+              () => ListView(
+                children: controller.isGroupTalk.value
+                    ? _groupTalkMemberCardList
+                    : _individualTalkMemberCardList,
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: Container(
         //FIXME: ボタン位置は端末サイズを基準に指定するように修正
