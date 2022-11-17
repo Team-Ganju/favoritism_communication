@@ -1,6 +1,7 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -106,7 +107,7 @@ class ChatView extends GetView<ChatController> {
             color: Colors.grey,
             onPressed: () {
               Get.toNamed(
-                '/create-chat-group',
+                Routes.createChatGroup,
               );
             },
           ),
@@ -134,7 +135,8 @@ class ChatView extends GetView<ChatController> {
                           color: Colors.grey,
                         ),
                         label: const Text('グループ'),
-                        labelPadding: const EdgeInsets.symmetric(horizontal: 13.0),
+                        labelPadding:
+                            const EdgeInsets.symmetric(horizontal: 13.0),
                         side: BorderSide.none,
                         backgroundColor: controller.isGroupTalk.value
                             ? Colors.yellow
@@ -150,7 +152,8 @@ class ChatView extends GetView<ChatController> {
                           color: Colors.grey,
                         ),
                         label: const Text('ペアトーク'),
-                        labelPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        labelPadding:
+                            const EdgeInsets.symmetric(horizontal: 4.0),
                         side: BorderSide.none,
                         backgroundColor: controller.isGroupTalk.value
                             ? Colors.white
