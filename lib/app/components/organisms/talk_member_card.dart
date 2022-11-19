@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
-
 class TalkMemberCard extends StatelessWidget {
   const TalkMemberCard({
     Key? key,
     required this.roomName,
     required this.mostRecentMessage,
+    required this.onTap,
     this.profileImageURL,
   }) : super(key: key);
 
   final String roomName;
   final String mostRecentMessage;
   final String? profileImageURL;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _moveToTalkRoom(roomName, profileImageURL),
+      onTap: () => onTap.call(),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -70,14 +70,6 @@ class TalkMemberCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  //fixme: firebaseからプロフィールを受け取れるようになったら引数見直し
-  void _moveToTalkRoom(String roomName, String? profileImageURL) {
-    Get.toNamed(
-      '/talk-room',
-      arguments: [roomName, profileImageURL],
     );
   }
 }
