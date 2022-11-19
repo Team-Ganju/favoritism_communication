@@ -1,9 +1,11 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:favoritism_communication/app/components/pages/dashboard/controllers/dashboard_controller.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
+import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -40,7 +42,10 @@ class HomeView extends GetView<HomeController> {
                                 controller.userCardDataList[index];
                             return GestureDetector(
                                 onTap: () {
-                                  debugPrint("タップされました");
+                                  var dashBoardController =
+                                      Get.find<DashboardController>(
+                                          tag: 'DashboardController');
+                                  dashBoardController.changeIndex(2);
                                 },
                                 child: UserCard(
                                   userCardData: userCardData,

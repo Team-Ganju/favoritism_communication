@@ -9,6 +9,7 @@ class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put(controller, tag: 'DashboardController');
     return Scaffold(
       body: Obx(
         () => IndexedStack(
