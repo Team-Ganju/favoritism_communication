@@ -164,6 +164,9 @@ flutter doctorで Android の項目が[✓]になっていることを確認し�
 
 次の[README](../getx/get_cli.md)を参考にしてください。
 
+## flutter gen
+
+- [flutter_genを使って開発していく方法について](./flutter_gen.md)
 
 ## 参考
 - [【Flutter】環境構築（macOS）](https://b1san-blog.com/post/flutter/flutter-setup/)
