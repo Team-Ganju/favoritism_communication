@@ -26,7 +26,9 @@ $ fluttergen -h
 
 pubspec.yamlの`assets`にimagesとjsonのパスを追記しました。  
 ```
-
+assets:
+    - assets/images/
+    - assets/json/
 ```
 
 今後ファイルを追加する場合はこのパスの配下にファイルを追加して、以下のコマンドを実行し
@@ -34,6 +36,14 @@ pubspec.yamlの`assets`にimagesとjsonのパスを追記しました。
 
 ```
 $ fluttergen
+```
+
+メソッドを自動生成したら、以下のようにして利用できます。
+
+```
+Widget build(BuildContext context) {
+  return Assets.images.profile.image();
+}
 ```
 
 
