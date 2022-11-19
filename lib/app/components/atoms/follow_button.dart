@@ -33,7 +33,15 @@ class FollowButton extends StatelessWidget {
       onPressed: () {
         onPressed.call();
       },
-      child: isFollowed ? const Text('フォロー中') : const Text('フォローする'),
+      child: isFollowed
+          ? const Text(
+              'フォロー中',
+              style: TextStyle(fontSize: 14),
+            )
+          : const Text(
+              'フォローする',
+              style: TextStyle(fontSize: 14),
+            ),
     );
   }
 }
