@@ -1,93 +1,12 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/components/pages/chat/controllers/chat_controller.dart';
+import 'package:favoritism_communication/app/components/pages/chat/talk_member_card_model_model.dart';
+import 'package:favoritism_communication/app/components/templates/templates.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
-import '../controllers/chat_controller.dart';
-
-//FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
-//       動作確認のためテスト値を入れている。本来は[]で初期化。
-List<TalkMemberCard> _individualTalkMemberCardList = [
-  const TalkMemberCard(
-    roomName: '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
-    mostRecentMessage:
-        '文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'Aさん',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-];
-
-//FIXME: チャット画面実装時にグループトークリストとの繋ぎこみを作成
-//       動作確認のためテスト値を入れている。本来は[]で初期化。
-List<TalkMemberCard> _groupTalkMemberCardList = [
-  const TalkMemberCard(
-    roomName: 'グループA',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'グループB',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'グループC',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'グループD',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-  const TalkMemberCard(
-    roomName: 'グループE',
-    mostRecentMessage: '私も〇〇好きです',
-    profileImageURL: null,
-  ),
-];
 
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
@@ -169,11 +88,60 @@ class ChatView extends GetView<ChatController> {
           ),
           Expanded(
             child: Obx(
-              () => ListView(
-                children: controller.isGroupTalk.value
-                    ? _groupTalkMemberCardList
-                    : _individualTalkMemberCardList,
-              ),
+              () => controller.isGroupTalk.value
+                  ? CustomSmartRefresher(
+                      refreshController: controller.refreshController,
+                      enablePullDown: false,
+                      enablePullUp: false,
+                      child: ListView.builder(
+                        itemCount: controller.provider.groupTalks.length,
+                        itemBuilder: (context, index) {
+                          final TalkMemberCardModel group =
+                              controller.provider.groupTalks[index];
+                          return TalkMemberCard(
+                            onTap: () {
+                              Get.toNamed(
+                                Routes.talkRoom,
+                                arguments: [
+                                  group.roomName,
+                                  group.profileImageURL
+                                ],
+                              );
+                            },
+                            roomName: group.roomName ?? '',
+                            mostRecentMessage: group.mostRecentMessage ?? '',
+                            profileImageURL: group.profileImageURL,
+                          );
+                        },
+                      ),
+                    )
+                  : CustomSmartRefresher(
+                      refreshController: controller.refreshController,
+                      enablePullDown: false,
+                      enablePullUp: false,
+                      child: ListView.builder(
+                        itemCount: controller.provider.individualTalks.length,
+                        itemBuilder: (context, index) {
+                          final TalkMemberCardModel individual =
+                              controller.provider.individualTalks[index];
+                          return TalkMemberCard(
+                            onTap: () {
+                              Get.toNamed(
+                                Routes.talkRoom,
+                                arguments: [
+                                  individual.roomName ?? '',
+                                  individual.profileImageURL
+                                ],
+                              );
+                            },
+                            roomName: individual.roomName ?? '',
+                            mostRecentMessage:
+                                individual.mostRecentMessage ?? '',
+                            profileImageURL: individual.profileImageURL,
+                          );
+                        },
+                      ),
+                    ),
             ),
           ),
         ],

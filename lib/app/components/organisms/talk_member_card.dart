@@ -7,17 +7,20 @@ class TalkMemberCard extends StatelessWidget {
     Key? key,
     required this.roomName,
     required this.mostRecentMessage,
+    required this.onTap,
     this.profileImageURL,
   }) : super(key: key);
 
   final String roomName;
   final String mostRecentMessage;
   final String? profileImageURL;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _moveToTalkRoom(roomName, profileImageURL),
+      onTap: () => onTap.call(),
+      // _moveToTalkRoom(roomName, profileImageURL),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
