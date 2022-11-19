@@ -7,12 +7,4 @@ class MypageController extends GetxController {
   final userName = "".obs;
 
   void increment() => count.value++;
-
-  void setUserName(String name) {
-    userName(name);
-  }
-
-  String getUserName() {
-    return userName.value;
-  }
 }

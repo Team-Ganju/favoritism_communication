@@ -13,7 +13,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(controller, tag: 'HomeController');
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: const NavBar(
@@ -47,13 +46,12 @@ class HomeView extends GetView<HomeController> {
                                       Get.find<DashboardController>(
                                           tag: 'DashboardController');
                                   dashBoardController.changeIndex(2);
-                                  controller.select(userCardData.userName);
+                                  var userName = userCardData.userName;
+                                  controller.select(userName);
                                   var myPageController =
                                       Get.find<MypageController>(
                                           tag: 'MypageController');
-                                  myPageController
-                                      .setUserName(userCardData.userName);
-                                  Get.put(controller, tag: 'HomeController');
+                                  myPageController.userName(userName);
                                 },
                                 child: UserCard(
                                   userCardData: userCardData,

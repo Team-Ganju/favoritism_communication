@@ -16,10 +16,10 @@ class MypageView extends GetView<MypageController> {
         title: 'プロフィール',
       ),
       body: Center(
-        child: Text(
-          '${controller.getUserName()}\'s MypageView is working',
-          style: const TextStyle(fontSize: 20),
-        ),
+        child: Obx(() => Text(
+              '${controller.userName.value}\'s MypageView is working',
+              style: const TextStyle(fontSize: 20),
+            )),
       ),
     );
   }
