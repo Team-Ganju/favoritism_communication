@@ -1,11 +1,11 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/pages/dashboard/controllers/dashboard_controller.dart';
+import 'package:favoritism_communication/app/components/pages/mypage/controllers/mypage_controller.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
-import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -13,6 +13,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(controller, tag: 'HomeController');
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: const NavBar(
@@ -46,6 +47,13 @@ class HomeView extends GetView<HomeController> {
                                       Get.find<DashboardController>(
                                           tag: 'DashboardController');
                                   dashBoardController.changeIndex(2);
+                                  controller.select(userCardData.userName);
+                                  var myPageController =
+                                      Get.find<MypageController>(
+                                          tag: 'MypageController');
+                                  myPageController
+                                      .setUserName(userCardData.userName);
+                                  Get.put(controller, tag: 'HomeController');
                                 },
                                 child: UserCard(
                                   userCardData: userCardData,
