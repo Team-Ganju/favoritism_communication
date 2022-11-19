@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
-
 class TalkMemberCard extends StatelessWidget {
   const TalkMemberCard({
     Key? key,
@@ -20,7 +18,6 @@ class TalkMemberCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => onTap.call(),
-      // _moveToTalkRoom(roomName, profileImageURL),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -73,14 +70,6 @@ class TalkMemberCard extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  //fixme: firebaseからプロフィールを受け取れるようになったら引数見直し
-  void _moveToTalkRoom(String roomName, String? profileImageURL) {
-    Get.toNamed(
-      '/talk-room',
-      arguments: [roomName, profileImageURL],
     );
   }
 }
