@@ -38,29 +38,33 @@ class HomeView extends GetView<HomeController> {
                           itemBuilder: (context, index) {
                             final UserCardData userCardData =
                                 controller.userCardDataList[index];
-                            return UserCard(
-                              userCardData: userCardData,
-                              followAction: Obx(
-                                () => controller
-                                        .userCardDataList[index].isFollowed
-                                    ? FollowButton(
-                                        onPressed: () {
-                                          controller.unFollow(userCardData);
-                                        },
-                                        backgroundColor: Colors.blueAccent,
-                                        foregroundColor: Colors.white,
-                                        isFollowed: userCardData.isFollowed,
-                                      )
-                                    : FollowButton(
-                                        onPressed: () {
-                                          controller.follow(userCardData);
-                                        },
-                                        backgroundColor: Colors.white,
-                                        foregroundColor: Colors.blueAccent,
-                                        isFollowed: userCardData.isFollowed,
-                                      ),
-                              ),
-                            );
+                            return GestureDetector(
+                                onTap: () {
+                                  debugPrint("タップされました");
+                                },
+                                child: UserCard(
+                                  userCardData: userCardData,
+                                  followAction: Obx(
+                                    () => controller
+                                            .userCardDataList[index].isFollowed
+                                        ? FollowButton(
+                                            onPressed: () {
+                                              controller.unFollow(userCardData);
+                                            },
+                                            backgroundColor: Colors.blueAccent,
+                                            foregroundColor: Colors.white,
+                                            isFollowed: userCardData.isFollowed,
+                                          )
+                                        : FollowButton(
+                                            onPressed: () {
+                                              controller.follow(userCardData);
+                                            },
+                                            backgroundColor: Colors.white,
+                                            foregroundColor: Colors.blueAccent,
+                                            isFollowed: userCardData.isFollowed,
+                                          ),
+                                  ),
+                                ));
                           },
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 10),
