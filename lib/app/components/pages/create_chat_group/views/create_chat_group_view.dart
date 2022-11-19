@@ -8,17 +8,6 @@ import 'package:get/get.dart';
 
 import '../controllers/create_chat_group_controller.dart';
 
-//FIXME: firebaseからデータを取得するようになったらは削除
-List<String> searchedTargetList = [
-  'Aさん',
-  'ABさん',
-  'ABCさん',
-  'Bさん',
-  'BAさん',
-  'BACさん',
-  'Cさん'
-];
-
 class CreateChatGroupView extends GetView<CreateChatGroupController> {
   const CreateChatGroupView({Key? key}) : super(key: key);
   @override
@@ -33,8 +22,9 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SearchBar(
-              searchTarget: searchedTargetList,
-              listController: controller.searchResult,
+              onChanged: (text) {
+                if (text != null) controller.searchUser(text);
+              },
             ),
           ),
           Expanded(
