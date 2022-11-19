@@ -93,6 +93,12 @@ class ChatView extends GetView<ChatController> {
                       refreshController: controller.refreshController,
                       enablePullDown: false,
                       enablePullUp: false,
+                      onLoading: () {
+                        // fixme: スクロール処理を後で書く
+                      },
+                      onRefresh: () {
+                        // fixme: スクロール処理を後で書く
+                      },
                       child: ListView.builder(
                         itemCount: controller.provider.groupTalks.length,
                         itemBuilder: (context, index) {
@@ -119,6 +125,12 @@ class ChatView extends GetView<ChatController> {
                       refreshController: controller.refreshController,
                       enablePullDown: false,
                       enablePullUp: false,
+                      onLoading: () {
+                        // fixme: スクロール処理を後で書く
+                      },
+                      onRefresh: () {
+                        // fixme: スクロール処理を後で書く
+                      },
                       child: ListView.builder(
                         itemCount: controller.provider.individualTalks.length,
                         itemBuilder: (context, index) {
