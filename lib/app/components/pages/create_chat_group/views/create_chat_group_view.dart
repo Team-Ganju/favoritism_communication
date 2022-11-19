@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/components/organisms/search_bar.dart';
+import 'package:favoritism_communication/app/components/organisms/search_result_list_tile.dart';
 
 import 'package:get/get.dart';
 
@@ -16,16 +18,42 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
         backgroundColor: Colors.pink,
       ),
       body: Column(
-        children: const [
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SearchBar(
+              onChanged: (text) {
+                if (text != null) controller.searchUser(text);
+              },
+            ),
+          ),
           Expanded(
-            child: Center(
-              child: Text(
-                'CreateChatGroupView is working',
-                style: TextStyle(fontSize: 20),
+            child: Obx(
+              () => ListView.builder(
+                itemCount: controller.searchResult.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return controller.searchResult.isNotEmpty
+                        ? const Divider()
+                        : Container();
+                  } else {
+                    return Column(
+                      children: [
+                        SeachResultListTile(
+                          index: index,
+                          text: controller.searchResult.elementAt(index - 1),
+                          onPressed: () =>
+                              controller.searchResult.removeAt(index - 1),
+                        ),
+                        const Divider(),
+                      ],
+                    );
+                  }
+                },
               ),
             ),
           ),
-          CustomFooter(),
+          const CustomFooter(),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
