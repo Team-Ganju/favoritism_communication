@@ -1,5 +1,7 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -98,64 +100,83 @@ class ChatView extends GetView<ChatController> {
         backgroundColor: Colors.pinkAccent,
         trailing: <Widget>[
           IconButton(
-            //TODO: トーク画面実装時にonpressedの画面切替処理を実装
-            onPressed: () {
-              controller.switchTalkPartner();
-            },
-            icon: Obx(
-              () => controller.isGroupTalk.value
-                  ? const Icon(
-                      Icons.groups,
-                      size: 32,
-                      color: Colors.blue,
-                    )
-                  : Icon(
-                      Icons.groups,
-                      size: 32,
-                      color: Colors.grey.shade300,
-                    ),
+            icon: const Icon(
+              Icons.person_add_alt_1,
+              size: 30,
             ),
-          ),
-          IconButton(
-            //TODO: トーク画面実装時にonpressedの画面切替処理を実装
+            color: Colors.grey,
             onPressed: () {
-              controller.switchTalkPartner();
+              Get.toNamed(
+                Routes.createChatGroup,
+              );
             },
-            icon: Obx(
-              () => controller.isGroupTalk.value
-                  ? Icon(
-                      Icons.person,
-                      color: Colors.grey.shade300,
-                    )
-                  : const Icon(
-                      Icons.person,
-                      color: Colors.blue,
-                    ),
-            ),
           ),
         ],
       ),
-      body: Obx(
-        () => ListView(
-          children: controller.isGroupTalk.value
-              ? _groupTalkMemberCardList
-              : _individualTalkMemberCardList,
-        ),
-      ),
-      floatingActionButton: Container(
-        //FIXME: ボタン位置は端末サイズを基準に指定するように修正
-        margin: const EdgeInsets.only(
-          bottom: 100,
-        ),
-        child: FloatingActionButton(
-          onPressed: () {
-            Get.toNamed(
-              '/create-chat-group',
-            );
-          },
-          backgroundColor: Colors.blue,
-          child: const Icon(Icons.person_add_alt_1),
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: 45,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(45),
+                color: Colors.white,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Obx(() => CustomActionChip(
+                        avatar: const Icon(
+                          Icons.groups,
+                          size: 26,
+                          color: Colors.grey,
+                        ),
+                        label: const Text('グループ'),
+                        labelPadding:
+                            const EdgeInsets.symmetric(horizontal: 13.0),
+                        side: BorderSide.none,
+                        backgroundColor: controller.isGroupTalk.value
+                            ? Colors.yellow
+                            : Colors.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                        onPressed: () {
+                          controller.switchTalkPartner();
+                        },
+                      )),
+                  Obx(() => CustomActionChip(
+                        avatar: const Icon(
+                          Icons.person,
+                          color: Colors.grey,
+                        ),
+                        label: const Text('ペアトーク'),
+                        labelPadding:
+                            const EdgeInsets.symmetric(horizontal: 4.0),
+                        side: BorderSide.none,
+                        backgroundColor: controller.isGroupTalk.value
+                            ? Colors.white
+                            : Colors.yellow,
+                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                        onPressed: () {
+                          controller.switchTalkPartner();
+                        },
+                      )),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Obx(
+              () => ListView(
+                children: controller.isGroupTalk.value
+                    ? _groupTalkMemberCardList
+                    : _individualTalkMemberCardList,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
