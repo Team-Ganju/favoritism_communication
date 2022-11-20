@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  ProfileController({required this.userName});
 
   final count = 0.obs;
-  final userName = "".obs;
+  final String userName;
 
   void increment() => count.value++;
 }
