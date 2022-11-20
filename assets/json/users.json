@@ -1,0 +1,190 @@
+[
+    {
+        "name": "Kaz",
+        "image": null,
+        "isFollowed": false,
+        "favoriteCategories": [
+            {
+                "favoriteCategoryId": "1",
+                "favoriteCategoryName": "観光地"
+            },
+            {
+                "favoriteCategoryId": "2",
+                "favoriteCategoryName": "映画"
+            },
+            {
+                "favoriteCategoryId": "3",
+                "favoriteCategoryName": "本"
+            },
+            {
+                "favoriteCategoryId": "4",
+                "favoriteCategoryName": "音楽"
+            },
+            {
+                "favoriteCategoryId": "5",
+                "favoriteCategoryName": "ご飯"
+            },
+            {
+                "favoriteCategoryId": "6",
+                "favoriteCategoryName": "スポーツ"
+            },
+            {
+                "favoriteCategoryId": "7",
+                "favoriteCategoryName": "ホゲホゲ"
+            },
+            {
+                "favoriteCategoryId": "8",
+                "favoriteCategoryName": "カテゴリは10個まで"
+            },
+            {
+                "favoriteCategoryId": "9",
+                "favoriteCategoryName": "これくらいの長さまでは書いてOK。20字程度。"
+            },
+            {
+                "favoriteCategoryId": "10",
+                "favoriteCategoryName": "その他はユーザが決めれる"
+            }
+        ]
+    },
+    {
+        "name": "Motaken",
+        "image": null,
+        "isFollowed": false,
+        "favoriteCategories": [
+            {
+                "favoriteCategoryId": "1",
+                "favoriteCategoryName": "観光地"
+            },
+            {
+                "favoriteCategoryId": "2",
+                "favoriteCategoryName": "映画"
+            },
+            {
+                "favoriteCategoryId": "3",
+                "favoriteCategoryName": "本"
+            },
+            {
+                "favoriteCategoryId": "4",
+                "favoriteCategoryName": "音楽"
+            },
+            {
+                "favoriteCategoryId": "5",
+                "favoriteCategoryName": "ご飯"
+            },
+            {
+                "favoriteCategoryId": "6",
+                "favoriteCategoryName": "スポーツ"
+            },
+            {
+                "favoriteCategoryId": "7",
+                "favoriteCategoryName": "ホゲホゲ"
+            },
+            {
+                "favoriteCategoryId": "8",
+                "favoriteCategoryName": "カテゴリは10個まで"
+            },
+            {
+                "favoriteCategoryId": "9",
+                "favoriteCategoryName": "これくらいの長さまでは書いてOK。20字程度。"
+            },
+            {
+                "favoriteCategoryId": "10",
+                "favoriteCategoryName": "その他はユーザが決めれる"
+            }
+        ]
+    },
+    {
+        "name": "Raiki",
+        "image": null,
+        "isFollowed": false,
+        "favoriteCategories": [
+            {
+                "favoriteCategoryId": "1",
+                "favoriteCategoryName": "観光地"
+            },
+            {
+                "favoriteCategoryId": "2",
+                "favoriteCategoryName": "映画"
+            },
+            {
+                "favoriteCategoryId": "3",
+                "favoriteCategoryName": "本"
+            },
+            {
+                "favoriteCategoryId": "4",
+                "favoriteCategoryName": "音楽"
+            },
+            {
+                "favoriteCategoryId": "5",
+                "favoriteCategoryName": "ご飯"
+            },
+            {
+                "favoriteCategoryId": "6",
+                "favoriteCategoryName": "スポーツ"
+            },
+            {
+                "favoriteCategoryId": "7",
+                "favoriteCategoryName": "ホゲホゲ"
+            },
+            {
+                "favoriteCategoryId": "8",
+                "favoriteCategoryName": "カテゴリは10個まで"
+            },
+            {
+                "favoriteCategoryId": "9",
+                "favoriteCategoryName": "これくらいの長さまでは書いてOK。20字程度。"
+            },
+            {
+                "favoriteCategoryId": "10",
+                "favoriteCategoryName": "その他はユーザが決めれる"
+            }
+        ]
+    },
+    {
+        "name": "Nisshy",
+        "image": null,
+        "isFollowed": false,
+        "favoriteCategories": [
+            {
+                "favoriteCategoryId": "1",
+                "favoriteCategoryName": "観光地"
+            },
+            {
+                "favoriteCategoryId": "2",
+                "favoriteCategoryName": "映画"
+            },
+            {
+                "favoriteCategoryId": "3",
+                "favoriteCategoryName": "本"
+            },
+            {
+                "favoriteCategoryId": "4",
+                "favoriteCategoryName": "音楽"
+            },
+            {
+                "favoriteCategoryId": "5",
+                "favoriteCategoryName": "ご飯"
+            },
+            {
+                "favoriteCategoryId": "6",
+                "favoriteCategoryName": "スポーツ"
+            },
+            {
+                "favoriteCategoryId": "7",
+                "favoriteCategoryName": "ホゲホゲ"
+            },
+            {
+                "favoriteCategoryId": "8",
+                "favoriteCategoryName": "カテゴリは10個まで"
+            },
+            {
+                "favoriteCategoryId": "9",
+                "favoriteCategoryName": "これくらいの長さまでは書いてOK。20字程度。"
+            },
+            {
+                "favoriteCategoryId": "10",
+                "favoriteCategoryName": "その他はユーザが決めれる"
+            }
+        ]
+    }
+]
