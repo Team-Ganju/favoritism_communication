@@ -8,7 +8,6 @@ class HomeController extends GetxController {
   // final RxList<UserCardData> userCardDataList = userCardList.obs;
   final RxList<UserCardData> userCardDataList = <UserCardData>[].obs;
   final RefreshController refreshController = RefreshController();
-  var selectedId = "";
 
   @override
   void onInit() {
@@ -51,9 +50,5 @@ class HomeController extends GetxController {
             userCardDataList.indexWhere((element) => element == userCardData)]
         .isFollowed = false;
     userCardDataList.refresh();
-  }
-
-  void select(String id) {
-    selectedId = id;
   }
 }
