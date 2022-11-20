@@ -62,6 +62,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                               ),
                               onTapped: () {
+                                // todo NestedNavigationの実装ができたら画面遷移方法を変更する
                                 Get.toNamed(Routes.profile,
                                     arguments: [userCardData.userName]);
                               },
