@@ -9,17 +9,16 @@ class MypageView extends GetView<MypageController> {
   const MypageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(controller, tag: 'MypageController');
-    return Scaffold(
-      appBar: const NavBar(
+    return const Scaffold(
+      appBar: NavBar(
         backgroundColor: Colors.pinkAccent,
         title: 'プロフィール',
       ),
       body: Center(
-        child: Obx(() => Text(
-              '${controller.userName.value}\'s MypageView is working',
-              style: const TextStyle(fontSize: 20),
-            )),
+        child: Text(
+          ' MypageView is working',
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
   }

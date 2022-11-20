@@ -51,6 +51,7 @@ class AppPages {
       name: _Paths.profile,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
+      fullscreenDialog: true,
     ),
   ];
 }

@@ -1,11 +1,10 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-import 'package:favoritism_communication/app/components/pages/dashboard/controllers/dashboard_controller.dart';
-import 'package:favoritism_communication/app/components/pages/mypage/controllers/mypage_controller.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
+import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -63,15 +62,8 @@ class HomeView extends GetView<HomeController> {
                                       ),
                               ),
                               onTapped: () {
-                                var dashBoardController =
-                                    Get.find<DashboardController>(
-                                        tag: 'DashboardController');
-                                dashBoardController.changeIndex(2);
-                                var userName = userCardData.userName;
-                                var myPageController =
-                                    Get.find<MypageController>(
-                                        tag: 'MypageController');
-                                myPageController.userName(userName);
+                                Get.toNamed(Routes.profile,
+                                    arguments: [userCardData.userName]);
                               },
                             );
                           },
