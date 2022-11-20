@@ -16,7 +16,7 @@ class MypageView extends GetView<MypageController> {
       ),
       body: Center(
         child: Text(
-          'MypageView is working',
+          ' MypageView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

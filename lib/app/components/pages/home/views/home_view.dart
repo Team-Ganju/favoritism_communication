@@ -4,6 +4,7 @@ import 'package:favoritism_communication/app/components/templates/custom_smartre
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
+import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -60,6 +61,11 @@ class HomeView extends GetView<HomeController> {
                                         isFollowed: userCardData.isFollowed,
                                       ),
                               ),
+                              onTapped: () {
+                                // todo NestedNavigationの実装ができたら画面遷移方法を変更する
+                                Get.toNamed(Routes.profile,
+                                    arguments: [userCardData.userName]);
+                              },
                             );
                           },
                           separatorBuilder: (context, index) =>

@@ -13,10 +13,10 @@ class ProfileView extends GetView<ProfileController> {
         title: const Text('ProfileView'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'ProfileView is working',
-          style: TextStyle(fontSize: 20),
+          '${controller.userName}\'s ProfileView is working',
+          style: const TextStyle(fontSize: 20),
         ),
       ),
     );
