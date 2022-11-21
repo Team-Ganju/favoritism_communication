@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart'
     as atoms;
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 import 'package:get/get.dart';
 
@@ -17,11 +17,10 @@ class TalkRoomView extends GetView<TalkRoomController> {
         leading: const atoms.BackButton(),
         backgroundColor: Colors.pink,
       ),
-      body: const Center(
-        child: Text(
-          'TalkRoomView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        children: [
+          MessageBar(),
+        ],
       ),
     );
   }
