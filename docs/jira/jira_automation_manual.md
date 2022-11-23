@@ -12,9 +12,10 @@ https://support.atlassian.com/ja/jira-cloud-administration/docs/integrate-with-g
 3. 自動化画面の「ルールを作成」をクリック
 ![スクリーンショット 2022-11-24 3 27 53](https://user-images.githubusercontent.com/49933865/203621702-7c0f8631-928f-467d-be61-e695e3d4cb10.png)<br>
 
-4. 本プロジェクトでは下記3つのルールを作成
+4. 本プロジェクトでは下記3つのルールを作成<br>
+設定で必要なJIRAのスマートバリューはhttps://support.atlassian.com/ja/cloud-automation/docs/jira-smart-values-development/ を参照
   * 課題キーを含むブランチが作成されたら、課題を「進行中」に遷移
-  ![スクリーンショット 2022-11-24 3 31 29](https://user-images.githubusercontent.com/49933865/203622221-44fda89b-f806-4214-abef-ecca00f26e50.png)<br>
+  ![スクリーンショット 2022-11-24 4 09 29](https://user-images.githubusercontent.com/49933865/203628332-589644ff-ce50-4b40-ab03-c5aed275ac0e.png)<br>
 
   * プルリクが作成されたら、課題を「レビュー中」に遷移
   ![スクリーンショット 2022-11-24 3 59 46](https://user-images.githubusercontent.com/49933865/203627325-55baa97b-39c8-4af2-9acd-61f79ceca465.png)<br>
