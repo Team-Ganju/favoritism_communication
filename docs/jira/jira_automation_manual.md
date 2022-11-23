@@ -17,10 +17,10 @@ https://support.atlassian.com/ja/jira-cloud-administration/docs/integrate-with-g
   ![スクリーンショット 2022-11-24 3 31 29](https://user-images.githubusercontent.com/49933865/203622221-44fda89b-f806-4214-abef-ecca00f26e50.png)<br>
 
   * プルリクが作成されたら、課題を「レビュー中」に遷移
-  ![スクリーンショット 2022-11-24 3 32 27](https://user-images.githubusercontent.com/49933865/203622370-9792fe91-35cd-4803-a63f-a5ee73450640.png)<br>
+  ![スクリーンショット 2022-11-24 3 59 46](https://user-images.githubusercontent.com/49933865/203627325-55baa97b-39c8-4af2-9acd-61f79ceca465.png)<br>
 
   * プルリクがマージされたら、課題を「完了」に遷移
-  ![スクリーンショット 2022-11-24 3 34 26](https://user-images.githubusercontent.com/49933865/203622922-e8c73488-b881-4b62-b55d-225bbba3885b.png)<br>
+ ![スクリーンショット 2022-11-24 4 00 10](https://user-images.githubusercontent.com/49933865/203627366-72067c6c-5571-40c5-832f-0264348661c6.png)<br>
   
 5. ルール作成後に「保存」および「公開」をクリックし、有効化する<br><br>
   
@@ -28,7 +28,7 @@ https://support.atlassian.com/ja/jira-cloud-administration/docs/integrate-with-g
 ## ブランチ作成〜プルリク承認までの流れ
 * JIRA課題の課題キー（本プロジェクトでは「FC-◯◯（◯◯は数字）」）を含むブランチ名でブランチを切り、リモートリポジトリにプッシュする（ブランチ名の例： FC-10-feature/add-talk-page）<br><br>
 →該当タスクが「To Do」から「進行中」に遷移する<br><br>
-* プルリクを作成する<br><br>
+* プルリクのタイトルに課題キーを含めてプルリクを作成する(例：　FC-10 トークページ追加)<br><br>
 →該当タスクが「進行中」から「レビュー中」に遷移する<br><br>
 * プルリクが承認されマージされる<br><br>
 →該当タスクが「レビュー中」から「完了」に遷移する<br><br>
