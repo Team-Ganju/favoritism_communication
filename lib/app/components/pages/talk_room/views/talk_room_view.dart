@@ -18,7 +18,7 @@ class TalkRoomView extends GetView<TalkRoomController> {
         backgroundColor: Colors.pink,
       ),
       body: Column(
-        children: [
+        children: const [
           MessageBar(),
         ],
       ),
