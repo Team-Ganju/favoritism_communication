@@ -38,15 +38,15 @@ class MessageBar extends StatelessWidget {
           ),
           Expanded(
             child: FormBuilderTextField(
-              name: '検索バー',
+              name: 'メッセージバー',
               style: const TextStyle(
                 fontSize: 16,
               ),
               maxLength: 500, //TODO: 最大文字数は要検討。（現在はLINEの最大文字数）
-              maxLines: 500, //TODO: 最大行数は要検討
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
                 hintText: 'テキストを追加',
+                counterText: '',
                 contentPadding: EdgeInsets.symmetric(horizontal: 10),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
