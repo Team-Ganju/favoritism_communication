@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../atoms/custom_chip.dart';
 import '../organisms/user_card.dart';
 
+// test
 class FavoriteCategories extends StatelessWidget {
   const FavoriteCategories({
     super.key,
