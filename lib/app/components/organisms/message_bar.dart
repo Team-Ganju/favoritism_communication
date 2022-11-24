@@ -9,7 +9,7 @@ class MessageBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment(0, -1),
+      alignment: const Alignment(0, -1),
       child: Container(
         width: double.infinity,
         height: 70,
@@ -48,16 +48,16 @@ class MessageBar extends StatelessWidget {
                 decoration: InputDecoration(
                   hintText: 'テキストを追加',
                   counterText: '',
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.grey,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: Colors.grey),
                   ),
                 ),
               ),

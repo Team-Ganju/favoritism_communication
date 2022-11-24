@@ -21,13 +21,13 @@ class TalkRoomView extends GetView<TalkRoomController> {
         children: [
           Expanded(
             child: Column(
-              children: [
+              children: const [
                 //FIXME: ここはメッセージバルーンのListView.builderに置き換わる
                 Text('ここはメッセージバルーンのListView.builderに置き換わる'),
               ],
             ),
           ),
-          MessageBar(),
+          const MessageBar(),
         ],
       ),
     );
