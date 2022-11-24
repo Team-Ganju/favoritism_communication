@@ -18,7 +18,15 @@ class TalkRoomView extends GetView<TalkRoomController> {
         backgroundColor: Colors.pink,
       ),
       body: Column(
-        children: const [
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                //FIXME: ここはメッセージバルーンのListView.builderに置き換わる
+                Text('ここはメッセージバルーンのListView.builderに置き換わる'),
+              ],
+            ),
+          ),
           MessageBar(),
         ],
       ),
