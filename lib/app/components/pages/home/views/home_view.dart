@@ -8,8 +8,8 @@ import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  HomeView({Key? key}) : super(key: key);
-  var matchingDialog = null;
+  const HomeView({Key? key}) : super(key: key);
+  static var matchingDialog;
 
   @override
   Widget build(BuildContext context) {
