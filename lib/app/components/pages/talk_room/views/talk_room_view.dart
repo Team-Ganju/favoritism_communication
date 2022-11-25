@@ -17,17 +17,14 @@ class TalkRoomView extends GetView<TalkRoomController> {
         leading: const atoms.BackButton(),
         backgroundColor: Colors.pink,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Column(
-              children: const [
-                //FIXME: ここはメッセージバルーンのListView.builderに置き換わる
-                Text('ここはメッセージバルーンのListView.builderに置き換わる'),
-              ],
+      body: Stack(
+        children: const [
+          SingleChildScrollView(
+            child: SafeArea(
+              child: Text('ここはメッセージバルーンのListView.builderに置き換わる'),
             ),
           ),
-          const MessageBar(),
+          MessageBar(),
         ],
       ),
     );

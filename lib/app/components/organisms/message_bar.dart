@@ -9,14 +9,22 @@ class MessageBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const Alignment(0, -1),
+      alignment: Alignment.bottomCenter,
       child: Container(
+        padding: const EdgeInsets.only(
+          left: 10,
+          top: 10,
+          right: 10,
+          bottom: 10,
+        ),
         width: double.infinity,
         height: 70,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          border: Border.all(
-            color: Colors.black,
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey,
+            ),
           ),
         ),
         child: Row(
@@ -25,17 +33,19 @@ class MessageBar extends StatelessWidget {
               //TODO: カメラ機能は別途実装
               onPressed: () {},
               icon: const Icon(
-                Icons.camera_alt_rounded,
+                Icons.camera_alt_outlined,
                 size: 32,
               ),
+              padding: EdgeInsets.zero,
             ),
             IconButton(
               //TODO: 画像追加機能は別途実装
               onPressed: () {},
               icon: const Icon(
-                Icons.photo,
+                Icons.photo_outlined,
                 size: 32,
               ),
+              padding: EdgeInsets.zero,
             ),
             Expanded(
               child: FormBuilderTextField(
@@ -69,6 +79,7 @@ class MessageBar extends StatelessWidget {
                 Icons.send,
                 size: 32,
               ),
+              padding: EdgeInsets.zero,
             ),
           ],
         ),
