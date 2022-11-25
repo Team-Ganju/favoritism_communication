@@ -12,6 +12,35 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    Follower follower;
+    Future.delayed(
+        Duration.zero,
+        () => {
+              follower = fetchFirstMatchedFollower(),
+              Get.defaultDialog(
+                  title: "",
+                  middleText: "",
+                  content: Column(
+                    children: [
+                      Text(
+                          "${follower.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  actions: [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: const Color(0xff0091ea)),
+                      onPressed: () => {
+                        // todo トークへ移動
+                      },
+                      child: const Text("トークへ移動",
+                          style: TextStyle(color: Colors.white)),
+                    )
+                  ])
+            });
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: const NavBar(
@@ -105,4 +134,15 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
+
+  Follower fetchFirstMatchedFollower() {
+    return const Follower("001", "モンブラン");
+  }
+}
+
+class Follower {
+  final String userId;
+  final String userName;
+
+  const Follower(this.userId, this.userName);
 }
