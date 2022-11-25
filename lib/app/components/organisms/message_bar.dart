@@ -15,7 +15,7 @@ class MessageBar extends StatelessWidget {
           left: 10,
           top: 10,
           right: 10,
-          bottom: 10,
+          bottom: 20,
         ),
         width: double.infinity,
         height: 70,
