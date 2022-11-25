@@ -22,6 +22,7 @@ class HomeView extends GetView<HomeController> {
                   middleText: "",
                   content: Column(
                     children: [
+                      Image.asset('assets/images/matchingImage.jpg'),
                       Text(
                           "${follower.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
                           textAlign: TextAlign.center,
@@ -29,16 +30,20 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                   actions: [
-                    TextButton(
-                      style: TextButton.styleFrom(
-                          backgroundColor: const Color(0xff0091ea)),
-                      onPressed: () => {
-                        // todo トークへ移動
-                      },
-                      child: const Text("トークへ移動",
-                          style: TextStyle(color: Colors.white)),
-                    )
-                  ])
+                    FractionallySizedBox(
+                        widthFactor: 0.8,
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                              backgroundColor: const Color(0xff0091ea)),
+                          onPressed: () => {
+                            // todo トークへ移動
+                          },
+                          child: const Text("トークに移動する",
+                              style: TextStyle(color: Colors.white)),
+                        )),
+                    const SizedBox(height: 90)
+                  ],
+                  radius: 80)
             });
 
     return Scaffold(
