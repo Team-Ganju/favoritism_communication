@@ -8,7 +8,8 @@ import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
+  var matchingDialog = null;
 
   @override
   Widget build(BuildContext context) {
@@ -17,33 +18,38 @@ class HomeView extends GetView<HomeController> {
         Duration.zero,
         () => {
               follower = fetchFirstMatchedFollower(),
-              Get.defaultDialog(
-                  title: "",
-                  middleText: "",
-                  content: Column(
-                    children: [
-                      Image.asset('assets/images/matchingImage.jpg'),
-                      Text(
-                          "${follower.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  actions: [
-                    FractionallySizedBox(
-                        widthFactor: 0.8,
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                              backgroundColor: const Color(0xff0091ea)),
-                          onPressed: () => {
-                            // todo トークへ移動
-                          },
-                          child: const Text("トークに移動する",
-                              style: TextStyle(color: Colors.white)),
-                        )),
-                    const SizedBox(height: 90)
-                  ],
-                  radius: 80)
+              if (matchingDialog == null)
+                {
+                  matchingDialog = Get.defaultDialog(
+                      title: "",
+                      middleText: "",
+                      content: Column(
+                        children: [
+                          Image.asset('assets/images/matchingImage.jpg'),
+                          Text(
+                              "${follower.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
+                              textAlign: TextAlign.center,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                      actions: [
+                        FractionallySizedBox(
+                            widthFactor: 0.8,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                  backgroundColor: const Color(0xff0091ea)),
+                              onPressed: () => {
+                                // todo トークへ移動
+                                matchingDialog = null
+                              },
+                              child: const Text("トークに移動する",
+                                  style: TextStyle(color: Colors.white)),
+                            )),
+                        const SizedBox(height: 90)
+                      ],
+                      radius: 80)
+                }
             });
 
     return Scaffold(
