@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                               style: TextButton.styleFrom(
                                   backgroundColor: const Color(0xff0091ea)),
                               onPressed: () => {
-                                // todo トークへ移動
+                                Get.offAllNamed(Routes.chat),
                                 matchingDialog = null
                               },
                               child: const Text("トークに移動する",
