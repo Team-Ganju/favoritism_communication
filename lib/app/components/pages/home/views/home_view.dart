@@ -9,6 +9,7 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
+  // ignore: prefer_typing_uninitialized_variables
   static var matchingDialog;
 
   @override
