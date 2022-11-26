@@ -69,7 +69,9 @@ class HomeView extends GetView<HomeController> {
                 child: SearchBar(
                   borderRadius: 0,
                   onChanged: (text) {
-                    debugPrint("search test");
+                    if (text != null) {
+                      controller.search(text);
+                    }
                   },
                 )),
             IconButton(

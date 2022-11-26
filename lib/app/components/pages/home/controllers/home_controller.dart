@@ -35,6 +35,23 @@ class HomeController extends GetxController {
     }
   }
 
+  void search(String text) async {
+    try {
+      var filteredList = userCardList
+          .where((value) =>
+              value.userName.toLowerCase().contains(text.toLowerCase()))
+          .toList();
+      userCardDataList.clear();
+      userCardDataList.addAll(filteredList);
+      userCardDataList.refresh();
+      await Future.delayed(const Duration(milliseconds: 100));
+      refreshController.loadComplete();
+    } catch (e) {
+      Get.log(e.toString());
+      refreshController.loadFailed();
+    }
+  }
+
   /// todo: フォローするor解除するは処理が異なってくるのでメソッドを分ける
   /// フォローするメソッド
   void follow(UserCardData userCardData) {
