@@ -204,9 +204,8 @@ class HomeView extends GetView<HomeController> {
   Follower? fetchFirstMatchedFollower() {
     // todo マッチングしたフォロワーから最初の一人を選択
     var rand = math.Random();
-    // var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
-    if (true) {
-      //hasMatchedFollower) {
+    var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
+    if (hasMatchedFollower) {
       return const Follower("001", "モンブラン");
     } else {
       return null;
