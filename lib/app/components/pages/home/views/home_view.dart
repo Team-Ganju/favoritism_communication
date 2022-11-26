@@ -56,6 +56,7 @@ class HomeView extends GetView<HomeController> {
                       radius: 80)
                 }
             });
+
     controller.initTab([
       TabData("マッチング候補", (tabData) {
         controller.selectTab(tabData);

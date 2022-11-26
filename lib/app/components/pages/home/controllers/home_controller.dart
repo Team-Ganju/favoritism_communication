@@ -37,6 +37,7 @@ class HomeController extends GetxController {
   }
 
   void initTab(List<TabData> list) {
+    tabDataList.clear();
     tabDataList.addAll(list);
     tabDataList.refresh();
   }
