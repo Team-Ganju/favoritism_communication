@@ -3,6 +3,7 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:badges/badges.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../organisms/search_bar.dart';
@@ -72,12 +73,20 @@ class HomeView extends GetView<HomeController> {
                   },
                 )),
             IconButton(
-              icon: const Icon(
-                Icons.notifications,
+              icon: Badge(
+                badgeContent: const Text(
+                  '1',
+                  style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+                padding: const EdgeInsets.all(6),
+                badgeColor: const Color.fromRGBO(223, 2, 89, 1),
+                child: const Icon(
+                  Icons.notifications,
+                  size: 36,
+                ),
               ),
               onPressed: () => Get.back<dynamic>(),
               color: Colors.grey,
-              iconSize: 30,
             )
           ]),
           SingleChildScrollView(
