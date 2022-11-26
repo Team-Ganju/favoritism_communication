@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class SearchBar extends StatelessWidget {
-  SearchBar({
+  const SearchBar({
     Key? key,
     this.contentPadding = EdgeInsets.zero,
     this.borderRadius = 45,
     required this.onChanged,
   }) : super(key: key);
 
-  EdgeInsets contentPadding;
-  double borderRadius;
+  final EdgeInsets contentPadding;
+  final double borderRadius;
   final void Function(String?) onChanged;
 
   @override
