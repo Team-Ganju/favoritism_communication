@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../atoms/tab_button.dart';
 import '../../../organisms/search_bar.dart';
 import '../controllers/home_controller.dart';
 import 'dart:math' as math;
@@ -55,7 +56,20 @@ class HomeView extends GetView<HomeController> {
                       radius: 80)
                 }
             });
-
+    controller.initTab([
+      TabData("マッチング候補", (tabData) {
+        controller.selectTab(tabData);
+      }),
+      TabData("フォロー中", (tabData) {
+        controller.selectTab(tabData);
+      }),
+      TabData("フォローされた人", (tabData) {
+        controller.selectTab(tabData);
+      }),
+      TabData("私も好き", (tabData) {
+        controller.selectTab(tabData);
+      }),
+    ]);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: NavBar(
@@ -94,29 +108,9 @@ class HomeView extends GetView<HomeController> {
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(8),
-              child: Row(
-                children: const [
-                  CustomChip(
-                    chipTitle: "マッチング候補",
-                    backgroundColor: Colors.white,
-                  ),
-                  SizedBox(width: 8),
-                  CustomChip(
-                    chipTitle: "フォロー中",
-                    backgroundColor: Colors.white,
-                  ),
-                  SizedBox(width: 8),
-                  CustomChip(
-                    chipTitle: "フォローされた人",
-                    backgroundColor: Colors.white,
-                  ),
-                  SizedBox(width: 8),
-                  CustomChip(
-                    chipTitle: "私も好き",
-                    backgroundColor: Colors.white,
-                  )
-                ],
-              ))
+              child: Obx(() => Row(
+                    children: buildTabButtons(controller.getTabList()),
+                  )))
         ]),
       ),
       body: Stack(
@@ -218,6 +212,20 @@ class HomeView extends GetView<HomeController> {
       return null;
     }
   }
+}
+
+List<Widget> buildTabButtons(List<TabData> tabDataList) {
+  List<Widget> list = [];
+  for (var i = 0; i < tabDataList.length; i++) {
+    list.add(TabButton(
+        chipTitle: tabDataList[i].title,
+        isEnable: tabDataList[i].isEnable,
+        onPressed: () => tabDataList[i].onPressed(tabDataList[i])));
+    if (i != tabDataList.length - 1) {
+      list.add(const SizedBox(width: 8));
+    }
+  }
+  return list;
 }
 
 class Follower {

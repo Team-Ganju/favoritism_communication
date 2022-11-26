@@ -8,6 +8,7 @@ class HomeController extends GetxController {
   // final RxList<UserCardData> userCardDataList = userCardList.obs;
   final RxList<UserCardData> userCardDataList = <UserCardData>[].obs;
   final RefreshController refreshController = RefreshController();
+  final RxList<TabData> tabDataList = <TabData>[].obs;
 
   @override
   void onInit() {
@@ -33,6 +34,26 @@ class HomeController extends GetxController {
       Get.log(e.toString());
       refreshController.loadFailed();
     }
+  }
+
+  void initTab(List<TabData> list) {
+    tabDataList.addAll(list);
+    tabDataList.refresh();
+  }
+
+  List<TabData> getTabList() {
+    return tabDataList;
+  }
+
+  void selectTab(TabData data) async {
+    for (var i = 0; i < tabDataList.length; i++) {
+      if (tabDataList[i] == data) {
+        tabDataList[i].isEnable = true;
+      } else {
+        tabDataList[i].isEnable = false;
+      }
+    }
+    tabDataList.refresh();
   }
 
   void search(String text) async {
@@ -68,4 +89,12 @@ class HomeController extends GetxController {
         .isFollowed = false;
     userCardDataList.refresh();
   }
+}
+
+class TabData {
+  final String title;
+  bool isEnable = false;
+  final Function(TabData data) onPressed;
+
+  TabData(this.title, this.onPressed);
 }
