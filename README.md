@@ -78,4 +78,4 @@ git config --global user.email myname@example.com
 
 ## 設計関連
 
-- [アプリのシステム構成図](./docs/app-design/app-system-diagram.md)
+- [アプリのシステム構成図](./docs/app-design/app-system-diagram/app-system-diagram.md)
