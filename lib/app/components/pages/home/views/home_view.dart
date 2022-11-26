@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
+import 'dart:math' as math;
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
@@ -14,12 +15,12 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    Follower follower;
+    Follower? follower;
     Future.delayed(
         Duration.zero,
         () => {
               follower = fetchFirstMatchedFollower(),
-              if (matchingDialog == null)
+              if (matchingDialog == null && follower != null)
                 {
                   matchingDialog = Get.defaultDialog(
                       title: "",
@@ -28,7 +29,7 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           Image.asset('assets/images/matchingImage.jpg'),
                           Text(
-                              "${follower.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
+                              "${follower?.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
                               textAlign: TextAlign.center,
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold)),
@@ -147,8 +148,15 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Follower fetchFirstMatchedFollower() {
-    return const Follower("001", "モンブラン");
+  Follower? fetchFirstMatchedFollower() {
+    // todo マッチングしたフォロワーから最初の一人を選択
+    var rand = math.Random();
+    var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
+    if (hasMatchedFollower) {
+      return const Follower("001", "モンブラン");
+    } else {
+      return null;
+    }
   }
 }
 
