@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../organisms/search_bar.dart';
 import '../controllers/home_controller.dart';
 import 'dart:math' as math;
 
@@ -56,9 +57,56 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: const NavBar(
-        backgroundColor: Colors.pinkAccent,
-        title: 'ホーム',
+      appBar: NavBar(
+        backgroundColor: Colors.white,
+        toolbarHeight: 120,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(
+                width: 320,
+                height: 40,
+                child: SearchBar(
+                  borderRadius: 0,
+                  onChanged: (text) {
+                    debugPrint("search test");
+                  },
+                )),
+            IconButton(
+              icon: const Icon(
+                Icons.notifications,
+              ),
+              onPressed: () => Get.back<dynamic>(),
+              color: Colors.grey,
+              iconSize: 30,
+            )
+          ]),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                children: const [
+                  CustomChip(
+                    chipTitle: "マッチング候補",
+                    backgroundColor: Colors.white,
+                  ),
+                  SizedBox(width: 8),
+                  CustomChip(
+                    chipTitle: "フォロー中",
+                    backgroundColor: Colors.white,
+                  ),
+                  SizedBox(width: 8),
+                  CustomChip(
+                    chipTitle: "フォローされた人",
+                    backgroundColor: Colors.white,
+                  ),
+                  SizedBox(width: 8),
+                  CustomChip(
+                    chipTitle: "私も好き",
+                    backgroundColor: Colors.white,
+                  )
+                ],
+              ))
+        ]),
       ),
       body: Stack(
         children: [
@@ -151,8 +199,9 @@ class HomeView extends GetView<HomeController> {
   Follower? fetchFirstMatchedFollower() {
     // todo マッチングしたフォロワーから最初の一人を選択
     var rand = math.Random();
-    var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
-    if (hasMatchedFollower) {
+    // var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
+    if (true) {
+      //hasMatchedFollower) {
       return const Follower("001", "モンブラン");
     } else {
       return null;
