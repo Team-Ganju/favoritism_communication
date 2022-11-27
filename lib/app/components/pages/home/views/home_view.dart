@@ -36,73 +36,67 @@ class HomeView extends GetView<HomeController> {
             }),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CustomSmartRefresher(
-                refreshController: controller.refreshController,
-                enablePullDown: false,
-                enablePullUp: true,
-                onLoading: () {
-                  controller.onLoading();
-                },
-                child: SingleChildScrollView(
-                  controller: controller.scrollController,
-                  child: Obx(
-                    () => controller.userCardDataList.isNotEmpty
-                        ? ListView.separated(
-                            controller: controller.scrollController,
-                            // physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: controller.userCardDataList.length,
-                            itemBuilder: (context, index) {
-                              final UserCardData userCardData =
-                                  controller.userCardDataList[index];
-                              return UserCard(
-                                userCardData: userCardData,
-                                followAction: Obx(
-                                  () => controller
-                                          .userCardDataList[index].isFollowed
-                                      ? FollowButton(
-                                          onPressed: () {
-                                            debugPrint("scrollToTop!!");
-                                            controller.scrollController
-                                                .jumpTo(0);
-                                            controller.unFollow(userCardData);
-                                          },
-                                          backgroundColor: Colors.blueAccent,
-                                          foregroundColor: Colors.white,
-                                          isFollowed: userCardData.isFollowed,
-                                        )
-                                      : FollowButton(
-                                          onPressed: () {
-                                            controller.follow(userCardData);
-                                          },
-                                          backgroundColor: Colors.white,
-                                          foregroundColor: Colors.blueAccent,
-                                          isFollowed: userCardData.isFollowed,
-                                        ),
-                                ),
-                                onTapped: () {
-                                  // todo NestedNavigationの実装ができたら画面遷移方法を変更する
-                                  Get.toNamed(Routes.profile,
-                                      arguments: [userCardData.userName]);
-                                },
-                              );
-                            },
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(height: 10),
-                          )
-                        : Column(
-                            children: const [
-                              SizedBox(height: 30),
-                              Center(
-                                child: Text(
-                                  '検索結果がありません',
-                                  style: TextStyle(fontSize: 18),
-                                ),
+              child: Obx(
+                () => controller.userCardDataList.isNotEmpty
+                    ? CustomSmartRefresher(
+                        refreshController: controller.refreshController,
+                        enablePullDown: false,
+                        enablePullUp: true,
+                        onLoading: () {
+                          controller.onLoading();
+                        },
+                        child: ListView.separated(
+                          controller: controller.scrollController,
+                          shrinkWrap: true,
+                          itemCount: controller.userCardDataList.length,
+                          itemBuilder: (context, index) {
+                            final UserCardData userCardData =
+                                controller.userCardDataList[index];
+                            return UserCard(
+                              userCardData: userCardData,
+                              followAction: Obx(
+                                () => controller
+                                        .userCardDataList[index].isFollowed
+                                    ? FollowButton(
+                                        onPressed: () {
+                                          debugPrint("scrollToTop!!");
+                                          controller.scrollController.jumpTo(0);
+                                          controller.unFollow(userCardData);
+                                        },
+                                        backgroundColor: Colors.blueAccent,
+                                        foregroundColor: Colors.white,
+                                        isFollowed: userCardData.isFollowed,
+                                      )
+                                    : FollowButton(
+                                        onPressed: () {
+                                          controller.follow(userCardData);
+                                        },
+                                        backgroundColor: Colors.white,
+                                        foregroundColor: Colors.blueAccent,
+                                        isFollowed: userCardData.isFollowed,
+                                      ),
                               ),
-                            ],
+                              onTapped: () {
+                                // todo NestedNavigationの実装ができたら画面遷移方法を変更する
+                                Get.toNamed(Routes.profile,
+                                    arguments: [userCardData.userName]);
+                              },
+                            );
+                          },
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 10),
+                        ))
+                    : Column(
+                        children: const [
+                          SizedBox(height: 30),
+                          Center(
+                            child: Text(
+                              '検索結果がありません',
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
-                  ),
-                ),
+                        ],
+                      ),
               ),
             ),
           ),

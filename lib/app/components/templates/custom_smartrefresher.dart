@@ -21,15 +21,13 @@ class CustomSmartRefresher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
-      child: SmartRefresher(
-        controller: refreshController,
-        enablePullDown: false,
-        enablePullUp: true,
-        onRefresh: () => onRefresh?.call(),
-        onLoading: () => onLoading?.call(),
-        child: child,
-      ),
+    return SmartRefresher(
+      controller: refreshController,
+      enablePullDown: false,
+      enablePullUp: true,
+      onRefresh: () => onRefresh?.call(),
+      onLoading: () => onLoading?.call(),
+      child: child,
     );
   }
 }
