@@ -9,7 +9,7 @@ class HomeController extends GetxController {
   // final RxList<UserCardData> userCardDataList = userCardList.obs;
   final RxList<UserCardData> userCardDataList = <UserCardData>[].obs;
   final RefreshController refreshController = RefreshController();
-  final RxBool needTopToScroll = false.obs;
+  final RxBool needScrollToTop = false.obs;
 
   final scrollController = ScrollController();
 

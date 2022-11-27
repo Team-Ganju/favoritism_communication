@@ -23,14 +23,14 @@ class HomeView extends GetView<HomeController> {
           NotificationListener<ScrollNotification>(
             onNotification: ((notification) {
               // スクロール位置が2000pxより下になったらTOPに戻るボタンを表示
-              //controller.scrollOffset = notification.metrics.pixels;
+              debugPrint("offset ${notification.metrics.pixels}");
               if (notification.metrics.pixels > 2000) {
-                controller.needTopToScroll(true);
+                controller.needScrollToTop(true);
                 // スクロール停止後、2秒経過したらボタンを非表示にする
-                Future.delayed(const Duration(seconds: 2),
-                    () => {controller.needTopToScroll(false)});
+                Future.delayed(const Duration(seconds: 3),
+                    () => {controller.needScrollToTop(false)});
               } else {
-                controller.needTopToScroll(false);
+                controller.needScrollToTop(false);
               }
               return false;
             }),
@@ -103,7 +103,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           Obx(() => Visibility(
-              visible: controller.needTopToScroll.value,
+              visible: controller.needScrollToTop.value,
               child: Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -115,14 +115,12 @@ class HomeView extends GetView<HomeController> {
                     elevation: 0,
                   ),
                   onPressed: () {
-                    // debugPrint("jumpto offset=${controller.scrollOffset}");
-                    // controller.listViewScrollController
-                    // .jumpTo(-controller.scrollOffset);
                     debugPrint(
                         "scrollTo ${controller.scrollController.position.pixels}");
-                    controller.scrollController.animateTo(0,
-                        duration: const Duration(seconds: 1),
-                        curve: Curves.linear);
+                    controller.scrollController.jumpTo(0.0);
+                    // controller.scrollController.animateTo(0,
+                    //     duration: const Duration(seconds: 1),
+                    //     curve: Curves.linear);
                   },
                   child: const Text('TOPに戻る'),
                 ),
