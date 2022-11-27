@@ -1,4 +1,3 @@
-import 'package:favoritism_communication/app/components/pages/home/views/home_view.dart';
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';
 
