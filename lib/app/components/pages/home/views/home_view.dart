@@ -1,9 +1,10 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/utils/dialog_utils.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-// import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 import 'dart:math' as math;
@@ -15,45 +16,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    Follower? follower;
-    Future.delayed(
-        Duration.zero,
-        () => {
-              follower = fetchFirstMatchedFollower(),
-              if (matchingDialog == null && follower != null)
-                {
-                  matchingDialog = Get.defaultDialog(
-                      title: "",
-                      middleText: "",
-                      content: Column(
-                        children: [
-                          Image.asset('assets/images/matchingImage.jpg'),
-                          Text(
-                              "${follower?.userName}さんとマッチングしました。\n\nメッセージを送って\n楽しく会話しましょう",
-                              textAlign: TextAlign.center,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      actions: [
-                        FractionallySizedBox(
-                            widthFactor: 0.8,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                  backgroundColor: const Color(0xff0091ea)),
-                              onPressed: () => {
-                                Get.offAllNamed(Routes.chat),
-                                matchingDialog = null
-                              },
-                              child: const Text("トークに移動する",
-                                  style: TextStyle(color: Colors.white)),
-                            )),
-                        const SizedBox(height: 90)
-                      ],
-                      radius: 80)
-                }
-            });
-
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: const NavBar(
@@ -96,7 +58,34 @@ class HomeView extends GetView<HomeController> {
                                       )
                                     : FollowButton(
                                         onPressed: () {
+                                          // フォロー処理は時間がかかる想定なのでインジケータ表示
+                                          EasyLoading.show();
                                           controller.follow(userCardData);
+                                          controller.chatService.follower =
+                                              Follower(
+                                            index.toString(),
+                                            userCardData.userName,
+                                            null,
+                                          );
+                                          Future.delayed(
+                                              const Duration(seconds: 2),
+                                              () => EasyLoading.dismiss()).then(
+                                            (value) {
+                                              DialogUtils.dialog(
+                                                () {
+                                                  // ダイアログを閉じる
+                                                  Get.back();
+                                                  // DashboardViewをトーク画面に切替
+                                                  controller.tabService.tabIndex
+                                                      .value = 1;
+                                                  // トークルームに移動する
+                                                  Get.toNamed(Routes.talkRoom);
+                                                },
+                                                controller.chatService.follower
+                                                    .userName,
+                                              );
+                                            },
+                                          );
                                         },
                                         backgroundColor: Colors.white,
                                         foregroundColor: Colors.blueAccent,
@@ -148,21 +137,22 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Follower? fetchFirstMatchedFollower() {
-    // todo マッチングしたフォロワーから最初の一人を選択
-    var rand = math.Random();
-    var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
-    if (hasMatchedFollower) {
-      return const Follower("001", "モンブラン");
-    } else {
-      return null;
-    }
-  }
+  // Follower? fetchFirstMatchedFollower() {
+  //   // todo マッチングしたフォロワーから最初の一人を選択
+  //   var rand = math.Random();
+  //   var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
+  //   if (hasMatchedFollower) {
+  //     return const Follower("001", "モンブラン");
+  //   } else {
+  //     return null;
+  //   }
+  // }
 }
 
 class Follower {
   final String userId;
   final String userName;
+  final String? profileImageURL;
 
-  const Follower(this.userId, this.userName);
+  const Follower(this.userId, this.userName, this.profileImageURL);
 }

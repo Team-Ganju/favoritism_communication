@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/components/organisms/user_card.dart';
 import 'package:favoritism_communication/app/dummy_data/user_card_dummy_data.dart';
+import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -8,6 +9,8 @@ class HomeController extends GetxController {
   // final RxList<UserCardData> userCardDataList = userCardList.obs;
   final RxList<UserCardData> userCardDataList = <UserCardData>[].obs;
   final RefreshController refreshController = RefreshController();
+  final TabService tabService = Get.find();
+  final ChatService chatService = Get.find();
 
   @override
   void onInit() {
