@@ -3,6 +3,7 @@ import 'package:favoritism_communication/app/components/organisms/talk_member_ca
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/pages/chat/controllers/chat_controller.dart';
 import 'package:favoritism_communication/app/components/pages/chat/talk_member_card_model_model.dart';
+import 'package:favoritism_communication/app/components/pages/home/views/home_view.dart';
 import 'package:favoritism_communication/app/components/templates/templates.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +91,8 @@ class ChatView extends GetView<ChatController> {
             child: Obx(
               () => controller.isGroupTalk.value
                   ? CustomSmartRefresher(
-                      refreshController: controller.refreshController,
+                      refreshController:
+                          controller.refreshControllerInGroupList,
                       enablePullDown: false,
                       enablePullUp: false,
                       onLoading: () {
@@ -98,6 +100,7 @@ class ChatView extends GetView<ChatController> {
                       },
                       onRefresh: () {
                         // fixme: スクロール処理を後で書く
+                        controller.onRefreshInGroupList();
                       },
                       child: ListView.builder(
                         itemCount: controller.provider.groupTalks.length,
@@ -106,13 +109,12 @@ class ChatView extends GetView<ChatController> {
                               controller.provider.groupTalks[index];
                           return TalkMemberCard(
                             onTap: () {
-                              Get.toNamed(
-                                Routes.talkRoom,
-                                arguments: [
-                                  group.roomName,
-                                  group.profileImageURL
-                                ],
+                              controller.chatService.follower = Follower(
+                                index.toString(),
+                                group.roomName ?? '',
+                                group.profileImageURL,
                               );
+                              Get.toNamed(Routes.talkRoom);
                             },
                             roomName: group.roomName ?? '',
                             mostRecentMessage: group.mostRecentMessage ?? '',
@@ -122,7 +124,7 @@ class ChatView extends GetView<ChatController> {
                       ),
                     )
                   : CustomSmartRefresher(
-                      refreshController: controller.refreshController,
+                      refreshController: controller.refreshControllerInPairList,
                       enablePullDown: false,
                       enablePullUp: false,
                       onLoading: () {
@@ -130,6 +132,7 @@ class ChatView extends GetView<ChatController> {
                       },
                       onRefresh: () {
                         // fixme: スクロール処理を後で書く
+                        controller.onRefreshInPairList();
                       },
                       child: ListView.builder(
                         itemCount: controller.provider.individualTalks.length,
@@ -138,13 +141,12 @@ class ChatView extends GetView<ChatController> {
                               controller.provider.individualTalks[index];
                           return TalkMemberCard(
                             onTap: () {
-                              Get.toNamed(
-                                Routes.talkRoom,
-                                arguments: [
-                                  individual.roomName ?? '',
-                                  individual.profileImageURL
-                                ],
+                              controller.chatService.follower = Follower(
+                                index.toString(),
+                                individual.roomName ?? '',
+                                individual.profileImageURL,
                               );
+                              Get.toNamed(Routes.talkRoom);
                             },
                             roomName: individual.roomName ?? '',
                             mostRecentMessage:
