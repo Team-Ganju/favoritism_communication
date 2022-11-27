@@ -7,7 +7,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
-import 'dart:math' as math;
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
