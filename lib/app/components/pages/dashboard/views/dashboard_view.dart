@@ -12,7 +12,7 @@ class DashboardView extends GetView<DashboardController> {
     return Scaffold(
       body: Obx(
         () => IndexedStack(
-          index: controller.tabIndex.value,
+          index: controller.tabService.tabIndex.value,
           children: const [
             TabRootView(initialRoot: Routes.home),
             TabRootView(initialRoot: Routes.chat),
@@ -22,8 +22,8 @@ class DashboardView extends GetView<DashboardController> {
       ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          onTap: controller.changeIndex,
-          currentIndex: controller.tabIndex.value,
+          onTap: controller.tabService.changeIndex,
+          currentIndex: controller.tabService.tabIndex.value,
           unselectedItemColor: Colors.grey,
           selectedItemColor: Colors.pinkAccent,
           type: BottomNavigationBarType.fixed,
