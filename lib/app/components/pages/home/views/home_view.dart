@@ -40,6 +40,7 @@ class HomeView extends GetView<HomeController> {
                 () => controller.userCardDataList.isNotEmpty
                     ? CustomSmartRefresher(
                         refreshController: controller.refreshController,
+                        scrollController: controller.scrollController,
                         enablePullDown: false,
                         enablePullUp: true,
                         onLoading: () {

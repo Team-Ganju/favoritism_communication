@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CustomSmartRefresher extends StatelessWidget {
-  const CustomSmartRefresher({
+  CustomSmartRefresher({
     super.key,
     required this.refreshController,
+    this.scrollController = null,
     required this.enablePullDown,
     required this.enablePullUp,
     required this.child,
@@ -13,6 +14,7 @@ class CustomSmartRefresher extends StatelessWidget {
   });
 
   final RefreshController refreshController;
+  final ScrollController? scrollController;
   final bool enablePullDown;
   final bool enablePullUp;
   final VoidCallback? onLoading;
@@ -21,13 +23,15 @@ class CustomSmartRefresher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SmartRefresher(
-      controller: refreshController,
-      enablePullDown: false,
-      enablePullUp: true,
-      onRefresh: () => onRefresh?.call(),
-      onLoading: () => onLoading?.call(),
-      child: child,
-    );
+    return Scrollbar(
+        controller: scrollController,
+        child: SmartRefresher(
+          controller: refreshController,
+          enablePullDown: false,
+          enablePullUp: true,
+          onRefresh: () => onRefresh?.call(),
+          onLoading: () => onLoading?.call(),
+          child: child,
+        ));
   }
 }
