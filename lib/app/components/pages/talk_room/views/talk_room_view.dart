@@ -13,7 +13,8 @@ class TalkRoomView extends GetView<TalkRoomController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NavBar(
-        title: Get.arguments[0], //TalkMemberCard.roomName
+        title:
+            controller.chatService.follower.userName, //TalkMemberCard.roomName
         leading: const atoms.BackButton(),
         backgroundColor: Colors.pink,
       ),

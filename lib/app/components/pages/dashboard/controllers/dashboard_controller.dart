@@ -1,9 +1,6 @@
+import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController {
-  RxInt tabIndex = 0.obs;
-
-  void changeIndex(int index) {
-    tabIndex.value = index;
-  }
+  final TabService tabService = Get.find();
 }

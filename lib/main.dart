@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/bindings/initial_binding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'app/routes/app_pages.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         initialRoute: AppPages.initial,
         initialBinding: InitialBinding(),
         getPages: AppPages.routes,
+        builder: EasyLoading.init(),
       ),
     );
   }
