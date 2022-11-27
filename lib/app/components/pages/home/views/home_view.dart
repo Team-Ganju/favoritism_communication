@@ -48,7 +48,8 @@ class HomeView extends GetView<HomeController> {
                   child: Obx(
                     () => controller.userCardDataList.isNotEmpty
                         ? ListView.separated(
-                            physics: const NeverScrollableScrollPhysics(),
+                            controller: controller.scrollController,
+                            // physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: controller.userCardDataList.length,
                             itemBuilder: (context, index) {
@@ -61,6 +62,9 @@ class HomeView extends GetView<HomeController> {
                                           .userCardDataList[index].isFollowed
                                       ? FollowButton(
                                           onPressed: () {
+                                            debugPrint("scrollToTop!!");
+                                            controller.scrollController
+                                                .jumpTo(0);
                                             controller.unFollow(userCardData);
                                           },
                                           backgroundColor: Colors.blueAccent,
@@ -115,9 +119,9 @@ class HomeView extends GetView<HomeController> {
                     elevation: 0,
                   ),
                   onPressed: () {
-                    debugPrint(
-                        "scrollTo ${controller.scrollController.position.pixels}");
-                    controller.scrollController.jumpTo(0.0);
+                    // debugPrint(
+                    //     "scrollTo ${controller.scrollController.position.pixels}");
+                    controller.scrollController.jumpTo(0);
                     // controller.scrollController.animateTo(0,
                     //     duration: const Duration(seconds: 1),
                     //     curve: Curves.linear);
