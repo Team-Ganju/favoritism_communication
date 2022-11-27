@@ -3,7 +3,6 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
@@ -23,7 +22,6 @@ class HomeView extends GetView<HomeController> {
           NotificationListener<ScrollNotification>(
             onNotification: ((notification) {
               // スクロール位置が2000pxより下になったらTOPに戻るボタンを表示
-              debugPrint("offset ${notification.metrics.pixels}");
               if (notification.metrics.pixels > 2000) {
                 controller.needScrollToTop(true);
                 // スクロール停止後、2秒経過したらボタンを非表示にする
@@ -114,12 +112,7 @@ class HomeView extends GetView<HomeController> {
                     elevation: 0,
                   ),
                   onPressed: () {
-                    // debugPrint(
-                    //     "scrollTo ${controller.scrollController.position.pixels}");
                     controller.scrollController.jumpTo(0);
-                    // controller.scrollController.animateTo(0,
-                    //     duration: const Duration(seconds: 1),
-                    //     curve: Curves.linear);
                   },
                   child: const Text('TOPに戻る'),
                 ),
