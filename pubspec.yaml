@@ -32,13 +32,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test: 
     sdk: flutter
-  flutter_gen_runner: ^4.2.1
-  build_runner: ^2.1.11
 
 flutter: 
   uses-material-design: true
 
   assets:
     - assets/images/
-    - assets/images/matchingImage.jpg
     - assets/json/
