@@ -23,6 +23,7 @@ class HomeController extends GetxController {
               selectTab(tabData);
             }))
         .toList());
+    selectTab(tabDataList[0]);
     super.onInit();
   }
 
