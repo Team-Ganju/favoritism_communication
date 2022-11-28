@@ -130,7 +130,9 @@ class HomeView extends GetView<HomeController> {
           ),
           Obx(() => Visibility(
               visible: controller.needScrollToTop.value,
-              child: Center(
+              child: Positioned(
+                bottom: 25,
+                left: Get.width / 3,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     fixedSize:
