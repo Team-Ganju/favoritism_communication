@@ -25,17 +25,19 @@ class HomeView extends GetView<HomeController> {
         toolbarHeight: 120,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(
-                width: 320,
-                height: 40,
-                child: SearchBar(
-                  borderRadius: 0,
-                  onChanged: (text) {
-                    if (text != null) {
-                      controller.search(text);
-                    }
-                  },
-                )),
+            Expanded(
+                flex: 1,
+                child: SizedBox(
+                    width: 320,
+                    height: 40,
+                    child: SearchBar(
+                      borderRadius: 0,
+                      onChanged: (text) {
+                        if (text != null) {
+                          controller.search(text);
+                        }
+                      },
+                    ))),
             IconButton(
               icon: Badge(
                 badgeContent: const Text(
