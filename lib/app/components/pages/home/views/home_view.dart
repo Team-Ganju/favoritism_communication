@@ -26,7 +26,7 @@ class HomeView extends GetView<HomeController> {
               // スクロール位置が2000pxより下になったらTOPに戻るボタンを表示
               if (notification.metrics.pixels > 2000) {
                 controller.needScrollToTop(true);
-                // スクロール停止後、2秒経過したらボタンを非表示にする
+                // スクロール停止後、指定秒を経過したらボタンを非表示にする
                 Future.delayed(const Duration(seconds: 3),
                     () => {controller.needScrollToTop(false)});
               } else {
