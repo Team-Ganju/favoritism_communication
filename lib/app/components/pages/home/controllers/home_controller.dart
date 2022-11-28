@@ -19,7 +19,7 @@ class HomeController extends GetxController {
     fetchUserData();
     initTab(dummyTabNameList
         .map((name) => TabData(name, (tabData) {
-              // todo カードをフィルタする処理を追加
+              // todo: カードをフィルタする処理を追加
               selectTab(tabData);
             }))
         .toList());
