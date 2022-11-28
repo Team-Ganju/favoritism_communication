@@ -58,7 +58,7 @@ class HomeController extends GetxController {
   void selectTab(TabData data) async {
     for (var i = 0; i < tabDataList.length; i++) {
       if (tabDataList[i] == data) {
-        tabDataList[i].isEnable = true;
+        tabDataList[i].isEnable = !tabDataList[i].isEnable;
       } else {
         tabDataList[i].isEnable = false;
       }
