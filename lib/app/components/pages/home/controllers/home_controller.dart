@@ -1,4 +1,5 @@
 import 'package:favoritism_communication/app/components/organisms/user_card.dart';
+import 'package:favoritism_communication/app/dummy_data/tab_dummy_data.dart';
 import 'package:favoritism_communication/app/dummy_data/user_card_dummy_data.dart';
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,11 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     fetchUserData();
+    initTab(dummyTabNameList
+        .map((name) => TabData(name, (tabData) {
+              selectTab(tabData);
+            }))
+        .toList());
     super.onInit();
   }
 

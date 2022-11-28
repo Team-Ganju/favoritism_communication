@@ -18,20 +18,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.initTab([
-      TabData("マッチング候補", (tabData) {
-        controller.selectTab(tabData);
-      }),
-      TabData("フォロー中", (tabData) {
-        controller.selectTab(tabData);
-      }),
-      TabData("フォローされた人", (tabData) {
-        controller.selectTab(tabData);
-      }),
-      TabData("私も好き", (tabData) {
-        controller.selectTab(tabData);
-      }),
-    ]);
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: NavBar(
