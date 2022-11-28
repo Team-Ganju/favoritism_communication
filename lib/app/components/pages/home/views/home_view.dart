@@ -113,7 +113,8 @@ class HomeView extends GetView<HomeController> {
                           },
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 10),
-                        ))
+                        ),
+                      )
                     : Column(
                         children: const [
                           SizedBox(height: 30),
@@ -128,7 +129,8 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
           ),
-          Obx(() => Visibility(
+          Obx(
+            () => Visibility(
               visible: controller.needScrollToTop.value,
               child: Positioned(
                 bottom: 25,
@@ -147,7 +149,9 @@ class HomeView extends GetView<HomeController> {
                   },
                   child: const Text('TOPに戻る'),
                 ),
-              )))
+              ),
+            ),
+          )
         ],
       ),
     );
