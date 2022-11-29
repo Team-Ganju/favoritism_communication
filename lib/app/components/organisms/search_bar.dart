@@ -11,6 +11,7 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: GestureDetectorでwrapしてFocusScope.of(context).unfocus()を実装したい。ホーム画面の検索バーとの調整が必要
     return FormBuilderTextField(
       name: '検索バー',
       keyboardType: TextInputType.text,
