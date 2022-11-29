@@ -6,7 +6,7 @@ class SearchService extends GetxService {
   static const _searchIntervalMilliSecond = 1000; //1秒
 
   void getTargetUsers() {
-    //FIXME: firebaseからデータを取得するようになったらは削除
+    //FIXME: firebaseからデータを取得するようになったら削除
     final List<String> users = [
       'Aさん',
       'ABさん',

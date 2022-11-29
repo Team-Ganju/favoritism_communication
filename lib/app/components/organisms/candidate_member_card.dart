@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CandidateMemberCard extends StatelessWidget {
   const CandidateMemberCard({
@@ -7,15 +6,18 @@ class CandidateMemberCard extends StatelessWidget {
     required this.name,
     this.profileImageURL,
     required this.isSelected,
+    required this.onTap,
   }) : super(key: key);
 
   final String name;
   final String? profileImageURL;
-  final RxBool isSelected;
+  final bool isSelected;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () => onTap.call(),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -44,7 +46,7 @@ class CandidateMemberCard extends StatelessWidget {
               const SizedBox(
                 width: 20,
               ),
-              Flexible(
+              Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +61,7 @@ class CandidateMemberCard extends StatelessWidget {
                   ],
                 ),
               ),
-              isSelected.value
+              isSelected
                   ? const Icon(
                       Icons.check_circle,
                       color: Colors.green,
