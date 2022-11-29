@@ -13,6 +13,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const NavBar(
         title: '友達を選択',
         backgroundColor: Colors.pink,
