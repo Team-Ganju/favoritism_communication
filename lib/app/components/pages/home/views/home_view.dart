@@ -10,8 +10,6 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
-  // ignore: avoid_init_to_null
-  static var matchingDialog = null;
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +21,33 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CustomSmartRefresher(
-              refreshController: controller.refreshController,
-              enablePullDown: false,
-              enablePullUp: true,
-              onLoading: () {
-                controller.onLoading();
-              },
-              child: SingleChildScrollView(
-                child: Obx(
-                  () => controller.userCardDataList.isNotEmpty
-                      ? ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
+          NotificationListener<ScrollNotification>(
+            onNotification: ((notification) {
+              // スクロール位置が2000pxより下になったらTOPに戻るボタンを表示
+              if (notification.metrics.pixels > 2000) {
+                controller.needScrollToTop(true);
+                // スクロール停止後、指定秒を経過したらボタンを非表示にする
+                Future.delayed(const Duration(seconds: 3),
+                    () => {controller.needScrollToTop(false)});
+              } else {
+                controller.needScrollToTop(false);
+              }
+              return false;
+            }),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Obx(
+                () => controller.userCardDataList.isNotEmpty
+                    ? CustomSmartRefresher(
+                        refreshController: controller.refreshController,
+                        scrollController: controller.scrollController,
+                        enablePullDown: false,
+                        enablePullUp: true,
+                        onLoading: () {
+                          controller.onLoading();
+                        },
+                        child: ListView.separated(
+                          controller: controller.scrollController,
                           shrinkWrap: true,
                           itemCount: controller.userCardDataList.length,
                           itemBuilder: (context, index) {
@@ -49,6 +60,8 @@ class HomeView extends GetView<HomeController> {
                                         .userCardDataList[index].isFollowed
                                     ? FollowButton(
                                         onPressed: () {
+                                          debugPrint("scrollToTop!!");
+                                          controller.scrollController.jumpTo(0);
                                           controller.unFollow(userCardData);
                                         },
                                         backgroundColor: Colors.blueAccent,
@@ -100,35 +113,43 @@ class HomeView extends GetView<HomeController> {
                           },
                           separatorBuilder: (context, index) =>
                               const SizedBox(height: 10),
-                        )
-                      : Column(
-                          children: const [
-                            SizedBox(height: 30),
-                            Center(
-                              child: Text(
-                                '検索結果がありません',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                            ),
-                          ],
                         ),
-                ),
+                      )
+                    : Column(
+                        children: const [
+                          SizedBox(height: 30),
+                          Center(
+                            child: Text(
+                              '検索結果がありません',
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                        ],
+                      ),
               ),
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(MediaQuery.of(context).size.width * 0.3, 25),
-                backgroundColor: const Color.fromRGBO(236, 188, 179, 1),
-                foregroundColor: Colors.white,
-                shape: const StadiumBorder(),
-                elevation: 0,
+          Obx(
+            () => Visibility(
+              visible: controller.needScrollToTop.value,
+              child: Positioned(
+                bottom: 25,
+                left: Get.width / 3,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize:
+                        Size(MediaQuery.of(context).size.width * 0.3, 25),
+                    backgroundColor: const Color.fromRGBO(236, 188, 179, 1),
+                    foregroundColor: Colors.white,
+                    shape: const StadiumBorder(),
+                    elevation: 0,
+                  ),
+                  onPressed: () {
+                    controller.scrollController.jumpTo(0);
+                  },
+                  child: const Text('TOPに戻る'),
+                ),
               ),
-              onPressed: () {
-                // todo トップに戻る
-              },
-              child: const Text('TOPに戻る'),
             ),
           )
         ],
