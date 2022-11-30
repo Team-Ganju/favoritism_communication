@@ -5,6 +5,7 @@ class CustomSmartRefresher extends StatelessWidget {
   const CustomSmartRefresher({
     super.key,
     required this.refreshController,
+    this.scrollController,
     required this.enablePullDown,
     required this.enablePullUp,
     required this.child,
@@ -13,6 +14,7 @@ class CustomSmartRefresher extends StatelessWidget {
   });
 
   final RefreshController refreshController;
+  final ScrollController? scrollController;
   final bool enablePullDown;
   final bool enablePullUp;
   final VoidCallback? onLoading;
@@ -22,14 +24,14 @@ class CustomSmartRefresher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
-      child: SmartRefresher(
-        controller: refreshController,
-        enablePullDown: false,
-        enablePullUp: true,
-        onRefresh: () => onRefresh?.call(),
-        onLoading: () => onLoading?.call(),
-        child: child,
-      ),
-    );
+        controller: scrollController,
+        child: SmartRefresher(
+          controller: refreshController,
+          enablePullDown: false,
+          enablePullUp: true,
+          onRefresh: () => onRefresh?.call(),
+          onLoading: () => onLoading?.call(),
+          child: child,
+        ));
   }
 }
