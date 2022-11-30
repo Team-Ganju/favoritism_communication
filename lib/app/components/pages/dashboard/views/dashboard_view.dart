@@ -1,9 +1,9 @@
 import 'package:favoritism_communication/app/components/pages/tab_root/tab_root_view.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../styles/app_theme_color.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {

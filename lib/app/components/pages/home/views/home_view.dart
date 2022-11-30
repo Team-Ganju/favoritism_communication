@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/utils/dialog_utils.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../../styles/app_theme_color.dart';
 import '../../../atoms/tab_button.dart';
 import '../../../organisms/search_bar.dart';
 import '../controllers/home_controller.dart';

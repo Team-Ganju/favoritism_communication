@@ -1,9 +1,9 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../styles/app_theme_color.dart';
 import '../controllers/mypage_controller.dart';
 
 class MypageView extends GetView<MypageController> {

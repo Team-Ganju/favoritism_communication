@@ -9,7 +9,7 @@ import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../styles/app_theme_color.dart';
+import '../../../../styles/styles.dart';
 
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);

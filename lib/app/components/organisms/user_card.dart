@@ -1,7 +1,6 @@
 import 'package:favoritism_communication/app/components/molecules/molecules.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../styles/app_theme_color.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard(

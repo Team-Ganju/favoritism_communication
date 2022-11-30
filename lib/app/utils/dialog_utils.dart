@@ -1,8 +1,7 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../styles/app_theme_color.dart';
 
 class DialogUtils {
   static Future dialog(VoidCallback action, String userName) {

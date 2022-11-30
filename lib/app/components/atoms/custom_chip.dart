@@ -1,6 +1,5 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../styles/app_theme_color.dart';
 
 class CustomChip extends StatelessWidget {
   const CustomChip({

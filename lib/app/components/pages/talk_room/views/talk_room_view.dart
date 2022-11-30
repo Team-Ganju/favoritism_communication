@@ -1,11 +1,9 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart'
     as atoms;
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-
 import 'package:get/get.dart';
-
-import '../../../../styles/app_theme_color.dart';
 import '../controllers/talk_room_controller.dart';
 
 class TalkRoomView extends GetView<TalkRoomController> {

@@ -1,8 +1,7 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
-import '../../styles/app_theme_color.dart';
 
 class BackButton extends StatelessWidget {
   const BackButton({

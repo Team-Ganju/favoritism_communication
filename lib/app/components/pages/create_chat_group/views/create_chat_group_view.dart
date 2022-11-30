@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
@@ -6,7 +7,6 @@ import 'package:favoritism_communication/app/components/organisms/search_result_
 
 import 'package:get/get.dart';
 
-import '../../../../styles/app_theme_color.dart';
 import '../controllers/create_chat_group_controller.dart';
 
 class CreateChatGroupView extends GetView<CreateChatGroupController> {
