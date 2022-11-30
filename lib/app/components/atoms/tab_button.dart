@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TabButton extends StatelessWidget {
-  const TabButton(
-      {super.key,
-      required this.chipTitle,
-      required this.isEnable,
-      required this.onPressed});
+  const TabButton({
+    super.key,
+    required this.chipTitle,
+    required this.isEnable,
+    required this.onPressed,
+  });
 
   final String chipTitle;
   final bool isEnable;
@@ -31,9 +32,10 @@ class TabButton extends StatelessWidget {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       backgroundColor: backgroundColor,
       shape: StadiumBorder(
-          side: BorderSide(
-        color: borderColor,
-      )),
+        side: BorderSide(
+          color: borderColor,
+        ),
+      ),
       onPressed: onPressed,
     );
   }

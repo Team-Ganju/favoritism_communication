@@ -22,17 +22,18 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-        preferredSize: Size.fromHeight(toolbarHeight),
-        child: AppBar(
-          toolbarHeight: 120,
-          bottomOpacity: 0.0,
-          elevation: 0.0,
-          backgroundColor: backgroundColor,
-          centerTitle: true,
-          title: title != null ? Text(title ?? '') : child,
-          leading: leading,
-          actions: trailing,
-        ));
+      preferredSize: Size.fromHeight(toolbarHeight),
+      child: AppBar(
+        toolbarHeight: 120,
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: backgroundColor,
+        centerTitle: true,
+        title: title != null ? Text(title ?? '') : child,
+        leading: leading,
+        actions: trailing,
+      ),
+    );
   }
 
   @override

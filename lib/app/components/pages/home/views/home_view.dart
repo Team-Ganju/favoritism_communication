@@ -21,11 +21,15 @@ class HomeView extends GetView<HomeController> {
       appBar: NavBar(
         backgroundColor: Colors.white,
         toolbarHeight: 120,
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Expanded(
-                flex: 1,
-                child: SizedBox(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
                     width: 320,
                     height: 40,
                     child: SearchBar(
@@ -35,31 +39,38 @@ class HomeView extends GetView<HomeController> {
                           controller.search(text);
                         }
                       },
-                    ))),
-            IconButton(
-              icon: Badge(
-                badgeContent: const Text(
-                  '1',
-                  style: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                  ),
                 ),
-                padding: const EdgeInsets.all(6),
-                badgeColor: const Color.fromRGBO(223, 2, 89, 1),
-                child: const Icon(
-                  Icons.notifications,
-                  size: 36,
-                ),
-              ),
-              onPressed: () => Get.back<dynamic>(),
-              color: Colors.grey,
-            )
-          ]),
-          SingleChildScrollView(
+                IconButton(
+                  icon: Badge(
+                    badgeContent: const Text(
+                      '1',
+                      style: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                    padding: const EdgeInsets.all(6),
+                    badgeColor: const Color.fromRGBO(223, 2, 89, 1),
+                    child: const Icon(
+                      Icons.notifications,
+                      size: 36,
+                    ),
+                  ),
+                  onPressed: () => Get.back<dynamic>(),
+                  color: Colors.grey,
+                )
+              ],
+            ),
+            SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.all(8),
-              child: Obx(() => Row(
-                    children: buildTabButtons(controller.getTabList()),
-                  )))
-        ]),
+              child: Obx(
+                () => Row(
+                  children: buildTabButtons(controller.getTabList()),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -69,8 +80,10 @@ class HomeView extends GetView<HomeController> {
               if (notification.metrics.pixels > 2000) {
                 controller.needScrollToTop(true);
                 // スクロール停止後、指定秒を経過したらボタンを非表示にする
-                Future.delayed(const Duration(seconds: 3),
-                    () => {controller.needScrollToTop(false)});
+                Future.delayed(
+                  const Duration(seconds: 3),
+                  () => {controller.needScrollToTop(false)},
+                );
               } else {
                 controller.needScrollToTop(false);
               }
@@ -214,10 +227,13 @@ class HomeView extends GetView<HomeController> {
 List<Widget> buildTabButtons(List<TabData> tabDataList) {
   List<Widget> list = [];
   for (var i = 0; i < tabDataList.length; i++) {
-    list.add(TabButton(
+    list.add(
+      TabButton(
         chipTitle: tabDataList[i].title,
         isEnable: tabDataList[i].isEnable,
-        onPressed: () => tabDataList[i].onPressed(tabDataList[i])));
+        onPressed: () => tabDataList[i].onPressed(tabDataList[i]),
+      ),
+    );
     if (i != tabDataList.length - 1) {
       list.add(const SizedBox(width: 8));
     }
