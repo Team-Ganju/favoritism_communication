@@ -3,15 +3,11 @@ import 'package:flutter/material.dart';
 class CandidateMemberCard extends StatelessWidget {
   const CandidateMemberCard({
     Key? key,
-    required this.name,
-    this.profileImageURL,
-    required this.isSelected,
+    required this.candidateMemberCardData,
     required this.onTap,
   }) : super(key: key);
 
-  final String name;
-  final String? profileImageURL;
-  final bool isSelected;
+  final CandidateMemberCardData candidateMemberCardData;
   final VoidCallback onTap;
 
   @override
@@ -34,8 +30,8 @@ class CandidateMemberCard extends StatelessWidget {
               CircleAvatar(
                 //TODO:firebase接続後に動作確認
                 //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                foregroundImage: profileImageURL != null
-                    ? NetworkImage(profileImageURL!)
+                foregroundImage: candidateMemberCardData.userImage != null
+                    ? NetworkImage(candidateMemberCardData.userImage!)
                     : null,
                 backgroundColor: Colors.grey,
                 child: const Icon(
@@ -53,7 +49,7 @@ class CandidateMemberCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      name,
+                      candidateMemberCardData.userName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 20),
@@ -61,7 +57,7 @@ class CandidateMemberCard extends StatelessWidget {
                   ],
                 ),
               ),
-              isSelected
+              candidateMemberCardData.isSelected
                   ? const Icon(
                       Icons.check_circle,
                       color: Colors.green,
@@ -73,4 +69,16 @@ class CandidateMemberCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class CandidateMemberCardData {
+  final String userName;
+  final String? userImage;
+  late bool isSelected = false;
+
+  CandidateMemberCardData(
+    this.userName,
+    this.userImage,
+    this.isSelected,
+  );
 }

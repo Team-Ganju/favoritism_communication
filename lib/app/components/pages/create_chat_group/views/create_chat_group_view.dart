@@ -29,39 +29,47 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
           Expanded(
             child: Stack(
               children: [
-                ListView.builder(
-                  itemCount: controller.searchService.targetUsers.length,
-                  itemBuilder: (context, index) => CandidateMemberCard(
-                    name: controller.searchService.targetUsers.elementAt(index),
-                    isSelected: controller.isMemberSelected.value,
-                    onTap: () {},
-                  ),
-                ),
                 Obx(
                   () => ListView.builder(
-                    itemCount: controller.searchResult.length + 1,
+                    itemCount: controller.candidateMemberCardDataList.length,
                     itemBuilder: (context, index) {
-                      if (index == 0) {
-                        return controller.searchResult.isNotEmpty
-                            ? const Divider()
-                            : Container();
-                      } else {
-                        return Column(
-                          children: [
-                            SeachResultListTile(
-                              index: index,
-                              text:
-                                  controller.searchResult.elementAt(index - 1),
-                              onPressed: () =>
-                                  controller.searchResult.removeAt(index - 1),
-                            ),
-                            const Divider(),
-                          ],
-                        );
-                      }
+                      final CandidateMemberCardData candidateMemberCardData =
+                          controller.candidateMemberCardDataList[index];
+                      return CandidateMemberCard(
+                        candidateMemberCardData: candidateMemberCardData,
+                        onTap: () => controller
+                                .candidateMemberCardDataList[index].isSelected
+                            ? controller.unselect(candidateMemberCardData)
+                            : controller.select(candidateMemberCardData),
+                      );
                     },
                   ),
                 ),
+                // Obx(
+                //   () => ListView.builder(
+                //     itemCount: controller.searchResult.length + 1,
+                //     itemBuilder: (context, index) {
+                //       if (index == 0) {
+                //         return controller.searchResult.isNotEmpty
+                //             ? const Divider()
+                //             : Container();
+                //       } else {
+                //         return Column(
+                //           children: [
+                //             SeachResultListTile(
+                //               index: index,
+                //               text:
+                //                   controller.searchResult.elementAt(index - 1),
+                //               onPressed: () =>
+                //                   controller.searchResult.removeAt(index - 1),
+                //             ),
+                //             const Divider(),
+                //           ],
+                //         );
+                //       }
+                //     },
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -71,9 +79,9 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CustomElevatedButton(
         buttonText: 'トークに移動する',
-        initialActiveFlag: controller.isMemberSelected.value,
+        initialActiveFlag: controller.isSelectedAtLeastOne.value,
         //FIXME: 遷移先の画面ができたら遷移処理を実装
-        onPressed: controller.isMemberSelected.value ? () {} : null,
+        onPressed: controller.isSelectedAtLeastOne.value ? () {} : null,
       ),
     );
   }
