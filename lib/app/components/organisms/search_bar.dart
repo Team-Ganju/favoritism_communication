@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../../styles/app_theme_color.dart';
+
 class SearchBar extends StatelessWidget {
   const SearchBar({
     Key? key,
@@ -24,13 +26,13 @@ class SearchBar extends StatelessWidget {
         contentPadding: contentPadding,
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.grey,
+            color: colorSearchBarInputBorder,
           ),
           borderRadius: BorderRadius.circular(borderRadius),
         ),
         focusedBorder: OutlineInputBorder(
           //FIXME: テキスト入力時の下線の色は外部ファイルから指定
-          borderSide: const BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: colorSearchBarInputBorderFocused),
           borderRadius: BorderRadius.circular(borderRadius),
         ),
       ),

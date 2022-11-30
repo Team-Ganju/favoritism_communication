@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../styles/app_theme_color.dart';
+
 class TabButton extends StatelessWidget {
   const TabButton({
     super.key,
@@ -18,13 +20,13 @@ class TabButton extends StatelessWidget {
     Color backgroundColor;
     Color borderColor;
     if (isEnable) {
-      textColor = Colors.white;
-      backgroundColor = Colors.grey;
-      borderColor = Colors.grey;
+      textColor = colorTabTextAsEnabled;
+      backgroundColor = colorTabBgAsEnabled;
+      borderColor = colorTabBorderAsEnabled;
     } else {
-      textColor = Colors.black;
-      backgroundColor = Colors.white;
-      borderColor = const Color.fromARGB(132, 207, 205, 205);
+      textColor = colorTabTextAsDisabled;
+      backgroundColor = colorTabBgAsDisabled;
+      borderColor = colorTabBorderAsDisabled;
     }
     return RawChip(
       label: Text(chipTitle),

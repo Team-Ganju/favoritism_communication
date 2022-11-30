@@ -5,6 +5,7 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 
 import 'package:get/get.dart';
 
+import '../../../../styles/app_theme_color.dart';
 import '../controllers/talk_room_controller.dart';
 
 class TalkRoomView extends GetView<TalkRoomController> {
@@ -16,7 +17,7 @@ class TalkRoomView extends GetView<TalkRoomController> {
         title:
             controller.chatService.follower.userName, //TalkMemberCard.roomName
         leading: const atoms.BackButton(),
-        backgroundColor: Colors.pink,
+        backgroundColor: colorTalkRoomAppBarBg,
       ),
       body: Stack(
         children: const [

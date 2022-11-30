@@ -7,6 +7,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../../styles/app_theme_color.dart';
 import '../../../atoms/tab_button.dart';
 import '../../../organisms/search_bar.dart';
 import '../controllers/home_controller.dart';
@@ -17,9 +18,9 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: colorHomeBg,
       appBar: NavBar(
-        backgroundColor: Colors.white,
+        backgroundColor: colorHomeAppBarBg,
         toolbarHeight: 120,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,17 +47,18 @@ class HomeView extends GetView<HomeController> {
                   icon: Badge(
                     badgeContent: const Text(
                       '1',
-                      style: TextStyle(fontSize: 14, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 14, color: colorHomeAppBarIconBadgeText),
                     ),
                     padding: const EdgeInsets.all(6),
-                    badgeColor: const Color.fromRGBO(223, 2, 89, 1),
+                    badgeColor: colorHomeAppBarIconBadgeBg,
                     child: const Icon(
                       Icons.notifications,
                       size: 36,
                     ),
                   ),
                   onPressed: () => Get.back<dynamic>(),
-                  color: Colors.grey,
+                  color: colorHomeAppBarIcon,
                 )
               ],
             ),
@@ -119,8 +121,10 @@ class HomeView extends GetView<HomeController> {
                                           controller.scrollController.jumpTo(0);
                                           controller.unFollow(userCardData);
                                         },
-                                        backgroundColor: Colors.blueAccent,
-                                        foregroundColor: Colors.white,
+                                        foregroundColor:
+                                            colorUserCardFollowButtonFgAsFollowed,
+                                        backgroundColor:
+                                            colorUserCardFollowButtonBgAsFollowed,
                                         isFollowed: userCardData.isFollowed,
                                       )
                                     : FollowButton(
@@ -154,8 +158,10 @@ class HomeView extends GetView<HomeController> {
                                             },
                                           );
                                         },
-                                        backgroundColor: Colors.white,
-                                        foregroundColor: Colors.blueAccent,
+                                        foregroundColor:
+                                            colorUserCardFollowButtonFgAsUnfollowed,
+                                        backgroundColor:
+                                            colorUserCardFollowButtonBgAsUnfollowed,
                                         isFollowed: userCardData.isFollowed,
                                       ),
                               ),
@@ -194,8 +200,8 @@ class HomeView extends GetView<HomeController> {
                   style: ElevatedButton.styleFrom(
                     fixedSize:
                         Size(MediaQuery.of(context).size.width * 0.3, 25),
-                    backgroundColor: const Color.fromRGBO(236, 188, 179, 1),
-                    foregroundColor: Colors.white,
+                    foregroundColor: colorReturnToTopButtonFg,
+                    backgroundColor: colorReturnToTopButtonBg,
                     shape: const StadiumBorder(),
                     elevation: 0,
                   ),

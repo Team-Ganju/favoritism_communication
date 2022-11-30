@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../styles/app_theme_color.dart';
+
 class CustomChip extends StatelessWidget {
   const CustomChip({
     super.key,
@@ -18,7 +20,7 @@ class CustomChip extends StatelessWidget {
       backgroundColor: backgroundColor,
       shape: const StadiumBorder(
         side: BorderSide(
-          color: Color.fromARGB(132, 207, 205, 205),
+          color: colorChipBorder,
         ),
       ),
     );

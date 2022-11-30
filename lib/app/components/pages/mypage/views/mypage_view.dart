@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../../styles/app_theme_color.dart';
 import '../controllers/mypage_controller.dart';
 
 class MypageView extends GetView<MypageController> {
@@ -11,7 +12,7 @@ class MypageView extends GetView<MypageController> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: NavBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: colorMypageAppBarBg,
         title: 'プロフィール',
       ),
       body: Center(

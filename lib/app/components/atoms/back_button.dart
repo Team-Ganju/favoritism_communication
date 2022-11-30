@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../styles/app_theme_color.dart';
+
 class BackButton extends StatelessWidget {
   const BackButton({
     Key? key,
@@ -14,7 +16,7 @@ class BackButton extends StatelessWidget {
         Icons.arrow_back_ios_new,
       ),
       onPressed: () => Get.back<dynamic>(),
-      color: Colors.grey,
+      color: colorIcon,
       iconSize: 30,
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../styles/app_theme_color.dart';
+
 class FollowButton extends StatelessWidget {
   const FollowButton({
     super.key,
@@ -25,7 +27,7 @@ class FollowButton extends StatelessWidget {
             ? const StadiumBorder()
             : const StadiumBorder(
                 side: BorderSide(
-                  color: Colors.blueAccent,
+                  color: colorFollowButtonBorderAsUnfollowed,
                 ),
               ),
         elevation: 0,

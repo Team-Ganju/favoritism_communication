@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../../styles/app_theme_color.dart';
+
 class MessageBar extends StatelessWidget {
   const MessageBar({
     super.key,
@@ -20,10 +22,10 @@ class MessageBar extends StatelessWidget {
         width: double.infinity,
         height: 70,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: colorMessageBarFg,
           border: Border(
             top: BorderSide(
-              color: Colors.grey,
+              color: colorMessageBarBorder,
             ),
           ),
         ),
@@ -62,12 +64,13 @@ class MessageBar extends StatelessWidget {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
-                      color: Colors.grey,
+                      color: colorMessageBarInputBorder,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(
+                        color: colorMessageBarInputBorderFocused),
                   ),
                 ),
               ),
