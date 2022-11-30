@@ -15,29 +15,30 @@ class TabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color textColor;
-    Color backgroundColor;
-    Color borderColor;
-    if (isEnable) {
-      textColor = colorTabTextAsEnabled;
-      backgroundColor = colorTabBgAsEnabled;
-      borderColor = colorTabBorderAsEnabled;
-    } else {
-      textColor = colorTabTextAsDisabled;
-      backgroundColor = colorTabBgAsDisabled;
-      borderColor = colorTabBorderAsDisabled;
-    }
-    return RawChip(
-      label: Text(chipTitle),
-      labelStyle: TextStyle(color: textColor),
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      backgroundColor: backgroundColor,
-      shape: StadiumBorder(
-        side: BorderSide(
-          color: borderColor,
-        ),
-      ),
-      onPressed: onPressed,
-    );
+    return isEnable
+        ? RawChip(
+            label: Text(chipTitle),
+            labelStyle: const TextStyle(color: colorTabTextAsEnabled),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            backgroundColor: colorTabBgAsEnabled,
+            shape: const StadiumBorder(
+              side: BorderSide(
+                color: colorTabBorderAsEnabled,
+              ),
+            ),
+            onPressed: onPressed,
+          )
+        : RawChip(
+            label: Text(chipTitle),
+            labelStyle: const TextStyle(color: colorTabTextAsDisabled),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            backgroundColor: colorTabBgAsDisabled,
+            shape: const StadiumBorder(
+              side: BorderSide(
+                color: colorTabBorderAsDisabled,
+              ),
+            ),
+            onPressed: onPressed,
+          );
   }
 }
