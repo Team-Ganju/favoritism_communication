@@ -6,12 +6,10 @@ class SearchBar extends StatelessWidget {
   const SearchBar({
     Key? key,
     this.contentPadding = EdgeInsets.zero,
-    this.borderRadius = 45,
     required this.onChanged,
   }) : super(key: key);
 
   final EdgeInsets contentPadding;
-  final double borderRadius;
   final void Function(String?) onChanged;
 
   @override
@@ -27,12 +25,12 @@ class SearchBar extends StatelessWidget {
           borderSide: const BorderSide(
             color: colorSearchBarInputBorder,
           ),
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(45),
         ),
         focusedBorder: OutlineInputBorder(
           //FIXME: テキスト入力時の下線の色は外部ファイルから指定
           borderSide: const BorderSide(color: colorSearchBarInputBorderFocused),
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(45),
         ),
       ),
       onChanged: (text) {

@@ -34,7 +34,6 @@ class HomeView extends GetView<HomeController> {
                     width: 320,
                     height: 40,
                     child: SearchBar(
-                      borderRadius: 0,
                       onChanged: (text) {
                         if (text != null) {
                           controller.search(text);
