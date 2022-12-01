@@ -1,21 +1,21 @@
+import 'package:favoritism_communication/app/dummy_data/chat_dummy_data.dart';
 import 'package:get/get.dart';
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 class SearchService extends GetxService {
   late List<String> targetUsers;
   RxList<String> results = <String>[].obs;
   static const _searchIntervalMilliSecond = 1000; //1秒
 
+  //FIXME: firebase構築後に関数全体のデータ取得先、取得方法を変更
   void getTargetUsers() {
-    //FIXME: firebaseからデータを取得するようになったら削除
-    final List<String> users = [
-      'Aさん',
-      'ABさん',
-      'ABCさん',
-      'Bさん',
-      'BAさん',
-      'BACさん',
-      'Cさん'
-    ];
+    final List<String> users = [];
+
+    // CandidateMemberCardData
+    for (CandidateMemberCardData element in candidateMemberCardList) {
+      users.add(element.userName);
+    }
+
     targetUsers = users;
   }
 

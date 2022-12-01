@@ -1,6 +1,6 @@
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-import 'package:favoritism_communication/app/dummy_data/candidate_member_card_dummy_data.dart';
+import 'package:favoritism_communication/app/dummy_data/chat_dummy_data.dart';
 import 'package:get/get.dart';
 
 class CreateChatGroupController extends GetxController {
@@ -36,17 +36,20 @@ class CreateChatGroupController extends GetxController {
 
   /// トークする友達を選択済みに更新し、選択済みユーザーリストに追加するメソッド
   void select(CandidateMemberCardData candidateMemberCardData) {
-    //タップされたカードのユーザーを選択済みに更新
-    candidateMemberCardDataList[candidateMemberCardDataList
-            .indexWhere((element) => element == candidateMemberCardData)]
-        .isSelected = true;
+    //selectedMemberDataList内に未追加の場合のみ処理実行
+    if (!selectedMemberDataList.contains(candidateMemberCardData)) {
+      //タップされたカードのユーザーを選択済みに更新
+      candidateMemberCardDataList[candidateMemberCardDataList
+              .indexWhere((element) => element == candidateMemberCardData)]
+          .isSelected = true;
 
-    //選択済みユーザーリストに追加
-    selectedMemberDataList.add(candidateMemberCardDataList[
-        candidateMemberCardDataList
-            .indexWhere((element) => element == candidateMemberCardData)]);
+      //選択済みユーザーリストに追加
+      selectedMemberDataList.add(candidateMemberCardDataList[
+          candidateMemberCardDataList
+              .indexWhere((element) => element == candidateMemberCardData)]);
 
-    candidateMemberCardDataList.refresh();
+      candidateMemberCardDataList.refresh();
+    }
   }
 
   /// トークする友達を未選択にし、選択済みユーザーリストから削除するメソッド

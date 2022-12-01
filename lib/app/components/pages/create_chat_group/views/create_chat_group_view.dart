@@ -50,8 +50,29 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                                 index: index,
                                 text: controller.searchResult
                                     .elementAt(index - 1),
-                                onPressed: () =>
+                                onIconButtonPressed: () =>
                                     controller.searchResult.removeAt(index - 1),
+                                onTap: () {
+                                  //HACK: TapされたSeachResultListTileのユーザー名に対応するCandidateMemberCardを選択状態にする処理
+                                  //少し複雑なため、改良の余地あり。
+                                  //candidateMemberCardDataListの中から、TapされたSeachResultListTileのユーザー名に対応する要素のindexを取得
+                                  int indexAtTappedElement = controller
+                                      .candidateMemberCardDataList
+                                      .indexWhere(
+                                    (element) =>
+                                        element.userName ==
+                                        controller.searchResult
+                                            .elementAt(index - 1),
+                                  );
+                                  //求めたindexに対応するcandidateMemberCardDataListの要素のisSelectedを選択状態(true)にする
+                                  controller.select(
+                                    controller.candidateMemberCardDataList[
+                                        indexAtTappedElement],
+                                  );
+                                  //検索バーからフォーカスを外す
+                                  controller.isFocusedOnSearchBar.value = false;
+                                  FocusScope.of(context).unfocus();
+                                },
                               ),
                               const Divider(),
                             ],

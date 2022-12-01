@@ -71,6 +71,7 @@ class CandidateMemberCard extends StatelessWidget {
   }
 }
 
+// TODO: フィールドはfirebase構築後に調整
 class CandidateMemberCardData {
   final String userName;
   final String? userImage;
