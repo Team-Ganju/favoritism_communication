@@ -17,7 +17,6 @@ class SeachResultListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      tileColor: Colors.yellow,
       leading: IconButton(
         icon: const Icon(Icons.close),
         onPressed: onPressed,

@@ -3,22 +3,37 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 // TODO: 外部からユーザデータを取得
 List<Map<String, dynamic>> candidateMemberData = [
   {
-    'name': 'Kaz',
+    'name': 'Aさん',
     'image': null,
     'isSelected': false,
   },
   {
-    'name': 'Motaken',
+    'name': 'ABさん',
     'image': null,
     'isSelected': false,
   },
   {
-    'name': 'Raiki',
+    'name': 'ABCさん',
     'image': null,
     'isSelected': false,
   },
   {
-    'name': 'Nisshy',
+    'name': 'Bさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'BAさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'BACさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Cさん',
     'image': null,
     'isSelected': false,
   },

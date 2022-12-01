@@ -4,8 +4,9 @@ import 'package:favoritism_communication/app/dummy_data/candidate_member_card_du
 import 'package:get/get.dart';
 
 class CreateChatGroupController extends GetxController {
-  RxList searchResult = [].obs;
-  // final RxBool isSelectedAtLeastOne = false.obs;
+  final RxList searchResult = [].obs;
+
+  final isFocusedOnSearchBar = false.obs;
   final RxList<CandidateMemberCardData> candidateMemberCardDataList =
       <CandidateMemberCardData>[].obs;
   final RxList<CandidateMemberCardData> selectedMemberDataList =

@@ -8,6 +8,7 @@ import '../controllers/create_chat_group_controller.dart';
 
 class CreateChatGroupView extends GetView<CreateChatGroupController> {
   const CreateChatGroupView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,58 +21,61 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SearchBar(
-              onChanged: (text) {
-                if (text != null) controller.searchUser(text);
+            child: Focus(
+              onFocusChange: (hasFocus) {
+                controller.isFocusedOnSearchBar.value = hasFocus;
               },
+              child: SearchBar(
+                onChanged: (text) {
+                  if (text != null) controller.searchUser(text);
+                },
+              ),
             ),
           ),
-          Expanded(
-            child: Stack(
-              children: [
-                Obx(
-                  () => ListView.builder(
-                    itemCount: controller.candidateMemberCardDataList.length,
-                    itemBuilder: (context, index) {
-                      final CandidateMemberCardData candidateMemberCardData =
-                          controller.candidateMemberCardDataList[index];
-                      return CandidateMemberCard(
-                        candidateMemberCardData: candidateMemberCardData,
-                        onTap: () => controller
-                                .candidateMemberCardDataList[index].isSelected
-                            ? controller.unselect(candidateMemberCardData)
-                            : controller.select(candidateMemberCardData),
-                      );
-                    },
+          //検索バーフォーカス時はSeachResultListTile、フォーカスが外れている場合はCandidateMemberCardを表示
+          Obx(
+            () => controller.isFocusedOnSearchBar.value
+                ? Expanded(
+                    child: ListView.builder(
+                      itemCount: controller.searchResult.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return controller.searchResult.isNotEmpty
+                              ? const Divider()
+                              : Container();
+                        } else {
+                          return Column(
+                            children: [
+                              SeachResultListTile(
+                                index: index,
+                                text: controller.searchResult
+                                    .elementAt(index - 1),
+                                onPressed: () =>
+                                    controller.searchResult.removeAt(index - 1),
+                              ),
+                              const Divider(),
+                            ],
+                          );
+                        }
+                      },
+                    ),
+                  )
+                : Expanded(
+                    child: ListView.builder(
+                      itemCount: controller.candidateMemberCardDataList.length,
+                      itemBuilder: (context, index) {
+                        final CandidateMemberCardData candidateMemberCardData =
+                            controller.candidateMemberCardDataList[index];
+                        return CandidateMemberCard(
+                          candidateMemberCardData: candidateMemberCardData,
+                          onTap: () => controller
+                                  .candidateMemberCardDataList[index].isSelected
+                              ? controller.unselect(candidateMemberCardData)
+                              : controller.select(candidateMemberCardData),
+                        );
+                      },
+                    ),
                   ),
-                ),
-                // Obx(
-                //   () => ListView.builder(
-                //     itemCount: controller.searchResult.length + 1,
-                //     itemBuilder: (context, index) {
-                //       if (index == 0) {
-                //         return controller.searchResult.isNotEmpty
-                //             ? const Divider()
-                //             : Container();
-                //       } else {
-                //         return Column(
-                //           children: [
-                //             SeachResultListTile(
-                //               index: index,
-                //               text:
-                //                   controller.searchResult.elementAt(index - 1),
-                //               onPressed: () =>
-                //                   controller.searchResult.removeAt(index - 1),
-                //             ),
-                //             const Divider(),
-                //           ],
-                //         );
-                //       }
-                //     },
-                //   ),
-                // ),
-              ],
-            ),
           ),
           const CustomFooter(),
         ],
