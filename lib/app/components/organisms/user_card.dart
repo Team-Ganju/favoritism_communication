@@ -1,4 +1,5 @@
 import 'package:favoritism_communication/app/components/molecules/molecules.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class UserCard extends StatelessWidget {
@@ -23,7 +24,7 @@ class UserCard extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
                 side: BorderSide(
-                  color: Colors.grey.shade300,
+                  color: colorUserCardBorder,
                 ),
               ),
               margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -40,7 +41,7 @@ class UserCard extends StatelessWidget {
                             // fixme1: あとでatomic designでコンポーネント化する。
                             // fixme2: Firestorageで画像が取得できるようになったら修正
                             CircleAvatar(
-                              backgroundColor: Colors.grey,
+                              backgroundColor: colorUserCardCircleAvatarBg,
                               child: userCardData.userImage != null
                                   ? Image(
                                       image:
@@ -48,7 +49,7 @@ class UserCard extends StatelessWidget {
                                     )
                                   : const Icon(
                                       Icons.person,
-                                      color: Colors.white,
+                                      color: colorUserCardCircleIcon,
                                     ),
                             ),
                             const SizedBox(width: 15),

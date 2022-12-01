@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
@@ -15,7 +16,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
     return Scaffold(
       appBar: const NavBar(
         title: '友達を選択',
-        backgroundColor: Colors.pink,
+        backgroundColor: colorCreateChatViewBg,
       ),
       body: Column(
         children: [

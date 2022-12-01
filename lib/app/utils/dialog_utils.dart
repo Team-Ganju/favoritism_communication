@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,14 +25,14 @@ class DialogUtils {
         FractionallySizedBox(
           widthFactor: 0.8,
           child: TextButton(
-            style:
-                TextButton.styleFrom(backgroundColor: const Color(0xff0091ea)),
+            style: TextButton.styleFrom(
+                backgroundColor: colorMatchingDialogButtonTextBg),
             onPressed: () {
               action.call();
             },
             child: const Text(
               "トークに移動する",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: colorMatchingDialogButtonTextFg),
             ),
           ),
         ),

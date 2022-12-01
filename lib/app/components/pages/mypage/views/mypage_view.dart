@@ -1,4 +1,5 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,7 +12,7 @@ class MypageView extends GetView<MypageController> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: NavBar(
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: colorMypageAppBarBg,
         title: 'プロフィール',
       ),
       body: Center(

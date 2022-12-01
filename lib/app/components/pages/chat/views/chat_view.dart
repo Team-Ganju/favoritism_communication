@@ -9,6 +9,8 @@ import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../styles/styles.dart';
+
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
 
@@ -17,14 +19,14 @@ class ChatView extends GetView<ChatController> {
     return Scaffold(
       appBar: NavBar(
         title: 'トーク',
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: colorChatViewBg,
         trailing: <Widget>[
           IconButton(
             icon: const Icon(
               Icons.person_add_alt_1,
               size: 30,
             ),
-            color: Colors.grey,
+            color: colorChatViewIcon,
             onPressed: () {
               Get.toNamed(
                 Routes.createChatGroup,
@@ -40,9 +42,9 @@ class ChatView extends GetView<ChatController> {
             child: Container(
               height: 45,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
+                border: Border.all(color: colorChatViewBodyBorder),
                 borderRadius: BorderRadius.circular(45),
-                color: Colors.white,
+                color: colorChatViewBodyBg,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -52,15 +54,15 @@ class ChatView extends GetView<ChatController> {
                         avatar: const Icon(
                           Icons.groups,
                           size: 26,
-                          color: Colors.grey,
+                          color: colorActionChipIcon,
                         ),
                         label: const Text('グループ'),
                         labelPadding:
                             const EdgeInsets.symmetric(horizontal: 13.0),
                         side: BorderSide.none,
                         backgroundColor: controller.isGroupTalk.value
-                            ? Colors.yellow
-                            : Colors.white,
+                            ? colorActionChipGroupBgIfIsGroupTalk
+                            : colorActionChipGroupBgIfIsNotGroupTalk,
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
                           controller.switchTalkPartner();
@@ -69,15 +71,15 @@ class ChatView extends GetView<ChatController> {
                   Obx(() => CustomActionChip(
                         avatar: const Icon(
                           Icons.person,
-                          color: Colors.grey,
+                          color: colorActionChipGroupIcon,
                         ),
                         label: const Text('ペアトーク'),
                         labelPadding:
                             const EdgeInsets.symmetric(horizontal: 4.0),
                         side: BorderSide.none,
                         backgroundColor: controller.isGroupTalk.value
-                            ? Colors.white
-                            : Colors.yellow,
+                            ? colorActionChipPairTalkBgIfIsGroupTalk
+                            : colorActionChipPairTalkBgIfIsNotGroupTalk,
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
                           controller.switchTalkPartner();

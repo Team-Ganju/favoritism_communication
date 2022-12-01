@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomChip extends StatelessWidget {
@@ -18,7 +19,7 @@ class CustomChip extends StatelessWidget {
       backgroundColor: backgroundColor,
       shape: const StadiumBorder(
         side: BorderSide(
-          color: Color.fromARGB(132, 207, 205, 205),
+          color: colorChipBorder,
         ),
       ),
     );
