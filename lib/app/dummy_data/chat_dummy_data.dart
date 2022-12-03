@@ -1,6 +1,6 @@
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
-// TODO: 外部からユーザデータを取得
+// TODO: 外部からユーザデータを取得、isSelectedはfirestoreにはないアプリ内の独自フラグであるため
 List<Map<String, dynamic>> candidateMemberData = [
   {
     'name': 'Aさん',
@@ -95,9 +95,9 @@ List<Map<String, dynamic>> groupChat = [
   }
 ];
 
-List<CandidateMemberCardData> candidateMemberCardList = candidateMemberData.map(
+List<FriendCardData> friendCardList = candidateMemberData.map(
   (item) {
-    return CandidateMemberCardData(
+    return FriendCardData(
       item['name'],
       item['image'],
       item['isSelected'],

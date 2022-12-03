@@ -7,10 +7,8 @@ class CreateChatGroupController extends GetxController {
   final RxList searchResult = [].obs;
 
   final isFocusedOnSearchBar = false.obs;
-  final RxList<CandidateMemberCardData> candidateMemberCardDataList =
-      <CandidateMemberCardData>[].obs;
-  final RxList<CandidateMemberCardData> selectedMemberDataList =
-      <CandidateMemberCardData>[].obs;
+  final RxList<FriendCardData> friendCardDataList = <FriendCardData>[].obs;
+  final RxList<FriendCardData> selectedMemberDataList = <FriendCardData>[].obs;
 
   final SearchService searchService = Get.find();
 
@@ -24,8 +22,8 @@ class CreateChatGroupController extends GetxController {
   ///相互フォローのユーザーを取得するメソッド
   // TODO: firebase構築後、検索処理を書く
   void fetchMutualFollowUserData() {
-    candidateMemberCardDataList.assignAll(candidateMemberCardList);
-    candidateMemberCardDataList.refresh();
+    friendCardDataList.assignAll(friendCardList);
+    friendCardDataList.refresh();
   }
 
   /// 検索バーに入力されたテキストに合致するユーザーを取得するメソッド
@@ -35,36 +33,34 @@ class CreateChatGroupController extends GetxController {
   }
 
   /// トークする友達を選択済みに更新し、選択済みユーザーリストに追加するメソッド
-  void select(CandidateMemberCardData candidateMemberCardData) {
+  void select(FriendCardData friendCardData) {
     //selectedMemberDataList内に未追加の場合のみ処理実行
-    if (!selectedMemberDataList.contains(candidateMemberCardData)) {
+    if (!selectedMemberDataList.contains(friendCardData)) {
       //タップされたカードのユーザーを選択済みに更新
-      candidateMemberCardDataList[candidateMemberCardDataList
-              .indexWhere((element) => element == candidateMemberCardData)]
+      friendCardDataList[friendCardDataList
+              .indexWhere((element) => element == friendCardData)]
           .isSelected = true;
 
       //選択済みユーザーリストに追加
-      selectedMemberDataList.add(candidateMemberCardDataList[
-          candidateMemberCardDataList
-              .indexWhere((element) => element == candidateMemberCardData)]);
+      selectedMemberDataList.add(friendCardDataList[friendCardDataList
+          .indexWhere((element) => element == friendCardData)]);
 
-      candidateMemberCardDataList.refresh();
+      friendCardDataList.refresh();
     }
   }
 
   /// トークする友達を未選択にし、選択済みユーザーリストから削除するメソッド
-  void unselect(CandidateMemberCardData candidateMemberCardData) {
+  void unselect(FriendCardData friendCardData) {
     //タップされたカードのユーザーを選択済みに更新
-    candidateMemberCardDataList[candidateMemberCardDataList
-            .indexWhere((element) => element == candidateMemberCardData)]
+    friendCardDataList[friendCardDataList
+            .indexWhere((element) => element == friendCardData)]
         .isSelected = false;
 
     //選択済みユーザーリストから削除
-    selectedMemberDataList.remove(candidateMemberCardDataList[
-        candidateMemberCardDataList
-            .indexWhere((element) => element == candidateMemberCardData)]);
+    selectedMemberDataList.remove(friendCardDataList[
+        friendCardDataList.indexWhere((element) => element == friendCardData)]);
 
-    candidateMemberCardDataList.refresh();
+    friendCardDataList.refresh();
   }
 
   /// 選択されたユーザー数が1以上か判定するメソッド

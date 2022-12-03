@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CandidateMemberCard extends StatelessWidget {
-  const CandidateMemberCard({
+class FriendCard extends StatelessWidget {
+  const FriendCard({
     Key? key,
-    required this.candidateMemberCardData,
+    required this.friendCardData,
     required this.onTap,
   }) : super(key: key);
 
-  final CandidateMemberCardData candidateMemberCardData;
+  final FriendCardData friendCardData;
   final VoidCallback onTap;
 
   @override
@@ -30,8 +30,8 @@ class CandidateMemberCard extends StatelessWidget {
               CircleAvatar(
                 //TODO:firebase接続後に動作確認
                 //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                foregroundImage: candidateMemberCardData.userImage != null
-                    ? NetworkImage(candidateMemberCardData.userImage!)
+                foregroundImage: friendCardData.userImage != null
+                    ? NetworkImage(friendCardData.userImage!)
                     : null,
                 backgroundColor: Colors.grey,
                 child: const Icon(
@@ -49,7 +49,7 @@ class CandidateMemberCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      candidateMemberCardData.userName,
+                      friendCardData.userName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 20),
@@ -57,7 +57,7 @@ class CandidateMemberCard extends StatelessWidget {
                   ],
                 ),
               ),
-              candidateMemberCardData.isSelected
+              friendCardData.isSelected
                   ? const Icon(
                       Icons.check_circle,
                       color: Colors.green,
@@ -72,12 +72,12 @@ class CandidateMemberCard extends StatelessWidget {
 }
 
 // TODO: フィールドはfirebase構築後に調整
-class CandidateMemberCardData {
+class FriendCardData {
   final String userName;
   final String? userImage;
   late bool isSelected = false;
 
-  CandidateMemberCardData(
+  FriendCardData(
     this.userName,
     this.userImage,
     this.isSelected,

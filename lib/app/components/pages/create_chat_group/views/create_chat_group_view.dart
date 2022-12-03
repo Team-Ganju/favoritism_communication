@@ -33,7 +33,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
               ),
             ),
           ),
-          //検索バーフォーカス時はSeachResultListTile、フォーカスが外れている場合はCandidateMemberCardを表示
+          //検索バーフォーカス時はSeachResultListTile、フォーカスが外れている場合はFriendCardを表示
           Obx(
             () => controller.isFocusedOnSearchBar.value
                 ? Expanded(
@@ -54,12 +54,11 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                                 onIconButtonPressed: () =>
                                     controller.searchResult.removeAt(index - 1),
                                 onTap: () {
-                                  //HACK: TapされたSeachResultListTileのユーザー名に対応するCandidateMemberCardを選択状態にする処理
+                                  //HACK: TapされたSeachResultListTileのユーザー名に対応するFriendCardを選択状態にする処理
                                   //少し複雑なため、改良の余地あり。
-                                  //candidateMemberCardDataListの中から、TapされたSeachResultListTileのユーザー名に対応する要素のindexを取得
-                                  int indexAtTappedElement = controller
-                                      .candidateMemberCardDataList
-                                      .indexWhere(
+                                  //friendCardDataListの中から、TapされたSeachResultListTileのユーザー名に対応する要素のindexを取得
+                                  int indexAtTappedElement =
+                                      controller.friendCardDataList.indexWhere(
                                     (element) =>
                                         element.userName ==
                                         controller.searchResult
@@ -69,9 +68,9 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                                   //誤タップ防止の為ローディング表示
                                   EasyLoading.show();
 
-                                  //求めたindexに対応するcandidateMemberCardDataListの要素のisSelectedを選択状態(true)にする
+                                  //求めたindexに対応するfriendCardDataListの要素のisSelectedを選択状態(true)にする
                                   controller.select(
-                                    controller.candidateMemberCardDataList[
+                                    controller.friendCardDataList[
                                         indexAtTappedElement],
                                   );
 
@@ -97,16 +96,16 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                   )
                 : Expanded(
                     child: ListView.builder(
-                      itemCount: controller.candidateMemberCardDataList.length,
+                      itemCount: controller.friendCardDataList.length,
                       itemBuilder: (context, index) {
-                        final CandidateMemberCardData candidateMemberCardData =
-                            controller.candidateMemberCardDataList[index];
-                        return CandidateMemberCard(
-                          candidateMemberCardData: candidateMemberCardData,
-                          onTap: () => controller
-                                  .candidateMemberCardDataList[index].isSelected
-                              ? controller.unselect(candidateMemberCardData)
-                              : controller.select(candidateMemberCardData),
+                        final FriendCardData friendCardData =
+                            controller.friendCardDataList[index];
+                        return FriendCard(
+                          friendCardData: friendCardData,
+                          onTap: () =>
+                              controller.friendCardDataList[index].isSelected
+                                  ? controller.unselect(friendCardData)
+                                  : controller.select(friendCardData),
                         );
                       },
                     ),

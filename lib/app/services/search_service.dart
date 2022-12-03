@@ -11,8 +11,8 @@ class SearchService extends GetxService {
   void getTargetUsers() {
     final List<String> users = [];
 
-    // CandidateMemberCardData
-    for (CandidateMemberCardData element in candidateMemberCardList) {
+    // FriendCardData
+    for (FriendCardData element in friendCardList) {
       users.add(element.userName);
     }
 
