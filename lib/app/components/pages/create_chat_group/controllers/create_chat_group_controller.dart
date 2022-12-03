@@ -15,13 +15,21 @@ class CreateChatGroupController extends GetxController {
   @override
   void onInit() {
     searchService.getTargetUsers();
-    fetchMutualFollowUserData();
+    fetchFriendData();
+    initSelectedFlag();
     super.onInit();
+  }
+
+  //HACK: カード選択状態が画面を閉じた後も残ってしまうため暫定対策としてisSelectedを明示的に初期化する
+  void initSelectedFlag() {
+    for (FriendCardData element in friendCardDataList) {
+      element.isSelected = false;
+    }
   }
 
   ///相互フォローのユーザーを取得するメソッド
   // TODO: firebase構築後、検索処理を書く
-  void fetchMutualFollowUserData() {
+  void fetchFriendData() {
     friendCardDataList.assignAll(friendCardList);
     friendCardDataList.refresh();
   }

@@ -1,4 +1,4 @@
-export 'candidate_member_card.dart';
+export 'friend_card.dart';
 export 'message_bar.dart';
 export 'nav_bar.dart';
 export 'search_bar.dart';
