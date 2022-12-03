@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:favoritism_communication/app/components/templates/templates.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/create_chat_group_controller.dart';
 
 class CreateChatGroupView extends GetView<CreateChatGroupController> {
@@ -94,6 +93,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                       },
                     ),
                   )
+                //TODO: CustomSmartReflesherを導入するがHomeViewonLoadingなどはserviceとして独立させた方が良さそう
                 : Expanded(
                     child: ListView.builder(
                       itemCount: controller.friendCardDataList.length,
@@ -119,7 +119,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
         () => CustomElevatedButton(
           buttonText: 'トークに移動する',
           initialActiveFlag: controller.isSelectedAtLeastOne(),
-          //FIXME: 遷移先の画面ができたら遷移処理を実装
+          //FIXME: Get.back()でモーダルを閉じ、controller.selectedMemberDataListをChatViewに渡す
           onPressed: controller.isSelectedAtLeastOne() ? () {} : null,
         ),
       ),

@@ -37,6 +37,26 @@ List<Map<String, dynamic>> friendData = [
     'image': null,
     'isSelected': false,
   },
+  {
+    'name': 'Dさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Eさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Fさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Gさん',
+    'image': null,
+    'isSelected': false,
+  },
 ];
 
 // TODO: 全体的にUserのデータ構造を意識した形に整形し直す
