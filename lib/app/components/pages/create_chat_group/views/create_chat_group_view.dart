@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:get/get.dart';
 
@@ -64,14 +65,27 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                                         controller.searchResult
                                             .elementAt(index - 1),
                                   );
+
+                                  //誤タップ防止の為ローディング表示
+                                  EasyLoading.show();
+
                                   //求めたindexに対応するcandidateMemberCardDataListの要素のisSelectedを選択状態(true)にする
                                   controller.select(
                                     controller.candidateMemberCardDataList[
                                         indexAtTappedElement],
                                   );
-                                  //検索バーからフォーカスを外す
-                                  controller.isFocusedOnSearchBar.value = false;
-                                  FocusScope.of(context).unfocus();
+
+                                  Future.delayed(
+                                    Duration(milliseconds: 500),
+                                    () => EasyLoading.dismiss().then(
+                                      (value) {
+                                        //検索バーからフォーカスを外す
+                                        controller.isFocusedOnSearchBar.value =
+                                            false;
+                                        FocusScope.of(context).unfocus();
+                                      },
+                                    ),
+                                  );
                                 },
                               ),
                               const Divider(),
