@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class FollowButton extends StatelessWidget {
@@ -25,7 +26,7 @@ class FollowButton extends StatelessWidget {
             ? const StadiumBorder()
             : const StadiumBorder(
                 side: BorderSide(
-                  color: Colors.blueAccent,
+                  color: colorFollowButtonBorderAsUnfollowed,
                 ),
               ),
         elevation: 0,

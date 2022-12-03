@@ -1,11 +1,14 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/utils/dialog_utils.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
+import '../../../atoms/tab_button.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -14,10 +17,60 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: const NavBar(
-        backgroundColor: Colors.pinkAccent,
-        title: 'ホーム',
+      backgroundColor: colorHomeBg,
+      appBar: NavBar(
+        backgroundColor: colorHomeAppBarBg,
+        toolbarHeight: 120,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 320,
+                    height: 40,
+                    child: SearchBar(
+                      onChanged: (text) {
+                        if (text != null) {
+                          controller.search(text);
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Badge(
+                    badgeContent: const Text(
+                      '1',
+                      style: TextStyle(
+                          fontSize: 14, color: colorHomeAppBarIconBadgeText),
+                    ),
+                    padding: const EdgeInsets.all(6),
+                    badgeColor: colorHomeAppBarIconBadgeBg,
+                    child: const Icon(
+                      Icons.notifications,
+                      size: 36,
+                    ),
+                  ),
+                  onPressed: () => Get.back<dynamic>(),
+                  color: colorHomeAppBarIcon,
+                )
+              ],
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.all(8),
+              child: Obx(
+                () => Row(
+                  children: buildTabButtons(controller.getTabList()),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -27,8 +80,10 @@ class HomeView extends GetView<HomeController> {
               if (notification.metrics.pixels > 2000) {
                 controller.needScrollToTop(true);
                 // スクロール停止後、指定秒を経過したらボタンを非表示にする
-                Future.delayed(const Duration(seconds: 3),
-                    () => {controller.needScrollToTop(false)});
+                Future.delayed(
+                  const Duration(seconds: 3),
+                  () => {controller.needScrollToTop(false)},
+                );
               } else {
                 controller.needScrollToTop(false);
               }
@@ -64,8 +119,10 @@ class HomeView extends GetView<HomeController> {
                                           controller.scrollController.jumpTo(0);
                                           controller.unFollow(userCardData);
                                         },
-                                        backgroundColor: Colors.blueAccent,
-                                        foregroundColor: Colors.white,
+                                        foregroundColor:
+                                            colorUserCardFollowButtonFgAsFollowed,
+                                        backgroundColor:
+                                            colorUserCardFollowButtonBgAsFollowed,
                                         isFollowed: userCardData.isFollowed,
                                       )
                                     : FollowButton(
@@ -99,8 +156,10 @@ class HomeView extends GetView<HomeController> {
                                             },
                                           );
                                         },
-                                        backgroundColor: Colors.white,
-                                        foregroundColor: Colors.blueAccent,
+                                        foregroundColor:
+                                            colorUserCardFollowButtonFgAsUnfollowed,
+                                        backgroundColor:
+                                            colorUserCardFollowButtonBgAsUnfollowed,
                                         isFollowed: userCardData.isFollowed,
                                       ),
                               ),
@@ -139,8 +198,8 @@ class HomeView extends GetView<HomeController> {
                   style: ElevatedButton.styleFrom(
                     fixedSize:
                         Size(MediaQuery.of(context).size.width * 0.3, 25),
-                    backgroundColor: const Color.fromRGBO(236, 188, 179, 1),
-                    foregroundColor: Colors.white,
+                    foregroundColor: colorReturnToTopButtonFg,
+                    backgroundColor: colorReturnToTopButtonBg,
                     shape: const StadiumBorder(),
                     elevation: 0,
                   ),
@@ -156,17 +215,23 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
+}
 
-  // Follower? fetchFirstMatchedFollower() {
-  //   // todo マッチングしたフォロワーから最初の一人を選択
-  //   var rand = math.Random();
-  //   var hasMatchedFollower = rand.nextInt(3) % 3 == 0;
-  //   if (hasMatchedFollower) {
-  //     return const Follower("001", "モンブラン");
-  //   } else {
-  //     return null;
-  //   }
-  // }
+List<Widget> buildTabButtons(List<TabData> tabDataList) {
+  List<Widget> list = [];
+  for (var i = 0; i < tabDataList.length; i++) {
+    list.add(
+      TabButton(
+        chipTitle: tabDataList[i].title,
+        isEnable: tabDataList[i].isEnable,
+        onPressed: () => tabDataList[i].onPressed(tabDataList[i]),
+      ),
+    );
+    if (i != tabDataList.length - 1) {
+      list.add(const SizedBox(width: 8));
+    }
+  }
+  return list;
 }
 
 class Follower {

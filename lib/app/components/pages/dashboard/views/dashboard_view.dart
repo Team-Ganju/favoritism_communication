@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/components/pages/tab_root/tab_root_view.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,8 +25,8 @@ class DashboardView extends GetView<DashboardController> {
         () => BottomNavigationBar(
           onTap: controller.tabService.changeIndex,
           currentIndex: controller.tabService.tabIndex.value,
-          unselectedItemColor: Colors.grey,
-          selectedItemColor: Colors.pinkAccent,
+          unselectedItemColor: colorDashboardUnselectedItem,
+          selectedItemColor: colorDashboardSelectedItem,
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

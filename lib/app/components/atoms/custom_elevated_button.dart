@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -25,19 +26,20 @@ class CustomElevatedButton extends StatelessWidget {
               side: initialActiveFlag
                   ? BorderSide.none //活性
                   : const BorderSide(
-                      color: Colors.blue,
+                      color: colorElevatedButtonBorder,
                       width: 2.0,
                     ), //非活性
               borderRadius: BorderRadius.circular(300),
             ),
           ),
           foregroundColor: initialActiveFlag
-              ? MaterialStateProperty.all<Color>(Colors.white) //活性
-              : MaterialStateProperty.all<Color>(Colors.blue),
+              ? MaterialStateProperty.all<Color>(
+                  colorElevatedButtonFgActive) //活性
+              : MaterialStateProperty.all<Color>(colorElevatedButtonFgDeactive),
           backgroundColor: MaterialStateProperty.all(
             initialActiveFlag
-                ? Colors.blue //活性
-                : Colors.white, //非活性
+                ? colorElevatedButtonBgActive //活性
+                : colorElevatedButtonBgDeactive, //非活性
           ),
         ),
         //FIXME: isSelectedAtLeastOneがtrueの場合に、選択されたメンバーの情報を受け取って次画面へ遷移する処理を追加

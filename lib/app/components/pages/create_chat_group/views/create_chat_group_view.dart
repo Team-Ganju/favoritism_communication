@@ -1,6 +1,7 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-import 'package:favoritism_communication/app/components/templates/templates.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
+// import 'package:favoritism_communication/app/components/templates/templates.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -15,7 +16,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
       resizeToAvoidBottomInset: false,
       appBar: const NavBar(
         title: '友達を選択',
-        backgroundColor: Colors.pink,
+        backgroundColor: colorCreateChatViewBg,
       ),
       body: Column(
         children: [

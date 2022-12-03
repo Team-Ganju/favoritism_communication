@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomFooter extends StatelessWidget {
@@ -12,7 +13,7 @@ class CustomFooter extends StatelessWidget {
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: Colors.grey,
+            color: colorFooterBorder,
             width: 1,
           ),
         ),
@@ -21,7 +22,7 @@ class CustomFooter extends StatelessWidget {
         width: double.infinity,
         //FIXME: 高さ指定は端末幅基準に直す
         height: 90,
-        color: Colors.white,
+        color: colorFooterBg,
       ),
     );
   }
