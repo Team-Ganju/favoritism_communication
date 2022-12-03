@@ -19,7 +19,7 @@ class DemoAppPages {
     ),
     GetPage(
       name: _DemoPaths.demoLogin,
-      page: () => const DemologinView(),
+      page: () => DemologinView(),
       binding: DemologinBinding(),
     ),
   ];
