@@ -75,7 +75,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                                   );
 
                                   Future.delayed(
-                                    Duration(milliseconds: 500),
+                                    const Duration(milliseconds: 500),
                                     () => EasyLoading.dismiss().then(
                                       (value) {
                                         //検索バーからフォーカスを外す
