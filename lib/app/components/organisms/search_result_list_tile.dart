@@ -24,7 +24,6 @@ class SeachResultListTile extends StatelessWidget {
       title: Text(
         text,
       ),
-      //TODO: メンバー選択処理実装
       onTap: onTap,
     );
   }

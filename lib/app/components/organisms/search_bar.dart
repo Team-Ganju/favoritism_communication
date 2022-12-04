@@ -14,7 +14,6 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: GestureDetectorでwrapしてFocusScope.of(context).unfocus()を実装したい。ホーム画面の検索バーとの調整が必要
     return FormBuilderTextField(
       name: '検索バー',
       keyboardType: TextInputType.text,
@@ -29,7 +28,6 @@ class SearchBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(45),
         ),
         focusedBorder: OutlineInputBorder(
-          //FIXME: テキスト入力時の下線の色は外部ファイルから指定
           borderSide: const BorderSide(color: colorSearchBarInputBorderFocused),
           borderRadius: BorderRadius.circular(45),
         ),

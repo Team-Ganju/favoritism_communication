@@ -24,7 +24,6 @@ class TalkMemberCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
           side: BorderSide(
-            //FIXME: 各種項目の色はアプリ全体の色を管理するファイルから参照するように修正する
             color: colorTalkMemberCardBorder,
           ),
         ),

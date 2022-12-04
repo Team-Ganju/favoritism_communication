@@ -17,8 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
-      width: 280,
-      // decoration: BoxDecoration(border: ),
+      width: MediaQuery.of(context).size.width * 0.7,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -29,7 +28,7 @@ class CustomElevatedButton extends StatelessWidget {
                       color: colorElevatedButtonBorder,
                       width: 2.0,
                     ), //非活性
-              borderRadius: BorderRadius.circular(300),
+              borderRadius: BorderRadius.circular(30),
             ),
           ),
           foregroundColor: initialActiveFlag
@@ -50,8 +49,6 @@ class CustomElevatedButton extends StatelessWidget {
           buttonText,
           style: const TextStyle(
             fontSize: 20,
-            //FIXME: 字体を指定する必要があれば修正、なければfontFamilyは削除
-            // fontFamily: ,
           ),
         ),
       ),

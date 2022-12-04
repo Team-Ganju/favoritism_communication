@@ -1,6 +1,6 @@
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
-// TODO: 外部からユーザデータを取得、isSelectedはfirestoreにはないアプリ内の独自フラグであるため
+// TODO: 外部からユーザデータを取得、isSelectedはfirestoreにはないアプリ内の独自フラグ
 List<Map<String, dynamic>> friendData = [
   {
     'name': 'Aさん',
