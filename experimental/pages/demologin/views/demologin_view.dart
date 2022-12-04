@@ -13,7 +13,6 @@ class DemologinView extends GetView<DemologinController> {
   DemologinView({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormBuilderState>();
 
-  static const _formPadding = EdgeInsets.symmetric(vertical: 20, horizontal: 30);
   static const _emailMaxLength = 256;     // メールアドレスの最大文字数
   static const _fieldNameEmail = 'email'; // フィールド名：メールアドレス
 
@@ -29,7 +28,7 @@ class DemologinView extends GetView<DemologinController> {
               child: Column(
                 children: [
                   Padding(
-                    padding: _formPadding,
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                     child: FormBuilderTextField(
                       name: _fieldNameEmail,
                       decoration: const InputDecoration(
