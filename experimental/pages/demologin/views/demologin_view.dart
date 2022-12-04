@@ -13,7 +13,8 @@ class DemologinView extends GetView<DemologinController> {
   DemologinView({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormBuilderState>();
 
-  static const _emailMaxLength = 256;
+  static const _emailMaxLength = 256;     // メールアドレスの最大文字数
+  static const _fieldNameEmail = 'email'; // フィールド名：メールアドレス
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class DemologinView extends GetView<DemologinController> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                     child: FormBuilderTextField(
-                      name: 'email',
+                      name: _fieldNameEmail,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'メールアドレス',
@@ -49,14 +50,16 @@ class DemologinView extends GetView<DemologinController> {
                     buttonText: 'メールでログイン',
                     initialActiveFlag: true,
                     onPressed: () async {
+                      // バリデーションをパスできた場合
                       if(_formKey.currentState?.saveAndValidate() ?? false) {
+                        //TODO: 認証の判定
                         if(await Future.value(true)){
-                          Get.toNamed(DemoRoutes.demoHome);
+                          Get.offNamed(DemoRoutes.demoHome);
                         }
                       }
                       else{
                         _formKey.currentState?.invalidateField(
-                          name: 'email',
+                          name: _fieldNameEmail,
                         );
                       }
 
