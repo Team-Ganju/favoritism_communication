@@ -18,7 +18,6 @@ class CustomElevatedButton extends StatelessWidget {
     return SizedBox(
       height: 60,
       width: 280,
-      // decoration: BoxDecoration(border: ),
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(

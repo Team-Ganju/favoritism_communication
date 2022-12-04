@@ -5,10 +5,13 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Demo')),
-      body: const Center(
-        child: Text('Demo'),
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(top: 50.0),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: Text('ユーザID:XXXX'),  //TODO: ログインユーザーのIDを表示
+        ),
       ),
     );
   }
