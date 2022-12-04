@@ -28,7 +28,7 @@ class DemologinView extends GetView<DemologinController> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                     child: FormBuilderTextField(
                       name: _fieldNameEmail,
                       decoration: const InputDecoration(
