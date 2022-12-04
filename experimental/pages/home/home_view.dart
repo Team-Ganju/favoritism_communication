@@ -7,8 +7,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('ホーム')),
-      body: const Center(
-        child: Text('ホーム画面です'),
+      body: const Align(
+        alignment: Alignment.topCenter,
+        child: Text('ユーザID:XXXX'),
       ),
     );
   }
