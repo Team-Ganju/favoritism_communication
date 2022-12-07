@@ -17,6 +17,14 @@ class CreateChatGroupController extends GetxController {
     searchService.getTargetUsers();
     fetchFriendData();
     initSelectedFlag();
+    debounce(
+      searchService.target,
+      (_) {
+        searchService.prefixSearch(searchService.target.value);
+        searchResult.assignAll(searchService.results);
+      },
+      time: const Duration(seconds: 1),
+    );
     super.onInit();
   }
 
@@ -32,12 +40,6 @@ class CreateChatGroupController extends GetxController {
   void fetchFriendData() {
     friendCardDataList.assignAll(friendCardList);
     friendCardDataList.refresh();
-  }
-
-  /// 検索バーに入力されたテキストに合致するユーザーを取得するメソッド
-  void searchUser(String searchTarget) {
-    searchService.waitInputAndSearch(searchTarget);
-    searchResult.value = searchService.results;
   }
 
   /// トークする友達を選択済みに更新し、選択済みユーザーリストに追加するメソッド

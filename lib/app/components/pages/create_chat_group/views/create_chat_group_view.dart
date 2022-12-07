@@ -27,7 +27,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
               },
               child: SearchBar(
                 onChanged: (text) {
-                  if (text != null) controller.searchUser(text);
+                  if (text != null) controller.searchService.target(text);
                 },
               ),
             ),
