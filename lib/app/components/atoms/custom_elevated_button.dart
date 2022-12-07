@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -17,7 +18,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: Get.width * 0.7,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(

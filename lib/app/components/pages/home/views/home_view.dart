@@ -196,8 +196,7 @@ class HomeView extends GetView<HomeController> {
                 left: Get.width / 3,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    fixedSize:
-                        Size(MediaQuery.of(context).size.width * 0.3, 25),
+                    fixedSize: Size(Get.width * 0.3, 25),
                     foregroundColor: colorReturnToTopButtonFg,
                     backgroundColor: colorReturnToTopButtonBg,
                     shape: const StadiumBorder(),

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomFooter extends StatelessWidget {
   const CustomFooter({
@@ -22,9 +23,9 @@ class CustomFooter extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: Platform.isAndroid
-            ? MediaQuery.of(context).size.height * 0.10
+            ? Get.height * 0.10
             //下記はPlatform.isIOSでの高さを想定。OSの種類が増えた場合は下記を分岐させる。
-            : MediaQuery.of(context).size.height * 0.15,
+            : Get.height * 0.15,
         color: colorFooterBg,
       ),
     );
