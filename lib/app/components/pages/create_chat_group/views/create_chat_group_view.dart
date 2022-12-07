@@ -48,7 +48,6 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
                           return Column(
                             children: [
                               SeachResultListTile(
-                                index: index,
                                 text: controller.searchResult
                                     .elementAt(index - 1),
                                 onIconButtonPressed: () =>
