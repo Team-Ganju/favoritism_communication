@@ -7,7 +7,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    User user = Get.arguments['user'];
+    User user = Get.arguments;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: 50.0),

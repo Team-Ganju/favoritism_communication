@@ -1,5 +1,7 @@
 import 'package:favoritism_communication/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -8,6 +10,20 @@ import 'package:get/route_manager.dart';
 import 'routes/demo_app_pages.dart';
 
 void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  if (kDebugMode) {
+    try {
+      await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+      print("エミュレーターの設定が完了しました。");
+    } catch (e) {
+      print("エミュレーターの設定に失敗しました。: ${e}");
+    }
+  }
   runApp(const DemoApp());
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
