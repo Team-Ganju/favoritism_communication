@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,11 +8,12 @@ import 'package:get/get.dart';
 import 'package:favoritism_communication/app/components/atoms/custom_elevated_button.dart';
 import '../../../routes/demo_app_pages.dart';
 import '../controllers/demologin_controller.dart';
+import '../../../models/demouser.dart';
 
 class DemologinView extends GetView<DemologinController> {
   DemologinView({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormBuilderState>();
-  TextEditingController _emailFieldController = TextEditingController();
+  final TextEditingController _emailFieldController = TextEditingController();
 
   static const _emailMaxLength = 256;     // メールアドレスの最大文字数
   static const _fieldNameEmail = 'email'; // フィールド名：メールアドレス
@@ -51,11 +51,14 @@ class DemologinView extends GetView<DemologinController> {
                     onPressed: () async {
                       // バリデーションをパスできた場合
                       if(_formKey.currentState?.saveAndValidate() ?? false) {
-                        //TODO: 認証の判定
-//                        if(await Future.value(true)){
-                        User? user = await controller.authentication(_emailFieldController.text);
+                        DemoUser? user = await controller.authentication(_emailFieldController.text);
+                        // ユーザーを取得できた場合
                         if(user != null){
-                          Get.offNamed(DemoRoutes.demoHome, arguments: user);
+                          Get.offNamed(DemoRoutes.demoHome, arguments: user); // ホーム画面へ遷移
+                        }
+                        // ユーザーを取得できない場合
+                        else{
+                          _formKey.currentState?.invalidateField(name: _fieldNameEmail, errorText: "メールアドレスが存在しません。");
                         }
                       }
                       else{
@@ -63,7 +66,6 @@ class DemologinView extends GetView<DemologinController> {
                           name: _fieldNameEmail,
                         );
                       }
-
                     },
                   ),
                 ],

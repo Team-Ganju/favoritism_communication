@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import '../../../models/demouser.dart';
+import '../../../repositories/demologin_repository.dart';
 
 class DemologinController extends GetxController {
-
-  Future<User?> authentication(String email) async{
-    UserCredential credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: "testtest");
-    return credential.user;
+  Future<DemoUser?> authentication(String email) async{
+    return DemologinRepository.authentication(email);
   }
 
 }
