@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class DemologinController extends GetxController {
-  //TODO: Implement DemologinController
 
-  final count = 0.obs;
+  Future<User?> authentication(String email) async{
+    UserCredential credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: "testtest");
+    return credential.user;
+  }
 
-  void increment() => count.value++;
 }

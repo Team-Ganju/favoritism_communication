@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,6 +13,7 @@ import '../controllers/demologin_controller.dart';
 class DemologinView extends GetView<DemologinController> {
   DemologinView({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormBuilderState>();
+  TextEditingController _emailFieldController = TextEditingController();
 
   static const _emailMaxLength = 256;     // メールアドレスの最大文字数
   static const _fieldNameEmail = 'email'; // フィールド名：メールアドレス
@@ -31,6 +33,7 @@ class DemologinView extends GetView<DemologinController> {
                     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                     child: FormBuilderTextField(
                       name: _fieldNameEmail,
+                      controller: _emailFieldController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'メールアドレス',
@@ -49,8 +52,10 @@ class DemologinView extends GetView<DemologinController> {
                       // バリデーションをパスできた場合
                       if(_formKey.currentState?.saveAndValidate() ?? false) {
                         //TODO: 認証の判定
-                        if(await Future.value(true)){
-                          Get.offNamed(DemoRoutes.demoHome);
+//                        if(await Future.value(true)){
+                        User? user = await controller.authentication(_emailFieldController.text);
+                        if(user != null){
+                          Get.offNamed(DemoRoutes.demoHome, arguments: user);
                         }
                       }
                       else{
