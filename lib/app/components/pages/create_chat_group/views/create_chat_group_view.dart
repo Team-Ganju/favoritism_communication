@@ -37,58 +37,53 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
             () => controller.isFocusedOnSearchBar.value
                 ? Expanded(
                     child: ListView.builder(
-                      itemCount: controller.searchResult.length + 1,
+                      itemCount: controller.searchResult.length,
                       itemBuilder: (context, index) {
-                        if (index == 0) {
-                          return controller.searchResult.isNotEmpty
-                              ? const Divider()
-                              : Container();
-                        } else {
-                          return Column(
-                            children: [
-                              SeachResultListTile(
-                                text: controller.searchResult
-                                    .elementAt(index - 1),
-                                onIconButtonPressed: () =>
-                                    controller.searchResult.removeAt(index - 1),
-                                onTap: () {
-                                  //HACK: TapされたSeachResultListTileのユーザー名に対応するFriendCardを選択状態にする処理
-                                  //少し複雑なため、改良の余地あり。
-                                  //friendCardDataListの中から、TapされたSeachResultListTileのユーザー名に対応する要素のindexを取得
-                                  int indexAtTappedElement =
-                                      controller.friendCardDataList.indexWhere(
-                                    (element) =>
-                                        element.userName ==
-                                        controller.searchResult
-                                            .elementAt(index - 1),
-                                  );
-
-                                  //誤タップ防止の為ローディング表示
-                                  EasyLoading.show();
-
-                                  //求めたindexに対応するfriendCardDataListの要素のisSelectedを選択状態(true)にする
-                                  controller.select(
-                                    controller.friendCardDataList[
-                                        indexAtTappedElement],
-                                  );
-
-                                  Future.delayed(
-                                    const Duration(milliseconds: 500),
-                                    () => EasyLoading.dismiss().then(
-                                      (value) {
-                                        //検索バーからフォーカスを外す
-                                        controller.isFocusedOnSearchBar.value =
-                                            false;
-                                        FocusScope.of(context).unfocus();
-                                      },
-                                    ),
-                                  );
-                                },
-                              ),
+                        return Column(
+                          children: [
+                            if (index == 0 &&
+                                controller.searchResult.isNotEmpty)
                               const Divider(),
-                            ],
-                          );
-                        }
+                            SeachResultListTile(
+                              text: controller.searchResult.elementAt(index),
+                              onIconButtonPressed: () =>
+                                  controller.searchResult.removeAt(index),
+                              onTap: () {
+                                //HACK: TapされたSeachResultListTileのユーザー名に対応するFriendCardを選択状態にする処理
+                                //少し複雑なため、改良の余地あり。
+                                //friendCardDataListの中から、TapされたSeachResultListTileのユーザー名に対応する要素のindexを取得
+                                int indexAtTappedElement =
+                                    controller.friendCardDataList.indexWhere(
+                                  (element) =>
+                                      element.userName ==
+                                      controller.searchResult.elementAt(index),
+                                );
+
+                                //誤タップ防止の為ローディング表示
+                                EasyLoading.show();
+
+                                //求めたindexに対応するfriendCardDataListの要素のisSelectedを選択状態(true)にする
+                                controller.select(
+                                  controller
+                                      .friendCardDataList[indexAtTappedElement],
+                                );
+
+                                Future.delayed(
+                                  const Duration(milliseconds: 500),
+                                  () => EasyLoading.dismiss().then(
+                                    (value) {
+                                      //検索バーからフォーカスを外す
+                                      controller.isFocusedOnSearchBar.value =
+                                          false;
+                                      FocusScope.of(context).unfocus();
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                            const Divider(),
+                          ],
+                        );
                       },
                     ),
                   )
