@@ -21,7 +21,7 @@ void main() async {
       await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
       print("エミュレーターの設定が完了しました。");
     } catch (e) {
-      print("エミュレーターの設定に失敗しました。: ${e}");
+      print("エミュレーターの設定に失敗しました。: ${e.toString()}");
     }
   }
   runApp(const DemoApp());

@@ -13,7 +13,9 @@ class DemologinRepository {
         return DemoUser(uid: uid);
       }
     }
-    catch (e) {}
+    catch (e) {
+      // nop
+    }
 
     return null;
   }

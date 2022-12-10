@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
     DemoUser user = Get.arguments;
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 50.0),
+        padding: const EdgeInsets.only(top: 50.0),
         child: Align(
           alignment: Alignment.topCenter,
           child: Text('ユーザID:${user.uid}'),  //TODO: ログインユーザーのIDを表示
