@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../atoms/tab_button.dart';
-import '../../../organisms/search_bar.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -197,8 +196,7 @@ class HomeView extends GetView<HomeController> {
                 left: Get.width / 3,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    fixedSize:
-                        Size(MediaQuery.of(context).size.width * 0.3, 25),
+                    fixedSize: Size(Get.width * 0.3, 25),
                     foregroundColor: colorReturnToTopButtonFg,
                     backgroundColor: colorReturnToTopButtonBg,
                     shape: const StadiumBorder(),

@@ -1,4 +1,65 @@
-/// 後でJSONファイルから読み込む
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+
+// TODO: 外部からユーザデータを取得、isSelectedはfirestoreにはないアプリ内の独自フラグ
+List<Map<String, dynamic>> friendData = [
+  {
+    'name': 'Aさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'ABさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'ABCさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Bさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'BAさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'BACさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Cさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Dさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Eさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Fさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Gさん',
+    'image': null,
+    'isSelected': false,
+  },
+];
+
+// TODO: 全体的にUserのデータ構造を意識した形に整形し直す
 List<Map<String, dynamic>> privateChat = <Map<String, dynamic>>[
   {
     "roomName": "文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認",
@@ -17,6 +78,7 @@ List<Map<String, dynamic>> privateChat = <Map<String, dynamic>>[
   }
 ];
 
+// TODO: 全体的にUserのデータ構造を意識した形に整形し直す
 List<Map<String, dynamic>> groupChat = [
   {
     "roomName": "グループA",
@@ -52,3 +114,13 @@ List<Map<String, dynamic>> groupChat = [
         "https://img2.animatetimes.com/2020/10/627a3105695b6_72a539b218f44a96c0e41ee1ef98fb7c.jpg"
   }
 ];
+
+List<FriendCardData> friendCardList = friendData.map(
+  (item) {
+    return FriendCardData(
+      item['name'],
+      item['image'],
+      item['isSelected'],
+    );
+  },
+).toList();

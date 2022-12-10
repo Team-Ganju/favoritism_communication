@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FollowButton extends StatelessWidget {
   const FollowButton({
@@ -19,7 +20,7 @@ class FollowButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(MediaQuery.of(context).size.width * 0.3, 25),
+        fixedSize: Size(Get.width * 0.3, 25),
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
         shape: isFollowed

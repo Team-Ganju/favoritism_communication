@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 class SeachResultListTile extends StatelessWidget {
   const SeachResultListTile({
     super.key,
-    required this.index,
     required this.text,
-    this.onPressed,
+    this.onIconButtonPressed,
     this.onTap,
   });
 
-  final int index;
   final String text;
-  final VoidCallback? onPressed;
+  final VoidCallback? onIconButtonPressed;
   final VoidCallback? onTap;
 
   @override
@@ -19,12 +17,11 @@ class SeachResultListTile extends StatelessWidget {
     return ListTile(
       leading: IconButton(
         icon: const Icon(Icons.close),
-        onPressed: onPressed,
+        onPressed: onIconButtonPressed,
       ),
       title: Text(
         text,
       ),
-      //TODO: メンバー選択処理実装
       onTap: onTap,
     );
   }

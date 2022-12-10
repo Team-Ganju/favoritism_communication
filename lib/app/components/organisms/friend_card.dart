@@ -1,18 +1,13 @@
-import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
-class TalkMemberCard extends StatelessWidget {
-  const TalkMemberCard({
+class FriendCard extends StatelessWidget {
+  const FriendCard({
     Key? key,
-    required this.roomName,
-    required this.mostRecentMessage,
+    required this.friendCardData,
     required this.onTap,
-    this.profileImageURL,
   }) : super(key: key);
 
-  final String roomName;
-  final String mostRecentMessage;
-  final String? profileImageURL;
+  final FriendCardData friendCardData;
   final VoidCallback onTap;
 
   @override
@@ -24,7 +19,8 @@ class TalkMemberCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
           side: BorderSide(
-            color: colorTalkMemberCardBorder,
+            //FIXME: 各種項目の色はアプリ全体の色を管理するファイルから参照するように修正する
+            color: Colors.grey.shade300,
           ),
         ),
         child: Padding(
@@ -34,42 +30,56 @@ class TalkMemberCard extends StatelessWidget {
               CircleAvatar(
                 //TODO:firebase接続後に動作確認
                 //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                foregroundImage: profileImageURL != null
-                    ? NetworkImage(profileImageURL!)
+                foregroundImage: friendCardData.userImage != null
+                    ? NetworkImage(friendCardData.userImage!)
                     : null,
-                backgroundColor: colorTalkMemberCardCircleBg,
+                backgroundColor: Colors.grey,
                 child: const Icon(
                   Icons.person,
-                  color: colorTalkMemberCardIcon,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(
                 width: 20,
               ),
-              Flexible(
+              Expanded(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      roomName,
+                      friendCardData.userName,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 20),
                     ),
-                    Text(
-                      mostRecentMessage,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
                   ],
                 ),
               ),
+              friendCardData.isSelected
+                  ? const Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                    )
+                  : Container(),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+// TODO: フィールドはfirebase構築後に調整
+class FriendCardData {
+  final String userName;
+  final String? userImage;
+  late bool isSelected = false;
+
+  FriendCardData(
+    this.userName,
+    this.userImage,
+    this.isSelected,
+  );
 }
