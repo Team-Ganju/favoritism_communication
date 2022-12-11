@@ -1,8 +1,9 @@
-import 'package:favoritism_communication/app/styles/styles.dart';
-import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart'
     as atoms;
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
+import 'package:chat_bubbles/chat_bubbles.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/talk_room_controller.dart';
 
