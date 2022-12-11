@@ -12,7 +12,6 @@ import '../../../models/demouser.dart';
 class DemologinView extends GetView<DemologinController> {
   DemologinView({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormBuilderState>();
-  final TextEditingController _emailFieldController = TextEditingController();
 
   static const _emailMaxLength = 256;     // メールアドレスの最大文字数
   static const _fieldNameEmail = 'email'; // フィールド名：メールアドレス
@@ -32,7 +31,6 @@ class DemologinView extends GetView<DemologinController> {
                     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                     child: FormBuilderTextField(
                       name: _fieldNameEmail,
-                      controller: _emailFieldController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'メールアドレス',
@@ -50,15 +48,14 @@ class DemologinView extends GetView<DemologinController> {
                     onPressed: () async {
                       // バリデーションをパスできた場合
                       if(_formKey.currentState?.saveAndValidate() ?? false) {
-                        DemoUser? user = await controller.authentication(_emailFieldController.text);
-                        // ユーザーを取得できた場合
-                        if(user != null){
-                          Get.offNamed(DemoRoutes.demoHome, arguments: user); // ホーム画面へ遷移
-                        }
+                        DemoUser? user = await controller.authentication(_formKey.currentState?.value[_fieldNameEmail] ?? "");
                         // ユーザーを取得できない場合
-                        else{
+                        if(user == null){
                           _formKey.currentState?.invalidateField(name: _fieldNameEmail, errorText: "メールアドレスが存在しません。");
+                          return ;
                         }
+
+                        Get.offNamed(DemoRoutes.demoHome, arguments: user); // ホーム画面へ遷移
                       }
                       else{
                         _formKey.currentState?.invalidateField(

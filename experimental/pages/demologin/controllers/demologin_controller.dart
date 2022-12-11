@@ -4,7 +4,7 @@ import '../../../repositories/demologin_repository.dart';
 
 class DemologinController extends GetxController {
   Future<DemoUser?> authentication(String email) async{
-    return DemologinRepository.authentication(email);
+    return await DemologinRepository.authentication(email);
   }
 
 }
