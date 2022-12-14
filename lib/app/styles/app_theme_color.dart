@@ -56,3 +56,5 @@ const colorMypageAppBarBg = Colors.pinkAccent;
 const colorTalkRoomAppBarBg = Colors.pink;
 const colorMatchingDialogButtonTextFg = Colors.white;
 const colorMatchingDialogButtonTextBg = Color(0xff0091ea);
+var colorChatBubbleBg = Colors.grey.shade200;
+const colorChatBubbleText = Colors.black;
