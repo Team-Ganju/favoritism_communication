@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import '../../../models/demouser.dart';
+import '../../../repositories/demologin_repository.dart';
 
 class DemologinController extends GetxController {
-  //TODO: Implement DemologinController
+  Future<DemoUser?> authentication(String email) async{
+    return await DemologinRepository.authentication(email);
+  }
 
-  final count = 0.obs;
-
-  void increment() => count.value++;
 }
