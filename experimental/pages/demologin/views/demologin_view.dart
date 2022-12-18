@@ -56,11 +56,13 @@ class DemologinView extends GetView<DemologinController> {
                         }
 
                         Get.offNamed(DemoRoutes.demoHome, arguments: user); // ホーム画面へ遷移
+                        return ;
                       }
                       else{
                         _formKey.currentState?.invalidateField(
                           name: _fieldNameEmail,
                         );
+                        return ;
                       }
                     },
                   ),

@@ -9,7 +9,7 @@ class DemologinRepository {
     try {
       UserCredential credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
-        password: _password
+        password: _password,
       );
 
       String? uid = credential.user?.uid;
