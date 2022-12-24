@@ -25,7 +25,7 @@
     },
     {
       // プロファイルモード android
-      "name": "android (debug mode)",
+      "name": "android (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
@@ -34,7 +34,7 @@
     },
     {
       // デバッグモード ios
-      "name": "ios (debug mode)",
+      "name": "ios (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile",
@@ -43,7 +43,7 @@
     },
     {
       // リリースモード android
-      "name": "android (debug mode)",
+      "name": "android (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
@@ -52,7 +52,7 @@
     },
     {
       // リリースモード ios
-      "name": "ios (debug mode)",
+      "name": "ios (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
@@ -60,20 +60,20 @@
       "args": ["-d","IOS_EMULATOR"]
     },
     {
-      // Firebaseエミュレーターデモアプリ環境
-      "name": "emulator_demo_ios",
-      "request": "launch",
-      "type": "dart",
-      "program": "experimental/main_demo.dart",
-      "args": ["-d","IOS_EMULATOR"]
-    },
-    {
-      // Firebaseエミュレーターデモアプリ環境
+      // Firebaseエミュレーターデモアプリ環境 android
       "name": "emulator_demo_android",
       "request": "launch",
       "type": "dart",
       "program": "experimental/main_demo.dart",
       "args": ["-d","ANDROID_EMULATOR"]
+    },
+    {
+      // Firebaseエミュレーターデモアプリ環境 ios
+      "name": "emulator_demo_ios",
+      "request": "launch",
+      "type": "dart",
+      "program": "experimental/main_demo.dart",
+      "args": ["-d","IOS_EMULATOR"]
     },
   ]
 }

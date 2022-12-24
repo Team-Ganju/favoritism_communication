@@ -71,7 +71,7 @@ launch.jsonファイルを使用して設定を行います。
 
 ## 設定例
 以下のファイルに設定例があります。</br>
-flavor/launch.json
+[flavor/launch.json](launch.json)
 
 ## 参考リンク
 - [launch.jsonファイルについての公式ドキュメント](https://code.visualstudio.com/docs/editor/debugging#_launchjson-attributes)
