@@ -1,0 +1,79 @@
+// launch.json設定例
+// 「ANDROID_EMULATOR」を自身のandroidエミュレーターのIDに
+// 「IOS_EMULATOR」を自身のiOSシミュレーターのIDに置換することでそのまま使用可能です。
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // デバッグモード android
+      "name": "android (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
+      "args": ["-d","ANDROID_EMULATOR"]
+    },
+    {
+      // デバッグモード ios
+      "name": "ios (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main.dart",
+      "args": ["-d","IOS_EMULATOR"]
+    },
+    {
+      // プロファイルモード android
+      "name": "android (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main.dart",
+      "args": ["-d","ANDROID_EMULATOR"]
+    },
+    {
+      // デバッグモード ios
+      "name": "ios (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "lib/main.dart",
+      "args": ["-d","IOS_EMULATOR"]
+    },
+    {
+      // リリースモード android
+      "name": "android (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "args": ["-d","ANDROID_EMULATOR"]
+    },
+    {
+      // リリースモード ios
+      "name": "ios (debug mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "args": ["-d","IOS_EMULATOR"]
+    },
+    {
+      // Firebaseエミュレーターデモアプリ環境
+      "name": "emulator_demo_ios",
+      "request": "launch",
+      "type": "dart",
+      "program": "experimental/main_demo.dart",
+      "args": ["-d","IOS_EMULATOR"]
+    },
+    {
+      // Firebaseエミュレーターデモアプリ環境
+      "name": "emulator_demo_android",
+      "request": "launch",
+      "type": "dart",
+      "program": "experimental/main_demo.dart",
+      "args": ["-d","ANDROID_EMULATOR"]
+    },
+  ]
+}
