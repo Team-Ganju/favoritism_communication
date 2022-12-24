@@ -33,7 +33,7 @@
       "args": ["-d","ANDROID_EMULATOR"]
     },
     {
-      // デバッグモード ios
+      // プロファイルモード ios
       "name": "ios (profile mode)",
       "request": "launch",
       "type": "dart",
