@@ -1,3 +1,9 @@
 import 'package:get/get.dart';
 
-class DemoHomeController extends GetxController {}
+import '../../../services/demo_auth_service.dart';
+
+class DemoHomeController extends AppControllerBase {}
+
+class AppControllerBase extends GetxController {
+  final DemoAuthService authService = Get.find();
+}

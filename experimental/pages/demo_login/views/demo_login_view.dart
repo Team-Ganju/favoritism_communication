@@ -60,8 +60,7 @@ class DemoLoginView extends GetView<DemoLoginController> {
                             return;
                           }
 
-                          Get.offNamed(DemoRoutes.demoHome,
-                              arguments: user); // ホーム画面へ遷移
+                          Get.offNamed(DemoRoutes.demoHome); // ホーム画面へ遷移
                           return;
                         } else {
                           _formKey.currentState?.invalidateField(
