@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../models/demouser.dart';
+import '../../../models/demouser.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class DemoHomeView extends StatelessWidget {
+  const DemoHomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 50.0),
         child: Align(
           alignment: Alignment.topCenter,
-          child: Text('ユーザID:${user.uid}'),  //TODO: ログインユーザーのIDを表示
+          child: Text('ユーザID:${user.uid}'), //TODO: ログインユーザーのIDを表示
         ),
       ),
     );
