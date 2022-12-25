@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/route_manager.dart';
-
+import 'package:get_storage/get_storage.dart';
+import 'bindings/demo_initial_bindings.dart';
 import 'routes/demo_app_pages.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  await GetStorage.init();
   if (kDebugMode) {
     try {
       await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
@@ -48,6 +48,7 @@ class DemoApp extends StatelessWidget {
       ],
       initialRoute: DemoAppPages.initial,
       getPages: DemoAppPages.routes,
+      initialBinding: DemoInitialBinding(),
     );
   }
 }
