@@ -8,7 +8,7 @@ launch.jsonファイルを使用して設定を行います。
   1. デバッガーの選択から「Dart&Flutter」を押下します。
   ![image](images/push_create_launch_json.png)
   1. プロジェクトディレクトリの「.vscode」直下に「launch.json」が作成されます。
-      
+
 ## launch.jsonの設定
   launch.jsonの「configurations」要素に構成を追加することで、環境を作成することができます。
 
@@ -33,8 +33,8 @@ launch.jsonファイルを使用して設定を行います。
    構成の名前を入力します。実行するプログラムを選択する際に表示されます。
    - request</br>
    実行の方法を入力します。</br>
-   「launch」もしくは「attach」が入力できます。プログラムを実行する場合は「launch」で、実行中のプログラムにアタッチする場合は「attach」を入力します。</br>
-   flutterの場合は「launch」を入力します。
+   「launch」もしくは「attach」が入力できます。プログラムを0から実行する場合は「launch」で、実行中のプログラムに組み込む場合は「attach」を入力します。</br>
+    flutterの場合はプログラムを0から実行するため「launch」を入力します。
    - type</br>
    使用するデバッガーのタイプを入力します。</br>
    flutterの場合は「dart」を入力します。
