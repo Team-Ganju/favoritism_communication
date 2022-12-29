@@ -52,6 +52,7 @@ class DemoHomeView extends GetView<DemoHomeController> {
     {
       String? title,
       Color? textColor,
+      void Function()? onTap,
       bool isTop = false,
     }
   )
@@ -73,6 +74,7 @@ class DemoHomeView extends GetView<DemoHomeController> {
       child: ListTile(
         title: title!=null ? Text(title, style: style,) : null,
         textColor: textColor ?? Colors.grey,
+        onTap: onTap,
       ),
     );
   }
