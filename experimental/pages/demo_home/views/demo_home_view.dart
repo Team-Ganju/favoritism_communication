@@ -15,7 +15,7 @@ class DemoHomeView extends GetView<DemoHomeController> {
             child: Align(
               alignment: Alignment.topCenter,
               child: Text(
-                'ユーザID:${controller.authService.uid.val}',
+                'ユーザID:\n${controller.authService.uid.val}',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
