@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/demo_home_controller.dart';
+import '../../../components/atoms/menu_list_tile.dart';
 
 class DemoHomeView extends GetView<DemoHomeController> {
   const DemoHomeView({super.key});
@@ -33,49 +34,17 @@ class DemoHomeView extends GetView<DemoHomeController> {
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
-              children: [
-                _buildMenuItem(context, title: 'プロフィール情報登録', isTop: true),
-                _buildMenuItem(context, title: 'プロフィール情報閲覧'),
-                _buildMenuItem(context, title: 'プロフィール情報編集'),
-                _buildMenuItem(context, title: 'プロフィール削除', textColor: Colors.red),
+              children: const <Widget>[
+                MenuListTile(title: 'プロフィール情報登録', isTop: true),
+                MenuListTile(title: 'プロフィール情報閲覧'),
+                MenuListTile(title: 'プロフィール情報編集'),
+                MenuListTile(title: 'プロフィール削除', textColor: Colors.red),
               ],
             ),
           ),
         ],
       ),
 
-    );
-  }
-
-  Widget _buildMenuItem(
-    BuildContext context,
-    {
-      String? title,
-      Color? textColor,
-      void Function()? onTap,
-      bool isTop = false,
-    }
-  )
-  {
-    const border = BorderSide(
-      color: Colors.grey,
-      width:0.8,
-    );
-
-    TextStyle? style = Theme.of(context).textTheme.bodyMedium?.copyWith(color: textColor ?? Colors.grey);
-
-    return Container(
-      decoration: BoxDecoration(
-        border: Border(
-          top: isTop ? border : BorderSide.none,
-          bottom: border,
-        )
-      ),
-      child: ListTile(
-        title: title!=null ? Text(title, style: style,) : null,
-        textColor: textColor ?? Colors.grey,
-        onTap: onTap,
-      ),
     );
   }
 }
