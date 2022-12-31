@@ -4,6 +4,8 @@ import '../pages/demo_login/bindings/demo_login_binding.dart';
 import '../pages/demo_login/views/demo_login_view.dart';
 import '../pages/demo_home/bindings/demo_home_binding.dart';
 import '../pages/demo_home/views/demo_home_view.dart';
+import '../pages/demo_user/bindings/demo_user_binding.dart';
+import '../pages/demo_user/views/views.dart';
 part 'demo_app_routes.dart';
 
 class DemoAppPages {
@@ -21,6 +23,26 @@ class DemoAppPages {
       name: _DemoPaths.demoLogin,
       page: () => DemoLoginView(),
       binding: DemoLoginBinding(),
+    ),
+    GetPage(
+      name: _DemoPaths.demoUser,
+      page: () => DemoUserIndexView(),
+      binding: DemoUserBinding(),
+    ),
+    GetPage(
+      name: _DemoPaths.demoUserCreate,
+      page: () => DemoUserCreateView(),
+      binding: DemoUserBinding(),
+    ),
+    GetPage(
+      name: _DemoPaths.demoUserUpdate,
+      page: () => DemoUserUpdateView(),
+      binding: DemoUserBinding(),
+    ),
+    GetPage(
+      name: _DemoPaths.demoUserDelete,
+      page: () => DemoUserDeleteView(),
+      binding: DemoUserBinding(),
     ),
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../routes/demo_app_pages.dart';
 import '../controllers/demo_home_controller.dart';
 import '../../../components/atoms/menu_list_tile.dart';
 
@@ -34,8 +35,8 @@ class DemoHomeView extends GetView<DemoHomeController> {
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
-              children: const <Widget>[
-                MenuListTile(title: 'プロフィール情報登録', isTop: true),
+              children: <Widget>[
+                MenuListTile(title: 'プロフィール情報登録', isTop: true, onTap: () => { Get.toNamed(DemoRoutes.demoUserCreate.replaceFirst(DemoRoutes.demoUserId, controller.authService.uid.val)) },),
                 MenuListTile(title: 'プロフィール情報閲覧'),
                 MenuListTile(title: 'プロフィール情報編集'),
                 MenuListTile(title: 'プロフィール削除', textColor: Colors.red),
