@@ -41,7 +41,7 @@ class TalkRoomView extends GetView<TalkRoomController> {
                             CircleAvatar(
                               //TODO:firebase接続後に動作確認
                               //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                              // foregroundImage: profileImageURL != null
+                              // foregroundImage: controller.talkRooms != null
                               //     ? NetworkImage(profileImageURL!)
                               //     : null,
                               backgroundColor: colorTalkMemberCardCircleBg,

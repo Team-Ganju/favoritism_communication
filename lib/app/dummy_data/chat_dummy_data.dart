@@ -54,7 +54,7 @@ List<Map<String, dynamic>> groupChat = [
 ];
 
 // TalkRoom
-const talkRoom = [
+const talkRoomData = [
   {
     "roomId": "001",
     "roomName": "グループA",

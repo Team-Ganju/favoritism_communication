@@ -16,6 +16,6 @@ class TalkRoomController extends GetxController {
 
   //TODO: firebaseから取得するように修正
   void fetchTalkRoomData() {
-    talkRooms = talkRoom.map((e) => TalkRoomModel.fromJson(e)).toList();
+    talkRooms = talkRoomData.map((e) => TalkRoomModel.fromJson(e)).toList();
   }
 }
