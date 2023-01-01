@@ -38,7 +38,7 @@ class MenuListTile extends StatelessWidget{
               textColor: textColor ?? Colors.grey,
               onTap: onTap,
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerRight,
               child: Icon(Icons.keyboard_arrow_right, color: Colors.grey,),
             ),
