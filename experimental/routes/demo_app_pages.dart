@@ -26,22 +26,22 @@ class DemoAppPages {
     ),
     GetPage(
       name: _DemoPaths.demoUser,
-      page: () => DemoUserIndexView(),
+      page: () => const DemoUserIndexView(),
       binding: DemoUserBinding(),
     ),
     GetPage(
       name: _DemoPaths.demoUserCreate,
-      page: () => DemoUserCreateView(),
+      page: () => const DemoUserCreateView(),
       binding: DemoUserBinding(),
     ),
     GetPage(
       name: _DemoPaths.demoUserUpdate,
-      page: () => DemoUserUpdateView(),
+      page: () => const DemoUserUpdateView(),
       binding: DemoUserBinding(),
     ),
     GetPage(
       name: _DemoPaths.demoUserDelete,
-      page: () => DemoUserDeleteView(),
+      page: () => const DemoUserDeleteView(),
       binding: DemoUserBinding(),
     ),
   ];

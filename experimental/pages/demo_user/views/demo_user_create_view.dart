@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../routes/demo_app_pages.dart';
 import '../controllers/demo_user_controller.dart';
 
 class DemoUserCreateView extends GetView<DemoUserController> {
