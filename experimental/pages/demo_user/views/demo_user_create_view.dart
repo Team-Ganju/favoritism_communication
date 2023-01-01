@@ -10,7 +10,7 @@ class DemoUserCreateView extends GetView<DemoUserController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text(Get.parameters[DemoRoutes.demoUserIdParam]!),
+      body: Text(controller.authService.uid.val),
     );
   }
 }
