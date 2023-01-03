@@ -13,7 +13,7 @@ class DemoProfileView extends GetView<DemoProfileController> {
         title: const Text('DemoProfileView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'DemoProfileView is working',
           style: TextStyle(fontSize: 20),

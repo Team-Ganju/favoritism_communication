@@ -13,7 +13,7 @@ class DemoDeleteView extends GetView<DemoDeleteController> {
         title: const Text('DemoDeleteView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'DemoDeleteView is working',
           style: TextStyle(fontSize: 20),

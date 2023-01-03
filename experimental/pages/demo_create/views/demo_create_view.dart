@@ -13,7 +13,7 @@ class DemoCreateView extends GetView<DemoCreateController> {
         title: const Text('DemoCreateView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'DemoCreateView is working',
           style: TextStyle(fontSize: 20),
