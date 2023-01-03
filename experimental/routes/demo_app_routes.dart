@@ -5,18 +5,18 @@ abstract class DemoRoutes {
   DemoRoutes._();
   static const demoHome = _DemoPaths.demoHome;
   static const demoLogin = _DemoPaths.demoLogin;
-  static const demoUser = _DemoPaths.demoUser;
-  static const demoUserCreate = _DemoPaths.demoUserCreate;
-  static const demoUserUpdate = _DemoPaths.demoUserUpdate;
-  static const demoUserDelete = _DemoPaths.demoUserDelete;
+  static const demoProfile = _DemoPaths.demoHome + _DemoPaths.demoProfile;
+  static const demoUpdate = _DemoPaths.demoHome + _DemoPaths.demoUpdate;
+  static const demoDelete = _DemoPaths.demoHome + _DemoPaths.demoDelete;
+  static const demoCreate = _DemoPaths.demoHome + _DemoPaths.demoCreate;
 }
 
 abstract class _DemoPaths {
   _DemoPaths._();
   static const demoHome = '/demoHome';
   static const demoLogin = '/demologin';
-  static const demoUser = '/user';
-  static const demoUserCreate = '$demoUser/create';
-  static const demoUserUpdate = '$demoUser/update';
-  static const demoUserDelete = '$demoUser/delete';
+  static const demoProfile = '/demoProfile';
+  static const demoCreate = '/demoCreate';
+  static const demoUpdate = '/demoUpdate';
+  static const demoDelete = '/demoDelete';
 }

@@ -36,10 +36,10 @@ class DemoHomeView extends GetView<DemoHomeController> {
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                MenuListTile(title: 'プロフィール情報登録', isTop: true, onTap: () => { Get.toNamed(DemoRoutes.demoUserCreate) },),
-                MenuListTile(title: 'プロフィール情報閲覧', onTap: () => { Get.toNamed(DemoRoutes.demoUser) },),
-                MenuListTile(title: 'プロフィール情報編集', onTap: () => { Get.toNamed(DemoRoutes.demoUserUpdate) },),
-                MenuListTile(title: 'プロフィール削除', textColor: Colors.red, onTap: () => { Get.toNamed(DemoRoutes.demoUserDelete) },),
+                MenuListTile(title: 'プロフィール情報登録', isTop: true, onTap: () => { Get.toNamed(DemoRoutes.demoCreate) },),
+                MenuListTile(title: 'プロフィール情報閲覧', onTap: () => { Get.toNamed(DemoRoutes.demoProfile) },),
+                MenuListTile(title: 'プロフィール情報編集', onTap: () => { Get.toNamed(DemoRoutes.demoUpdate) },),
+                MenuListTile(title: 'プロフィール削除', textColor: Colors.red, onTap: () => { Get.toNamed(DemoRoutes.demoDelete) },),
               ],
             ),
           ),
