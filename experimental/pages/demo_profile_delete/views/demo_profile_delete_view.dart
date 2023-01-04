@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/demo_create_controller.dart';
+import '../controllers/demo_profile_delete_controller.dart';
 
-class DemoCreateView extends GetView<DemoCreateController> {
-  const DemoCreateView({Key? key}) : super(key: key);
+class DemoProfileDeleteView extends GetView<DemoProfileDeleteController> {
+  const DemoProfileDeleteView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DemoCreateView'),
+        title: const Text('DemoProfileDeleteView'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'DemoCreateView is working',
+          'DemoProfileDeleteView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

@@ -6,12 +6,12 @@ import '../pages/demo_home/bindings/demo_home_binding.dart';
 import '../pages/demo_home/views/demo_home_view.dart';
 import '../pages/demo_profile/bindings/demo_profile_binding.dart';
 import '../pages/demo_profile/views/demo_profile_view.dart';
-import '../pages/demo_update/bindings/demo_update_binding.dart';
-import '../pages/demo_update/views/demo_update_view.dart';
-import '../pages/demo_delete/bindings/demo_delete_binding.dart';
-import '../pages/demo_delete/views/demo_delete_view.dart';
-import '../pages/demo_create/bindings/demo_create_binding.dart';
-import '../pages/demo_create/views/demo_create_view.dart';
+import '../pages/demo_profile_update/bindings/demo_profile_update_binding.dart';
+import '../pages/demo_profile_update/views/demo_profile_update_view.dart';
+import '../pages/demo_profile_delete/bindings/demo_profile_delete_binding.dart';
+import '../pages/demo_profile_delete/views/demo_profile_delete_view.dart';
+import '../pages/demo_profile_create/bindings/demo_profile_create_binding.dart';
+import '../pages/demo_profile_create/views/demo_profile_create_view.dart';
 part 'demo_app_routes.dart';
 
 class DemoAppPages {
@@ -26,9 +26,9 @@ class DemoAppPages {
       binding: DemoLoginBinding(),
     ),
     GetPage(
-      name: DemoRoutes.demoCreate,
-      page: () => const DemoCreateView(),
-      binding: DemoCreateBinding(),
+      name: DemoRoutes.demoProfileCreate,
+      page: () => const DemoProfileCreateView(),
+      binding: DemoProfileCreateBinding(),
     ),
     GetPage(
       name: DemoRoutes.demoProfile,
@@ -36,14 +36,14 @@ class DemoAppPages {
       binding: DemoProfileBinding(),
     ),
     GetPage(
-      name: DemoRoutes.demoUpdate,
-      page: () => const DemoUpdateView(),
-      binding: DemoUpdateBinding(),
+      name: DemoRoutes.demoProfileUpdate,
+      page: () => const DemoProfileUpdateView(),
+      binding: DemoProfileUpdateBinding(),
     ),
     GetPage(
-      name: DemoRoutes.demoDelete,
-      page: () => const DemoDeleteView(),
-      binding: DemoDeleteBinding(),
+      name: DemoRoutes.demoProfileDelete,
+      page: () => const DemoProfileDeleteView(),
+      binding: DemoProfileDeleteBinding(),
     ),
     GetPage(
       name: DemoRoutes.demoHome,

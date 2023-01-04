@@ -6,9 +6,9 @@ abstract class DemoRoutes {
   static const demoHome = _DemoPaths.demoHome;
   static const demoLogin = _DemoPaths.demoLogin;
   static const demoProfile = _DemoPaths.demoHome + _DemoPaths.demoProfile;
-  static const demoUpdate = _DemoPaths.demoHome + _DemoPaths.demoUpdate;
-  static const demoDelete = _DemoPaths.demoHome + _DemoPaths.demoDelete;
-  static const demoCreate = _DemoPaths.demoHome + _DemoPaths.demoCreate;
+  static const demoProfileUpdate = _DemoPaths.demoHome + _DemoPaths.demoProfileUpdate;
+  static const demoProfileDelete = _DemoPaths.demoHome + _DemoPaths.demoProfileDelete;
+  static const demoProfileCreate = _DemoPaths.demoHome + _DemoPaths.demoProfileCreate;
 }
 
 abstract class _DemoPaths {
@@ -16,7 +16,7 @@ abstract class _DemoPaths {
   static const demoHome = '/demoHome';
   static const demoLogin = '/demologin';
   static const demoProfile = '/demoProfile';
-  static const demoCreate = '/demoCreate';
-  static const demoUpdate = '/demoUpdate';
-  static const demoDelete = '/demoDelete';
+  static const demoProfileCreate = '/demoProfileCreate';
+  static const demoProfileUpdate = '/demoProfileUpdate';
+  static const demoProfileDelete = '/demoProfileDelete';
 }
