@@ -12,6 +12,8 @@ import '../../../atoms/tab_button.dart';
 import '../../../organisms/search_bar.dart';
 import '../controllers/home_controller.dart';
 
+GlobalKey tabsScrollViewGlobalKey = GlobalKey();
+
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
 
@@ -61,12 +63,21 @@ class HomeView extends GetView<HomeController> {
                 )
               ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(8),
-              child: Obx(
-                () => Row(
-                  children: buildTabButtons(controller.getTabList()),
+            NotificationListener<ScrollNotification>(
+              onNotification: ((notification) {
+                controller.tabsScrollPosition = notification.metrics.pixels;
+                return false;
+              }),
+              child: SingleChildScrollView(
+                key: tabsScrollViewGlobalKey,
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.all(8),
+                controller: controller.headerTabsScrollController,
+                child: Obx(
+                  () => Row(
+                    children:
+                        buildTabButtons(controller.getTabList(), controller),
+                  ),
                 ),
               ),
             )
@@ -218,14 +229,53 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-List<Widget> buildTabButtons(List<TabData> tabDataList) {
+// note: 現状タブの表示は10個まで
+List<GlobalKey> tabButtonGlobalKeys = [
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+  GlobalKey(),
+];
+
+double position = 0;
+
+List<Widget> buildTabButtons(
+    List<TabData> tabDataList, HomeController homeController) {
   List<Widget> list = [];
+
   for (var i = 0; i < tabDataList.length; i++) {
+    RenderBox selectedTabButtonBox;
+    RenderBox scrollViewBox;
+    Offset selectedTabOffset;
+    double scrollPos;
+    double scrollViewWidth;
+    double nextScrollPos;
     list.add(
       TabButton(
+        key: tabButtonGlobalKeys[i],
         chipTitle: tabDataList[i].title,
         isEnable: tabDataList[i].isEnable,
-        onPressed: () => tabDataList[i].onPressed(tabDataList[i]),
+        onPressed: () => {
+          selectedTabButtonBox = tabButtonGlobalKeys[i]
+              .currentContext
+              ?.findRenderObject() as RenderBox,
+          selectedTabOffset = selectedTabButtonBox.localToGlobal(Offset.zero),
+          scrollPos = homeController.tabsScrollPosition,
+          scrollViewBox = tabsScrollViewGlobalKey.currentContext
+              ?.findRenderObject() as RenderBox,
+          scrollViewWidth = scrollViewBox.size.width,
+          nextScrollPos = scrollPos +
+              (selectedTabOffset.dx + selectedTabButtonBox.size.width / 2) -
+              (scrollViewWidth / 2),
+          homeController.headerTabsScrollController.jumpTo(nextScrollPos),
+          tabDataList[i].onPressed(tabDataList[i]),
+        },
       ),
     );
     if (i != tabDataList.length - 1) {

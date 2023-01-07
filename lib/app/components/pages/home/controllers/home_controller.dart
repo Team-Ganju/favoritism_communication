@@ -13,8 +13,10 @@ class HomeController extends GetxController {
   final RxList<TabData> tabDataList = <TabData>[].obs;
   final RxBool needScrollToTop = false.obs;
   final scrollController = ScrollController();
+  final headerTabsScrollController = ScrollController();
   final TabService tabService = Get.find();
   final ChatService chatService = Get.find();
+  double tabsScrollPosition = 0.0;
 
   @override
   void onInit() {
@@ -50,6 +52,8 @@ class HomeController extends GetxController {
   }
 
   void initTab(List<TabData> list) {
+    tabDataList.clear();
+    tabDataList.addAll(list);
     tabDataList.assignAll(list);
     tabDataList.refresh();
   }
