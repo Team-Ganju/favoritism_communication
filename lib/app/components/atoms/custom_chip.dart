@@ -13,15 +13,81 @@ class CustomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(chipTitle),
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      backgroundColor: backgroundColor,
-      shape: const StadiumBorder(
-        side: BorderSide(
-          color: colorChipBorder,
-        ),
-      ),
-    );
+    return CustomPaint(
+        painter: CustomChipPainter(backgroundColor: backgroundColor),
+        child: Container(
+          // decoration: BoxDecoration(color: Color.fromARGB(255, 243, 235, 217)),
+          width: 70,
+          height: 25,
+        ));
+    // return Chip(
+    //   label: Text(chipTitle),
+    //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    //   backgroundColor: backgroundColor,
+    //   shape: const StadiumBorder(
+    //     side: BorderSide(
+    //       color: colorChipBorder,
+    //     ),
+    //   ),
+    // );
   }
+}
+
+class CustomChipPainter extends CustomPainter {
+  const CustomChipPainter({
+    required this.backgroundColor,
+  });
+  final Color backgroundColor;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint();
+
+    var grayColor = Colors.transparent;
+    paint.color = Colors.transparent;
+    var rect = Rect.fromLTWH(0, 0, size.width, size.height);
+    canvas.drawRect(rect, paint);
+
+    paint.color = backgroundColor;
+    var borderPath = Path();
+    borderPath.moveTo(0, 0);
+    borderPath.lineTo(size.width * 3 / 4, 0);
+    borderPath.lineTo(size.width, size.height / 2);
+    borderPath.lineTo(size.width * 3 / 4, size.height);
+    borderPath.lineTo(0, size.height);
+    borderPath.lineTo(0, 0);
+    borderPath.close();
+    canvas.drawPath(borderPath, paint);
+
+    paint = new Paint()
+      ..color = Color.fromARGB(255, 84, 84, 84)
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 0.5;
+    var path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width * 3 / 4, 0);
+    path.lineTo(size.width, size.height / 2);
+    path.lineTo(size.width * 3 / 4, size.height);
+    path.lineTo(0, size.height);
+    path.lineTo(0, 0);
+    path.close();
+    canvas.drawPath(path, paint);
+
+    Paint circlePaint = new Paint();
+    circlePaint.color = Colors.white;
+    canvas.drawCircle(
+        Offset((size.width * 3 / 4) + 3, size.height / 2), 4, circlePaint);
+
+    Paint line = new Paint()
+      ..color = Color.fromARGB(255, 84, 84, 84)
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 0.5;
+    canvas.drawCircle(
+        Offset((size.width * 3 / 4) + 3, size.height / 2), 4, line);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
