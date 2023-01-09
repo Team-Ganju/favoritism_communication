@@ -56,12 +56,13 @@ class CustomChipPainter extends CustomPainter {
     var rect = Rect.fromLTWH(0, 0, size.width, size.height);
     canvas.drawRect(rect, paint);
 
+    var side = size.height / 2;
     paint.color = backgroundColor;
     var borderPath = Path();
     borderPath.moveTo(0, 0);
-    borderPath.lineTo(size.width * 3 / 4, 0);
+    borderPath.lineTo(size.width - side, 0);
     borderPath.lineTo(size.width, size.height / 2);
-    borderPath.lineTo(size.width * 3 / 4, size.height);
+    borderPath.lineTo(size.width - side, size.height);
     borderPath.lineTo(0, size.height);
     borderPath.lineTo(0, 0);
     borderPath.close();
@@ -74,9 +75,9 @@ class CustomChipPainter extends CustomPainter {
       ..strokeWidth = 0.5;
     var path = Path();
     path.moveTo(0, 0);
-    path.lineTo(size.width * 3 / 4, 0);
+    path.lineTo(size.width - side, 0);
     path.lineTo(size.width, size.height / 2);
-    path.lineTo(size.width * 3 / 4, size.height);
+    path.lineTo(size.width - side, size.height);
     path.lineTo(0, size.height);
     path.lineTo(0, 0);
     path.close();
@@ -85,15 +86,14 @@ class CustomChipPainter extends CustomPainter {
     Paint circlePaint = new Paint();
     circlePaint.color = Colors.white;
     canvas.drawCircle(
-        Offset((size.width * 3 / 4) + 3, size.height / 2), 4, circlePaint);
+        Offset(size.width - side, size.height / 2), 4, circlePaint);
 
     Paint line = new Paint()
       ..color = Color.fromARGB(255, 84, 84, 84)
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.5;
-    canvas.drawCircle(
-        Offset((size.width * 3 / 4) + 3, size.height / 2), 4, line);
+    canvas.drawCircle(Offset(size.width - side, size.height / 2), 4, line);
   }
 
   @override
