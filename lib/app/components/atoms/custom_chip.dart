@@ -17,7 +17,7 @@ class CustomChip extends StatelessWidget {
     return InkWell(
       onTap: () {
         // todo チップ選択時の処理
-        print("ChipTitle: $chipTitle");
+        debugPrint("ChipTitle: $chipTitle");
       },
       child: CustomPaint(
         painter: CustomChipPainter(backgroundColor: backgroundColor),
@@ -51,7 +51,6 @@ class CustomChipPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var paint = Paint();
 
-    var grayColor = Colors.transparent;
     paint.color = Colors.transparent;
     var rect = Rect.fromLTWH(0, 0, size.width, size.height);
     canvas.drawRect(rect, paint);
