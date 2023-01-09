@@ -13,8 +13,7 @@ class CustomChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textMarginLeft = 8.0;
-    var textMarginRight = 12.0;
-    var sizeEachChar = 20.0;
+    var textMarginRight = 24.0;
     return InkWell(
       onTap: () {
         // todo チップ選択時の処理
@@ -23,21 +22,17 @@ class CustomChip extends StatelessWidget {
       child: CustomPaint(
         painter: CustomChipPainter(backgroundColor: backgroundColor),
         child: SizedBox(
-          width: chipTitle.length == 1
-              ? sizeEachChar + textMarginLeft + textMarginRight + 6 // 調整
-              : chipTitle.length * sizeEachChar +
-                  textMarginLeft +
-                  textMarginRight,
           height: 25,
           child: Padding(
             padding: EdgeInsets.only(
-                top: 0,
+                top: 2,
                 right: textMarginRight,
-                bottom: 0,
+                bottom: 2,
                 left: textMarginLeft),
             child: Text(
               chipTitle,
               maxLines: 1,
+              textAlign: TextAlign.center,
             ),
           ),
         ),
