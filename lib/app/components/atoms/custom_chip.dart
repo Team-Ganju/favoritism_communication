@@ -1,4 +1,3 @@
-import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomChip extends StatelessWidget {
@@ -13,31 +12,37 @@ class CustomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: CustomChipPainter(backgroundColor: backgroundColor),
-      child: SizedBox(
-        // decoration: BoxDecoration(color: Color.fromARGB(255, 243, 235, 217)),
-        width: chipTitle.length * 25 + 16,
-        height: 25,
-        child: Padding(
-          padding: EdgeInsets.only(top: 0, right: 8, bottom: 0, left: 8),
-          child: Text(
-            chipTitle,
-            maxLines: 1,
+    var textMarginLeft = 8.0;
+    var textMarginRight = 12.0;
+    var sizeEachChar = 20.0;
+    return InkWell(
+      onTap: () {
+        // todo チップ選択時の処理
+        print("ChipTitle: $chipTitle");
+      },
+      child: CustomPaint(
+        painter: CustomChipPainter(backgroundColor: backgroundColor),
+        child: SizedBox(
+          width: chipTitle.length == 1
+              ? sizeEachChar + textMarginLeft + textMarginRight + 6 // 調整
+              : chipTitle.length * sizeEachChar +
+                  textMarginLeft +
+                  textMarginRight,
+          height: 25,
+          child: Padding(
+            padding: EdgeInsets.only(
+                top: 0,
+                right: textMarginRight,
+                bottom: 0,
+                left: textMarginLeft),
+            child: Text(
+              chipTitle,
+              maxLines: 1,
+            ),
           ),
         ),
       ),
     );
-    // return Chip(
-    //   label: Text(chipTitle),
-    //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-    //   backgroundColor: backgroundColor,
-    //   shape: const StadiumBorder(
-    //     side: BorderSide(
-    //       color: colorChipBorder,
-    //     ),
-    //   ),
-    // );
   }
 }
 
@@ -68,8 +73,8 @@ class CustomChipPainter extends CustomPainter {
     borderPath.close();
     canvas.drawPath(borderPath, paint);
 
-    paint = new Paint()
-      ..color = Color.fromARGB(255, 84, 84, 84)
+    paint = Paint()
+      ..color = Colors.black54
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.5;
@@ -83,13 +88,13 @@ class CustomChipPainter extends CustomPainter {
     path.close();
     canvas.drawPath(path, paint);
 
-    Paint circlePaint = new Paint();
+    Paint circlePaint = Paint();
     circlePaint.color = Colors.white;
     canvas.drawCircle(
         Offset(size.width - side, size.height / 2), 4, circlePaint);
 
-    Paint line = new Paint()
-      ..color = Color.fromARGB(255, 84, 84, 84)
+    Paint line = Paint()
+      ..color = Colors.black54
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = 0.5;
