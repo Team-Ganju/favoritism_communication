@@ -16,7 +16,7 @@ List<Map<String, dynamic>> userData = [
     'isFollowed': false,
   },
   {
-    'name': 'Raiki',
+    'name': 'R.Noto',
     'image': null,
     'isFollowed': false,
   },
@@ -39,10 +39,10 @@ List<UserCardData> userCardList = userData.map((item) {
 
 List<String> getRandomCategoryList() {
   var categories = [
-    '観光地',
-    '映画',
-    '本',
-    '音楽',
+    'Cat',
+    'Break Dance',
+    'Roll & Playing Game',
+    'Flutterアプリ開発',
     'ご飯',
     'スポーツ',
     'ホゲホゲ',
