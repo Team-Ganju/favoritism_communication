@@ -14,12 +14,20 @@ class CustomChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-        painter: CustomChipPainter(backgroundColor: backgroundColor),
-        child: Container(
-          // decoration: BoxDecoration(color: Color.fromARGB(255, 243, 235, 217)),
-          width: 70,
-          height: 25,
-        ));
+      painter: CustomChipPainter(backgroundColor: backgroundColor),
+      child: SizedBox(
+        // decoration: BoxDecoration(color: Color.fromARGB(255, 243, 235, 217)),
+        width: chipTitle.length * 25 + 16,
+        height: 25,
+        child: Padding(
+          padding: EdgeInsets.only(top: 0, right: 8, bottom: 0, left: 8),
+          child: Text(
+            chipTitle,
+            maxLines: 1,
+          ),
+        ),
+      ),
+    );
     // return Chip(
     //   label: Text(chipTitle),
     //   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
