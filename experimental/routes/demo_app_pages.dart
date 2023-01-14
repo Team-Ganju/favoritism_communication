@@ -27,7 +27,7 @@ class DemoAppPages {
     ),
     GetPage(
       name: DemoRoutes.demoProfileCreate,
-      page: () => const DemoProfileCreateView(),
+      page: () => DemoProfileCreateView(),
       binding: DemoProfileCreateBinding(),
     ),
     GetPage(
