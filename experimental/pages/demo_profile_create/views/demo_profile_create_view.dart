@@ -7,11 +7,15 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:favoritism_communication/app/components/atoms/custom_elevated_button.dart';
 import '../controllers/demo_profile_create_controller.dart';
 
+/// 性別
+/// ドロップダウンで選択時に設定される値
 enum Gender{
   male,
   female,
 }
 
+/// 性別
+/// ドロップダウンで選択時に表示される値
 extension GenderText on Gender{
   String get label{
     switch(this){
@@ -27,9 +31,9 @@ extension GenderText on Gender{
 class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
   DemoProfileCreateView({Key? key}) : super(key: key);
 
-  static const int targetAgeLimitMin = 18;
-  static const int targetAgeLimitMax = 100;
-  static const EdgeInsetsGeometry fieldPadding = EdgeInsets.all(8.0);
+  static const int targetAgeLimitMin = 18;    // 対象年齢の最小値
+  static const int targetAgeLimitMax = 100;   // 対象年齢の最大値
+  static const EdgeInsetsGeometry fieldPadding = EdgeInsets.all(8.0); // 入力フィールドのパディング
   final _formKey = GlobalKey<FormBuilderState>();
 
   @override
@@ -74,14 +78,14 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
                           context: context,
                           items: _constructGenderItems(),
                           label: '性別',
-                          onChanged: (Gender? age) => {},
+                          onChanged: (Gender? age) => {}, //TODO: 値の更新処理
                           value: Gender.male,
                         ),
                         _buildDropDownButton<int>(
                           context: context,
                           items: _constructAgeItems(),
                           label: '年代',
-                          onChanged: (int? age) => {},
+                          onChanged: (int? age) => {}, //TODO: 値の更新処理
                           value: 2000,
                         ),
                         _buildTextField(
@@ -95,7 +99,7 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
                   CustomElevatedButton(
                     buttonText: '登録する',
                     initialActiveFlag: true,
-                    onPressed: () => {},
+                    onPressed: () => {}, //TODO: 登録処理
                   )
                 ],
               ),
