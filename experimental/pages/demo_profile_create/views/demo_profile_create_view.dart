@@ -43,7 +43,7 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: SingleChildScrollView (
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
             child: FormBuilder(
               key: _formKey,
               child: Column(
