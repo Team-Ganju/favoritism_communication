@@ -1,4 +1,4 @@
-import 'package:favoritism_communication/app/components/pages/talk_room/talk_room_model.dart';
+import 'package:favoritism_communication/app/models/talk_room_model.dart';
 import 'package:favoritism_communication/app/dummy_data/chat_dummy_data.dart';
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';

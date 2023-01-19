@@ -2,7 +2,7 @@ import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/pages/chat/controllers/chat_controller.dart';
-import 'package:favoritism_communication/app/components/pages/chat/talk_member_card_model_model.dart';
+import 'package:favoritism_communication/app/models/talk_member_card_model_model.dart';
 import 'package:favoritism_communication/app/components/pages/home/views/home_view.dart';
 import 'package:favoritism_communication/app/components/templates/templates.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
