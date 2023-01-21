@@ -11,15 +11,22 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(
-        () => IndexedStack(
-          index: controller.tabService.tabIndex.value,
-          children: const [
-            TabRootView(initialRoot: Routes.home),
-            TabRootView(initialRoot: Routes.chat),
-            TabRootView(initialRoot: Routes.mypage)
-          ],
-        ),
+      body: Column(
+        children: [
+          Flexible(
+            child: Obx(
+              () => IndexedStack(
+                index: controller.tabService.tabIndex.value,
+                children: const [
+                  TabRootView(initialRoot: Routes.home),
+                  TabRootView(initialRoot: Routes.chat),
+                  TabRootView(initialRoot: Routes.mypage)
+                ],
+              ),
+            ),
+          ),
+          const Text("広告表示スペース"),
+        ],
       ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
