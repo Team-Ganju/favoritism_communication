@@ -5,9 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/dashboard_controller.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,16 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ),
           ),
-          const Text("広告表示スペース"),
+          Obx(() => Container(
+                width: controller.isShowAd.value
+                    ? controller.getAd()!.size.width.toDouble()
+                    : 0,
+                height: controller.isShowAd.value ? 72.0 : 0,
+                alignment: Alignment.center,
+                child: controller.isShowAd.value
+                    ? AdWidget(ad: controller.getAd()!)
+                    : const Spacer(),
+              ))
         ],
       ),
       bottomNavigationBar: Obx(
