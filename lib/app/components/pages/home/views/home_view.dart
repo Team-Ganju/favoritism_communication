@@ -20,7 +20,7 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: colorHomeBg,
       appBar: NavBar(
         backgroundColor: colorHomeAppBarBg,
-        toolbarHeight: 120,
+        toolbarHeight: 60,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -59,15 +59,6 @@ class HomeView extends GetView<HomeController> {
                   color: colorHomeAppBarIcon,
                 )
               ],
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(8),
-              child: Obx(
-                () => Row(
-                  children: buildTabButtons(controller.getTabList()),
-                ),
-              ),
             )
           ],
         ),
@@ -214,23 +205,6 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
-}
-
-List<Widget> buildTabButtons(List<TabData> tabDataList) {
-  List<Widget> list = [];
-  for (var i = 0; i < tabDataList.length; i++) {
-    list.add(
-      TabButton(
-        chipTitle: tabDataList[i].title,
-        isEnable: tabDataList[i].isEnable,
-        onPressed: () => tabDataList[i].onPressed(tabDataList[i]),
-      ),
-    );
-    if (i != tabDataList.length - 1) {
-      list.add(const SizedBox(width: 8));
-    }
-  }
-  return list;
 }
 
 class Follower {
