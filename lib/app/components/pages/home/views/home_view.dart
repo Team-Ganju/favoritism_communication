@@ -26,20 +26,6 @@ class HomeView extends GetView<HomeController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: 320,
-                    height: 40,
-                    child: SearchBar(
-                      onChanged: (text) {
-                        if (text != null) {
-                          controller.search(text);
-                        }
-                      },
-                    ),
-                  ),
-                ),
                 IconButton(
                   icon: Badge(
                     badgeContent: const Text(
