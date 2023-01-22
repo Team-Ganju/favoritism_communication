@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
                   icon: const Icon(
