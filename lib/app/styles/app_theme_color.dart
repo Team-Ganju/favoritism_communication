@@ -46,6 +46,7 @@ const colorHomeAppBarBg = Colors.white;
 const colorHomeAppBarIconBadgeText = Colors.white;
 const colorHomeAppBarIconBadgeBg = Color.fromRGBO(223, 2, 89, 1);
 const colorHomeAppBarIcon = Colors.grey;
+const colorHomeAppBarTitle = Color.fromRGBO(228, 190, 181, 1);
 const colorUserCardFollowButtonFgAsFollowed = Colors.white;
 const colorUserCardFollowButtonBgAsFollowed = Colors.blueAccent;
 const colorUserCardFollowButtonFgAsUnfollowed = Colors.blueAccent;

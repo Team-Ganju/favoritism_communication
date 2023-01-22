@@ -42,6 +42,29 @@ class HomeView extends GetView<HomeController> {
                   ),
                   onPressed: () => Get.back<dynamic>(),
                   color: colorHomeAppBarIcon,
+                ),
+                const Text("偏愛コミュニケーション",
+                    style: TextStyle(
+                      color: colorHomeAppBarTitle,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    )),
+                IconButton(
+                  icon: Badge(
+                    badgeContent: const Text(
+                      '1',
+                      style: TextStyle(
+                          fontSize: 14, color: colorHomeAppBarIconBadgeText),
+                    ),
+                    padding: const EdgeInsets.all(6),
+                    badgeColor: colorHomeAppBarIconBadgeBg,
+                    child: const Icon(
+                      Icons.notifications,
+                      size: 36,
+                    ),
+                  ),
+                  onPressed: () => Get.back<dynamic>(),
+                  color: colorHomeAppBarIcon,
                 )
               ],
             )
