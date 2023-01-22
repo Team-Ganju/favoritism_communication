@@ -27,18 +27,9 @@ class HomeView extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  icon: Badge(
-                    badgeContent: const Text(
-                      '1',
-                      style: TextStyle(
-                          fontSize: 14, color: colorHomeAppBarIconBadgeText),
-                    ),
-                    padding: const EdgeInsets.all(6),
-                    badgeColor: colorHomeAppBarIconBadgeBg,
-                    child: const Icon(
-                      Icons.notifications,
-                      size: 36,
-                    ),
+                  icon: const Icon(
+                    Icons.info,
+                    size: 36,
                   ),
                   onPressed: () => Get.back<dynamic>(),
                   color: colorHomeAppBarIcon,
