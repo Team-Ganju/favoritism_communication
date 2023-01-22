@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 /// iOS風ナビバー
@@ -32,6 +33,12 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
         title: title != null ? Text(title ?? '') : child,
         leading: leading,
         actions: trailing,
+        shape: const Border(
+          bottom: BorderSide(
+            color: colorHomeAppBarBorderBottom,
+            width: 2,
+          ),
+        ),
       ),
     );
   }
