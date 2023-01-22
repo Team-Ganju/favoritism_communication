@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -35,6 +36,8 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
   static const int targetAgeLimitMax = 100;   // 対象年齢の最大値
   static const EdgeInsetsGeometry fieldPadding = EdgeInsets.all(8.0); // 入力フィールドのパディング
   final _formKey = GlobalKey<FormBuilderState>();
+  static const _fieldNameUserName = 'name';
+  static const _fieldNameUserDescription = 'introduction';
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +71,7 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
                     child: Column(
                       children: [
                         _buildTextField(
-                          name: 'name',
+                          name: _fieldNameUserName,
                           label: 'ユーザー名',
                           validator:FormBuilderValidators.compose([
                             FormBuilderValidators.required(),
@@ -89,7 +92,7 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
                           value: 2000,
                         ),
                         _buildTextField(
-                          name: 'introduction',
+                          name: _fieldNameUserDescription,
                           label: "自己紹介",
                         )
                       ],
@@ -99,7 +102,15 @@ class DemoProfileCreateView extends GetView<DemoProfileCreateController> {
                   CustomElevatedButton(
                     buttonText: '登録する',
                     initialActiveFlag: true,
-                    onPressed: () => {}, //TODO: 登録処理
+                    onPressed: () {
+                      // バリデーションチェック
+                      if(_formKey.currentState?.saveAndValidate() ?? false){
+                        if (kDebugMode) {
+                          print('登録完了');
+                        } //TODO: 登録処理
+                        return ;
+                      }
+                    },
                   )
                 ],
               ),
