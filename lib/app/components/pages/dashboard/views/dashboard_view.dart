@@ -27,16 +27,19 @@ class DashboardView extends GetView<DashboardController> {
               ),
             ),
           ),
-          Obx(() => Container(
-                width: controller.isShowAd.value
-                    ? controller.getAd()!.size.width.toDouble()
-                    : 0,
-                height: controller.isShowAd.value ? 72.0 : 0,
+          Obx(
+            () => Visibility(
+              visible: controller.isShowAd.value,
+              child: Container(
+                width: controller.getAd()?.size.width.toDouble(),
+                height: 72.0,
                 alignment: Alignment.center,
                 child: controller.isShowAd.value
                     ? AdWidget(ad: controller.getAd()!)
                     : const Spacer(),
-              ))
+              ),
+            ),
+          )
         ],
       ),
       bottomNavigationBar: Obx(
