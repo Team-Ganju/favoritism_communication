@@ -11,6 +11,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() async {
+  MobileAds.instance.initialize();
   runApp(const MyApp());
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -22,7 +23,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _initGoogleMobileAds();
     return RefreshConfiguration(
       headerTriggerDistance: 80,
       footerTriggerDistance: 15,
@@ -46,10 +46,5 @@ class MyApp extends StatelessWidget {
         builder: EasyLoading.init(),
       ),
     );
-  }
-
-  Future<InitializationStatus> _initGoogleMobileAds() {
-    // Initialize Google Mobile Ads SDK
-    return MobileAds.instance.initialize();
   }
 }
