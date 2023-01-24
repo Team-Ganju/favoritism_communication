@@ -1,5 +1,4 @@
 import 'package:favoritism_communication/app/components/organisms/user_card.dart';
-import 'package:favoritism_communication/app/dummy_data/tab_dummy_data.dart';
 import 'package:favoritism_communication/app/dummy_data/user_card_dummy_data.dart';
 import 'package:flutter/widgets.dart';
 import 'package:favoritism_communication/app/services/services.dart';
@@ -10,7 +9,6 @@ class HomeController extends GetxController {
   final RxBool isFollowed = false.obs;
   final RxList<UserCardData> userCardDataList = <UserCardData>[].obs;
   final RefreshController refreshController = RefreshController();
-  final RxList<TabData> tabDataList = <TabData>[].obs;
   final RxBool needScrollToTop = false.obs;
   final scrollController = ScrollController();
   final TabService tabService = Get.find();
@@ -19,13 +17,6 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     fetchUserData();
-    initTab(dummyTabNameList
-        .map((name) => TabData(name, (tabData) {
-              // todo: カードをフィルタする処理を追加
-              selectTab(tabData);
-            }))
-        .toList());
-    selectTab(tabDataList[0]);
     super.onInit();
   }
 
@@ -40,43 +31,6 @@ class HomeController extends GetxController {
     try {
       // todo: 追加の検索結果取得処理を書く
       userCardDataList.addAll(userCardList);
-      userCardDataList.refresh();
-      await Future.delayed(const Duration(milliseconds: 100));
-      refreshController.loadComplete();
-    } catch (e) {
-      Get.log(e.toString());
-      refreshController.loadFailed();
-    }
-  }
-
-  void initTab(List<TabData> list) {
-    tabDataList.assignAll(list);
-    tabDataList.refresh();
-  }
-
-  List<TabData> getTabList() {
-    return tabDataList;
-  }
-
-  void selectTab(TabData data) async {
-    for (var i = 0; i < tabDataList.length; i++) {
-      if (tabDataList[i] == data) {
-        tabDataList[i].isEnable = !tabDataList[i].isEnable;
-      } else {
-        tabDataList[i].isEnable = false;
-      }
-    }
-    tabDataList.refresh();
-  }
-
-  void search(String text) async {
-    try {
-      var filteredList = userCardList
-          .where((value) =>
-              value.userName.toLowerCase().contains(text.toLowerCase()))
-          .toList();
-      userCardDataList.clear();
-      userCardDataList.addAll(filteredList);
       userCardDataList.refresh();
       await Future.delayed(const Duration(milliseconds: 100));
       refreshController.loadComplete();
@@ -102,12 +56,4 @@ class HomeController extends GetxController {
         .isFollowed = false;
     userCardDataList.refresh();
   }
-}
-
-class TabData {
-  final String title;
-  bool isEnable = false;
-  final Function(TabData data) onPressed;
-
-  TabData(this.title, this.onPressed);
 }

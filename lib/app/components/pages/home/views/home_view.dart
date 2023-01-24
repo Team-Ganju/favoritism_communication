@@ -8,7 +8,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
-import '../../../atoms/tab_button.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -20,27 +19,27 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: colorHomeBg,
       appBar: NavBar(
         backgroundColor: colorHomeAppBarBg,
-        toolbarHeight: 120,
+        toolbarHeight: 60,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    width: 320,
-                    height: 40,
-                    child: SearchBar(
-                      onChanged: (text) {
-                        if (text != null) {
-                          controller.search(text);
-                        }
-                      },
-                    ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.info,
+                    size: 36,
                   ),
+                  onPressed: () => Get.back<dynamic>(),
+                  color: colorHomeAppBarIcon,
                 ),
+                const Text("偏愛コミュニケーション",
+                    style: TextStyle(
+                      color: colorHomeAppBarTitle,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    )),
                 IconButton(
                   icon: Badge(
                     badgeContent: const Text(
@@ -59,15 +58,6 @@ class HomeView extends GetView<HomeController> {
                   color: colorHomeAppBarIcon,
                 )
               ],
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(8),
-              child: Obx(
-                () => Row(
-                  children: buildTabButtons(controller.getTabList()),
-                ),
-              ),
             )
           ],
         ),
@@ -214,23 +204,6 @@ class HomeView extends GetView<HomeController> {
       ),
     );
   }
-}
-
-List<Widget> buildTabButtons(List<TabData> tabDataList) {
-  List<Widget> list = [];
-  for (var i = 0; i < tabDataList.length; i++) {
-    list.add(
-      TabButton(
-        chipTitle: tabDataList[i].title,
-        isEnable: tabDataList[i].isEnable,
-        onPressed: () => tabDataList[i].onPressed(tabDataList[i]),
-      ),
-    );
-    if (i != tabDataList.length - 1) {
-      list.add(const SizedBox(width: 8));
-    }
-  }
-  return list;
 }
 
 class Follower {
