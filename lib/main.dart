@@ -8,8 +8,10 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'app/routes/app_pages.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() async {
+  MobileAds.instance.initialize();
   runApp(const MyApp());
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

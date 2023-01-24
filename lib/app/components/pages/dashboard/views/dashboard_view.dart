@@ -5,21 +5,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/dashboard_controller.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx(
-        () => IndexedStack(
-          index: controller.tabService.tabIndex.value,
-          children: const [
-            TabRootView(initialRoot: Routes.home),
-            TabRootView(initialRoot: Routes.chat),
-            TabRootView(initialRoot: Routes.mypage)
-          ],
-        ),
+      body: Column(
+        children: [
+          Flexible(
+            child: Obx(
+              () => IndexedStack(
+                index: controller.tabService.tabIndex.value,
+                children: const [
+                  TabRootView(initialRoot: Routes.home),
+                  TabRootView(initialRoot: Routes.chat),
+                  TabRootView(initialRoot: Routes.mypage)
+                ],
+              ),
+            ),
+          ),
+          Obx(
+            () => Visibility(
+              visible: controller.isShowAd.value,
+              child: Container(
+                width: controller.getAd()?.size.width.toDouble(),
+                height: 72.0,
+                alignment: Alignment.center,
+                child: controller.isShowAd.value
+                    ? AdWidget(ad: controller.getAd()!)
+                    : const Spacer(),
+              ),
+            ),
+          )
+        ],
       ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
