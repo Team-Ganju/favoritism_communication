@@ -21,6 +21,7 @@ class DashboardView extends GetView<DashboardController> {
                 index: controller.tabService.tabIndex.value,
                 children: const [
                   TabRootView(initialRoot: Routes.home),
+                  TabRootView(initialRoot: Routes.search),
                   TabRootView(initialRoot: Routes.chat),
                   TabRootView(initialRoot: Routes.mypage)
                 ],
