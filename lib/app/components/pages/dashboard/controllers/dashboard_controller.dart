@@ -1,7 +1,5 @@
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:favoritism_communication/app/utils/ad_util.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -14,12 +12,14 @@ class NavigationInfo{
     required this.initialRoot,
     required this.label,
     required this.isModal,
+    this.modalWindow,
   });
 
   final IconData icon;
   final String initialRoot;
   final String label;
   final bool isModal;
+  final Widget? modalWindow;
 }
 
 
@@ -30,7 +30,7 @@ class DashboardController extends GetxController {
 
   final List<NavigationInfo> navigationInfo = const [
     NavigationInfo(icon: CupertinoIcons.home, initialRoot: Routes.home, label: 'ホーム', isModal: false),
-    NavigationInfo(icon: CupertinoIcons.search, initialRoot: Routes.search, label: 'さがす', isModal: true),
+    NavigationInfo(icon: CupertinoIcons.search, initialRoot: Routes.search, label: 'さがす', isModal: true, modalWindow: SearchView()),
     NavigationInfo(icon: CupertinoIcons.chat_bubble, initialRoot: Routes.chat, label: 'トーク', isModal: false),
     NavigationInfo(icon: CupertinoIcons.person, initialRoot: Routes.mypage, label: 'プロフィール', isModal: false),
   ];
@@ -69,18 +69,12 @@ class DashboardController extends GetxController {
   }
 
   void changeIndex(int index) {
+    // モーダルの場合
     if(navigationInfo[index].isModal){
-      openDialog();
+      Get.dialog(navigationInfo[index].modalWindow!); // ダイアログで表示
     }
     else{
-      tabService.changeIndex(index);
+      tabService.changeIndex(index);  // インデックスを変更
     }
   }
-
-  void openDialog() {
-    Get.dialog(
-      const SearchView(),
-    );
-  }
-
 }
