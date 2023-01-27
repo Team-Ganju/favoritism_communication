@@ -19,12 +19,9 @@ class DashboardView extends GetView<DashboardController> {
             child: Obx(
               () => IndexedStack(
                 index: controller.tabService.tabIndex.value,
-                children: const [
-                  TabRootView(initialRoot: Routes.home),
-                  TabRootView(initialRoot: Routes.search),
-                  TabRootView(initialRoot: Routes.chat),
-                  TabRootView(initialRoot: Routes.mypage)
-                ],
+                children: controller.navigationInfo.map((info) =>
+                    TabRootView(initialRoot: info.initialRoot)
+                ).toList(),
               ),
             ),
           ),
@@ -45,25 +42,17 @@ class DashboardView extends GetView<DashboardController> {
       ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          onTap: controller.tabService.changeIndex,
+          onTap: controller.changeIndex,
           currentIndex: controller.tabService.tabIndex.value,
           unselectedItemColor: colorDashboardUnselectedItem,
           selectedItemColor: colorDashboardSelectedItem,
           type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
+          items: controller.navigationInfo.map((info) =>
             BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.home),
-              label: 'ホーム',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.chat_bubble),
-              label: 'トーク',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.person),
-              label: 'プロフィール',
+              icon: Icon(info.icon),
+              label: info.label,
             )
-          ],
+          ).toList(),
         ),
       ),
     );
