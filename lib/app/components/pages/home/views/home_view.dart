@@ -1,10 +1,12 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/components/atoms/pickup_list.dart';
 import 'package:favoritism_communication/app/utils/dialog_utils.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
@@ -92,22 +94,82 @@ class HomeView extends GetView<HomeController> {
                         onLoading: () {
                           controller.onLoading();
                         },
-                        child: GridView.count(
+                        child: StaggeredGrid.count(
                           crossAxisCount: 2,
-                          controller: controller.scrollController,
-                          shrinkWrap: true,
-                          children: List.generate(100, (index) {
-                            return index % 2 == 0
-                                ? Center(
-                                    child: UserListInfoItem(
-                                        label: "偏愛マップを作成した気の合う人を見つけよう"),
-                                  )
-                                : Center(
-                                    child: UserListInfoItem(
-                                        label: "コミュニティに入るとマッチングしやすいよ"),
-                                  );
-                          }),
+                          mainAxisSpacing: 2,
+                          crossAxisSpacing: 2,
+                          children: [
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 1,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 1,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 1,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 1,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 1,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 1,
+                              mainAxisCellCount: 1,
+                              child: Tile(index: 0),
+                            ),
+                          ],
                         )
+                        /*
+                        child: StaggeredGrid.count(
+                          crossAxisCount: 2,
+                          // controller: controller.scrollController,
+                          // shrinkWrap: true,
+                          children: [
+                            PickupList(),
+                            Spacer(),
+                            ...List.generate(
+                              100,
+                              (index) {
+                                return index % 2 == 0
+                                    ? Center(
+                                        child: UserListInfoItem(
+                                            label: "偏愛マップを作成した気の合う人を見つけよう"),
+                                      )
+                                    : Center(
+                                        child: UserListInfoItem(
+                                            label: "コミュニティに入るとマッチングしやすいよ"),
+                                      );
+                              },
+                            )
+                          ],
+                        )*/
                         // child: ListView.separated(
                         //   controller: controller.scrollController,
                         //   shrinkWrap: true,
@@ -229,4 +291,20 @@ class Follower {
   final String? profileImageURL;
 
   const Follower(this.userId, this.userName, this.profileImageURL);
+}
+
+class Tile extends StatelessWidget {
+  const Tile({Key? key, required this.index}) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      height: 100,
+      color: Colors.grey,
+      child: Text("test${index}"),
+    );
+  }
 }
