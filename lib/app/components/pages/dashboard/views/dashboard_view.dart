@@ -1,4 +1,4 @@
-import 'package:favoritism_communication/app/components/pages/tab_root/tab_root_view.dart';
+import 'package:favoritism_communication/app/components/organisms/dashbord_items.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,9 +17,7 @@ class DashboardView extends GetView<DashboardController> {
             child: Obx(
               () => IndexedStack(
                 index: controller.tabService.tabIndex.value,
-                children: controller.navigationInfo.map((info) =>
-                    TabRootView(initialRoot: info.initialRoot)
-                ).toList(),
+                children: tabRootViews,
               ),
             ),
           ),
@@ -40,17 +38,12 @@ class DashboardView extends GetView<DashboardController> {
       ),
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
-          onTap: controller.changeIndex,
+          onTap: controller.tabService.changeIndex,
           currentIndex: controller.tabService.tabIndex.value,
           unselectedItemColor: colorDashboardUnselectedItem,
           selectedItemColor: colorDashboardSelectedItem,
           type: BottomNavigationBarType.fixed,
-          items: controller.navigationInfo.map((info) =>
-            BottomNavigationBarItem(
-              icon: Icon(info.icon),
-              label: info.label,
-            )
-          ).toList(),
+          items: bottomBarItems,
         ),
       ),
     );
