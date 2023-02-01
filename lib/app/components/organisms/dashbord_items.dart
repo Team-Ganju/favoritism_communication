@@ -12,34 +12,34 @@ class NavigationInfo {
   final IconData icon;
   final String initialRoot;
   final String label;
-
-  static final List<NavigationInfo> infos = [
-    const NavigationInfo(
-      icon: CupertinoIcons.home,
-      initialRoot: Routes.home,
-      label: 'ホーム',
-    ),
-    const NavigationInfo(
-      icon: CupertinoIcons.search,
-      initialRoot: Routes.search,
-      label: 'さがす',
-    ),
-    const NavigationInfo(
-      icon: CupertinoIcons.chat_bubble,
-      initialRoot: Routes.chat,
-      label: 'トーク',
-    ),
-    const NavigationInfo(
-      icon: CupertinoIcons.person,
-      initialRoot: Routes.mypage,
-      label: 'プロフィール',
-    ),
-  ];
 }
 
-List<Widget> tabRootViews = NavigationInfo.infos
+const List<NavigationInfo> _navigationInfos = [
+  NavigationInfo(
+    icon: CupertinoIcons.home,
+    initialRoot: Routes.home,
+    label: 'ホーム',
+  ),
+  NavigationInfo(
+    icon: CupertinoIcons.search,
+    initialRoot: Routes.search,
+    label: 'さがす',
+  ),
+  NavigationInfo(
+    icon: CupertinoIcons.chat_bubble,
+    initialRoot: Routes.chat,
+    label: 'トーク',
+  ),
+  NavigationInfo(
+    icon: CupertinoIcons.person,
+    initialRoot: Routes.mypage,
+    label: 'プロフィール',
+  ),
+];
+
+List<Widget> tabRootViews = _navigationInfos
     .map((e) => TabRootView(initialRoot: e.initialRoot))
     .toList();
-List<BottomNavigationBarItem> bottomBarItems = NavigationInfo.infos
+List<BottomNavigationBarItem> bottomBarItems = _navigationInfos
     .map((e) => BottomNavigationBarItem(icon: Icon(e.icon), label: e.label))
     .toList();
