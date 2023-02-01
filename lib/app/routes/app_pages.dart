@@ -12,6 +12,8 @@ import '../components/pages/mypage/bindings/mypage_binding.dart';
 import '../components/pages/mypage/views/mypage_view.dart';
 import '../components/pages/profile/bindings/profile_binding.dart';
 import '../components/pages/profile/views/profile_view.dart';
+import '../components/pages/search/bindings/search_binding.dart';
+import '../components/pages/search/views/search_view.dart';
 import '../components/pages/talk_room/bindings/talk_room_binding.dart';
 import '../components/pages/talk_room/views/talk_room_view.dart';
 
@@ -59,6 +61,11 @@ class AppPages {
       name: _Paths.talkRoom,
       page: () => const TalkRoomView(),
       binding: TalkRoomBinding(),
+    ),
+    GetPage(
+      name: _Paths.search,
+      page: () => const SearchView(),
+      binding: SearchBinding(),
     ),
   ];
 }
