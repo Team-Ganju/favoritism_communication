@@ -1,21 +1,20 @@
 class TalkMemberCardModel {
   String? roomName;
-  String? mostRecentMessage;
+  String? lastMessage;
   String? profileImageURL;
 
-  TalkMemberCardModel(
-      {this.roomName, this.mostRecentMessage, this.profileImageURL});
+  TalkMemberCardModel({this.roomName, this.lastMessage, this.profileImageURL});
 
   TalkMemberCardModel.fromJson(Map<String, dynamic> json) {
     roomName = json['roomName'];
-    mostRecentMessage = json['mostRecentMessage'];
+    lastMessage = json['lastMessage'];
     profileImageURL = json['profileImageURL'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['roomName'] = roomName;
-    data['mostRecentMessage'] = mostRecentMessage;
+    data['lastMessage'] = lastMessage;
     data['profileImageURL'] = profileImageURL;
     return data;
   }

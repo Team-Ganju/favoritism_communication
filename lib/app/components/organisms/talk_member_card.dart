@@ -5,13 +5,13 @@ class TalkMemberCard extends StatelessWidget {
   const TalkMemberCard({
     Key? key,
     required this.roomName,
-    required this.mostRecentMessage,
+    required this.lastMessage,
     required this.onTap,
     this.profileImageURL,
   }) : super(key: key);
 
   final String roomName;
-  final String mostRecentMessage;
+  final String lastMessage;
   final String? profileImageURL;
   final VoidCallback onTap;
 
@@ -60,7 +60,7 @@ class TalkMemberCard extends StatelessWidget {
                       style: const TextStyle(fontSize: 20),
                     ),
                     Text(
-                      mostRecentMessage,
+                      lastMessage,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),

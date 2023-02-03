@@ -119,7 +119,7 @@ class ChatView extends GetView<ChatController> {
                               Get.toNamed(Routes.talkRoom);
                             },
                             roomName: group.roomName ?? '',
-                            mostRecentMessage: group.mostRecentMessage ?? '',
+                            lastMessage: group.lastMessage ?? '',
                             profileImageURL: group.profileImageURL,
                           );
                         },
@@ -151,8 +151,7 @@ class ChatView extends GetView<ChatController> {
                               Get.toNamed(Routes.talkRoom);
                             },
                             roomName: individual.roomName ?? '',
-                            mostRecentMessage:
-                                individual.mostRecentMessage ?? '',
+                            lastMessage: individual.lastMessage ?? '',
                             profileImageURL: individual.profileImageURL,
                           );
                         },
