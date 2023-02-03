@@ -14,6 +14,8 @@ import '../components/pages/profile/bindings/profile_binding.dart';
 import '../components/pages/profile/views/profile_view.dart';
 import '../components/pages/search/bindings/search_binding.dart';
 import '../components/pages/search/views/search_view.dart';
+import '../components/pages/search_filter/bindings/search_filter_binding.dart';
+import '../components/pages/search_filter/views/search_filter_view.dart';
 import '../components/pages/talk_room/bindings/talk_room_binding.dart';
 import '../components/pages/talk_room/views/talk_room_view.dart';
 
@@ -66,6 +68,11 @@ class AppPages {
       name: _Paths.search,
       page: () => const SearchView(),
       binding: SearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.searchFilter,
+      page: () => const SearchFilterView(),
+      binding: SearchFilterBinding(),
     ),
   ];
 }

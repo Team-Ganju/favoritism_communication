@@ -58,3 +58,8 @@ const colorMypageAppBarBg = Colors.pinkAccent;
 const colorTalkRoomAppBarBg = Colors.pink;
 const colorMatchingDialogButtonTextFg = Colors.white;
 const colorMatchingDialogButtonTextBg = Color(0xff0091ea);
+// "さがす"画面
+const colorSearchBg = Colors.white;                 // 背景色
+const colorSearchAppBarBg = Colors.white;           // Appbar背景色
+const colorSearchAppBarTitle = Colors.grey;         // タイトル文字色
+const colorSearchAppBarIconFilter = Colors.grey;    // フィルターアイコン色
