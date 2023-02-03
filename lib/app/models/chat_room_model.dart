@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class TalkRoomModel {
+class ChatRoomModel {
   String? roomId;
   String? roomName;
   bool? isGroup;
@@ -11,7 +11,7 @@ class TalkRoomModel {
   Timestamp? updatedAt;
   List<Map<String, dynamic>> messages = [];
 
-  TalkRoomModel({
+  ChatRoomModel({
     required this.roomId,
     required this.roomName,
     required this.isGroup,
@@ -23,7 +23,7 @@ class TalkRoomModel {
     required this.messages,
   });
 
-  TalkRoomModel.fromJson(Map<String, dynamic> json) {
+  ChatRoomModel.fromJson(Map<String, dynamic> json) {
     roomId = json['roomId'];
     roomName = json['roomName'];
     isGroup = json['isGroup'];

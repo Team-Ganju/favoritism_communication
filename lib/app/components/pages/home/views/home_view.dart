@@ -149,7 +149,7 @@ class HomeView extends GetView<HomeController> {
                                                   controller.tabService.tabIndex
                                                       .value = 1;
                                                   // トークルームに移動する
-                                                  Get.toNamed(Routes.talkRoom);
+                                                  Get.toNamed(Routes.chatRoom);
                                                 },
                                                 controller.chatService.follower
                                                     .userName,

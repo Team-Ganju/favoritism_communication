@@ -6,10 +6,10 @@ List<Map<String, dynamic>> privateChat = <Map<String, dynamic>>[
         "文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認",
     "profileImageURL": "https://animeanime.jp/imgs/slider/526911.jpg"
   },
-  {"roomName": "Aさん", "lastMessage": "私も〇〇好きです", "profileImageURL": ""},
-  {"roomName": "Bさん", "lastMessage": "私も〇〇好きです", "profileImageURL": ""},
-  {"roomName": "Cさん", "lastMessage": "私も〇〇好きです", "profileImageURL": ""},
-  {"roomName": "Dさん", "lastMessage": "私も〇〇好きです", "profileImageURL": ""},
+  {"roomName": "Aさん", "lastMessage": "私も〇〇好きです", "profileImageURL": null},
+  {"roomName": "Bさん", "lastMessage": "私も〇〇好きです", "profileImageURL": null},
+  {"roomName": "Cさん", "lastMessage": "私も〇〇好きです", "profileImageURL": null},
+  {"roomName": "Dさん", "lastMessage": "私も〇〇好きです", "profileImageURL": null},
   {
     "roomName": "Eさん",
     "lastMessage": "私も〇〇好きです",
@@ -53,8 +53,8 @@ List<Map<String, dynamic>> groupChat = [
   }
 ];
 
-// TalkRoom
-const talkRoomData = [
+// ChatRoom
+const chatRoomData = [
   // グループデータ
   {
     "roomId": "group-001",

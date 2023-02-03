@@ -1,8 +1,8 @@
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
-class TalkMemberCard extends StatelessWidget {
-  const TalkMemberCard({
+class ChatMemberCard extends StatelessWidget {
+  const ChatMemberCard({
     Key? key,
     required this.roomName,
     required this.lastMessage,
@@ -25,7 +25,7 @@ class TalkMemberCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.0),
           side: BorderSide(
             //FIXME: 各種項目の色はアプリ全体の色を管理するファイルから参照するように修正する
-            color: colorTalkMemberCardBorder,
+            color: colorChatMemberCardBorder,
           ),
         ),
         child: Padding(
@@ -38,10 +38,10 @@ class TalkMemberCard extends StatelessWidget {
                 foregroundImage: profileImageURL != null
                     ? NetworkImage(profileImageURL!)
                     : null,
-                backgroundColor: colorTalkMemberCardCircleBg,
+                backgroundColor: colorChatMemberCardCircleBg,
                 child: const Icon(
                   Icons.person,
-                  color: colorTalkMemberCardIcon,
+                  color: colorChatMemberCardIcon,
                 ),
               ),
               const SizedBox(

@@ -4,18 +4,18 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/talk_room_controller.dart';
+import '../controllers/chat_room_controller.dart';
 
-class TalkRoomView extends GetView<TalkRoomController> {
-  const TalkRoomView({Key? key}) : super(key: key);
+class ChatRoomView extends GetView<ChatRoomController> {
+  const ChatRoomView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NavBar(
         title:
-            controller.chatService.follower.userName, //TalkMemberCard.roomName
+            controller.chatService.follower.userName, //ChatMemberCard.roomName
         leading: const atoms.BackButton(),
-        backgroundColor: colorTalkRoomAppBarBg,
+        backgroundColor: colorChatRoomAppBarBg,
       ),
       body: Stack(
         children: [
@@ -41,13 +41,13 @@ class TalkRoomView extends GetView<TalkRoomController> {
                             CircleAvatar(
                               //TODO:firebase接続後に動作確認
                               //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                              // foregroundImage: controller.talkRooms != null
+                              // foregroundImage: controller.chatRooms != null
                               //     ? NetworkImage(profileImageURL!)
                               //     : null,
-                              backgroundColor: colorTalkMemberCardCircleBg,
+                              backgroundColor: colorChatMemberCardCircleBg,
                               child: const Icon(
                                 Icons.person,
-                                color: colorTalkMemberCardIcon,
+                                color: colorChatMemberCardIcon,
                               ),
                             ),
                             const atoms.ChatBubble(

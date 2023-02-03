@@ -1,11 +1,11 @@
-class TalkMemberCardModel {
+class ChatMemberCardModel {
   String? roomName;
   String? lastMessage;
   String? profileImageURL;
 
-  TalkMemberCardModel({this.roomName, this.lastMessage, this.profileImageURL});
+  ChatMemberCardModel({this.roomName, this.lastMessage, this.profileImageURL});
 
-  TalkMemberCardModel.fromJson(Map<String, dynamic> json) {
+  ChatMemberCardModel.fromJson(Map<String, dynamic> json) {
     roomName = json['roomName'];
     lastMessage = json['lastMessage'];
     profileImageURL = json['profileImageURL'];

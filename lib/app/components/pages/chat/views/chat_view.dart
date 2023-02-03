@@ -1,8 +1,8 @@
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
-import 'package:favoritism_communication/app/components/organisms/talk_member_card.dart';
+import 'package:favoritism_communication/app/components/organisms/chat_member_card.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/pages/chat/controllers/chat_controller.dart';
-import 'package:favoritism_communication/app/models/talk_member_card_model.dart';
+import 'package:favoritism_communication/app/models/chat_member_card_model.dart';
 import 'package:favoritism_communication/app/components/pages/home/views/home_view.dart';
 import 'package:favoritism_communication/app/components/templates/templates.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
@@ -60,12 +60,12 @@ class ChatView extends GetView<ChatController> {
                         labelPadding:
                             const EdgeInsets.symmetric(horizontal: 13.0),
                         side: BorderSide.none,
-                        backgroundColor: controller.isGroupTalk.value
-                            ? colorActionChipGroupBgIfIsGroupTalk
-                            : colorActionChipGroupBgIfIsNotGroupTalk,
+                        backgroundColor: controller.isGroupChat.value
+                            ? colorActionChipGroupBgIfIsGroupChat
+                            : colorActionChipGroupBgIfIsNotGroupChat,
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
-                          controller.switchTalkPartner();
+                          controller.switchChatPartner();
                         },
                       )),
                   Obx(() => CustomActionChip(
@@ -77,12 +77,12 @@ class ChatView extends GetView<ChatController> {
                         labelPadding:
                             const EdgeInsets.symmetric(horizontal: 4.0),
                         side: BorderSide.none,
-                        backgroundColor: controller.isGroupTalk.value
-                            ? colorActionChipPairTalkBgIfIsGroupTalk
-                            : colorActionChipPairTalkBgIfIsNotGroupTalk,
+                        backgroundColor: controller.isGroupChat.value
+                            ? colorActionChipPairChatBgIfIsGroupChat
+                            : colorActionChipPairChatBgIfIsNotGroupChat,
                         padding: const EdgeInsets.symmetric(horizontal: 25.0),
                         onPressed: () {
-                          controller.switchTalkPartner();
+                          controller.switchChatPartner();
                         },
                       )),
                 ],
@@ -91,7 +91,7 @@ class ChatView extends GetView<ChatController> {
           ),
           Expanded(
             child: Obx(
-              () => controller.isGroupTalk.value
+              () => controller.isGroupChat.value
                   ? CustomSmartRefresher(
                       refreshController:
                           controller.refreshControllerInGroupList,
@@ -105,18 +105,18 @@ class ChatView extends GetView<ChatController> {
                         controller.onRefreshInGroupList();
                       },
                       child: ListView.builder(
-                        itemCount: controller.provider.groupTalks.length,
+                        itemCount: controller.provider.groupChats.length,
                         itemBuilder: (context, index) {
-                          final TalkMemberCardModel group =
-                              controller.provider.groupTalks[index];
-                          return TalkMemberCard(
+                          final ChatMemberCardModel group =
+                              controller.provider.groupChats[index];
+                          return ChatMemberCard(
                             onTap: () {
                               controller.chatService.follower = Follower(
                                 index.toString(),
                                 group.roomName ?? '',
                                 group.profileImageURL,
                               );
-                              Get.toNamed(Routes.talkRoom);
+                              Get.toNamed(Routes.chatRoom);
                             },
                             roomName: group.roomName ?? '',
                             lastMessage: group.lastMessage ?? '',
@@ -137,18 +137,18 @@ class ChatView extends GetView<ChatController> {
                         controller.onRefreshInPairList();
                       },
                       child: ListView.builder(
-                        itemCount: controller.provider.individualTalks.length,
+                        itemCount: controller.provider.individualChats.length,
                         itemBuilder: (context, index) {
-                          final TalkMemberCardModel individual =
-                              controller.provider.individualTalks[index];
-                          return TalkMemberCard(
+                          final ChatMemberCardModel individual =
+                              controller.provider.individualChats[index];
+                          return ChatMemberCard(
                             onTap: () {
                               controller.chatService.follower = Follower(
                                 index.toString(),
                                 individual.roomName ?? '',
                                 individual.profileImageURL,
                               );
-                              Get.toNamed(Routes.talkRoom);
+                              Get.toNamed(Routes.chatRoom);
                             },
                             roomName: individual.roomName ?? '',
                             lastMessage: individual.lastMessage ?? '',

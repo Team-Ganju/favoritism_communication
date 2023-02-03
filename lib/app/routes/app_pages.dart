@@ -12,8 +12,8 @@ import '../components/pages/mypage/bindings/mypage_binding.dart';
 import '../components/pages/mypage/views/mypage_view.dart';
 import '../components/pages/profile/bindings/profile_binding.dart';
 import '../components/pages/profile/views/profile_view.dart';
-import '../components/pages/talk_room/bindings/talk_room_binding.dart';
-import '../components/pages/talk_room/views/talk_room_view.dart';
+import '../components/pages/chat_room/bindings/chat_room_binding.dart';
+import '../components/pages/chat_room/views/chat_room_view.dart';
 
 part 'app_routes.dart';
 
@@ -56,9 +56,9 @@ class AppPages {
       fullscreenDialog: true,
     ),
     GetPage(
-      name: _Paths.talkRoom,
-      page: () => const TalkRoomView(),
-      binding: TalkRoomBinding(),
+      name: _Paths.chatRoom,
+      page: () => const ChatRoomView(),
+      binding: ChatRoomBinding(),
     ),
   ];
 }
