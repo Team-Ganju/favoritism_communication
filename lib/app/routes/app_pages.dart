@@ -73,6 +73,7 @@ class AppPages {
       name: _Paths.searchFilter,
       page: () => const SearchFilterView(),
       binding: SearchFilterBinding(),
+      fullscreenDialog: true,
     ),
   ];
 }
