@@ -6,8 +6,13 @@ class ChatMemberCardModelProvider {
   List<ChatMemberCardModel> groupChats = [];
 
   void fetchChatData() {
-    individualChats =
-        privateChat.map((e) => ChatMemberCardModel.fromJson(e)).toList();
-    groupChats = groupChat.map((e) => ChatMemberCardModel.fromJson(e)).toList();
+    //FIXME: firebaseに接続したらダミーデータを書き換え
+    for (var data in chatRoomData) {
+      if (data['isGroup']) {
+        groupChats.add(ChatMemberCardModel.fromJson(data));
+      } else {
+        individualChats.add(ChatMemberCardModel.fromJson(data));
+      }
+    }
   }
 }

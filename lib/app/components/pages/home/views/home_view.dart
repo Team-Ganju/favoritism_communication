@@ -238,7 +238,7 @@ List<Widget> buildTabButtons(List<TabData> tabDataList) {
 class Follower {
   final String userId;
   final String userName;
-  final String? profileImageURL;
+  final String? profileImage;
 
-  const Follower(this.userId, this.userName, this.profileImageURL);
+  const Follower(this.userId, this.userName, this.profileImage);
 }

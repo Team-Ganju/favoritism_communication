@@ -1,21 +1,25 @@
 class ChatMemberCardModel {
   String? roomName;
   String? lastMessage;
-  String? profileImageURL;
+  String? profileImage;
 
-  ChatMemberCardModel({this.roomName, this.lastMessage, this.profileImageURL});
+  ChatMemberCardModel({
+    this.roomName,
+    this.lastMessage,
+    this.profileImage,
+  });
 
   ChatMemberCardModel.fromJson(Map<String, dynamic> json) {
     roomName = json['roomName'];
     lastMessage = json['lastMessage'];
-    profileImageURL = json['profileImageURL'];
+    profileImage = json['profileImage'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['roomName'] = roomName;
     data['lastMessage'] = lastMessage;
-    data['profileImageURL'] = profileImageURL;
+    data['profileImage'] = profileImage;
     return data;
   }
 }

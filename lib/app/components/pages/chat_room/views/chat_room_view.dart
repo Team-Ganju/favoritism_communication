@@ -40,9 +40,9 @@ class ChatRoomView extends GetView<ChatRoomController> {
                           children: [
                             CircleAvatar(
                               //TODO:firebase接続後に動作確認
-                              //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
+                              //profileImageがあればその画像を表示、なければグレー背景でpersonアイコンを表示
                               // foregroundImage: controller.chatRooms != null
-                              //     ? NetworkImage(profileImageURL!)
+                              //     ? NetworkImage(profileImage!)
                               //     : null,
                               backgroundColor: colorChatMemberCardCircleBg,
                               child: const Icon(

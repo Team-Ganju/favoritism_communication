@@ -114,13 +114,13 @@ class ChatView extends GetView<ChatController> {
                               controller.chatService.follower = Follower(
                                 index.toString(),
                                 group.roomName ?? '',
-                                group.profileImageURL,
+                                group.profileImage,
                               );
                               Get.toNamed(Routes.chatRoom);
                             },
                             roomName: group.roomName ?? '',
                             lastMessage: group.lastMessage ?? '',
-                            profileImageURL: group.profileImageURL,
+                            profileImage: group.profileImage,
                           );
                         },
                       ),
@@ -146,13 +146,13 @@ class ChatView extends GetView<ChatController> {
                               controller.chatService.follower = Follower(
                                 index.toString(),
                                 individual.roomName ?? '',
-                                individual.profileImageURL,
+                                individual.profileImage,
                               );
                               Get.toNamed(Routes.chatRoom);
                             },
                             roomName: individual.roomName ?? '',
                             lastMessage: individual.lastMessage ?? '',
-                            profileImageURL: individual.profileImageURL,
+                            profileImage: individual.profileImage,
                           );
                         },
                       ),

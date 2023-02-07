@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ChatRoomModel {
   String? roomId;
   String? roomName;
-  bool? isGroup;
+  bool isGroup = false;
   String? lastMessage;
   String? userId;
   String? profileImage;

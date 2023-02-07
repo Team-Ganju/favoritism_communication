@@ -7,12 +7,12 @@ class ChatMemberCard extends StatelessWidget {
     required this.roomName,
     required this.lastMessage,
     required this.onTap,
-    this.profileImageURL,
+    this.profileImage,
   }) : super(key: key);
 
   final String roomName;
   final String lastMessage;
-  final String? profileImageURL;
+  final String? profileImage;
   final VoidCallback onTap;
 
   @override
@@ -24,7 +24,6 @@ class ChatMemberCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
           side: BorderSide(
-            //FIXME: 各種項目の色はアプリ全体の色を管理するファイルから参照するように修正する
             color: colorChatMemberCardBorder,
           ),
         ),
@@ -34,10 +33,9 @@ class ChatMemberCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 //TODO:firebase接続後に動作確認
-                //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                foregroundImage: profileImageURL != null
-                    ? NetworkImage(profileImageURL!)
-                    : null,
+                //profileImageがあればその画像を表示、なければグレー背景でpersonアイコンを表示
+                foregroundImage:
+                    profileImage != null ? NetworkImage(profileImage!) : null,
                 backgroundColor: colorChatMemberCardCircleBg,
                 child: const Icon(
                   Icons.person,
