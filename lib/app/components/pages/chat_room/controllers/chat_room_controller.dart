@@ -4,7 +4,7 @@ import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';
 
 class ChatRoomController extends GetxController {
-  List<ChatRoomModel> chatRooms = [];
+  List<ChatRoomModel> chatRooms = <ChatRoomModel>[].obs;
 
   final ChatService chatService = Get.find();
 

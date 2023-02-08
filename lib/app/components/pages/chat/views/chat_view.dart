@@ -9,6 +9,7 @@ import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../models/chat_room_model.dart';
 import '../../../../styles/styles.dart';
 
 class ChatView extends GetView<ChatController> {
@@ -107,7 +108,7 @@ class ChatView extends GetView<ChatController> {
                       child: ListView.builder(
                         itemCount: controller.provider.groupChats.length,
                         itemBuilder: (context, index) {
-                          final ChatMemberCardModel group =
+                          final ChatRoomModel group =
                               controller.provider.groupChats[index];
                           return ChatMemberCard(
                             onTap: () {
@@ -115,6 +116,7 @@ class ChatView extends GetView<ChatController> {
                                 index.toString(),
                                 group.roomName ?? '',
                                 group.profileImage,
+                                group.messages,
                               );
                               Get.toNamed(Routes.chatRoom);
                             },
@@ -139,7 +141,7 @@ class ChatView extends GetView<ChatController> {
                       child: ListView.builder(
                         itemCount: controller.provider.individualChats.length,
                         itemBuilder: (context, index) {
-                          final ChatMemberCardModel individual =
+                          final ChatRoomModel individual =
                               controller.provider.individualChats[index];
                           return ChatMemberCard(
                             onTap: () {
@@ -147,6 +149,7 @@ class ChatView extends GetView<ChatController> {
                                 index.toString(),
                                 individual.roomName ?? '',
                                 individual.profileImage,
+                                individual.messages,
                               );
                               Get.toNamed(Routes.chatRoom);
                             },
