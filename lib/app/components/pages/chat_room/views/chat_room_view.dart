@@ -21,37 +21,43 @@ class ChatRoomView extends GetView<ChatRoomController> {
         children: [
           ListView.builder(
             shrinkWrap: true,
-            itemCount: 2, //FIXME: 修正
+            itemCount: controller.chatService.follower.messages?.length ?? 0,
             itemBuilder: (context, index) {
-              //FIXME: のちに削除
-              List<bool> isSender = [true, false];
               return Column(
                 children: [
                   if (index == 0)
                     const SizedBox(
                       height: 20,
                     ),
-                  isSender[index]
-                      ? const atoms.ChatBubble(
-                          text: 'テストテストテストテストテストテストテストテストテストテスト',
+                  controller.chatService.follower.messages?[index]['isSender']
+                      ? atoms.ChatBubble(
+                          text: controller.chatService.follower.messages?[index]
+                              ['message'],
                           isSender: true,
                         )
                       : Row(
                           children: [
+                            const SizedBox(
+                              width: 10,
+                            ),
                             CircleAvatar(
                               //TODO:firebase接続後に動作確認
                               //profileImageがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                              // foregroundImage: controller.chatRooms != null
-                              //     ? NetworkImage(profileImage!)
-                              //     : null,
+                              foregroundImage: NetworkImage(
+                                controller.chatService.follower
+                                        .messages?[index]['profileImage']
+                                        .toString() ??
+                                    '',
+                              ),
                               backgroundColor: colorChatMemberCardCircleBg,
                               child: const Icon(
                                 Icons.person,
                                 color: colorChatMemberCardIcon,
                               ),
                             ),
-                            const atoms.ChatBubble(
-                              text: 'テストテストテストテストテストテストテストテストテストテスト',
+                            atoms.ChatBubble(
+                              text: controller.chatService.follower
+                                  .messages?[index]['message'],
                               isSender: false,
                             ),
                           ],
