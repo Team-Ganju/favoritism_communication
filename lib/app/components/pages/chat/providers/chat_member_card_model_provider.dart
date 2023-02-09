@@ -1,4 +1,3 @@
-import 'package:favoritism_communication/app/models/chat_member_card_model.dart';
 import 'package:favoritism_communication/app/dummy_data/chat_dummy_data.dart';
 import 'package:favoritism_communication/app/models/chat_room_model.dart';
 

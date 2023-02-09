@@ -6,19 +6,21 @@ import 'package:flutter/material.dart';
 class ReceivedMessage extends StatelessWidget {
   const ReceivedMessage({
     super.key,
-    required this.text,
     required this.profileImage,
+    required this.senderName,
+    required this.text,
   });
 
-  final String text;
   final String? profileImage;
+  final String senderName;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         const SizedBox(
-          width: 10,
+          width: 20,
         ),
         CircleAvatar(
           //TODO:firebase接続後に動作確認
@@ -32,9 +34,27 @@ class ReceivedMessage extends StatelessWidget {
             color: colorChatMemberCardIcon,
           ),
         ),
-        ChatBubble(
-          text: text,
-          isSender: false,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  senderName,
+                  style: const TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+            ChatBubble(
+              text: text,
+              isSender: false,
+            ),
+          ],
         ),
       ],
     );

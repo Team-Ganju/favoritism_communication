@@ -37,11 +37,13 @@ class ChatRoomView extends GetView<ChatRoomController> {
                               ['message'],
                         )
                       : ReceivedMessage(
-                          text: controller.chatService.follower.messages?[index]
-                              ['message'],
                           profileImage: controller.chatService.follower
                               .messages?[index]['profileImage']
                               .toString(),
+                          senderName: controller.chatService.follower
+                              .messages?[index]['userName'],
+                          text: controller.chatService.follower.messages?[index]
+                              ['message'],
                         ),
                   const SizedBox(
                     height: 10,
