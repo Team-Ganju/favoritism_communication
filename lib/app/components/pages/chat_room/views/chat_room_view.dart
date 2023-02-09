@@ -1,6 +1,8 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart'
     as atoms;
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:favoritism_communication/app/components/organisms/received_message.dart';
+import 'package:favoritism_communication/app/components/organisms/sent_message.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,37 +32,16 @@ class ChatRoomView extends GetView<ChatRoomController> {
                       height: 20,
                     ),
                   controller.chatService.follower.messages?[index]['isSender']
-                      ? atoms.ChatBubble(
+                      ? SentMessage(
                           text: controller.chatService.follower.messages?[index]
                               ['message'],
-                          isSender: true,
                         )
-                      : Row(
-                          children: [
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            CircleAvatar(
-                              //TODO:firebase接続後に動作確認
-                              //profileImageがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                              foregroundImage: NetworkImage(
-                                controller.chatService.follower
-                                        .messages?[index]['profileImage']
-                                        .toString() ??
-                                    '',
-                              ),
-                              backgroundColor: colorChatMemberCardCircleBg,
-                              child: const Icon(
-                                Icons.person,
-                                color: colorChatMemberCardIcon,
-                              ),
-                            ),
-                            atoms.ChatBubble(
-                              text: controller.chatService.follower
-                                  .messages?[index]['message'],
-                              isSender: false,
-                            ),
-                          ],
+                      : ReceivedMessage(
+                          text: controller.chatService.follower.messages?[index]
+                              ['message'],
+                          profileImage: controller.chatService.follower
+                              .messages?[index]['profileImage']
+                              .toString(),
                         ),
                   const SizedBox(
                     height: 10,
