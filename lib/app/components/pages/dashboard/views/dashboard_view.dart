@@ -35,7 +35,7 @@ class DashboardView extends GetView<DashboardController> {
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.chat_bubble),
-              label: 'トーク',
+              label: 'チャット',
             ),
             BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.person),

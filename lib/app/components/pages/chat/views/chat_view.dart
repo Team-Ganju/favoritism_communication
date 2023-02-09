@@ -18,7 +18,7 @@ class ChatView extends GetView<ChatController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NavBar(
-        title: 'トーク',
+        title: 'チャット',
         backgroundColor: colorChatViewBg,
         trailing: <Widget>[
           IconButton(
@@ -73,7 +73,7 @@ class ChatView extends GetView<ChatController> {
                           Icons.person,
                           color: colorActionChipGroupIcon,
                         ),
-                        label: const Text('ペアトーク'),
+                        label: const Text('ペアチャット'),
                         labelPadding:
                             const EdgeInsets.symmetric(horizontal: 4.0),
                         side: BorderSide.none,

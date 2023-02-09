@@ -146,10 +146,10 @@ class HomeView extends GetView<HomeController> {
                                                 () {
                                                   // ダイアログを閉じる
                                                   Get.back();
-                                                  // DashboardViewをトーク画面に切替
+                                                  // DashboardViewをチャット画面に切替
                                                   controller.tabService.tabIndex
                                                       .value = 1;
-                                                  // トークルームに移動する
+                                                  // チャットルームに移動する
                                                   Get.toNamed(Routes.chatRoom);
                                                 },
                                                 controller.chatService.follower

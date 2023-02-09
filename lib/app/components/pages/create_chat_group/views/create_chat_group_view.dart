@@ -59,7 +59,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CustomElevatedButton(
-        buttonText: 'トークに移動する',
+        buttonText: 'チャットに移動する',
         initialActiveFlag: controller.isMemberSelected.value,
         //FIXME: 遷移先の画面ができたら遷移処理を実装
         onPressed: controller.isMemberSelected.value ? () {} : null,
