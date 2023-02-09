@@ -63,3 +63,7 @@ const colorSearchBg = Colors.white;                 // 背景色
 const colorSearchAppBarBg = Colors.white;           // Appbar背景色
 const colorSearchAppBarTitle = Colors.grey;         // タイトル文字色
 const colorSearchAppBarIconFilter = Colors.grey;    // フィルターアイコン色
+// 検索ダイアログ画面
+const colorSearchFilterBg = Colors.white;                 // 背景色
+const colorSearchFilterAppBarBg = Colors.white;           // Appbar背景色
+const colorSearchFilterAppBarTitle = Colors.grey;         // タイトル文字色
