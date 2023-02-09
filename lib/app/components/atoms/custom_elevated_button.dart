@@ -1,5 +1,6 @@
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
@@ -17,7 +18,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 60,
-      width: 280,
+      width: Get.width * 0.7,
       child: ElevatedButton(
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -28,7 +29,7 @@ class CustomElevatedButton extends StatelessWidget {
                       color: colorElevatedButtonBorder,
                       width: 2.0,
                     ), //非活性
-              borderRadius: BorderRadius.circular(300),
+              borderRadius: BorderRadius.circular(30),
             ),
           ),
           foregroundColor: initialActiveFlag
@@ -41,7 +42,7 @@ class CustomElevatedButton extends StatelessWidget {
                 : colorElevatedButtonBgDeactive, //非活性
           ),
         ),
-        //FIXME: isMemberSelectedがtrueの場合に、選択されたメンバーの情報を受け取って次画面へ遷移する処理を追加
+        //FIXME: isSelectedAtLeastOneがtrueの場合に、選択されたメンバーの情報を受け取って次画面へ遷移する処理を追加
         onPressed: () {
           onPressed?.call();
         },
@@ -49,8 +50,6 @@ class CustomElevatedButton extends StatelessWidget {
           buttonText,
           style: const TextStyle(
             fontSize: 20,
-            //FIXME: 字体を指定する必要があれば修正、なければfontFamilyは削除
-            // fontFamily: ,
           ),
         ),
       ),

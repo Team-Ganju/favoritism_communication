@@ -41,11 +41,13 @@ const colorActionChipPairChatBgIfIsNotGroupChat = Colors.yellow;
 const colorCreateChatViewBg = Colors.pink;
 const colorDashboardUnselectedItem = Colors.grey;
 const colorDashboardSelectedItem = Colors.pinkAccent;
-var colorHomeBg = Colors.grey[100];
+const colorHomeBg = Colors.white;
 const colorHomeAppBarBg = Colors.white;
 const colorHomeAppBarIconBadgeText = Colors.white;
 const colorHomeAppBarIconBadgeBg = Color.fromRGBO(223, 2, 89, 1);
 const colorHomeAppBarIcon = Colors.grey;
+const colorHomeAppBarTitle = Color.fromRGBO(228, 190, 181, 1);
+const colorHomeAppBarBorderBottom = Color.fromRGBO(230, 230, 230, 1);
 const colorUserCardFollowButtonFgAsFollowed = Colors.white;
 const colorUserCardFollowButtonBgAsFollowed = Colors.blueAccent;
 const colorUserCardFollowButtonFgAsUnfollowed = Colors.blueAccent;
@@ -58,3 +60,10 @@ const colorMatchingDialogButtonTextFg = Colors.white;
 const colorMatchingDialogButtonTextBg = Color(0xff0091ea);
 var colorChatBubbleBg = Colors.grey.shade200;
 const colorChatBubbleText = Colors.black;
+
+// "さがす"画面
+const colorSearchBg = Colors.white; // 背景色
+const colorSearchAppBarBg = Colors.white; // Appbar背景色
+const colorSearchAppBarTitle = Colors.grey; // タイトル文字色
+const colorSearchAppBarIconFilter = Colors.grey;    // フィルターアイコン色
+

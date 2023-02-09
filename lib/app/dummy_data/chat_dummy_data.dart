@@ -1,7 +1,67 @@
 /// 後でJSONファイルから読み込む
-// ChatRoom
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+
+// グループチャットのデータ(isGroupがtrue)
+// TODO: 外部からユーザデータを取得、isSelectedはfirestoreにはないアプリ内の独自フラグ
+List<Map<String, dynamic>> friendData = [
+  {
+    'name': 'Aさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'ABさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'ABCさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Bさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'BAさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'BACさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Cさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Dさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Eさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Fさん',
+    'image': null,
+    'isSelected': false,
+  },
+  {
+    'name': 'Gさん',
+    'image': null,
+    'isSelected': false,
+  },
+];
+
 const List<Map<String, dynamic>> chatRoomData = [
-  // グループチャットのデータ(isGroupがtrue)
   {
     "roomId": "group-001",
     "roomName": "グループA",
@@ -276,3 +336,13 @@ const List<Map<String, dynamic>> chatRoomData = [
     ]
   },
 ];
+
+List<FriendCardData> friendCardList = friendData.map(
+  (item) {
+    return FriendCardData(
+      item['name'],
+      item['image'],
+      item['isSelected'],
+    );
+  },
+).toList();

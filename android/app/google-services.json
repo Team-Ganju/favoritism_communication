@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "323663096952",
+    "project_id": "favoritismcommunication-1d285",
+    "storage_bucket": "favoritismcommunication-1d285.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323663096952:android:932653929d1dc51cc4918d",
+        "android_client_info": {
+          "package_name": "com.example.favoritism_communication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323663096952-bu20c4bqpa46gb1idbocmt321u10sief.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAL6eTmUKdBtgKnUg6prKedMLp0Jn3dcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323663096952-bu20c4bqpa46gb1idbocmt321u10sief.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
