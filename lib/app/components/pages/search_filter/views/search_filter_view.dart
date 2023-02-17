@@ -1,3 +1,4 @@
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -144,6 +145,42 @@ class SearchFilterView extends GetView<SearchFilterController> {
             ),
           ),
         ]
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(context.width * 0.4, 25),
+                  foregroundColor: Colors.grey,
+                  backgroundColor: Colors.white,
+                  shape: const StadiumBorder(),
+                  elevation: 0,
+                ),
+                onPressed: () {},
+                child: const Text('検索条件をクリア'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(context.width * 0.4, 25),
+                  foregroundColor: colorSearchButtonFg,
+                  backgroundColor: colorSearchButtonBg,
+                  shape: const StadiumBorder(),
+                  elevation: 0,
+                ),
+                onPressed: () {},
+                child: const Text('この条件で検索'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

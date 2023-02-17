@@ -67,3 +67,5 @@ const colorSearchAppBarIconFilter = Colors.grey;    // フィルターアイコ�
 const colorSearchFilterBg = Colors.white;                 // 背景色
 const colorSearchFilterAppBarBg = Colors.white;           // Appbar背景色
 const colorSearchFilterAppBarTitle = Colors.grey;         // タイトル文字色
+const colorSearchButtonFg = Colors.white;
+const colorSearchButtonBg = Color.fromRGBO(236, 188, 179, 1);
