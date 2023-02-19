@@ -1,7 +1,6 @@
 /// 後でJSONファイルから読み込む
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
-// グループチャットのデータ(isGroupがtrue)
 // TODO: 外部からユーザデータを取得、isSelectedはfirestoreにはないアプリ内の独自フラグ
 List<Map<String, dynamic>> friendData = [
   {
