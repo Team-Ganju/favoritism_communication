@@ -125,7 +125,6 @@ class HomeView extends GetView<HomeController> {
                                             index.toString(),
                                             userCardData.userName,
                                             null,
-                                            null,
                                           );
                                           Future.delayed(
                                               const Duration(seconds: 2),
@@ -211,7 +210,10 @@ class Follower {
   final String userId;
   final String userName;
   final String? profileImage;
-  final List<Map<String, dynamic>>? messages;
 
-  const Follower(this.userId, this.userName, this.profileImage, this.messages);
+  const Follower(
+    this.userId,
+    this.userName,
+    this.profileImage,
+  );
 }

@@ -15,7 +15,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
     return Scaffold(
       appBar: NavBar(
         title:
-            controller.chatService.follower.userName, //ChatMemberCard.roomName
+            controller.chatService.chatRoom.roomName, //ChatMemberCard.roomName
         leading: const atoms.BackButton(),
         backgroundColor: colorChatRoomAppBarBg,
       ),
@@ -23,7 +23,7 @@ class ChatRoomView extends GetView<ChatRoomController> {
         children: [
           ListView.builder(
             shrinkWrap: true,
-            itemCount: controller.chatService.follower.messages?.length ?? 0,
+            itemCount: controller.chatService.chatRoom.messages.length,
             itemBuilder: (context, index) {
               return Column(
                 children: [
@@ -31,18 +31,18 @@ class ChatRoomView extends GetView<ChatRoomController> {
                     const SizedBox(
                       height: 20,
                     ),
-                  controller.chatService.follower.messages?[index]['isSender']
+                  controller.chatService.chatRoom.messages[index]['isSender']
                       ? SentMessage(
-                          text: controller.chatService.follower.messages?[index]
+                          text: controller.chatService.chatRoom.messages[index]
                               ['message'],
                         )
                       : ReceivedMessage(
-                          profileImage: controller.chatService.follower
-                              .messages?[index]['profileImage']
+                          profileImage: controller.chatService.chatRoom
+                              .messages[index]['profileImage']
                               .toString(),
-                          senderName: controller.chatService.follower
-                              .messages?[index]['userName'],
-                          text: controller.chatService.follower.messages?[index]
+                          senderName: controller
+                              .chatService.chatRoom.messages[index]['userName'],
+                          text: controller.chatService.chatRoom.messages[index]
                               ['message'],
                         ),
                   const SizedBox(

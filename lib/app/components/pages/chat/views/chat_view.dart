@@ -111,12 +111,7 @@ class ChatView extends GetView<ChatController> {
                               controller.provider.groupChats[index];
                           return ChatMemberCard(
                             onTap: () {
-                              controller.chatService.follower = Follower(
-                                index.toString(),
-                                group.roomName ?? '',
-                                group.profileImage,
-                                group.messages,
-                              );
+                              controller.chatService.chatRoom = group;
                               Get.toNamed(Routes.chatRoom);
                             },
                             roomName: group.roomName ?? '',
@@ -144,12 +139,7 @@ class ChatView extends GetView<ChatController> {
                               controller.provider.individualChats[index];
                           return ChatMemberCard(
                             onTap: () {
-                              controller.chatService.follower = Follower(
-                                index.toString(),
-                                individual.roomName ?? '',
-                                individual.profileImage,
-                                individual.messages,
-                              );
+                              controller.chatService.chatRoom = individual;
                               Get.toNamed(Routes.chatRoom);
                             },
                             roomName: individual.roomName ?? '',
