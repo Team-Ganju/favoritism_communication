@@ -82,7 +82,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "みんな元気？",
         "createdAt": "2022/12/01",
-        "updateAt": "2022/12/01",
       },
       {
         "messageId": "group-001-02",
@@ -93,7 +92,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "ワイは元気やで",
         "createdAt": "2022/12/02",
-        "updateAt": "2022/12/02",
       },
       {
         "messageId": "group-001-03",
@@ -104,7 +102,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "やっほー",
         "createdAt": "2022/12/03",
-        "updateAt": "2022/12/03",
       },
     ]
   },
@@ -127,7 +124,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "映画見に行きたい！！",
         "createdAt": "2022/12/01",
-        "updateAt": "2022/12/01",
       },
       {
         "messageId": "group-002-02",
@@ -138,7 +134,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "最近誰か映画見た？",
         "createdAt": "2022/12/02",
-        "updateAt": "2022/12/02",
       },
       {
         "messageId": "group-002-03",
@@ -149,7 +144,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "この間見た映画めっちゃおもろかった",
         "createdAt": "2022/12/03",
-        "updateAt": "2022/12/03",
       },
     ]
   },
@@ -172,7 +166,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "ライブ行ってきた！",
         "createdAt": "2022/12/01",
-        "updateAt": "2022/12/01",
       },
       {
         "messageId": "group-003-02",
@@ -183,7 +176,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "なんの？",
         "createdAt": "2022/12/02",
-        "updateAt": "2022/12/02",
       },
       {
         "messageId": "group-003-03",
@@ -194,7 +186,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "いいなー",
         "createdAt": "2022/12/03",
-        "updateAt": "2022/12/03",
       },
     ]
   },
@@ -219,7 +210,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "うぃっす",
         "createdAt": "2022/12/01",
-        "updateAt": "2022/12/01",
       },
       {
         "messageId": "1on1-001-02",
@@ -230,7 +220,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "おーい",
         "createdAt": "2022/12/02",
-        "updateAt": "2022/12/02",
       },
       {
         "messageId": "1on1-001-03",
@@ -241,7 +230,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "どした？",
         "createdAt": "2022/12/03",
-        "updateAt": "2022/12/03",
       },
     ]
   },
@@ -264,7 +252,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "沖縄が地元です",
         "createdAt": "2022/12/01",
-        "updateAt": "2022/12/01",
       },
       {
         "messageId": "1on1-002-02",
@@ -275,7 +262,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "沖縄うらやましい〜",
         "createdAt": "2022/12/02",
-        "updateAt": "2022/12/02",
       },
       {
         "messageId": "1on1-002-03",
@@ -286,7 +272,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "沖縄いいところよ！",
         "createdAt": "2022/12/03",
-        "updateAt": "2022/12/03",
       },
     ]
   },
@@ -309,7 +294,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "何県ですか？",
         "createdAt": "2022/12/01",
-        "updateAt": "2022/12/01",
       },
       {
         "messageId": "1on1-003-02",
@@ -320,7 +304,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "長野です",
         "createdAt": "2022/12/02",
-        "updateAt": "2022/12/02",
       },
       {
         "messageId": "1on1-003-03",
@@ -331,7 +314,6 @@ const List<Map<String, dynamic>> chatRoomData = [
         "media": null,
         "message": "雪たくさん降るし寒いです。。",
         "createdAt": "2022/12/03",
-        "updateAt": "2022/12/03",
       },
     ]
   },

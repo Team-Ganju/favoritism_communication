@@ -60,38 +60,36 @@ class MessageModel {
   String? createdAt;
   String? updateAt;
 
-  MessageModel({
-    required this.messageId,
-    required this.messageFrom,
-    required this.userName,
-    required this.profileImage,
-    required this.media,
-    required this.message,
-    required this.createdAt,
-    required this.updateAt,
-  });
+  // TODO:　最終的に使用しなければ削除
+  // MessageModel({
+  //   required this.messageId,
+  //   required this.messageFrom,
+  //   required this.userName,
+  //   required this.profileImage,
+  //   required this.media,
+  //   required this.message,
+  //   required this.createdAt,
+  // });
 
-  MessageModel.fromJson(Map<String, dynamic> json) {
-    messageId = json['messageId'];
-    messageFrom = json['messageFrom'];
-    userName = json['userName'];
-    profileImage = json['profileImage'];
-    media = json['media'];
-    message = json['message'];
-    createdAt = json['createdAt'];
-    updateAt = json['updateAt'];
-  }
+  // MessageModel.fromJson(Map<String, dynamic> json) {
+  //   messageId = json['messageId'];
+  //   messageFrom = json['messageFrom'];
+  //   userName = json['userName'];
+  //   profileImage = json['profileImage'];
+  //   media = json['media'];
+  //   message = json['message'];
+  //   createdAt = json['createdAt'];
+  // }
 
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['messageId'] = messageId;
-    data['messageFrom'] = messageFrom;
-    data['userName'] = userName;
-    data['profileImage'] = profileImage;
-    data['media'] = media;
-    data['message'] = message;
-    data['createdAt'] = createdAt;
-    data['updateAt'] = updateAt;
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final data = <String, dynamic>{};
+  //   data['messageId'] = messageId;
+  //   data['messageFrom'] = messageFrom;
+  //   data['userName'] = userName;
+  //   data['profileImage'] = profileImage;
+  //   data['media'] = media;
+  //   data['message'] = message;
+  //   data['createdAt'] = createdAt;
+  //   return data;
+  // }
 }
