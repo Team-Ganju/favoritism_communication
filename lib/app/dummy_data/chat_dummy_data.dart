@@ -184,7 +184,7 @@ const List<Map<String, dynamic>> chatRoomData = [
         "profileImage": null,
         "media": null,
         "message": "いいなー",
-        "createdAt": "2022/12/03",
+        "createdAt": "2022/12/04",
       },
     ]
   },
