@@ -7,28 +7,11 @@ import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/multi_option_select_button.dart';
 import 'package:favoritism_communication/app/components/atoms/custom_chip.dart';
 import 'package:favoritism_communication/app/components/atoms/alternate_circle_chip.dart';
+import 'package:favoritism_communication/app/routes/app_pages.dart';
+import 'package:favoritism_communication/app/components/molecules/age_select_button.dart';
+import 'package:favoritism_communication/app/components/molecules/gender_select_button.dart';
 import '../controllers/search_filter_controller.dart';
 
-/// 性別
-/// ドロップダウンで選択時に設定される値
-enum Gender{
-  male,
-  female,
-}
-
-/// 性別
-/// ドロップダウンで選択時に表示される値
-extension GenderText on Gender{
-  String get label{
-    switch(this){
-      case Gender.male:
-        return '男性';
-
-      case Gender.female:
-        return '女性';
-    }
-  }
-}
 
 class SearchFilterView extends GetView<SearchFilterController> {
   const SearchFilterView({Key? key}) : super(key: key);
@@ -46,11 +29,11 @@ class SearchFilterView extends GetView<SearchFilterController> {
         backgroundColor: colorSearchFilterAppBarBg,
         toolbarHeight: 60,
         title: const Text("検索条件",
-            style: TextStyle(
-              color: colorSearchFilterAppBarTitle,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            )
+          style: TextStyle(
+            color: colorSearchFilterAppBarTitle,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          )
         ),
       ),
       body: Column(
@@ -60,83 +43,61 @@ class SearchFilterView extends GetView<SearchFilterController> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 MultiOptionSelectButton(
-                  selectedItems: const [
-                    AlternateCircleChip(
-                        isPushed: false,
-                        onPressed: null,
-                        child: Text("ジャンル1"),
-                    ),
-                    AlternateCircleChip(
-                        isPushed: false,
-                        onPressed: null,
-                      child: Text("ジャンル2"),
-                    ),
-                    AlternateCircleChip(
-                        isPushed: false,
-                        onPressed: null,
-                      child: Text("ジャンル3"),
-                    ),
-                    AlternateCircleChip(
-                        isPushed: false,
-                        onPressed: null,
-                      child: Text("ジャンル4"),
-                    ),
-                    AlternateCircleChip(
-                        isPushed: false,
-                        onPressed: null,
-                      child: Text("ジャンル5"),
-                    ),
-                  ],
+                  selectedItems: controller.selectedGenreNames.map(
+                    (name) => AlternateCircleChip(
+                                isPushed: false,
+                                onPressed: null,
+                                child: Text(name),
+                              )
+                  ).toList(),
                   label: 'ジャンル',
-                  onTap: () => {  },
+                  onTap: () => Get.toNamed(Routes.searchSelectGenre,),
                 ),
 
                 MultiOptionSelectButton(
-                  selectedItems: const [
-                    CustomChip(chipTitle: 'カテゴリ1', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ2', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ3', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ4', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ5', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ6', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ7', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ8', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ9', backgroundColor: Colors.white),
-                    CustomChip(chipTitle: 'カテゴリ10', backgroundColor: Colors.white),
-                  ],
+                  selectedItems: controller.selectedCategoryNames.map(
+                    (name) => CustomChip(
+                                backgroundColor: Colors.white,
+                                onTap: null,
+                                chipTitle: name,
+                              )
+                  ).toList(),
                   label: 'カテゴリ',
-                  onTap: () => {  },
+                  onTap: () => Get.toNamed(Routes.searchSelectCategory,),
                 ),
 
                 MultiOptionSelectButton(
-                  selectedItems: const [
-                    Text("Flutter大学"),
+                  selectedItems: [
+                    Text(controller.belongCommunity),
                   ],
                   label: 'コミュニティ',
-                  onTap: () => {  },
+                  onTap: () => Get.toNamed(Routes.searchSelectCommunity,),
                 ),
 
                 Row(
                   children: [
                     SizedBox(
                       width: context.width/2,
-                      child: _buildDropDownButton<Gender>(
-                        context: context,
-                        items: _constructGenderItems(),
-                        label: '性別',
-                        onChanged: (Gender? age) => {}, //TODO: 値の更新処理
-                        value: Gender.male,
+                      child: Padding(
+                        padding: fieldPadding,
+                        child: GenderSelectButton(
+                          label: "性別",
+                          menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
+                          onChanged: (gender) {},
+                        ),
                       ),
                     ),
-
                     SizedBox(
                       width: context.width/2,
-                      child: _buildDropDownButton<int>(
-                        context: context,
-                        items: _constructAgeItems(),
-                        label: '年代',
-                        onChanged: (int? age) => {}, //TODO: 値の更新処理
-                        value: 2000,
+                      child: Padding(
+                        padding: fieldPadding,
+                        child: AgeSelectButton(
+                          ageLimMax: targetAgeLimitMax,
+                          ageLimMin: targetAgeLimitMin,
+                          label: "年代",
+                          menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
+                          onChanged: (age) {},
+                        ),
                       ),
                     ),
                   ]
@@ -156,8 +117,8 @@ class SearchFilterView extends GetView<SearchFilterController> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   fixedSize: Size(context.width * 0.4, 25),
-                  foregroundColor: Colors.grey,
-                  backgroundColor: Colors.white,
+                  foregroundColor: colorClearSearchFilterButtonFg,
+                  backgroundColor: colorClearSearchFilterButtonBg,
                   shape: const StadiumBorder(),
                   elevation: 0,
                 ),
@@ -185,62 +146,4 @@ class SearchFilterView extends GetView<SearchFilterController> {
     );
   }
 
-
-  /// ドロップダウンボタンの生成
-  Widget _buildDropDownButton<T>({
-    required BuildContext context,
-    required List<DropdownMenuItem<T>> items,
-    String? label,
-    void Function(T? value)? onChanged,
-    T? value,
-  }){
-    return Padding(
-      padding: fieldPadding,
-      child: InputDecorator(
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-          label: label != null ? Text(label) : null,
-          border: const OutlineInputBorder(),
-        ),
-        child: DropdownButton<T>(
-          menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
-          underline: Container(),
-          isExpanded: true,
-          items: items,
-          onChanged: onChanged,
-          value: value,
-        ),
-      ),
-    );
-  }
-
-  /// 性別のドロップダウンアイテムを構築
-  List<DropdownMenuItem<Gender>> _constructGenderItems(){
-    return [
-      DropdownMenuItem(
-        value: Gender.male,
-        child: Text(Gender.male.label),
-      ),
-      DropdownMenuItem(
-        value: Gender.female,
-        child: Text(Gender.female.label),
-      )
-    ];
-  }
-
-  /// 年代のドロップダウンアイテムを構築
-  List<DropdownMenuItem<int>> _constructAgeItems(){
-    // 現在の西暦をもとに、生まれ年の最小と最大を算出
-    int min = DateTime.now().year - targetAgeLimitMax;
-    int max = DateTime.now().year - targetAgeLimitMin;
-    return List<DropdownMenuItem<int>>.generate(
-        (max-min + 1),  // 最小と最大を含んだ数分リスト生成
-            (i)  {
-          return DropdownMenuItem(
-            value: min + i,
-            child: Text((min + i).toString()),
-          );
-        }
-    );
-  }
 }

@@ -15,56 +15,53 @@ class MultiOptionSelectButton extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  label,
-                  textAlign: TextAlign.left,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                label,
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ]
-          ),
+            ),
+          ]
+        ),
 
-          IntrinsicHeight(
-            child: InkWell(
-              onTap: () {},
-              child: Stack(
-                children: [
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Wrap(
-                            runSpacing: 4.0,
-                            spacing: 4.0,
-                            children: selectedItems,
-                          ),
+        IntrinsicHeight(
+          child: InkWell(
+            onTap: onTap,
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Wrap(
+                          runSpacing: 4.0,
+                          spacing: 4.0,
+                          children: selectedItems,
                         ),
-                      )
-                    ],
-                  ),
-                  const Align(
-                    alignment: Alignment.centerRight,
-                    child: Icon(Icons.keyboard_arrow_right, color: Colors.grey,),
-                  ),
-                ],
-              ),
+                      ),
+                    )
+                  ],
+                ),
+                const Align(
+                  alignment: Alignment.centerRight,
+                  child: Icon(Icons.keyboard_arrow_right, color: Colors.grey,),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
-
 }
 
