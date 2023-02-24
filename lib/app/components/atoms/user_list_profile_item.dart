@@ -188,10 +188,10 @@ class TripleCommonProfile extends StatelessWidget {
                     "https://d1uzk9o9cg136f.cloudfront.net/f/16783100/rc/2018/06/28/bea397d2528f42f11e6471563fd086abe82b25f2_xlarge.jpg",
                   ),
                 ),
-                left: 16,
-                top: 40,
-                right: 56,
-                bottom: 20,
+                left: 12,
+                top: 48,
+                right: 60,
+                bottom: 12,
               ),
               Positioned(
                 child: CircleAvatar(
@@ -200,13 +200,13 @@ class TripleCommonProfile extends StatelessWidget {
                     "スポーツ",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14,
+                      fontSize: 12,
                     ),
                   ),
-                  radius: 30,
+                  radius: 24,
                 ),
-                left: 50,
-                top: 10,
+                top: 4,
+                right: 60,
               ),
               Positioned(
                 child: CircleAvatar(
@@ -220,8 +220,23 @@ class TripleCommonProfile extends StatelessWidget {
                   ),
                   radius: 20,
                 ),
-                left: 20,
-                bottom: 20,
+                left: 0,
+                bottom: 0,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.orange,
+                  child: Text(
+                    "旅行",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                  radius: 32,
+                ),
+                right: 16,
+                bottom: 4,
               ),
             ],
           ),
