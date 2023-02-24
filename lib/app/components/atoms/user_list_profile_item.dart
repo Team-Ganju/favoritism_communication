@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 
 class UserListProfileItem extends StatelessWidget {
@@ -16,7 +18,7 @@ class UserListProfileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleCommonProfile();
+    return const TripleCommonProfile();
   }
 }
 
@@ -33,16 +35,16 @@ class SingleCommonProfile extends StatelessWidget {
           width: 200,
           height: 130,
           child: Stack(
-            children: [
+            children: const [
               Positioned(
+                right: 20,
+                bottom: 10,
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(
                     "https://d1uzk9o9cg136f.cloudfront.net/f/16783100/rc/2020/07/06/0ae7a72d553b6e3408fadd225705dbdd5b694c15_xlarge.jpg",
                   ),
                   radius: 40,
                 ),
-                right: 20,
-                bottom: 10,
               ),
               Positioned(
                 child: CircleAvatar(
@@ -62,7 +64,7 @@ class SingleCommonProfile extends StatelessWidget {
           ),
         ),
         Row(
-          children: [
+          children: const [
             Text("ジョン・スノウ"),
             SizedBox(width: 16),
             Text("共通点 "),
@@ -75,7 +77,7 @@ class SingleCommonProfile extends StatelessWidget {
             )
           ],
         ),
-        Text(
+        const Text(
           "ジョン・スノウは落とし子であり、王家の血を引くものである。しかし、その出生は秘密裏に隠され、彼はエダード・スタークの妾の息子として育てられた。",
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -98,7 +100,7 @@ class DoubleCommonProfile extends StatelessWidget {
           width: 200,
           height: 130,
           child: Stack(
-            children: [
+            children: const [
               Positioned(
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(
@@ -143,7 +145,7 @@ class DoubleCommonProfile extends StatelessWidget {
           ),
         ),
         Row(
-          children: [
+          children: const [
             Text("ナイツ・キング"),
             SizedBox(width: 16),
             Text("共通点 "),
@@ -156,7 +158,7 @@ class DoubleCommonProfile extends StatelessWidget {
             )
           ],
         ),
-        Text(
+        const Text(
           "ナイツ・キング（夜の王）は死者の軍勢を率いる長であり不死身である。死者を統率し動かすのは彼の力あってのことである。",
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -173,7 +175,78 @@ class TripleCommonProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Spacer();
+    return Column(
+      children: [
+        SizedBox(
+          width: 200,
+          height: 130,
+          child: Stack(
+            children: const [
+              Positioned(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "https://d1uzk9o9cg136f.cloudfront.net/f/16783100/rc/2018/06/28/bea397d2528f42f11e6471563fd086abe82b25f2_xlarge.jpg",
+                  ),
+                ),
+                left: 16,
+                top: 40,
+                right: 56,
+                bottom: 20,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.red,
+                  child: Text(
+                    "スポーツ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  radius: 30,
+                ),
+                left: 50,
+                top: 10,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.purple,
+                  child: Text(
+                    "映画",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  radius: 20,
+                ),
+                left: 20,
+                bottom: 20,
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: const [
+            Text("デナーリス"),
+            SizedBox(width: 16),
+            Text("共通点 "),
+            Text(
+              "③",
+              style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 20,
+              ),
+            )
+          ],
+        ),
+        const Text(
+          "デナーリス・ターガリエンはエイリス・ターガリエン二世の娘であり、古ターガリエン王朝、ウェスタロスの前王室の最後の末裔の一人である。",
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
   }
 }
 
