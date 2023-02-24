@@ -1,4 +1,5 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/components/atoms/user_list_profile_item.dart';
 import 'package:favoritism_communication/app/utils/dialog_utils.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
@@ -81,7 +82,7 @@ class HomeView extends GetView<HomeController> {
               return false;
             }),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Obx(
                 () => controller.userCardDataList.isNotEmpty
                     ? CustomSmartRefresher(
@@ -96,17 +97,24 @@ class HomeView extends GetView<HomeController> {
                           crossAxisCount: 2,
                           controller: controller.scrollController,
                           shrinkWrap: true,
-                          children: List.generate(100, (index) {
-                            return index % 2 == 0
-                                ? Center(
-                                    child: UserListInfoItem(
-                                        label: "偏愛マップを作成した気の合う人を見つけよう"),
-                                  )
-                                : Center(
-                                    child: UserListInfoItem(
-                                        label: "コミュニティに入るとマッチングしやすいよ"),
-                                  );
-                          }),
+                          children: List.generate(
+                            100,
+                            (index) {
+                              return index % 2 == 0
+                                  ? Center(
+                                      child: UserListInfoItem(
+                                          label: "偏愛マップを作成した気の合う人を見つけよう"),
+                                    )
+                                  : Center(
+                                      child: UserListProfileItem(
+                                        name: "田中 太郎",
+                                        avatorUrl: null,
+                                        commonList: ["スポーツ"],
+                                        selfIntroduction: "自己紹介文",
+                                      ),
+                                    );
+                            },
+                          ),
                         )
                         // child: ListView.separated(
                         //   controller: controller.scrollController,

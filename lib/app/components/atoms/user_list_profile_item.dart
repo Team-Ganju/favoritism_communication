@@ -3,6 +3,183 @@ import 'package:flutter/material.dart';
 class UserListProfileItem extends StatelessWidget {
   const UserListProfileItem({
     Key? key,
+    required this.name,
+    required this.avatorUrl,
+    required this.commonList,
+    required this.selfIntroduction,
+  }) : super(key: key);
+
+  final String name;
+  final avatorUrl;
+  final List<String> commonList;
+  final String selfIntroduction;
+
+  @override
+  Widget build(BuildContext context) {
+    return const SingleCommonProfile();
+  }
+}
+
+class SingleCommonProfile extends StatelessWidget {
+  const SingleCommonProfile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 200,
+          height: 130,
+          child: Stack(
+            children: [
+              Positioned(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "https://d1uzk9o9cg136f.cloudfront.net/f/16783100/rc/2020/07/06/0ae7a72d553b6e3408fadd225705dbdd5b694c15_xlarge.jpg",
+                  ),
+                  radius: 40,
+                ),
+                right: 20,
+                bottom: 10,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.red,
+                  child: Text(
+                    "スポーツ",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  radius: 35,
+                ),
+                left: 20,
+                top: 10,
+              )
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            Text("ジョン・スノウ"),
+            SizedBox(width: 16),
+            Text("共通点 "),
+            Text(
+              "①",
+              style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 20,
+              ),
+            )
+          ],
+        ),
+        Text(
+          "ジョン・スノウは落とし子であり、王家の血を引くものである。しかし、その出生は秘密裏に隠され、彼はエダード・スタークの妾の息子として育てられた。",
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
+  }
+}
+
+class DoubleCommonProfile extends StatelessWidget {
+  const DoubleCommonProfile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 200,
+          height: 130,
+          child: Stack(
+            children: [
+              Positioned(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "https://static.wikia.nocookie.net/gameofthrones/images/1/1f/Night_King_BTW.jpg/revision/latest?cb=20210722093007",
+                  ),
+                  radius: 35,
+                ),
+                right: 20,
+                bottom: 10,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.red,
+                  child: Text(
+                    "スポーツ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  radius: 30,
+                ),
+                left: 50,
+                top: 10,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.purple,
+                  child: Text(
+                    "映画",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  radius: 20,
+                ),
+                left: 20,
+                bottom: 20,
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: [
+            Text("ナイツ・キング"),
+            SizedBox(width: 16),
+            Text("共通点 "),
+            Text(
+              "②",
+              style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 20,
+              ),
+            )
+          ],
+        ),
+        Text(
+          "ナイツ・キング（夜の王）は死者の軍勢を率いる長であり不死身である。死者を統率し動かすのは彼の力あってのことである。",
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
+  }
+}
+
+class TripleCommonProfile extends StatelessWidget {
+  const TripleCommonProfile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Spacer();
+  }
+}
+
+class QuadrupleCommonProfile extends StatelessWidget {
+  const QuadrupleCommonProfile({
+    Key? key,
   }) : super(key: key);
 
   @override
