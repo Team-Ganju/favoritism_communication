@@ -1,13 +1,13 @@
 import 'dart:math';
 
-import 'package:favoritism_communication/app/components/atoms/user_list_profile_item.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
-import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'package:favoritism_communication/app/components/molecules/molecules.dart';
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
-import '../../../atoms/user_list_info_item.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {

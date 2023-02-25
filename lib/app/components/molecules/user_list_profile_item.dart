@@ -1,7 +1,4 @@
-import 'package:favoritism_communication/app/components/atoms/double_common_profile.dart';
-import 'package:favoritism_communication/app/components/atoms/quadraple_common_profile.dart';
-import 'package:favoritism_communication/app/components/atoms/single_common_profile.dart';
-import 'package:favoritism_communication/app/components/atoms/triple_common_profile.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 
 class UserListProfileItem extends StatelessWidget {

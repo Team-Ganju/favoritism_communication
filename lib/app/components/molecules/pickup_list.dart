@@ -1,4 +1,4 @@
-import 'package:favoritism_communication/app/components/atoms/pickup_list_item.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 
 class PickupList extends StatelessWidget {
