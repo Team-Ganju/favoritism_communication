@@ -18,7 +18,7 @@ class UserListProfileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TripleCommonProfile();
+    return const QuadrupleCommonProfile();
   }
 }
 
@@ -272,6 +272,107 @@ class QuadrupleCommonProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Spacer();
+    return Column(
+      children: [
+        SizedBox(
+          width: 200,
+          height: 130,
+          child: Stack(
+            children: const [
+              Positioned(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "https://cdn-ak.f.st-hatena.com/images/fotolife/b/biruconti/20190321/20190321131807.jpg",
+                  ),
+                ),
+                left: 28,
+                top: 28,
+                right: 28,
+                bottom: 28,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.green,
+                  child: Text(
+                    "料理",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                  radius: 20,
+                ),
+                top: 8,
+                left: 20,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.red,
+                  child: Text(
+                    "スポーツ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                  radius: 24,
+                ),
+                top: 0,
+                right: 24,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.purple,
+                  child: Text(
+                    "映画",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
+                  radius: 32,
+                ),
+                left: 0,
+                bottom: 0,
+              ),
+              Positioned(
+                child: CircleAvatar(
+                  backgroundColor: Colors.orange,
+                  child: Text(
+                    "旅行",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                  radius: 28,
+                ),
+                right: 12,
+                bottom: 4,
+              ),
+            ],
+          ),
+        ),
+        Row(
+          children: const [
+            Text("ティリオン"),
+            SizedBox(width: 16),
+            Text("共通点 "),
+            Text(
+              "④",
+              style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 20,
+              ),
+            )
+          ],
+        ),
+        const Text(
+          "嘲りを込めて“小鬼”や“半人前”などとあだ名されるが、極めて高い知性の人である。父の政治的策略の才を受け継いでいるが、その醜さ、舌鋒の鋭さ、売春婦好きのため、そして出産が母親の死を招いたゆえに、父タイウィンから憎まれている。",
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
   }
 }
