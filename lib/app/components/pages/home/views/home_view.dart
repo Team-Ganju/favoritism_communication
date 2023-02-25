@@ -80,7 +80,7 @@ class HomeView extends GetView<HomeController> {
               return false;
             }),
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Obx(
                 () => controller.userCardDataList.isNotEmpty
                     ? CustomSmartRefresher(

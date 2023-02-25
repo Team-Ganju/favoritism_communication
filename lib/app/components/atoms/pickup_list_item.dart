@@ -8,7 +8,7 @@ class PickupListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: const [
         Text("画像"),
         Text("名前"),
       ],

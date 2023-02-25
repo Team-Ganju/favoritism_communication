@@ -10,9 +10,9 @@ class PickupList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("ピックアップタイトルピックアップタイトルピックアップタイトル"),
+        const Text("ピックアップタイトルピックアップタイトルピックアップタイトル"),
         Row(
-          children: [
+          children: const [
             PickupListItem(),
             PickupListItem(),
             PickupListItem(),
