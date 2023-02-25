@@ -12,7 +12,7 @@ class UserListProfileItem extends StatelessWidget {
   }) : super(key: key);
 
   final String name;
-  final avatorUrl;
+  final String avatorUrl;
   final List<String> commonList;
   final String selfIntroduction;
 
@@ -68,13 +68,16 @@ class SingleCommonProfile extends StatelessWidget {
             Text("ジョン・スノウ"),
             SizedBox(width: 16),
             Text("共通点 "),
-            Text(
-              "①",
-              style: TextStyle(
-                color: Colors.lightBlue,
-                fontSize: 20,
+            CircleAvatar(
+              backgroundColor: Colors.blue,
+              radius: 12,
+              child: Text(
+                "1",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
-            )
+            ),
           ],
         ),
         const Text(
@@ -149,13 +152,16 @@ class DoubleCommonProfile extends StatelessWidget {
             Text("ナイツ・キング"),
             SizedBox(width: 16),
             Text("共通点 "),
-            Text(
-              "②",
-              style: TextStyle(
-                color: Colors.lightBlue,
-                fontSize: 20,
+            CircleAvatar(
+              backgroundColor: Colors.blue,
+              radius: 12,
+              child: Text(
+                "2",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
-            )
+            ),
           ],
         ),
         const Text(
@@ -246,13 +252,16 @@ class TripleCommonProfile extends StatelessWidget {
             Text("デナーリス"),
             SizedBox(width: 16),
             Text("共通点 "),
-            Text(
-              "③",
-              style: TextStyle(
-                color: Colors.lightBlue,
-                fontSize: 20,
+            CircleAvatar(
+              backgroundColor: Colors.blue,
+              radius: 12,
+              child: Text(
+                "3",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
-            )
+            ),
           ],
         ),
         const Text(
@@ -358,13 +367,16 @@ class QuadrupleCommonProfile extends StatelessWidget {
             Text("ティリオン"),
             SizedBox(width: 16),
             Text("共通点 "),
-            Text(
-              "④",
-              style: TextStyle(
-                color: Colors.lightBlue,
-                fontSize: 20,
+            CircleAvatar(
+              backgroundColor: Colors.blue,
+              radius: 12,
+              child: Text(
+                "4",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
-            )
+            ),
           ],
         ),
         const Text(
