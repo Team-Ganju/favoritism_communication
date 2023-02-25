@@ -1,14 +1,12 @@
-import 'package:favoritism_communication/app/components/atoms/atoms.dart';
+import 'dart:math';
+
 import 'package:favoritism_communication/app/components/atoms/user_list_profile_item.dart';
-import 'package:favoritism_communication/app/utils/dialog_utils.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart';
-import '../../../../routes/app_pages.dart';
 import '../../../atoms/user_list_info_item.dart';
 import '../controllers/home_controller.dart';
 
@@ -100,8 +98,8 @@ class HomeView extends GetView<HomeController> {
                           children: List.generate(
                             100,
                             (index) {
-                              return index % 2 == 0
-                                  ? Center(
+                              return Random().nextInt(5) == 0
+                                  ? const Center(
                                       child: UserListInfoItem(
                                           label: "偏愛マップを作成した気の合う人を見つけよう"),
                                     )
@@ -109,86 +107,14 @@ class HomeView extends GetView<HomeController> {
                                       child: UserListProfileItem(
                                         name: "田中 太郎",
                                         avatorUrl: null,
-                                        commonList: ["スポーツ"],
+                                        commonList: getRandomCommonList(),
                                         selfIntroduction: "自己紹介文",
                                       ),
                                     );
                             },
                           ),
-                        )
-                        // child: ListView.separated(
-                        //   controller: controller.scrollController,
-                        //   shrinkWrap: true,
-                        //   itemCount: controller.userCardDataList.length,
-                        //   itemBuilder: (context, index) {
-                        //     final UserCardData userCardData =
-                        //         controller.userCardDataList[index];
-                        //     return UserCard(
-                        //       userCardData: userCardData,
-                        //       followAction: Obx(
-                        //         () => controller
-                        //                 .userCardDataList[index].isFollowed
-                        //             ? FollowButton(
-                        //                 onPressed: () {
-                        //                   debugPrint("scrollToTop!!");
-                        //                   controller.scrollController.jumpTo(0);
-                        //                   controller.unFollow(userCardData);
-                        //                 },
-                        //                 foregroundColor:
-                        //                     colorUserCardFollowButtonFgAsFollowed,
-                        //                 backgroundColor:
-                        //                     colorUserCardFollowButtonBgAsFollowed,
-                        //                 isFollowed: userCardData.isFollowed,
-                        //               )
-                        //             : FollowButton(
-                        //                 onPressed: () {
-                        //                   // フォロー処理は時間がかかる想定なのでインジケータ表示
-                        //                   EasyLoading.show();
-                        //                   controller.follow(userCardData);
-                        //                   controller.chatService.follower =
-                        //                       Follower(
-                        //                     index.toString(),
-                        //                     userCardData.userName,
-                        //                     null,
-                        //                   );
-                        //                   Future.delayed(
-                        //                       const Duration(seconds: 2),
-                        //                       () => EasyLoading.dismiss()).then(
-                        //                     (value) {
-                        //                       DialogUtils.dialog(
-                        //                         () {
-                        //                           // ダイアログを閉じる
-                        //                           Get.back();
-                        //                           // DashboardViewをトーク画面に切替
-                        //                           controller.tabService.tabIndex
-                        //                               .value = 1;
-                        //                           // トークルームに移動する
-                        //                           Get.toNamed(Routes.talkRoom);
-                        //                         },
-                        //                         controller.chatService.follower
-                        //                             .userName,
-                        //                       );
-                        //                     },
-                        //                   );
-                        //                 },
-                        //                 foregroundColor:
-                        //                     colorUserCardFollowButtonFgAsUnfollowed,
-                        //                 backgroundColor:
-                        //                     colorUserCardFollowButtonBgAsUnfollowed,
-                        //                 isFollowed: userCardData.isFollowed,
-                        //               ),
-                        //       ),
-                        //       onTapped: () {
-                        //         // todo NestedNavigationの実装ができたら画面遷移方法を変更する
-                        //         Get.toNamed(Routes.profile,
-                        //             arguments: [userCardData.userName]);
-                        //       },
-                        //     );
-                        //   },
-                        //   separatorBuilder: (context, index) =>
-                        //       const SizedBox(height: 10),
-                        // ),
-                        )
+                        ),
+                      )
                     : Column(
                         children: const [
                           SizedBox(height: 30),
@@ -228,6 +154,20 @@ class HomeView extends GetView<HomeController> {
         ],
       ),
     );
+  }
+}
+
+List<String> getRandomCommonList() {
+  int rand = Random().nextInt(4) + 1;
+  switch (rand) {
+    case 1:
+      return [""];
+    case 2:
+      return ["", ""];
+    case 3:
+      return ["", "", ""];
+    default:
+      return ["", "", "", ""];
   }
 }
 

@@ -12,13 +12,22 @@ class UserListProfileItem extends StatelessWidget {
   }) : super(key: key);
 
   final String name;
-  final String avatorUrl;
+  final String? avatorUrl;
   final List<String> commonList;
   final String selfIntroduction;
 
   @override
   Widget build(BuildContext context) {
-    return const QuadrupleCommonProfile();
+    switch (commonList.length) {
+      case 1:
+        return const SingleCommonProfile();
+      case 2:
+        return const DoubleCommonProfile();
+      case 3:
+        return const TripleCommonProfile();
+      default:
+        return const QuadrupleCommonProfile();
+    }
   }
 }
 
