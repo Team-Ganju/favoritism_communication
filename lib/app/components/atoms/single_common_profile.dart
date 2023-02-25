@@ -25,18 +25,18 @@ class SingleCommonProfile extends StatelessWidget {
                 ),
               ),
               Positioned(
+                left: 20,
+                top: 10,
                 child: CircleAvatar(
                   backgroundColor: Colors.red,
+                  radius: 35,
                   child: Text(
                     "スポーツ",
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
-                  radius: 35,
                 ),
-                left: 20,
-                top: 10,
               )
             ],
           ),
