@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:favoritism_communication/app/services/gender_service.dart';
-import 'package:get_storage/get_storage.dart';
 
 class SearchFilterController extends GetxController {
   final Rx<Gender?> _gender = Rx<Gender?>(null);
