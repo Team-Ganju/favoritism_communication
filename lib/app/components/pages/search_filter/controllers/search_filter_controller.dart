@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
+import 'package:favoritism_communication/app/services/gender_service.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SearchFilterController extends GetxController {
+  final Rx<Gender?> _gender = Rx<Gender?>(null);
+  final Rx<int?> _age = Rx<int?>(null);
 
   List<String> get  selectedCategoryNames {
     //TODO: 選択されたカテゴリを返す処理
@@ -39,4 +43,14 @@ class SearchFilterController extends GetxController {
     return "Flutter大学";
   }
 
+  Gender? get selectedGender => _gender.value;
+  int? get selectedAge => _age.value;
+
+  void changeGender(Gender? gender){
+    _gender.value = gender;
+  }
+
+  void changeAge(int? age){
+    _age.value = age;
+  }
 }

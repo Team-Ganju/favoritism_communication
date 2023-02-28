@@ -80,24 +80,26 @@ class SearchFilterView extends GetView<SearchFilterController> {
                       width: context.width/2,
                       child: Padding(
                         padding: fieldPadding,
-                        child: GenderSelectButton(
+                        child: Obx(()=>GenderSelectButton(
                           label: "性別",
                           menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
-                          onChanged: (gender) {},
-                        ),
+                          onChanged: controller.changeGender,
+                          value: controller.selectedGender,
+                        ),),
                       ),
                     ),
                     SizedBox(
                       width: context.width/2,
                       child: Padding(
                         padding: fieldPadding,
-                        child: AgeSelectButton(
+                        child: Obx(()=> AgeSelectButton(
                           ageLimMax: targetAgeLimitMax,
                           ageLimMin: targetAgeLimitMin,
                           label: "年代",
                           menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
-                          onChanged: (age) {},
-                        ),
+                          onChanged: controller.changeAge,
+                          value: controller.selectedAge,
+                        ),),
                       ),
                     ),
                   ]
