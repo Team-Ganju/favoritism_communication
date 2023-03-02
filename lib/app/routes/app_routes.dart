@@ -12,6 +12,9 @@ abstract class Routes {
   static const talkRoom = _Paths.talkRoom;
   static const search = _Paths.search;
   static const searchFilter = _Paths.searchFilter;
+  static const searchSelectCategory = _Paths.searchSelectCategory;
+  static const searchSelectGenre = _Paths.searchSelectGenre;
+  static const searchSelectCommunity = _Paths.searchSelectCommunity;
 }
 
 abstract class _Paths {
@@ -25,4 +28,7 @@ abstract class _Paths {
   static const talkRoom = '/talk-room';
   static const search = '/search';
   static const searchFilter = '$search/filter';
+  static const searchSelectCategory = '$searchFilter/select/category';
+  static const searchSelectGenre = '$searchFilter/select/genre';
+  static const searchSelectCommunity = '$searchFilter/select/community';
 }
