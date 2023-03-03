@@ -51,6 +51,14 @@ class SearchFilterView extends GetView<SearchFilterController> {
                               )
                   ).toList(),
                   label: 'ジャンル',
+                  emptyChild: const Text(
+                    'こだわらない',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   onTap: () => Get.toNamed(Routes.searchSelectGenre,),
                 ),
 
@@ -63,14 +71,30 @@ class SearchFilterView extends GetView<SearchFilterController> {
                               )
                   ).toList(),
                   label: 'カテゴリ',
+                  emptyChild: const Text(
+                    'こだわらない',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   onTap: () => Get.toNamed(Routes.searchSelectCategory,),
                 ),
 
                 MultiOptionSelectButton(
-                  selectedItems: [
-                    Text(controller.belongCommunity),
-                  ],
+                  selectedItems: controller.belongCommunities.map(
+                    (community) => Text(community)
+                  ).toList(),
                   label: 'コミュニティ',
+                  emptyChild: const Text(
+                    'こだわらない',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   onTap: () => Get.toNamed(Routes.searchSelectCommunity,),
                 ),
 
@@ -85,6 +109,7 @@ class SearchFilterView extends GetView<SearchFilterController> {
                           menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
                           onChanged: controller.changeGender,
                           value: controller.selectedGender,
+                          hint: const Text("未選択"),
                         ),),
                       ),
                     ),
@@ -99,6 +124,7 @@ class SearchFilterView extends GetView<SearchFilterController> {
                           menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
                           onChanged: controller.changeAge,
                           value: controller.selectedAge,
+                          hint: const Text("未選択"),
                         ),),
                       ),
                     ),

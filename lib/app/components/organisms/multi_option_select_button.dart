@@ -5,12 +5,14 @@ class MultiOptionSelectButton extends StatelessWidget{
     required this.selectedItems,
     required this.label,
     this.onTap,
+    this.emptyChild,
     super.key,
   });
 
   final String label;
   final void Function()? onTap;
   final List<Widget> selectedItems;
+  final Widget? emptyChild;
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +45,7 @@ class MultiOptionSelectButton extends StatelessWidget{
                       width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Wrap(
-                          runSpacing: 4.0,
-                          spacing: 4.0,
-                          children: selectedItems,
-                        ),
+                        child: _buildItems(selectedItems, emptyChild),
                       ),
                     )
                   ],
@@ -62,6 +60,26 @@ class MultiOptionSelectButton extends StatelessWidget{
         ),
       ],
     );
+  }
+
+  Widget _buildItems(List<Widget> items, Widget? emptyChild){
+    if(items.isNotEmpty){
+      return Wrap(
+        runSpacing: 4.0,
+        spacing: 4.0,
+        children: items,
+      );
+    }
+    else if(emptyChild != null){
+      return emptyChild;
+    }
+    else{
+      return Wrap(
+        runSpacing: 4.0,
+        spacing: 4.0,
+        children: const <Widget>[],
+      );
+    }
   }
 }
 

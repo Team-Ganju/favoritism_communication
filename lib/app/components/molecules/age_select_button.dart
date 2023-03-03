@@ -12,6 +12,7 @@ class AgeSelectButton extends CustomDropDownButton<int> {
     int? value,
     double? menuMaxHeight,
     EdgeInsetsGeometry? contentPadding,
+    Widget? hint,
   }) : super(
     items: _buildDropdownItems(ageLimMax, ageLimMin),
     label: label,
@@ -19,6 +20,7 @@ class AgeSelectButton extends CustomDropDownButton<int> {
     value: value,
     menuMaxHeight: menuMaxHeight,
     contentPadding: contentPadding,
+    hint: hint,
   );
 
   static List<DropdownMenuItem<int>> _buildDropdownItems(int ageLimMax, int ageLimMin){

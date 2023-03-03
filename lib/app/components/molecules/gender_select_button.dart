@@ -11,6 +11,7 @@ class GenderSelectButton extends CustomDropDownButton<Gender> {
     Gender? value,
     double? menuMaxHeight,
     EdgeInsetsGeometry? contentPadding,
+    Widget? hint,
   }) : super(
     items: _buildDropdownItems(),
     label: label,
@@ -18,6 +19,7 @@ class GenderSelectButton extends CustomDropDownButton<Gender> {
     value: value,
     menuMaxHeight: menuMaxHeight,
     contentPadding: contentPadding,
+    hint: hint,
   );
 
   static List<DropdownMenuItem<Gender>> _buildDropdownItems(){
