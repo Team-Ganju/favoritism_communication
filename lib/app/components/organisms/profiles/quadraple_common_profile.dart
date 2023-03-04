@@ -1,5 +1,5 @@
-import 'package:favoritism_communication/app/components/organisms/profiles/common_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 class QuadrupleCommonProfile extends StatelessWidget {
   const QuadrupleCommonProfile({
