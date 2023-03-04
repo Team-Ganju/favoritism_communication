@@ -1,5 +1,5 @@
-import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 class UserListProfileItem extends StatelessWidget {
   const UserListProfileItem({
