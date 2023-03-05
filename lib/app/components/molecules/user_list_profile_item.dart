@@ -7,25 +7,45 @@ class UserListProfileItem extends StatelessWidget {
     required this.name,
     required this.avatorUrl,
     required this.commonList,
-    required this.selfIntroduction,
+    required this.introduction,
   }) : super(key: key);
 
   final String name;
   final String? avatorUrl;
   final List<String> commonList;
-  final String selfIntroduction;
+  final String introduction;
 
   @override
   Widget build(BuildContext context) {
     switch (commonList.length) {
       case 1:
-        return const SingleCommonProfile();
+        return SingleCommonProfile(
+          name: name,
+          avatorUrl: avatorUrl,
+          commonList: commonList,
+          introduction: introduction,
+        );
       case 2:
-        return const DoubleCommonProfile();
+        return DoubleCommonProfile(
+          name: name,
+          avatorUrl: "",
+          commonList: commonList,
+          introduction: introduction,
+        );
       case 3:
-        return const TripleCommonProfile();
+        return TripleCommonProfile(
+          name: name,
+          avatorUrl: "",
+          commonList: commonList,
+          introduction: introduction,
+        );
       default:
-        return const QuadrupleCommonProfile();
+        return QuadrupleCommonProfile(
+          name: name,
+          avatorUrl: "",
+          commonList: commonList,
+          introduction: introduction,
+        );
     }
   }
 }

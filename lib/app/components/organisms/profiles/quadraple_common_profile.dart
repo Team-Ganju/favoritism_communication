@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
+import '../../../dummy_data/user_card_dummy_data.dart';
+
 class QuadrupleCommonProfile extends StatelessWidget {
   const QuadrupleCommonProfile({
     Key? key,
+    required this.name,
+    required this.avatorUrl,
+    required this.commonList,
+    required this.introduction,
   }) : super(key: key);
+
+  final String name;
+  final String avatorUrl;
+  final List<String> commonList;
+  final String introduction;
 
   @override
   Widget build(BuildContext context) {
-    return const CommonProfile(
-      widget: QuadrupleProfileContent(),
-      name: "ティリオン",
+    return CommonProfile(
+      widget: QuadrupleProfileContent(
+        name: name,
+        avatorUrl: avatorUrl,
+        commonList: commonList,
+      ),
+      name: name,
       commonCount: 3,
-      introduction:
-          "嘲りを込めて“小鬼”や“半人前”などとあだ名されるが、極めて高い知性の人である。父の政治的策略の才を受け継いでいるが、その醜さ、舌鋒の鋭さ、売春婦好きのため、そして出産が母親の死を招いたゆえに、父タイウィンから憎まれている。",
+      introduction: introduction,
     );
   }
 }
@@ -21,22 +35,36 @@ class QuadrupleCommonProfile extends StatelessWidget {
 class QuadrupleProfileContent extends StatelessWidget {
   const QuadrupleProfileContent({
     Key? key,
+    required this.name,
+    required this.avatorUrl,
+    required this.commonList,
   }) : super(key: key);
+
+  final String name;
+  final String? avatorUrl;
+  final List<String> commonList;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: const [
+      children: [
         Positioned(
           left: 28,
           top: 28,
           right: 28,
           bottom: 28,
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-              "https://cdn-ak.f.st-hatena.com/images/fotolife/b/biruconti/20190321/20190321131807.jpg",
-            ),
-          ),
+          child: avatorUrl != null
+              ? CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    avatorUrl!,
+                  ),
+                )
+              : CircleAvatar(
+                  backgroundColor: getRandomColor(),
+                  child: Text(
+                    name.isNotEmpty ? name.substring(0, 1) : "n/a",
+                  ),
+                ),
         ),
         Positioned(
           top: 8,
@@ -45,8 +73,8 @@ class QuadrupleProfileContent extends StatelessWidget {
             backgroundColor: Colors.green,
             radius: 20,
             child: Text(
-              "料理",
-              style: TextStyle(
+              commonList[0],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 12,
               ),
@@ -60,8 +88,8 @@ class QuadrupleProfileContent extends StatelessWidget {
             backgroundColor: Colors.red,
             radius: 24,
             child: Text(
-              "スポーツ",
-              style: TextStyle(
+              commonList[1],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 12,
               ),
@@ -75,8 +103,8 @@ class QuadrupleProfileContent extends StatelessWidget {
             backgroundColor: Colors.purple,
             radius: 32,
             child: Text(
-              "映画",
-              style: TextStyle(
+              commonList[2],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
               ),
@@ -90,8 +118,8 @@ class QuadrupleProfileContent extends StatelessWidget {
             backgroundColor: Colors.orange,
             radius: 28,
             child: Text(
-              "旅行",
-              style: TextStyle(
+              commonList[3],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
               ),

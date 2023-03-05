@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
+import '../../../dummy_data/user_card_dummy_data.dart';
+
 class TripleCommonProfile extends StatelessWidget {
   const TripleCommonProfile({
     Key? key,
+    required this.name,
+    required this.avatorUrl,
+    required this.commonList,
+    required this.introduction,
   }) : super(key: key);
+
+  final String name;
+  final String avatorUrl;
+  final List<String> commonList;
+  final String introduction;
 
   @override
   Widget build(BuildContext context) {
-    return const CommonProfile(
-      widget: TripleProfileContent(),
-      name: "デナーリス",
+    return CommonProfile(
+      widget: TripleProfileContent(
+        name: name,
+        avatorUrl: avatorUrl,
+        commonList: commonList,
+      ),
+      name: name,
       commonCount: 3,
-      introduction:
-          "デナーリス・ターガリエンはエイリス・ターガリエン二世の娘であり、古ターガリエン王朝、ウェスタロスの前王室の最後の末裔の一人である。",
+      introduction: introduction,
     );
   }
 }
@@ -21,22 +35,36 @@ class TripleCommonProfile extends StatelessWidget {
 class TripleProfileContent extends StatelessWidget {
   const TripleProfileContent({
     Key? key,
+    required this.name,
+    required this.avatorUrl,
+    required this.commonList,
   }) : super(key: key);
+
+  final String name;
+  final String? avatorUrl;
+  final List<String> commonList;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: const [
+      children: [
         Positioned(
           left: 12,
           top: 48,
           right: 60,
           bottom: 12,
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-              "https://d1uzk9o9cg136f.cloudfront.net/f/16783100/rc/2018/06/28/bea397d2528f42f11e6471563fd086abe82b25f2_xlarge.jpg",
-            ),
-          ),
+          child: avatorUrl != null
+              ? CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    avatorUrl!,
+                  ),
+                )
+              : CircleAvatar(
+                  backgroundColor: getRandomColor(),
+                  child: Text(
+                    name.isNotEmpty ? name.substring(0, 1) : "n/a",
+                  ),
+                ),
         ),
         Positioned(
           top: 4,
@@ -45,8 +73,8 @@ class TripleProfileContent extends StatelessWidget {
             backgroundColor: Colors.red,
             radius: 24,
             child: Text(
-              "スポーツ",
-              style: TextStyle(
+              commonList[0],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 12,
               ),
@@ -60,8 +88,8 @@ class TripleProfileContent extends StatelessWidget {
             backgroundColor: Colors.purple,
             radius: 20,
             child: Text(
-              "映画",
-              style: TextStyle(
+              commonList[1],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
               ),
@@ -75,8 +103,8 @@ class TripleProfileContent extends StatelessWidget {
             backgroundColor: Colors.orange,
             radius: 32,
             child: Text(
-              "旅行",
-              style: TextStyle(
+              commonList[2],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 16,
               ),
