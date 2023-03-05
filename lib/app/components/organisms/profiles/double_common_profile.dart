@@ -13,7 +13,7 @@ class DoubleCommonProfile extends StatelessWidget {
   }) : super(key: key);
 
   final String name;
-  final String avatorUrl;
+  final String? avatorUrl;
   final List<String> commonList;
   final String introduction;
 
