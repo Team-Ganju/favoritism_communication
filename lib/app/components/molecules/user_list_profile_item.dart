@@ -28,21 +28,21 @@ class UserListProfileItem extends StatelessWidget {
       case 2:
         return DoubleCommonProfile(
           name: name,
-          avatorUrl: "",
+          avatorUrl: avatorUrl,
           commonList: commonList,
           introduction: introduction,
         );
       case 3:
         return TripleCommonProfile(
           name: name,
-          avatorUrl: "",
+          avatorUrl: avatorUrl,
           commonList: commonList,
           introduction: introduction,
         );
       default:
         return QuadrupleCommonProfile(
           name: name,
-          avatorUrl: "",
+          avatorUrl: avatorUrl,
           commonList: commonList,
           introduction: introduction,
         );
