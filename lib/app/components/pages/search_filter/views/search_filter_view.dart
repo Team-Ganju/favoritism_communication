@@ -8,8 +8,7 @@ import 'package:favoritism_communication/app/components/organisms/multi_option_s
 import 'package:favoritism_communication/app/components/atoms/custom_chip.dart';
 import 'package:favoritism_communication/app/components/atoms/alternate_circle_chip.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
-import 'package:favoritism_communication/app/components/molecules/age_select_button.dart';
-import 'package:favoritism_communication/app/components/molecules/gender_select_button.dart';
+import 'package:favoritism_communication/app/components/molecules/gender_select_checkbox.dart';
 import '../controllers/search_filter_controller.dart';
 
 
@@ -100,33 +99,10 @@ class SearchFilterView extends GetView<SearchFilterController> {
 
                 Row(
                   children: [
-                    SizedBox(
-                      width: context.width/2,
-                      child: Padding(
-                        padding: fieldPadding,
-                        child: Obx(()=>GenderSelectButton(
-                          label: "性別",
-                          menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
-                          onChanged: controller.changeGender,
-                          value: controller.selectedGender,
-                          hint: const Text("未選択"),
-                        ),),
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.width/2,
-                      child: Padding(
-                        padding: fieldPadding,
-                        child: Obx(()=> AgeSelectButton(
-                          ageLimMax: targetAgeLimitMax,
-                          ageLimMin: targetAgeLimitMin,
-                          label: "年代",
-                          menuMaxHeight: MediaQuery.of(context).size.height / 3,  // ドロップダウン表示は画面高さの1/3まで
-                          onChanged: controller.changeAge,
-                          value: controller.selectedAge,
-                          hint: const Text("未選択"),
-                        ),),
-                      ),
+                    GenderSelectCheckbox(
+                      onChanged: (gender, value){
+                        print("hi");
+                      },
                     ),
                   ]
                 ),

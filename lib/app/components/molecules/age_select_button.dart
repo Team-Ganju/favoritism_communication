@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/atoms/custom_dropdown_button.dart';
 
-/// 年代選択用ドロップダウンボタン
+/// 年齢選択用ドロップダウンボタン
 class AgeSelectButton extends CustomDropDownButton<int> {
   AgeSelectButton({
     super.key,
