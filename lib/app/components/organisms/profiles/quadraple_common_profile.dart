@@ -5,13 +5,13 @@ import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 class QuadrupleCommonProfile extends StatelessWidget {
   const QuadrupleCommonProfile({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
     required this.introduction,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
   final String introduction;
@@ -20,11 +20,11 @@ class QuadrupleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: QuadrupleProfileContent(
-        name: name,
+        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
-      name: name,
+      userName: userName,
       commonCount: 3,
       introduction: introduction,
     );
@@ -34,12 +34,12 @@ class QuadrupleCommonProfile extends StatelessWidget {
 class QuadrupleProfileContent extends StatelessWidget {
   const QuadrupleProfileContent({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 
@@ -61,7 +61,7 @@ class QuadrupleProfileContent extends StatelessWidget {
               : CircleAvatar(
                   backgroundColor: getRandomColor(),
                   child: Text(
-                    name.isNotEmpty ? name.substring(0, 1) : "n/a",
+                    userName.isNotEmpty ? userName.substring(0, 1) : "n/a",
                   ),
                 ),
         ),

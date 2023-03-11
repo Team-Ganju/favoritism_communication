@@ -5,13 +5,13 @@ import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 class TripleCommonProfile extends StatelessWidget {
   const TripleCommonProfile({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
     required this.introduction,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
   final String introduction;
@@ -20,11 +20,11 @@ class TripleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: TripleProfileContent(
-        name: name,
+        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
-      name: name,
+      userName: userName,
       commonCount: 3,
       introduction: introduction,
     );
@@ -34,12 +34,12 @@ class TripleCommonProfile extends StatelessWidget {
 class TripleProfileContent extends StatelessWidget {
   const TripleProfileContent({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 
@@ -61,7 +61,7 @@ class TripleProfileContent extends StatelessWidget {
               : CircleAvatar(
                   backgroundColor: getRandomColor(),
                   child: Text(
-                    name.isNotEmpty ? name.substring(0, 1) : "n/a",
+                    userName.isNotEmpty ? userName.substring(0, 1) : "n/a",
                   ),
                 ),
         ),

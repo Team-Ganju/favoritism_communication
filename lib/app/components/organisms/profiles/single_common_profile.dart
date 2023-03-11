@@ -5,13 +5,13 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 class SingleCommonProfile extends StatelessWidget {
   const SingleCommonProfile({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
     required this.introduction,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
   final String introduction;
@@ -20,11 +20,11 @@ class SingleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: SingleProfileContent(
-        name: name,
+        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
-      name: name,
+      userName: userName,
       commonCount: 1,
       introduction: introduction,
     );
@@ -34,12 +34,12 @@ class SingleCommonProfile extends StatelessWidget {
 class SingleProfileContent extends StatelessWidget {
   const SingleProfileContent({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 
@@ -61,7 +61,7 @@ class SingleProfileContent extends StatelessWidget {
                   backgroundColor: getRandomColor(),
                   radius: 40,
                   child: Text(
-                    name.isNotEmpty ? name.substring(0, 1) : "n/a",
+                    userName.isNotEmpty ? userName.substring(0, 1) : "n/a",
                   ),
                 ),
         ),
