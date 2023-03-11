@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-
-import '../../../dummy_data/user_card_dummy_data.dart';
+import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 
 class DoubleCommonProfile extends StatelessWidget {
   const DoubleCommonProfile({
