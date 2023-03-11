@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 
 class DoubleCommonProfile extends StatelessWidget {
   const DoubleCommonProfile({
@@ -50,19 +50,15 @@ class DoubleProfileContent extends StatelessWidget {
         Positioned(
           right: 20,
           bottom: 10,
-          child: avatorUrl != null
+          child: avatorUrl == null
               ? CircleAvatar(
                   backgroundImage: NetworkImage(
                     avatorUrl!,
                   ),
                   radius: 35,
                 )
-              : CircleAvatar(
-                  backgroundColor: getRandomColor(),
-                  radius: 35,
-                  child: Text(
-                    userName.isNotEmpty ? userName.substring(0, 1) : "n/a",
-                  ),
+              : const NoImageCircleAvator(
+                  iconSize: 30,
                 ),
         ),
         Positioned(

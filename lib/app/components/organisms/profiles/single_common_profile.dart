@@ -1,5 +1,5 @@
-import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 class SingleCommonProfile extends StatelessWidget {
@@ -57,12 +57,8 @@ class SingleProfileContent extends StatelessWidget {
                   ),
                   radius: 40,
                 )
-              : CircleAvatar(
-                  backgroundColor: getRandomColor(),
-                  radius: 40,
-                  child: Text(
-                    userName.isNotEmpty ? userName.substring(0, 1) : "n/a",
-                  ),
+              : const NoImageCircleAvator(
+                  iconSize: 30,
                 ),
         ),
         Positioned(

@@ -1,6 +1,6 @@
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
-import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 
 class QuadrupleCommonProfile extends StatelessWidget {
   const QuadrupleCommonProfile({
@@ -25,7 +25,7 @@ class QuadrupleCommonProfile extends StatelessWidget {
         commonList: commonList,
       ),
       userName: userName,
-      commonCount: 3,
+      commonCount: 4,
       introduction: introduction,
     );
   }
@@ -58,11 +58,8 @@ class QuadrupleProfileContent extends StatelessWidget {
                     avatorUrl!,
                   ),
                 )
-              : CircleAvatar(
-                  backgroundColor: getRandomColor(),
-                  child: Text(
-                    userName.isNotEmpty ? userName.substring(0, 1) : "n/a",
-                  ),
+              : const NoImageCircleAvator(
+                  iconSize: 30,
                 ),
         ),
         Positioned(
