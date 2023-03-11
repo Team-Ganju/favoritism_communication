@@ -65,17 +65,13 @@ List<Map<String, dynamic>> privateChat = <Map<String, dynamic>>[
     "roomName": "文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認",
     "mostRecentMessage":
         "文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認文字切れ確認",
-    "profileImageURL": "https://animeanime.jp/imgs/slider/526911.jpg"
+    "profileImageURL": ""
   },
   {"roomName": "Aさん", "mostRecentMessage": "私も〇〇好きです", "profileImageURL": ""},
   {"roomName": "Bさん", "mostRecentMessage": "私も〇〇好きです", "profileImageURL": ""},
   {"roomName": "Cさん", "mostRecentMessage": "私も〇〇好きです", "profileImageURL": ""},
   {"roomName": "Dさん", "mostRecentMessage": "私も〇〇好きです", "profileImageURL": ""},
-  {
-    "roomName": "Eさん",
-    "mostRecentMessage": "私も〇〇好きです",
-    "profileImageURL": "https://animeanime.jp/imgs/slider/526911.jpg"
-  }
+  {"roomName": "Eさん", "mostRecentMessage": "私も〇〇好きです", "profileImageURL": ""}
 ];
 
 // TODO: 全体的にUserのデータ構造を意識した形に整形し直す
@@ -89,7 +85,7 @@ List<Map<String, dynamic>> groupChat = [
   {
     "roomName": "グループB",
     "mostRecentMessage": "私も〇〇好きです",
-    "profileImageURL": "https://animeanime.jp/imgs/slider/526911.jpg"
+    "profileImageURL": "",
   },
   {
     "roomName": "グループC",
