@@ -50,7 +50,7 @@ class DoubleProfileContent extends StatelessWidget {
         Positioned(
           right: 20,
           bottom: 10,
-          child: avatorUrl == null
+          child: avatorUrl != null
               ? CircleAvatar(
                   backgroundImage: NetworkImage(
                     avatorUrl!,
