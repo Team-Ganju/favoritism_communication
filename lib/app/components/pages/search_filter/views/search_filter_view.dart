@@ -19,6 +19,7 @@ class SearchFilterView extends GetView<SearchFilterController> {
   static const int targetAgeLimitMax = 100;   // 対象年齢の最大値
   static const EdgeInsetsGeometry fieldPadding = EdgeInsets.all(8.0); // 入力フィールドのパディング
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,13 +97,14 @@ class SearchFilterView extends GetView<SearchFilterController> {
                   ),
                   onTap: () => Get.toNamed(Routes.searchSelectCommunity,),
                 ),
-
                 Row(
                   children: [
-                    GenderSelectCheckbox(
-                      onChanged: (gender, value){
-                        print("hi");
-                      },
+                    Obx(() => GenderSelectCheckbox(
+                        values: controller.selectedGender,
+                        onChanged: (gender, value){
+                          controller.changeGender(gender, value);
+                        },
+                      ),
                     ),
                   ]
                 ),

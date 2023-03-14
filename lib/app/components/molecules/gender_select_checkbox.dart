@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:favoritism_communication/app/services/gender_service.dart';
 import 'package:favoritism_communication/app/components/atoms/custom_checkbox.dart';
+import 'package:get/get.dart';
 
 class GenderSelectCheckbox extends StatelessWidget{
   const GenderSelectCheckbox({
@@ -16,10 +17,13 @@ class GenderSelectCheckbox extends StatelessWidget{
   Widget build(BuildContext context){
     return Row(
       children: Gender.values.map((gender){
-        return CustomCheckbox(
-          label: gender.label,
-          value: values?[gender] ?? false,
-          onChanged: (value) => onChanged?.call(gender, value),
+        return SizedBox(
+          width: context.width / Gender.values.length,
+          child: CustomCheckbox(
+            label: gender.label,
+            value: values?[gender] ?? false,
+            onChanged: (value) => onChanged?.call(gender, value),
+          ),
         );
       }).toList(),
     );

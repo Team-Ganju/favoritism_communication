@@ -2,8 +2,7 @@ import 'package:get/get.dart';
 import 'package:favoritism_communication/app/services/gender_service.dart';
 
 class SearchFilterController extends GetxController {
-  final Rx<Gender?> _gender = Rx<Gender?>(null);
-  final Rx<int?> _age = Rx<int?>(null);
+  final Rx<Map<Gender, bool>> _gender = Rx<Map<Gender, bool>>({});
 
   List<String> get  selectedCategoryNames {
     //TODO: 選択されたカテゴリを返す処理
@@ -42,14 +41,15 @@ class SearchFilterController extends GetxController {
     return [];//"Flutter大学";
   }
 
-  Gender? get selectedGender => _gender.value;
-  int? get selectedAge => _age.value;
+  Map<Gender, bool> get selectedGender => _gender.value;
 
-  void changeGender(Gender? gender){
-    _gender.value = gender;
-  }
+  /// 性別セレクトボックス押下時処理
+  void changeGender(Gender? gender, bool? value){
+    if(gender == null) return;
 
-  void changeAge(int? age){
-    _age.value = age;
+    // Mapのアドレスを更新し、GetXに通知する。
+    Map<Gender, bool> clone = {..._gender.value};
+    clone[gender] = value ?? false;
+    _gender.value = clone;
   }
 }
