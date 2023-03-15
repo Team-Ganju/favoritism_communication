@@ -9,6 +9,7 @@ import 'package:favoritism_communication/app/components/atoms/custom_chip.dart';
 import 'package:favoritism_communication/app/components/atoms/alternate_circle_chip.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:favoritism_communication/app/components/molecules/gender_select_checkbox.dart';
+import '../../../../services/gender_service.dart';
 import '../controllers/search_filter_controller.dart';
 
 
@@ -22,6 +23,11 @@ class SearchFilterView extends GetView<SearchFilterController> {
 
   @override
   Widget build(BuildContext context) {
+    // 初期値で性別は全てTrueにする
+    for(Gender gender in Gender.values){
+      controller.changeGender(gender, true);
+    }
+
     return Scaffold(
       backgroundColor: colorSearchFilterBg,
       appBar: AppBar(
