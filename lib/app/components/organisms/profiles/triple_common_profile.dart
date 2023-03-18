@@ -20,7 +20,6 @@ class TripleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: TripleProfileContent(
-        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
@@ -34,12 +33,10 @@ class TripleCommonProfile extends StatelessWidget {
 class TripleProfileContent extends StatelessWidget {
   const TripleProfileContent({
     Key? key,
-    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 

@@ -20,7 +20,6 @@ class SingleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: SingleProfileContent(
-        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
@@ -34,12 +33,10 @@ class SingleCommonProfile extends StatelessWidget {
 class SingleProfileContent extends StatelessWidget {
   const SingleProfileContent({
     Key? key,
-    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 

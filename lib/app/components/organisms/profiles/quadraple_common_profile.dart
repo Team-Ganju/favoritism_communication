@@ -20,7 +20,6 @@ class QuadrupleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: QuadrupleProfileContent(
-        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
@@ -34,12 +33,10 @@ class QuadrupleCommonProfile extends StatelessWidget {
 class QuadrupleProfileContent extends StatelessWidget {
   const QuadrupleProfileContent({
     Key? key,
-    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 

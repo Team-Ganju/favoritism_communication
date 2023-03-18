@@ -20,7 +20,6 @@ class DoubleCommonProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonProfile(
       widget: DoubleProfileContent(
-        userName: userName,
         avatorUrl: avatorUrl,
         commonList: commonList,
       ),
@@ -34,12 +33,10 @@ class DoubleCommonProfile extends StatelessWidget {
 class DoubleProfileContent extends StatelessWidget {
   const DoubleProfileContent({
     Key? key,
-    required this.userName,
     required this.avatorUrl,
     required this.commonList,
   }) : super(key: key);
 
-  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
 
