@@ -4,28 +4,48 @@ import 'package:favoritism_communication/app/components/organisms/organisms.dart
 class UserListProfileItem extends StatelessWidget {
   const UserListProfileItem({
     Key? key,
-    required this.name,
+    required this.userName,
     required this.avatorUrl,
     required this.commonList,
-    required this.selfIntroduction,
+    required this.introduction,
   }) : super(key: key);
 
-  final String name;
+  final String userName;
   final String? avatorUrl;
   final List<String> commonList;
-  final String selfIntroduction;
+  final String introduction;
 
   @override
   Widget build(BuildContext context) {
     switch (commonList.length) {
       case 1:
-        return const SingleCommonProfile();
+        return SingleCommonProfile(
+          userName: userName,
+          avatorUrl: avatorUrl,
+          commonList: commonList,
+          introduction: introduction,
+        );
       case 2:
-        return const DoubleCommonProfile();
+        return DoubleCommonProfile(
+          userName: userName,
+          avatorUrl: avatorUrl,
+          commonList: commonList,
+          introduction: introduction,
+        );
       case 3:
-        return const TripleCommonProfile();
+        return TripleCommonProfile(
+          userName: userName,
+          avatorUrl: avatorUrl,
+          commonList: commonList,
+          introduction: introduction,
+        );
       default:
-        return const QuadrupleCommonProfile();
+        return QuadrupleCommonProfile(
+          userName: userName,
+          avatorUrl: avatorUrl,
+          commonList: commonList,
+          introduction: introduction,
+        );
     }
   }
 }

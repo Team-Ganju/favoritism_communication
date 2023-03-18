@@ -4,13 +4,13 @@ class CommonProfile extends StatelessWidget {
   const CommonProfile({
     Key? key,
     required this.widget,
-    required this.name,
+    required this.userName,
     required this.commonCount,
     required this.introduction,
   }) : super(key: key);
 
   final Widget widget;
-  final String name;
+  final String userName;
   final int commonCount;
   final String introduction;
 
@@ -25,7 +25,7 @@ class CommonProfile extends StatelessWidget {
         ),
         Row(
           children: [
-            Text(name),
+            Text(userName),
             const SizedBox(width: 16),
             const Text("共通点 "),
             CircleAvatar(

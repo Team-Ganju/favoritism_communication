@@ -1,13 +1,13 @@
 import 'dart:math';
 
+import 'package:favoritism_communication/app/dummy_data/common_profile_dummy_data.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
-import 'package:favoritism_communication/app/components/molecules/molecules.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                       fontWeight: FontWeight.bold,
                     )),
                 IconButton(
-                  icon: Badge(
+                  icon: badges.Badge(
                     badgeContent: const Text(
                       '1',
                       style: TextStyle(
@@ -104,13 +104,8 @@ class HomeView extends GetView<HomeController> {
                                           label: "偏愛マップを作成した気の合う人を見つけよう"),
                                     )
                                   : Center(
-                                      child: UserListProfileItem(
-                                        name: "田中 太郎",
-                                        avatorUrl: null,
-                                        commonList: getRandomCommonList(),
-                                        selfIntroduction: "自己紹介文",
-                                      ),
-                                    );
+                                      child: dummyUserListProfileItems[
+                                          Random().nextInt(4)]);
                             },
                           ),
                         ),
@@ -154,20 +149,6 @@ class HomeView extends GetView<HomeController> {
         ],
       ),
     );
-  }
-}
-
-List<String> getRandomCommonList() {
-  int rand = Random().nextInt(4) + 1;
-  switch (rand) {
-    case 1:
-      return [""];
-    case 2:
-      return ["", ""];
-    case 3:
-      return ["", "", ""];
-    default:
-      return ["", "", "", ""];
   }
 }
 

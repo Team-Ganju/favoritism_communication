@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 class SingleCommonProfile extends StatelessWidget {
   const SingleCommonProfile({
     Key? key,
+    required this.userName,
+    required this.avatorUrl,
+    required this.commonList,
+    required this.introduction,
   }) : super(key: key);
+
+  final String userName;
+  final String? avatorUrl;
+  final List<String> commonList;
+  final String introduction;
 
   @override
   Widget build(BuildContext context) {
-    return const CommonProfile(
-      widget: SingleProfileContent(),
-      name: "ジョン・スノウ",
-      commonCount: 3,
-      introduction:
-          "ジョン・スノウは落とし子であり、王家の血を引くものである。しかし、その出生は秘密裏に隠され、彼はエダード・スタークの妾の息子として育てられた。",
+    return CommonProfile(
+      widget: SingleProfileContent(
+        avatorUrl: avatorUrl,
+        commonList: commonList,
+      ),
+      userName: userName,
+      commonCount: 1,
+      introduction: introduction,
     );
   }
 }
@@ -21,21 +33,30 @@ class SingleCommonProfile extends StatelessWidget {
 class SingleProfileContent extends StatelessWidget {
   const SingleProfileContent({
     Key? key,
+    required this.avatorUrl,
+    required this.commonList,
   }) : super(key: key);
+
+  final String? avatorUrl;
+  final List<String> commonList;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: const [
+      children: [
         Positioned(
           right: 20,
           bottom: 10,
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-              "https://d1uzk9o9cg136f.cloudfront.net/f/16783100/rc/2020/07/06/0ae7a72d553b6e3408fadd225705dbdd5b694c15_xlarge.jpg",
-            ),
-            radius: 40,
-          ),
+          child: avatorUrl != null
+              ? CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    avatorUrl!,
+                  ),
+                  radius: 40,
+                )
+              : const NoImageCircleAvator(
+                  iconSize: 30,
+                ),
         ),
         Positioned(
           left: 20,
@@ -44,8 +65,8 @@ class SingleProfileContent extends StatelessWidget {
             backgroundColor: Colors.red,
             radius: 35,
             child: Text(
-              "スポーツ",
-              style: TextStyle(
+              commonList[0],
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),

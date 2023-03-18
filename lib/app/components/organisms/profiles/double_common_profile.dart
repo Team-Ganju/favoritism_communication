@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 
 class DoubleCommonProfile extends StatelessWidget {
   const DoubleCommonProfile({
     Key? key,
+    required this.userName,
+    required this.avatorUrl,
+    required this.commonList,
+    required this.introduction,
   }) : super(key: key);
+
+  final String userName;
+  final String? avatorUrl;
+  final List<String> commonList;
+  final String introduction;
 
   @override
   Widget build(BuildContext context) {
-    return const CommonProfile(
-      widget: DoubleProfileContent(),
-      name: "ナイツ・キング",
-      commonCount: 3,
-      introduction: "ナイツ・キング（夜の王）は死者の軍勢を率いる長であり不死身である。死者を統率し動かすのは彼の力あってのことである。",
+    return CommonProfile(
+      widget: DoubleProfileContent(
+        avatorUrl: avatorUrl,
+        commonList: commonList,
+      ),
+      userName: userName,
+      commonCount: 2,
+      introduction: introduction,
     );
   }
 }
@@ -20,21 +33,30 @@ class DoubleCommonProfile extends StatelessWidget {
 class DoubleProfileContent extends StatelessWidget {
   const DoubleProfileContent({
     Key? key,
+    required this.avatorUrl,
+    required this.commonList,
   }) : super(key: key);
+
+  final String? avatorUrl;
+  final List<String> commonList;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: const [
+      children: [
         Positioned(
           right: 20,
           bottom: 10,
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(
-              "https://static.wikia.nocookie.net/gameofthrones/images/1/1f/Night_King_BTW.jpg/revision/latest?cb=20210722093007",
-            ),
-            radius: 35,
-          ),
+          child: avatorUrl != null
+              ? CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    avatorUrl!,
+                  ),
+                  radius: 35,
+                )
+              : const NoImageCircleAvator(
+                  iconSize: 30,
+                ),
         ),
         Positioned(
           left: 50,
@@ -43,8 +65,8 @@ class DoubleProfileContent extends StatelessWidget {
             backgroundColor: Colors.red,
             radius: 30,
             child: Text(
-              "スポーツ",
-              style: TextStyle(
+              commonList[0],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
               ),
@@ -58,8 +80,8 @@ class DoubleProfileContent extends StatelessWidget {
             backgroundColor: Colors.purple,
             radius: 20,
             child: Text(
-              "映画",
-              style: TextStyle(
+              commonList[1],
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 14,
               ),
