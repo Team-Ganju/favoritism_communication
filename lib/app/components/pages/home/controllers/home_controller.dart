@@ -1,5 +1,5 @@
 import 'package:favoritism_communication/app/components/organisms/user_card.dart';
-import 'package:favoritism_communication/app/dummy_data/user_card_dummy_data.dart';
+import 'package:favoritism_communication/app/dummy_data/dummy_data.dart';
 import 'package:flutter/widgets.dart';
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:get/get.dart';

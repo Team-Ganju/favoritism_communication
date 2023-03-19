@@ -5,20 +5,19 @@ class CustomChip extends StatelessWidget {
     super.key,
     required this.chipTitle,
     required this.backgroundColor,
+    this.onTap,
   });
 
   final String chipTitle;
   final Color backgroundColor;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     var textMarginLeft = 8.0;
     var textMarginRight = 24.0;
     return InkWell(
-      onTap: () {
-        // todo チップ選択時の処理
-        debugPrint("ChipTitle: $chipTitle");
-      },
+      onTap: onTap,
       child: CustomPaint(
         painter: CustomChipPainter(backgroundColor: backgroundColor),
         child: SizedBox(

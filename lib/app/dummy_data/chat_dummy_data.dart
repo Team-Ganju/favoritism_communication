@@ -60,8 +60,8 @@ List<Map<String, dynamic>> friendData = [
   },
 ];
 
-const List<Map<String, dynamic>> chatRoomData = [
-  //グループデータ
+// TODO: 全体的にUserのデータ構造を意識した形に整形し直す
+List<Map<String, dynamic>> chatRoomData = [
   {
     "roomId": "group-001",
     "roomName": "グループA",
