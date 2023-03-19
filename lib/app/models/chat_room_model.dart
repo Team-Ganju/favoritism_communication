@@ -4,20 +4,22 @@ class ChatRoomModel {
   String? roomId;
   String? roomName;
   bool? isGroup;
+  String? ownerId;
   String? lastMessage;
-  String? userId;
-  String? profileImage;
+  String? roomImage;
+  List<String?> roomMembers = [];
   Timestamp? createdAt;
   Timestamp? updatedAt;
-  List<Map<String, dynamic>> messages = [];
+  List<Map<String?, dynamic>> messages = [];
 
   ChatRoomModel({
     required this.roomId,
     required this.roomName,
     required this.isGroup,
-    required this.userId,
+    required this.ownerId,
     required this.lastMessage,
-    required this.profileImage,
+    required this.roomImage,
+    required this.roomMembers,
     required this.createdAt,
     required this.updatedAt,
     required this.messages,
@@ -27,9 +29,10 @@ class ChatRoomModel {
     roomId = json['roomId'];
     roomName = json['roomName'];
     isGroup = json['isGroup'];
-    userId = json['userId'];
+    ownerId = json['ownerId'];
     lastMessage = json['lastMessage'];
-    profileImage = json['profileImage'];
+    roomImage = json['roomImage'];
+    roomMembers = json['roomMembers'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     messages = json['messages'];
@@ -40,9 +43,10 @@ class ChatRoomModel {
     data['roomId'] = roomId;
     data['roomName'] = roomName;
     data['isGroup'] = isGroup;
-    data['userId'] = userId;
+    data['ownerId'] = ownerId;
     data['lastMessage'] = lastMessage;
-    data['profileImage'] = profileImage;
+    data['roomImage'] = roomImage;
+    data['roomMembers'] = roomMembers;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     data['messages'] = messages;

@@ -115,7 +115,7 @@ class ChatView extends GetView<ChatController> {
                             },
                             roomName: group.roomName ?? '',
                             lastMessage: group.lastMessage ?? '',
-                            profileImage: group.profileImage,
+                            profileImage: group.roomImage,
                           );
                         },
                       ),
@@ -143,7 +143,7 @@ class ChatView extends GetView<ChatController> {
                             },
                             roomName: individual.roomName ?? '',
                             lastMessage: individual.lastMessage ?? '',
-                            profileImage: individual.profileImage,
+                            profileImage: individual.roomImage,
                           );
                         },
                       ),

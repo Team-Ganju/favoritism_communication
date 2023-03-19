@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 class ChatRoomController extends GetxController {
   List<ChatRoomModel> chatRooms = <ChatRoomModel>[].obs;
 
+  final AuthService authService = Get.find();
   final ChatService chatService = Get.find();
 
   @override
@@ -17,5 +18,9 @@ class ChatRoomController extends GetxController {
   //TODO: firebaseから取得するように修正
   void fetchChatRoomData() {
     chatRooms = chatRoomData.map((e) => ChatRoomModel.fromJson(e)).toList();
+  }
+
+  bool isSender(String senderId) {
+    return authService.uid.val == senderId;
   }
 }

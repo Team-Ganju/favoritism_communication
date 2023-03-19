@@ -25,25 +25,33 @@ class ChatRoomView extends GetView<ChatRoomController> {
             shrinkWrap: true,
             itemCount: controller.chatService.chatRoom.messages.length,
             itemBuilder: (context, index) {
+              // FIXME: 仮でuid設定　Preferenceから取得？
+              controller.authService.uid.val = "001";
+
+              final senderId =
+                  controller.chatService.chatRoom.messages[index]['senderId'];
+              final message =
+                  controller.chatService.chatRoom.messages[index]['message'];
+              final profileImage = controller
+                  .chatService.chatRoom.messages[index]['profileImage']
+                  .toString();
+              final senderName =
+                  controller.chatService.chatRoom.messages[index]['senderName'];
+
               return Column(
                 children: [
                   if (index == 0)
                     const SizedBox(
                       height: 20,
                     ),
-                  controller.chatService.chatRoom.messages[index]['isSender']
+                  controller.isSender(senderId)
                       ? SentMessage(
-                          text: controller.chatService.chatRoom.messages[index]
-                              ['message'],
+                          text: message,
                         )
                       : ReceivedMessage(
-                          profileImage: controller.chatService.chatRoom
-                              .messages[index]['profileImage']
-                              .toString(),
-                          senderName: controller
-                              .chatService.chatRoom.messages[index]['userName'],
-                          text: controller.chatService.chatRoom.messages[index]
-                              ['message'],
+                          profileImage: profileImage,
+                          senderName: senderName,
+                          text: message,
                         ),
                   const SizedBox(
                     height: 10,

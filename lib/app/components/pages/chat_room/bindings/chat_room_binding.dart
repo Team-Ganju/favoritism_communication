@@ -9,6 +9,9 @@ class ChatRoomBinding extends Bindings {
       () => ChatRoomController(),
     );
     Get.lazyPut(
+      () => AuthService(),
+    );
+    Get.lazyPut(
       () => ChatService(),
     );
   }
