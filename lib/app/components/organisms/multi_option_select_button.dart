@@ -18,20 +18,17 @@ class MultiOptionSelectButton extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                label,
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            label,
+            textAlign: TextAlign.left,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
             ),
-          ]
+          ),
         ),
 
         IntrinsicHeight(
@@ -73,13 +70,12 @@ class MultiOptionSelectButton extends StatelessWidget{
     else if(emptyChild != null){
       return emptyChild;
     }
-    else{
-      return Wrap(
-        runSpacing: 4.0,
-        spacing: 4.0,
-        children: const <Widget>[],
-      );
-    }
+
+    return Wrap(
+      runSpacing: 4.0,
+      spacing: 4.0,
+      children: const <Widget>[],
+    );
   }
 }
 

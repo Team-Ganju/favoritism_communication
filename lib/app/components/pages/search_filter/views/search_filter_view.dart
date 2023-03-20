@@ -16,18 +16,8 @@ import '../controllers/search_filter_controller.dart';
 class SearchFilterView extends GetView<SearchFilterController> {
   const SearchFilterView({Key? key}) : super(key: key);
 
-  static const int targetAgeLimitMin = 18;    // 対象年齢の最小値
-  static const int targetAgeLimitMax = 100;   // 対象年齢の最大値
-  static const EdgeInsetsGeometry fieldPadding = EdgeInsets.all(8.0); // 入力フィールドのパディング
-
-
   @override
   Widget build(BuildContext context) {
-    // 初期値で性別は全てTrueにする
-    for(Gender gender in Gender.values){
-      controller.changeGender(gender, true);
-    }
-
     return Scaffold(
       backgroundColor: colorSearchFilterBg,
       appBar: AppBar(
@@ -46,7 +36,8 @@ class SearchFilterView extends GetView<SearchFilterController> {
         children: <Widget>[
           Expanded(
             child: ListView(
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.all(8.0),
+              physics: const NeverScrollableScrollPhysics(),
               children: <Widget>[
                 MultiOptionSelectButton(
                   selectedItems: controller.selectedGenreNames.map(
@@ -103,14 +94,29 @@ class SearchFilterView extends GetView<SearchFilterController> {
                   ),
                   onTap: () => Get.toNamed(Routes.searchSelectCommunity,),
                 ),
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Obx(() => GenderSelectCheckbox(
-                        values: controller.selectedGender,
-                        onChanged: (gender, value){
-                          controller.changeGender(gender, value);
-                        },
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8, left: 8, right: 8),
+                      child: Text(
+                        '性別',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                    ),
+                    Row(
+                        children: [
+                          Obx(() => GenderSelectCheckbox(
+                            values: controller.selectedGender,
+                            onChanged: (gender, value){
+                              controller.changeGender(gender, value);
+                            },
+                          ),
+                          ),
+                        ]
                     ),
                   ]
                 ),
@@ -119,43 +125,54 @@ class SearchFilterView extends GetView<SearchFilterController> {
           ),
         ]
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 2.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(context.width * 0.4, 25),
-                  foregroundColor: colorClearSearchFilterButtonFg,
-                  backgroundColor: colorClearSearchFilterButtonBg,
-                  shape: const StadiumBorder(),
-                  elevation: 0,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(color: Colors.grey, width: 0.5),
+          ),
+        ),
+
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),   // floatingActionButtonにした時にtopBorderに近くなるので、上に余白をつけたい
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: Size(context.width * 0.4, 25),
+                    foregroundColor: colorClearSearchFilterButtonFg,
+                    backgroundColor: colorClearSearchFilterButtonBg,
+                    shape: const StadiumBorder(),
+                    elevation: 0,
+                  ),
+                  onPressed: () {},
+                  child: const Text('検索条件をクリア'),
                 ),
-                onPressed: () {},
-                child: const Text('検索条件をクリア'),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 2.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(context.width * 0.4, 25),
-                  foregroundColor: colorSearchButtonFg,
-                  backgroundColor: colorSearchButtonBg,
-                  shape: const StadiumBorder(),
-                  elevation: 0,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: Size(context.width * 0.4, 25),
+                    foregroundColor: colorSearchButtonFg,
+                    backgroundColor: colorSearchButtonBg,
+                    shape: const StadiumBorder(),
+                    elevation: 0,
+                  ),
+                  onPressed: () {},
+                  child: const Text('この条件で検索'),
                 ),
-                onPressed: () {},
-                child: const Text('この条件で検索'),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
 }
+
+

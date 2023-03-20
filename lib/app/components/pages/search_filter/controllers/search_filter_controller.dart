@@ -4,19 +4,28 @@ import 'package:favoritism_communication/app/services/gender_service.dart';
 class SearchFilterController extends GetxController {
   final Rx<Map<Gender, bool>> _gender = Rx<Map<Gender, bool>>({});
 
+  @override
+  void onInit() {
+    super.onInit();
+    // 初期値で性別は全てTrueにする
+    for (Gender gender in Gender.values) {
+      changeGender(gender, true);
+    }
+  }
+
   List<String> get  selectedCategoryNames {
     //TODO: 選択されたカテゴリを返す処理
     return [
-      // "カテゴリ1",
-      // "カテゴリ2",
-      // "カテゴリ3",
-      // "カテゴリ4",
-      // "カテゴリ5",
-      // "カテゴリ6",
-      // "カテゴリ7",
-      // "カテゴリ8",
-      // "カテゴリ9",
-      // "カテゴリ10",
+      "カテゴリ1",
+      "カテゴリ2",
+      "カテゴリ3",
+      "カテゴリ4",
+      "カテゴリ5",
+      "カテゴリ6",
+      "カテゴリ7",
+      "カテゴリ8",
+      "カテゴリ9",
+      "カテゴリ10",
     ];
   }
 
