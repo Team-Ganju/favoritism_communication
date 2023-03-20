@@ -1,18 +1,18 @@
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
-class TalkMemberCard extends StatelessWidget {
-  const TalkMemberCard({
+class ChatMemberCard extends StatelessWidget {
+  const ChatMemberCard({
     Key? key,
     required this.roomName,
-    required this.mostRecentMessage,
+    required this.lastMessage,
     required this.onTap,
-    this.profileImageURL,
+    this.profileImage,
   }) : super(key: key);
 
   final String roomName;
-  final String mostRecentMessage;
-  final String? profileImageURL;
+  final String lastMessage;
+  final String? profileImage;
   final VoidCallback onTap;
 
   @override
@@ -24,7 +24,7 @@ class TalkMemberCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
           side: BorderSide(
-            color: colorTalkMemberCardBorder,
+            color: colorChatMemberCardBorder,
           ),
         ),
         child: Padding(
@@ -33,14 +33,13 @@ class TalkMemberCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 //TODO:firebase接続後に動作確認
-                //profileImageURLがあればその画像を表示、なければグレー背景でpersonアイコンを表示
-                foregroundImage: profileImageURL != null
-                    ? NetworkImage(profileImageURL!)
-                    : null,
-                backgroundColor: colorTalkMemberCardCircleBg,
+                //profileImageがあればその画像を表示、なければグレー背景でpersonアイコンを表示
+                foregroundImage:
+                    profileImage != null ? NetworkImage(profileImage!) : null,
+                backgroundColor: colorChatMemberCardCircleBg,
                 child: const Icon(
                   Icons.person,
-                  color: colorTalkMemberCardIcon,
+                  color: colorChatMemberCardIcon,
                 ),
               ),
               const SizedBox(
@@ -59,7 +58,7 @@ class TalkMemberCard extends StatelessWidget {
                       style: const TextStyle(fontSize: 20),
                     ),
                     Text(
-                      mostRecentMessage,
+                      lastMessage,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),

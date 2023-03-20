@@ -31,7 +31,7 @@ class DialogUtils {
               action.call();
             },
             child: const Text(
-              "トークに移動する",
+              "チャットに移動する",
               style: TextStyle(color: colorMatchingDialogButtonTextFg),
             ),
           ),

@@ -2,7 +2,6 @@ import 'package:favoritism_communication/app/components/pages/tab_root/tab_root_
 import 'package:favoritism_communication/app/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 
-
 class NavigationInfo {
   const NavigationInfo({
     required this.icon,
@@ -28,7 +27,7 @@ const List<NavigationInfo> _navigationInfos = [
   NavigationInfo(
     icon: CupertinoIcons.chat_bubble,
     initialRoot: Routes.chat,
-    label: 'トーク',
+    label: 'チャット',
   ),
   NavigationInfo(
     icon: CupertinoIcons.person,

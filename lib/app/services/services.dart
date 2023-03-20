@@ -1,3 +1,4 @@
+export 'auth_service.dart';
 export 'preference_service.dart';
 export 'search_service.dart';
 export 'tab_service.dart';
