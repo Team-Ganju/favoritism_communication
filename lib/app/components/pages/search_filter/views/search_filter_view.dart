@@ -8,8 +8,8 @@ import 'package:favoritism_communication/app/components/organisms/multi_option_s
 import 'package:favoritism_communication/app/components/atoms/custom_chip.dart';
 import 'package:favoritism_communication/app/components/atoms/alternate_circle_chip.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
-import 'package:favoritism_communication/app/components/molecules/gender_select_checkbox.dart';
-import '../../../../services/gender_service.dart';
+import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
+import 'package:favoritism_communication/app/data/gender/gender.dart';
 import '../controllers/search_filter_controller.dart';
 
 
@@ -20,11 +20,21 @@ class SearchFilterView extends GetView<SearchFilterController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colorSearchFilterBg,
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: colorSearchFilterAppBarTitle),
+      appBar: NavBar(
+        // iconTheme: const IconThemeData(color: colorSearchFilterAppBarTitle),
         backgroundColor: colorSearchFilterAppBarBg,
         toolbarHeight: 60,
-        title: const Text("検索条件",
+        leading: IconButton(
+          icon: const Icon(
+            Icons.close,
+            size: 36,
+          ),
+          color: colorSearchAppBarIconFilter,
+          onPressed: () {
+            Get.back();
+          },
+        ),
+        child: const Text("検索条件",
           style: TextStyle(
             color: colorSearchFilterAppBarTitle,
             fontSize: 18,
@@ -38,7 +48,7 @@ class SearchFilterView extends GetView<SearchFilterController> {
             child: ListView(
               padding: const EdgeInsets.all(8.0),
               physics: const NeverScrollableScrollPhysics(),
-              children: <Widget>[
+            children: <Widget>[
                 MultiOptionSelectButton(
                   selectedItems: controller.selectedGenreNames.map(
                     (name) => AlternateCircleChip(
@@ -109,7 +119,8 @@ class SearchFilterView extends GetView<SearchFilterController> {
                     ),
                     Row(
                         children: [
-                          Obx(() => GenderSelectCheckbox(
+                          Obx(() => _buildGenderCheckBox(
+                            context: context,
                             values: controller.selectedGender,
                             onChanged: (gender, value){
                               controller.changeGender(gender, value);
@@ -172,7 +183,56 @@ class SearchFilterView extends GetView<SearchFilterController> {
       ),
     );
   }
-
+  Widget _buildGenderCheckBox({
+    required BuildContext context,
+    Map<Gender, bool>? values,
+    void Function(Gender? gender, bool? value)? onChanged,
+  }){
+    return Row(
+      children: Gender.values.map((gender){
+        return SizedBox(
+          width: context.width / Gender.values.length,
+          child: _CustomCheckbox(
+            label: gender.label,
+            value: values?[gender] ?? false,
+            onChanged: (value) => onChanged?.call(gender, value),
+          ),
+        );
+      }).toList(),
+    );
+  }
 }
+class _CustomCheckbox extends StatelessWidget{
+  const _CustomCheckbox({
+    super.key,
+    this.label,
+    this.onChanged,
+    this.value=false,
+    this.height,
+    this.width,
+  });
 
+  final String? label;
+  final void Function(bool? value)? onChanged;
+  final bool value;
+  final double? height;
+  final double? width;
+
+  @override
+  Widget build(BuildContext context){
+    final Widget? title = label != null ? Text(label!) : null;
+
+    return SizedBox(
+      width: width,
+      height: height,
+      child: CheckboxListTile(
+        value: value,
+        selectedTileColor: Colors.red,
+        onChanged: onChanged,
+        title: title,
+        controlAffinity: ListTileControlAffinity.leading,
+      ),
+    );
+  }
+}
 

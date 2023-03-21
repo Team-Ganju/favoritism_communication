@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:favoritism_communication/app/services/gender_service.dart';
+import 'package:favoritism_communication/app/data/gender/gender.dart';
 
 class SearchFilterController extends GetxController {
   final Rx<Map<Gender, bool>> _gender = Rx<Map<Gender, bool>>({});
