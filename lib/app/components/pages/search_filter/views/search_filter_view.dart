@@ -146,7 +146,7 @@ class SearchFilterView extends GetView<SearchFilterController> {
         ),
 
         child: Padding(
-          padding: const EdgeInsets.all(16.0),   // floatingActionButtonにした時にtopBorderに近くなるので、上に余白をつけたい
+          padding: const EdgeInsets.only(top: 16.0),   // floatingActionButtonにした時にtopBorderに近くなるので、上に余白をつけたい
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -209,36 +209,27 @@ class SearchFilterView extends GetView<SearchFilterController> {
 }
 class _CustomCheckbox extends StatelessWidget{
   const _CustomCheckbox({
-    super.key,
     this.label,
     this.onChanged,
     this.value=false,
-    this.height,
-    this.width,
     this.textStyle,
   });
 
   final String? label;
   final void Function(bool? value)? onChanged;
   final bool value;
-  final double? height;
-  final double? width;
   final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context){
     final Widget? title = label != null ? Text(label!, style: textStyle,) : null;
 
-    return SizedBox(
-      width: width,
-      height: height,
-      child: CheckboxListTile(
-        value: value,
-        onChanged: onChanged,
-        title: title,
-        controlAffinity: ListTileControlAffinity.leading,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-      ),
+    return CheckboxListTile(
+      value: value,
+      onChanged: onChanged,
+      title: title,
+      controlAffinity: ListTileControlAffinity.leading,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
     );
   }
 }
