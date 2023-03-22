@@ -122,6 +122,7 @@ class SearchFilterView extends GetView<SearchFilterController> {
                           Obx(() => _buildGenderCheckBox(
                             context: context,
                             values: controller.selectedGender,
+                            sidePadding: 8,
                             onChanged: (gender, value){
                               controller.changeGender(gender, value);
                             },
@@ -187,15 +188,19 @@ class SearchFilterView extends GetView<SearchFilterController> {
     required BuildContext context,
     Map<Gender, bool>? values,
     void Function(Gender? gender, bool? value)? onChanged,
+    double sidePadding=0,
   }){
     return Row(
       children: Gender.values.map((gender){
         return SizedBox(
-          width: context.width / Gender.values.length,
+          width: (context.width-sidePadding*2) / Gender.values.length,
           child: _CustomCheckbox(
             label: gender.label,
             value: values?[gender] ?? false,
             onChanged: (value) => onChanged?.call(gender, value),
+            textStyle: const TextStyle(
+              fontSize: 14,
+            ),
           ),
         );
       }).toList(),
@@ -210,6 +215,7 @@ class _CustomCheckbox extends StatelessWidget{
     this.value=false,
     this.height,
     this.width,
+    this.textStyle,
   });
 
   final String? label;
@@ -217,20 +223,21 @@ class _CustomCheckbox extends StatelessWidget{
   final bool value;
   final double? height;
   final double? width;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context){
-    final Widget? title = label != null ? Text(label!) : null;
+    final Widget? title = label != null ? Text(label!, style: textStyle,) : null;
 
     return SizedBox(
       width: width,
       height: height,
       child: CheckboxListTile(
         value: value,
-        selectedTileColor: Colors.red,
         onChanged: onChanged,
         title: title,
         controlAffinity: ListTileControlAffinity.leading,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 0.0),
       ),
     );
   }
