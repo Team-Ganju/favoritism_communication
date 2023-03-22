@@ -111,7 +111,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Obx(
         () => CustomElevatedButton(
-          buttonText: 'トークに移動する',
+          buttonText: 'チャットに移動する',
           initialActiveFlag: controller.isSelectedAtLeastOne(),
           //FIXME: Get.back()でモーダルを閉じ、controller.selectedMemberDataListをChatViewに渡す
           onPressed: controller.isSelectedAtLeastOne() ? () {} : null,
