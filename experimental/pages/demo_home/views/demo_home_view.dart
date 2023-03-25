@@ -28,7 +28,7 @@ class DemoHomeView extends GetView<DemoHomeController> {
               alignment: Alignment.centerLeft,
               child: Text(
                 'ユーザー情報',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
           ),
@@ -39,27 +39,26 @@ class DemoHomeView extends GetView<DemoHomeController> {
                 MenuListTile(
                   title: 'プロフィール情報登録',
                   isTop: true,
-                  onTap: () => { Get.toNamed(DemoRoutes.demoProfileCreate) },
+                  onTap: () => {Get.toNamed(DemoRoutes.demoProfileCreate)},
                 ),
                 MenuListTile(
                   title: 'プロフィール情報閲覧',
-                  onTap: () => { Get.toNamed(DemoRoutes.demoProfile) },
+                  onTap: () => {Get.toNamed(DemoRoutes.demoProfile)},
                 ),
                 MenuListTile(
                   title: 'プロフィール情報編集',
-                  onTap: () => { Get.toNamed(DemoRoutes.demoProfileUpdate) },
+                  onTap: () => {Get.toNamed(DemoRoutes.demoProfileUpdate)},
                 ),
                 MenuListTile(
                   title: 'プロフィール削除',
                   textColor: Colors.red,
-                  onTap: () => { Get.toNamed(DemoRoutes.demoProfileDelete) },
+                  onTap: () => {Get.toNamed(DemoRoutes.demoProfileDelete)},
                 ),
               ],
             ),
           ),
         ],
       ),
-
     );
   }
 }
