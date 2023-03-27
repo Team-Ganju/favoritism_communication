@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 /// 性別
 /// ドロップダウンで選択時に設定される値
-enum Gender{
+enum Gender {
   unknown,
   male,
   female,
@@ -10,9 +10,9 @@ enum Gender{
 
 /// 性別
 /// ドロップダウンで選択時に表示される値
-extension GenderText on Gender{
-  String get label{
-    switch(this){
+extension GenderText on Gender {
+  String get label {
+    switch (this) {
       case Gender.male:
         return '男性';
 
@@ -24,5 +24,4 @@ extension GenderText on Gender{
   }
 }
 
-class GenderService extends GetxService {
-}
+class GenderService extends GetxService {}

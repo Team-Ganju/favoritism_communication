@@ -12,7 +12,6 @@ import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
 import 'package:favoritism_communication/app/data/gender/gender.dart';
 import '../controllers/search_filter_controller.dart';
 
-
 class SearchFilterView extends GetView<SearchFilterController> {
   const SearchFilterView({Key? key}) : super(key: key);
 
@@ -21,7 +20,6 @@ class SearchFilterView extends GetView<SearchFilterController> {
     return Scaffold(
       backgroundColor: colorSearchFilterBg,
       appBar: NavBar(
-        // iconTheme: const IconThemeData(color: colorSearchFilterAppBarTitle),
         backgroundColor: colorSearchFilterAppBarBg,
         toolbarHeight: 60,
         leading: IconButton(
@@ -35,108 +33,103 @@ class SearchFilterView extends GetView<SearchFilterController> {
           },
         ),
         child: const Text("検索条件",
-          style: TextStyle(
-            color: colorSearchFilterAppBarTitle,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          )
-        ),
+            style: TextStyle(
+              color: colorSearchFilterAppBarTitle,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(8.0),
-              physics: const NeverScrollableScrollPhysics(),
+      body: Column(children: <Widget>[
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.all(8.0),
+            physics: const NeverScrollableScrollPhysics(),
             children: <Widget>[
-                MultiOptionSelectButton(
-                  selectedItems: controller.selectedGenreNames.map(
-                    (name) => AlternateCircleChip(
-                                isPushed: false,
-                                onPressed: null,
-                                child: Text(name),
-                              )
-                  ).toList(),
-                  label: 'ジャンル',
-                  emptyChild: const Text(
-                    'こだわらない',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.grey,
+              MultiOptionSelectButton(
+                selectedItems: controller.selectedGenreNames
+                    .map((name) => AlternateCircleChip(
+                          isPushed: false,
+                          onPressed: null,
+                          child: Text(name),
+                        ))
+                    .toList(),
+                label: 'ジャンル',
+                emptyChild: const Text(
+                  'こだわらない',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.grey,
                     fontWeight: FontWeight.bold,
-                    ),
                   ),
-                  onTap: () => Get.toNamed(Routes.searchSelectGenre,),
                 ),
-
-                MultiOptionSelectButton(
-                  selectedItems: controller.selectedCategoryNames.map(
-                    (name) => CustomChip(
-                                backgroundColor: Colors.white,
-                                onTap: null,
-                                chipTitle: name,
-                              )
-                  ).toList(),
-                  label: 'カテゴリ',
-                  emptyChild: const Text(
-                    'こだわらない',
+                onTap: () => Get.toNamed(
+                  Routes.searchSelectGenre,
+                ),
+              ),
+              MultiOptionSelectButton(
+                selectedItems: controller.selectedCategoryNames
+                    .map((name) => CustomChip(
+                          backgroundColor: Colors.white,
+                          onTap: null,
+                          chipTitle: name,
+                        ))
+                    .toList(),
+                label: 'カテゴリ',
+                emptyChild: const Text(
+                  'こだわらない',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onTap: () => Get.toNamed(
+                  Routes.searchSelectCategory,
+                ),
+              ),
+              MultiOptionSelectButton(
+                selectedItems: controller.belongCommunities
+                    .map((community) => Text(community))
+                    .toList(),
+                label: 'コミュニティ',
+                emptyChild: const Text(
+                  'こだわらない',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onTap: () => Get.toNamed(
+                  Routes.searchSelectCommunity,
+                ),
+              ),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 8, left: 8, right: 8),
+                  child: Text(
+                    '性別',
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                      color: Colors.grey,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  onTap: () => Get.toNamed(Routes.searchSelectCategory,),
                 ),
-
-                MultiOptionSelectButton(
-                  selectedItems: controller.belongCommunities.map(
-                    (community) => Text(community)
-                  ).toList(),
-                  label: 'コミュニティ',
-                  emptyChild: const Text(
-                    'こだわらない',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                    ),
+                Obx(
+                  () => _buildGenderCheckBox(
+                    context: context,
+                    values: controller.selectedGender,
+                    sidePadding: 8,
+                    onChanged: (gender, value) {
+                      controller.changeGender(gender, value);
+                    },
                   ),
-                  onTap: () => Get.toNamed(Routes.searchSelectCommunity,),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 8, left: 8, right: 8),
-                      child: Text(
-                        '性別',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Row(
-                        children: [
-                          Obx(() => _buildGenderCheckBox(
-                            context: context,
-                            values: controller.selectedGender,
-                            sidePadding: 8,
-                            onChanged: (gender, value){
-                              controller.changeGender(gender, value);
-                            },
-                          ),
-                          ),
-                        ]
-                    ),
-                  ]
-                ),
-              ],
-            ),
+              ]),
+            ],
           ),
-        ]
-      ),
+        ),
+      ]),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         decoration: const BoxDecoration(
@@ -144,9 +137,9 @@ class SearchFilterView extends GetView<SearchFilterController> {
             top: BorderSide(color: Colors.grey, width: 0.5),
           ),
         ),
-
         child: Padding(
-          padding: const EdgeInsets.only(top: 16.0),   // floatingActionButtonにした時にtopBorderに近くなるので、上に余白をつけたい
+          padding: const EdgeInsets.only(
+              top: 16.0), // floatingActionButtonにした時にtopBorderに近くなるので、上に余白をつけたい
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -184,16 +177,17 @@ class SearchFilterView extends GetView<SearchFilterController> {
       ),
     );
   }
+
   Widget _buildGenderCheckBox({
     required BuildContext context,
     Map<Gender, bool>? values,
     void Function(Gender? gender, bool? value)? onChanged,
-    double sidePadding=0,
-  }){
+    double sidePadding = 0,
+  }) {
     return Row(
-      children: Gender.values.map((gender){
+      children: Gender.values.map((gender) {
         return SizedBox(
-          width: (context.width-sidePadding*2) / Gender.values.length,
+          width: (context.width - sidePadding * 2) / Gender.values.length,
           child: _CustomCheckbox(
             label: gender.label,
             value: values?[gender] ?? false,
@@ -207,11 +201,12 @@ class SearchFilterView extends GetView<SearchFilterController> {
     );
   }
 }
-class _CustomCheckbox extends StatelessWidget{
+
+class _CustomCheckbox extends StatelessWidget {
   const _CustomCheckbox({
     this.label,
     this.onChanged,
-    this.value=false,
+    this.value = false,
     this.textStyle,
   });
 
@@ -221,8 +216,13 @@ class _CustomCheckbox extends StatelessWidget{
   final TextStyle? textStyle;
 
   @override
-  Widget build(BuildContext context){
-    final Widget? title = label != null ? Text(label!, style: textStyle,) : null;
+  Widget build(BuildContext context) {
+    final Widget? title = label != null
+        ? Text(
+            label!,
+            style: textStyle,
+          )
+        : null;
 
     return CheckboxListTile(
       value: value,
@@ -233,4 +233,3 @@ class _CustomCheckbox extends StatelessWidget{
     );
   }
 }
-

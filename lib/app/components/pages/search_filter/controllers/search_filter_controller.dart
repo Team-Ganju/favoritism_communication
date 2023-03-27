@@ -13,7 +13,7 @@ class SearchFilterController extends GetxController {
     }
   }
 
-  List<String> get  selectedCategoryNames {
+  List<String> get selectedCategoryNames {
     //TODO: 選択されたカテゴリを返す処理
     return [
       // "カテゴリ1",
@@ -29,7 +29,7 @@ class SearchFilterController extends GetxController {
     ];
   }
 
-  List<String> get  selectedGenreNames {
+  List<String> get selectedGenreNames {
     //TODO: 選択されたジャンルを返す処理
     return [
       // "ジャンル1",
@@ -47,14 +47,14 @@ class SearchFilterController extends GetxController {
 
   List<String> get belongCommunities {
     //TODO: 所属しているコミュニティを返す処理
-    return [];//"Flutter大学";
+    return []; //"Flutter大学";
   }
 
   Map<Gender, bool> get selectedGender => _gender.value;
 
   /// 性別セレクトボックス押下時処理
-  void changeGender(Gender? gender, bool? value){
-    if(gender == null) return;
+  void changeGender(Gender? gender, bool? value) {
+    if (gender == null) return;
 
     // Mapのアドレスを更新し、GetXに通知する。
     Map<Gender, bool> clone = {..._gender.value};

@@ -41,15 +41,13 @@ class HomeView extends GetView<HomeController> {
                       fontWeight: FontWeight.bold,
                     )),
                 IconButton(
-                  icon: badges.Badge(
-                    badgeContent: const Text(
+                  icon: const badges.Badge(
+                    badgeContent: Text(
                       '1',
                       style: TextStyle(
                           fontSize: 14, color: colorHomeAppBarIconBadgeText),
                     ),
-                    padding: const EdgeInsets.all(6),
-                    badgeColor: colorHomeAppBarIconBadgeBg,
-                    child: const Icon(
+                    child: Icon(
                       Icons.notifications,
                       size: 36,
                     ),

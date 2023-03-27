@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MultiOptionSelectButton extends StatelessWidget{
+class MultiOptionSelectButton extends StatelessWidget {
   const MultiOptionSelectButton({
     required this.selectedItems,
     required this.label,
@@ -16,7 +16,6 @@ class MultiOptionSelectButton extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -30,7 +29,6 @@ class MultiOptionSelectButton extends StatelessWidget{
             ),
           ),
         ),
-
         IntrinsicHeight(
           child: InkWell(
             onTap: onTap,
@@ -49,7 +47,10 @@ class MultiOptionSelectButton extends StatelessWidget{
                 ),
                 const Align(
                   alignment: Alignment.centerRight,
-                  child: Icon(Icons.keyboard_arrow_right, color: Colors.grey,),
+                  child: Icon(
+                    Icons.keyboard_arrow_right,
+                    color: Colors.grey,
+                  ),
                 ),
               ],
             ),
@@ -59,15 +60,15 @@ class MultiOptionSelectButton extends StatelessWidget{
     );
   }
 
-  Widget _buildItems(List<Widget> items, Widget? emptyChild){
-    if(items.isNotEmpty){
+  Widget _buildItems(List<Widget> items, Widget? emptyChild) {
+    if (items.isNotEmpty) {
       return Wrap(
         runSpacing: 4.0,
         spacing: 4.0,
         children: items,
       );
     }
-    else if(emptyChild != null){
+    if (emptyChild != null) {
       return emptyChild;
     }
 
@@ -78,4 +79,3 @@ class MultiOptionSelectButton extends StatelessWidget{
     );
   }
 }
-

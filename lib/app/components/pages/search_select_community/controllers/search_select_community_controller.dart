@@ -1,4 +1,3 @@
 import 'package:get/get.dart';
 
-class SearchSelectCommunityController extends GetxController {
-}
+class SearchSelectCommunityController extends GetxController {}

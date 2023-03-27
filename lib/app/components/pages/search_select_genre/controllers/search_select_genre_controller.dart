@@ -1,4 +1,3 @@
 import 'package:get/get.dart';
 
-class SearchSelectGenreController extends GetxController {
-}
+class SearchSelectGenreController extends GetxController {}
