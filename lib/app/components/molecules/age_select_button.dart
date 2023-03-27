@@ -25,11 +25,12 @@ class AgeSelectButton extends CustomDropDownButton<int> {
 
   static List<DropdownMenuItem<int>> _buildDropdownItems(
       int ageLimMax, int ageLimMin) {
-    if (ageLimMin > ageLimMax)
-      throw InvalidAgeError(
-          "年齢の最大値は最小値以上にしてください。最大値:$ageLimMax 最小値:$ageLimMin");
-    if ((ageLimMin < 0) || (ageLimMax < 0))
+    if (ageLimMin > ageLimMax) {
+      throw InvalidAgeError("年齢の最大値は最小値以上にしてください。最大値:$ageLimMax 最小値:$ageLimMin");
+    }
+    if ((ageLimMin < 0) || (ageLimMax < 0)){
       throw InvalidAgeError("年齢は正の整数である必要があります。最大値:$ageLimMax 最小値:$ageLimMin");
+    }
 
     // 現在の西暦をもとに、生まれ年の最小と最大を算出
     int min = DateTime.now().year - ageLimMax;
