@@ -60,7 +60,11 @@ class ChatRoomView extends GetView<ChatRoomController> {
               );
             },
           ),
-          const MessageBar(),
+          MessageBar(
+            onCameraPressed: () {}, //TODO: カメラ機能は別途実装
+            onPhotoPressed: () {}, //TODO: 画像追加機能は別途実装
+            onSendPressed: () {}, //TODO: 送信機能は別途実装
+          ),
         ],
       ),
     );
