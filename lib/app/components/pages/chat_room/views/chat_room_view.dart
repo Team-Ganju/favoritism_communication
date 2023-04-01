@@ -9,7 +9,12 @@ import 'package:get/get.dart';
 import '../controllers/chat_room_controller.dart';
 
 class ChatRoomView extends GetView<ChatRoomController> {
-  const ChatRoomView({Key? key}) : super(key: key);
+  ChatRoomView({
+    Key? key,
+  }) : super(key: key);
+
+  final textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,12 +66,22 @@ class ChatRoomView extends GetView<ChatRoomController> {
             },
           ),
           MessageBar(
+            onChanged: (value) => _onChanged(value),
             onCameraPressed: () {}, //TODO: カメラ機能は別途実装
             onPhotoPressed: () {}, //TODO: 画像追加機能は別途実装
-            onSendPressed: () {}, //TODO: 送信機能は別途実装
+            onSendPressed: _onSendPressed, //TODO: 送信機能は別途実装
           ),
         ],
       ),
     );
+  }
+
+  void _onChanged(String? value) {
+    textController.text = value ?? '';
+  }
+
+  void _onSendPressed() {
+    // チャットルームに追加メッセージを表示
+    // TODO: firestoreにメッセージを追加
   }
 }

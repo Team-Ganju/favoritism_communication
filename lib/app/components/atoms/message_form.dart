@@ -6,7 +6,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 class MessageForm extends StatelessWidget {
   const MessageForm({
     Key? key,
+    required this.onChanged,
   }) : super(key: key);
+
+  final void Function(String? value) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class MessageForm extends StatelessWidget {
       style: const TextStyle(
         fontSize: 16,
       ),
-      onChanged: (value) => value,
+      onChanged: onChanged,
       maxLength: 500, //TODO: 最大文字数は要検討。（現在はLINEの最大文字数)
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
