@@ -6,7 +6,7 @@ class ChatMessageModel {
   String? profileImage;
   dynamic media;
   String? message;
-  Timestamp? createdAt;
+  FieldValue? createdAt;
 
   ChatMessageModel({
     required this.senderId,

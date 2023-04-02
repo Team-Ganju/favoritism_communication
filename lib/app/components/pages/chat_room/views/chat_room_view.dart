@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favoritism_communication/app/components/atoms/atoms.dart'
     as atoms;
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
 import 'package:favoritism_communication/app/components/organisms/received_message.dart';
 import 'package:favoritism_communication/app/components/organisms/sent_message.dart';
+import 'package:favoritism_communication/app/models/chat_message_model.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,10 +19,15 @@ class ChatRoomView extends GetView<ChatRoomController> {
 
   @override
   Widget build(BuildContext context) {
+    // FIXME: 仮でuid設定　Preferenceから取得？
+    controller.authService.uid.val = "001";
+
+    final roomName = controller.chatService.chatRoom.roomName;
+    final messages = controller.chatService.chatRoom.messages;
+
     return Scaffold(
       appBar: NavBar(
-        title:
-            controller.chatService.chatRoom.roomName, //ChatMemberCard.roomName
+        title: roomName,
         leading: const atoms.BackButton(),
         backgroundColor: colorChatRoomAppBarBg,
       ),
@@ -28,20 +35,12 @@ class ChatRoomView extends GetView<ChatRoomController> {
         children: [
           ListView.builder(
             shrinkWrap: true,
-            itemCount: controller.chatService.chatRoom.messages.length,
+            itemCount: messages.length,
             itemBuilder: (context, index) {
-              // FIXME: 仮でuid設定　Preferenceから取得？
-              controller.authService.uid.val = "001";
-
-              final senderId =
-                  controller.chatService.chatRoom.messages[index]['senderId'];
-              final message =
-                  controller.chatService.chatRoom.messages[index]['message'];
-              final profileImage = controller
-                  .chatService.chatRoom.messages[index]['profileImage']
-                  .toString();
-              final senderName =
-                  controller.chatService.chatRoom.messages[index]['senderName'];
+              final senderId = messages[index]['senderId'];
+              final message = messages[index]['message'];
+              final profileImage = messages[index]['profileImage'];
+              final senderName = messages[index]['senderName'];
 
               return Column(
                 children: [
@@ -81,7 +80,32 @@ class ChatRoomView extends GetView<ChatRoomController> {
   }
 
   void _onSendPressed() {
-    // チャットルームに追加メッセージを表示
-    // TODO: firestoreにメッセージを追加
+    final senderId = controller.authService.uid.val;
+    final senderName = controller.authService.userName.val;
+    final profileImage = controller.authService.profileImage.val;
+    final messageText = textController.text;
+
+    final message = ChatMessageModel(
+      senderId: senderId,
+      senderName: senderName,
+      profileImage: profileImage,
+      media: null, // TODO: メディア追加機能作成時にテキストと画像を同時に送れるようにする？
+      message: messageText,
+      createdAt: FieldValue.serverTimestamp(),
+    );
+
+    _insertMessage(message);
+  }
+
+  void _insertMessage(ChatMessageModel message) async {
+    final roomId = controller.chatService.chatRoom.roomId;
+    final content = message.toJson();
+
+    await FirebaseFirestore.instance
+        .collection('chatRooms')
+        .doc(roomId)
+        .update({
+      'message': FieldValue.arrayUnion([content]),
+    });
   }
 }
