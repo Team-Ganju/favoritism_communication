@@ -1,55 +1,64 @@
 import 'package:get/get.dart';
-import 'package:favoritism_communication/app/services/gender_service.dart';
+import 'package:favoritism_communication/app/data/gender/gender.dart';
 
 class SearchFilterController extends GetxController {
-  final Rx<Gender?> _gender = Rx<Gender?>(null);
-  final Rx<int?> _age = Rx<int?>(null);
+  final Rx<Map<Gender, bool>> _gender = Rx<Map<Gender, bool>>({});
 
-  List<String> get  selectedCategoryNames {
+  @override
+  void onInit() {
+    super.onInit();
+    // 初期値で性別は全てTrueにする
+    for (Gender gender in Gender.values) {
+      changeGender(gender, true);
+    }
+  }
+
+  List<String> get selectedCategoryNames {
     //TODO: 選択されたカテゴリを返す処理
     return [
-      "カテゴリ1",
-      "カテゴリ2",
-      "カテゴリ3",
-      "カテゴリ4",
-      "カテゴリ5",
-      "カテゴリ6",
-      "カテゴリ7",
-      "カテゴリ8",
-      "カテゴリ9",
-      "カテゴリ10",
+      // "カテゴリ1",
+      // "カテゴリ2",
+      // "カテゴリ3",
+      // "カテゴリ4",
+      // "カテゴリ5",
+      // "カテゴリ6",
+      // "カテゴリ7",
+      // "カテゴリ8",
+      // "カテゴリ9",
+      // "カテゴリ10",
     ];
   }
 
-  List<String> get  selectedGenreNames {
+  List<String> get selectedGenreNames {
     //TODO: 選択されたジャンルを返す処理
     return [
-      "ジャンル1",
-      "ジャンル2",
-      "ジャンル3",
-      "ジャンル4",
-      "ジャンル5",
-      "ジャンル6",
-      "ジャンル7",
-      "ジャンル8",
-      "ジャンル9",
-      "ジャンル10",
+      // "ジャンル1",
+      // "ジャンル2",
+      // "ジャンル3",
+      // "ジャンル4",
+      // "ジャンル5",
+      // "ジャンル6",
+      // "ジャンル7",
+      // "ジャンル8",
+      // "ジャンル9",
+      // "ジャンル10",
     ];
   }
 
-  String get belongCommunity {
+  List<String> get belongCommunities {
     //TODO: 所属しているコミュニティを返す処理
-    return "Flutter大学";
+    return []; //"Flutter大学";
   }
 
-  Gender? get selectedGender => _gender.value;
-  int? get selectedAge => _age.value;
+  Map<Gender, bool> get selectedGender => _gender.value;
 
-  void changeGender(Gender? gender){
-    _gender.value = gender;
-  }
+  /// 性別セレクトボックス押下時処理
+  void changeGender(Gender? gender, bool? value) {
+    if (gender == null) return;
 
-  void changeAge(int? age){
-    _age.value = age;
+    // Mapのアドレスを更新し、GetXに通知する。
+    Map<Gender, bool> clone = {..._gender.value};
+    clone[gender] = value ?? false;
+    _gender.value = clone;
   }
 }

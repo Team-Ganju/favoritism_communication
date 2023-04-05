@@ -10,6 +10,7 @@ class CustomDropDownButton<T> extends StatelessWidget {
     this.value,
     this.menuMaxHeight,
     this.contentPadding,
+    this.hint,
   });
 
   final List<DropdownMenuItem<T>> items;
@@ -18,6 +19,7 @@ class CustomDropDownButton<T> extends StatelessWidget {
   final T? value;
   final double? menuMaxHeight;
   final EdgeInsetsGeometry? contentPadding;
+  final Widget? hint;
 
   static const contentPaddingDefault = EdgeInsets.symmetric(horizontal: 12);
 
@@ -30,6 +32,7 @@ class CustomDropDownButton<T> extends StatelessWidget {
         border: const OutlineInputBorder(),
       ),
       child: DropdownButton<T>(
+        hint: hint,
         menuMaxHeight: menuMaxHeight,
         underline: Container(),
         isExpanded: true,
