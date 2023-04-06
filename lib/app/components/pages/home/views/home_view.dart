@@ -6,7 +6,6 @@ import 'package:favoritism_communication/app/components/templates/custom_smartre
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:badges/badges.dart';
 import '../../../../routes/app_pages.dart';
 import '../../../atoms/tab_button.dart';
 import '../controllers/home_controller.dart';
@@ -42,15 +41,15 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 IconButton(
-                  icon: Badge(
-                    badgeContent: const Text(
+                  icon: const Badge(
+                    label: Text(
                       '1',
                       style: TextStyle(
                           fontSize: 14, color: colorHomeAppBarIconBadgeText),
                     ),
-                    padding: const EdgeInsets.all(6),
-                    badgeColor: colorHomeAppBarIconBadgeBg,
-                    child: const Icon(
+                    padding: EdgeInsets.all(6),
+                    backgroundColor: colorHomeAppBarIconBadgeBg,
+                    child: Icon(
                       Icons.notifications,
                       size: 36,
                     ),
