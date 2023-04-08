@@ -11,11 +11,9 @@ import 'package:get/get.dart';
 import '../controllers/chat_room_controller.dart';
 
 class ChatRoomView extends GetView<ChatRoomController> {
-  ChatRoomView({
+  const ChatRoomView({
     Key? key,
   }) : super(key: key);
-
-  final textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,59 +29,57 @@ class ChatRoomView extends GetView<ChatRoomController> {
         leading: const atoms.BackButton(),
         backgroundColor: colorChatRoomAppBarBg,
       ),
-      body: Stack(
-        children: [
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: messages.length,
-            itemBuilder: (context, index) {
-              final senderId = messages[index]['senderId'];
-              final message = messages[index]['message'];
-              final profileImage = messages[index]['profileImage'];
-              final senderName = messages[index]['senderName'];
+      body: Obx(
+        () => Stack(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: messages.length,
+              itemBuilder: (context, index) {
+                final senderId = messages[index]['senderId'];
+                final message = messages[index]['message'];
+                final profileImage = messages[index]['profileImage'];
+                final senderName = messages[index]['senderName'];
 
-              return Column(
-                children: [
-                  if (index == 0)
+                return Column(
+                  children: [
+                    if (index == 0)
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    controller.isSender(senderId)
+                        ? SentMessage(
+                            text: message,
+                          )
+                        : ReceivedMessage(
+                            profileImage: profileImage,
+                            senderName: senderName,
+                            text: message,
+                          ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
-                  controller.isSender(senderId)
-                      ? SentMessage(
-                          text: message,
-                        )
-                      : ReceivedMessage(
-                          profileImage: profileImage,
-                          senderName: senderName,
-                          text: message,
-                        ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
-              );
-            },
-          ),
-          MessageBar(
-            onChanged: (value) => _onChanged(value),
-            onCameraPressed: () {}, //TODO: カメラ機能は別途実装
-            onPhotoPressed: () {}, //TODO: 画像追加機能は別途実装
-            onSendPressed: _onSendPressed, //TODO: 送信機能は別途実装
-          ),
-        ],
+                  ],
+                );
+              },
+            ),
+            MessageBar(
+              controller: controller.messageTextController.value,
+              onCameraPressed: () {}, //TODO: カメラ機能は別途実装
+              onPhotoPressed: () {}, //TODO: 画像追加機能は別途実装
+              onSendPressed: _onSendPressed, //TODO: 送信機能は別途実装
+            ),
+          ],
+        ),
       ),
     );
-  }
-
-  void _onChanged(String? value) {
-    textController.text = value ?? '';
   }
 
   void _onSendPressed() {
     final senderId = controller.authService.uid.val;
     final senderName = controller.authService.userName.val;
     final profileImage = controller.authService.profileImage.val;
-    final messageText = textController.text;
+    final messageText = controller.messageTextController.value.text;
 
     final message = ChatMessageModel(
       senderId: senderId,
@@ -95,17 +91,35 @@ class ChatRoomView extends GetView<ChatRoomController> {
     );
 
     _insertMessage(message);
+
+    // 入力欄を初期化
+    controller.messageTextController.value.text = '';
   }
 
-  void _insertMessage(ChatMessageModel message) async {
+  // TODO: firebase接続後はこの関数を使用　動作未確認
+  // void _insertMessage(ChatMessageModel message) async {
+  //   final roomId = controller.chatService.chatRoom.roomId;
+  //   final content = message.toJson();
+  //   await FirebaseFirestore.instance
+  //       .collection('chatRooms')
+  //       .doc(roomId)
+  //       .update({
+  //     'message': FieldValue.arrayUnion([content]),
+  //   });
+  // }
+
+  // TODO: firebase接続後はこの関数は削除
+  void _insertMessage(ChatMessageModel message) {
     final roomId = controller.chatService.chatRoom.roomId;
     final content = message.toJson();
 
-    await FirebaseFirestore.instance
-        .collection('chatRooms')
-        .doc(roomId)
-        .update({
-      'message': FieldValue.arrayUnion([content]),
-    });
+    // 対象メッセージのListが含まれるchatRoomDataの要素のindex
+    final targetIndex =
+        controller.chatRooms.indexWhere((element) => element.roomId == roomId);
+
+    // 追加する対象メッセージのList
+    final targetMessageList = controller.chatRooms[targetIndex].messages;
+    targetMessageList.insert(
+        targetMessageList.length, content.cast<String, String?>());
   }
 }

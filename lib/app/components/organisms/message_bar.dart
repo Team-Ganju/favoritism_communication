@@ -3,16 +3,17 @@ import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class MessageBar extends StatelessWidget {
-  const MessageBar(
-      {super.key,
-      required this.onCameraPressed,
-      required this.onPhotoPressed,
-      required this.onSendPressed,
-      required this.onChanged});
+  const MessageBar({
+    super.key,
+    required this.onCameraPressed,
+    required this.onPhotoPressed,
+    required this.controller,
+    required this.onSendPressed,
+  });
   final VoidCallback? onCameraPressed;
   final VoidCallback? onPhotoPressed;
+  final TextEditingController? controller;
   final VoidCallback? onSendPressed;
-  final void Function(String? value) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class MessageBar extends StatelessWidget {
             ),
             Expanded(
               child: MessageForm(
-                onChanged: onChanged,
+                controller: controller,
               ),
             ),
             IconButton(

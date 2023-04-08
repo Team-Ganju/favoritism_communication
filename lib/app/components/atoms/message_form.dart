@@ -6,19 +6,19 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 class MessageForm extends StatelessWidget {
   const MessageForm({
     Key? key,
-    required this.onChanged,
+    required this.controller,
   }) : super(key: key);
 
-  final void Function(String? value) onChanged;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
+      controller: controller,
       name: 'メッセージバー',
       style: const TextStyle(
         fontSize: 16,
       ),
-      onChanged: onChanged,
       maxLength: 500, //TODO: 最大文字数は要検討。（現在はLINEの最大文字数)
       keyboardType: TextInputType.text,
       decoration: InputDecoration(

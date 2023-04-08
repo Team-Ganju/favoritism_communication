@@ -1,10 +1,12 @@
 import 'package:favoritism_communication/app/models/chat_room_model.dart';
 import 'package:favoritism_communication/app/dummy_data/chat_dummy_data.dart';
 import 'package:favoritism_communication/app/services/services.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatRoomController extends GetxController {
-  List<ChatRoomModel> chatRooms = <ChatRoomModel>[].obs;
+  RxList<ChatRoomModel> chatRooms = <ChatRoomModel>[].obs;
+  Rx<TextEditingController> messageTextController = TextEditingController().obs;
 
   final AuthService authService = Get.find();
   final ChatService chatService = Get.find();
@@ -17,7 +19,8 @@ class ChatRoomController extends GetxController {
 
   //TODO: firebaseから取得するように修正
   void fetchChatRoomData() {
-    chatRooms = chatRoomData.map((e) => ChatRoomModel.fromJson(e)).toList();
+    chatRooms
+        .assignAll(chatRoomData.map((e) => ChatRoomModel.fromJson(e)).toList());
   }
 
   bool isSender(String senderId) {
