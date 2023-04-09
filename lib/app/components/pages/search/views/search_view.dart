@@ -31,12 +31,11 @@ class SearchView extends GetView<SearchController> {
           ),
         ],
         child: const Text("さがす",
-          style: TextStyle(
-            color: colorSearchAppBarTitle,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          )
-        ),
+            style: TextStyle(
+              color: colorSearchAppBarTitle,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
       ),
       body: const Center(
         child: Text(

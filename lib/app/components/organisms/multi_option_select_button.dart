@@ -1,37 +1,34 @@
 import 'package:flutter/material.dart';
 
-class MultiOptionSelectButton extends StatelessWidget{
+class MultiOptionSelectButton extends StatelessWidget {
   const MultiOptionSelectButton({
     required this.selectedItems,
     required this.label,
     this.onTap,
+    this.emptyChild,
     super.key,
   });
 
   final String label;
   final void Function()? onTap;
   final List<Widget> selectedItems;
+  final Widget? emptyChild;
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                label,
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            label,
+            textAlign: TextAlign.left,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
             ),
-          ]
+          ),
         ),
-
         IntrinsicHeight(
           child: InkWell(
             onTap: onTap,
@@ -43,18 +40,17 @@ class MultiOptionSelectButton extends StatelessWidget{
                       width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Wrap(
-                          runSpacing: 4.0,
-                          spacing: 4.0,
-                          children: selectedItems,
-                        ),
+                        child: _buildItems(selectedItems, emptyChild),
                       ),
                     )
                   ],
                 ),
                 const Align(
                   alignment: Alignment.centerRight,
-                  child: Icon(Icons.keyboard_arrow_right, color: Colors.grey,),
+                  child: Icon(
+                    Icons.keyboard_arrow_right,
+                    color: Colors.grey,
+                  ),
                 ),
               ],
             ),
@@ -63,5 +59,23 @@ class MultiOptionSelectButton extends StatelessWidget{
       ],
     );
   }
-}
 
+  Widget _buildItems(List<Widget> items, Widget? emptyChild) {
+    if (items.isNotEmpty) {
+      return Wrap(
+        runSpacing: 4.0,
+        spacing: 4.0,
+        children: items,
+      );
+    }
+    if (emptyChild != null) {
+      return emptyChild;
+    }
+
+    return Wrap(
+      runSpacing: 4.0,
+      spacing: 4.0,
+      children: const <Widget>[],
+    );
+  }
+}

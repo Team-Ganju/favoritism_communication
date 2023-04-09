@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:favoritism_communication/app/utils/ad_util.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-
 class DashboardController extends GetxController {
   final TabService tabService = Get.find();
   BannerAd? _ad;

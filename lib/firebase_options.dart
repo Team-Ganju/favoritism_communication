@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '323663096952',
     projectId: 'favoritismcommunication-1d285',
     storageBucket: 'favoritismcommunication-1d285.appspot.com',
-    iosClientId: '323663096952-obcd6j7s5oj8ka1h4nig7nklkabr1bau.apps.googleusercontent.com',
+    iosClientId:
+        '323663096952-obcd6j7s5oj8ka1h4nig7nklkabr1bau.apps.googleusercontent.com',
     iosBundleId: 'com.example.favoritismCommunication',
   );
 }
