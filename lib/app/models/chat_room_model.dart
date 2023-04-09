@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
 class ChatRoomModel {
   String? roomId;
@@ -10,7 +11,7 @@ class ChatRoomModel {
   List<String?> roomMembers = [];
   Timestamp? createdAt;
   Timestamp? updatedAt;
-  List<Map<String?, dynamic>> messages = [];
+  late RxList<Map<String?, dynamic>> messages = <Map<String?, dynamic>>[].obs;
 
   ChatRoomModel({
     required this.roomId,
@@ -35,7 +36,7 @@ class ChatRoomModel {
     roomMembers = json['roomMembers'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    messages = json['messages'];
+    messages.value = json['messages'];
   }
 
   Map<String, dynamic> toJson() {

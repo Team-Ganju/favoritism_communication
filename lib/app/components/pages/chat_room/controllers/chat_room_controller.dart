@@ -3,6 +3,7 @@ import 'package:favoritism_communication/app/dummy_data/chat_dummy_data.dart';
 import 'package:favoritism_communication/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ChatRoomController extends GetxController {
   RxList<ChatRoomModel> chatRooms = <ChatRoomModel>[].obs;
@@ -10,6 +11,7 @@ class ChatRoomController extends GetxController {
 
   final AuthService authService = Get.find();
   final ChatService chatService = Get.find();
+  final RefreshController refreshController = RefreshController();
 
   @override
   void onInit() {

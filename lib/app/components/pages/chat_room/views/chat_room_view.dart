@@ -6,8 +6,10 @@ import 'package:favoritism_communication/app/components/organisms/received_messa
 import 'package:favoritism_communication/app/components/organisms/sent_message.dart';
 import 'package:favoritism_communication/app/models/chat_message_model.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
+import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../controllers/chat_room_controller.dart';
 
 class ChatRoomView extends GetView<ChatRoomController> {
@@ -22,60 +24,77 @@ class ChatRoomView extends GetView<ChatRoomController> {
 
     final roomName = controller.chatService.chatRoom.roomName;
     final messages = controller.chatService.chatRoom.messages;
+    final focusNode = FocusNode();
 
-    return Scaffold(
-      appBar: NavBar(
-        title: roomName,
-        leading: const atoms.BackButton(),
-        backgroundColor: colorChatRoomAppBarBg,
-      ),
-      body: Obx(
-        () => Stack(
-          children: [
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                final senderId = messages[index]['senderId'];
-                final message = messages[index]['message'];
-                final profileImage = messages[index]['profileImage'];
-                final senderName = messages[index]['senderName'];
+    return Focus(
+      focusNode: focusNode,
+      child: GestureDetector(
+        onTap: focusNode.requestFocus,
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          appBar: NavBar(
+            title: roomName,
+            leading: const atoms.BackButton(),
+            backgroundColor: colorChatRoomAppBarBg,
+          ),
+          body: Obx(
+            () => Stack(
+              children: [
+                // TODO: 表示順はchatRooms.createdAtの昇順にする
+                CustomSmartRefresher(
+                  refreshController: controller.refreshController,
+                  enablePullDown: false,
+                  enablePullUp: false,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: messages.length,
+                    itemBuilder: (context, index) {
+                      final senderId = messages[index]['senderId'];
+                      final message = messages[index]['message'];
+                      final profileImage = messages[index]['profileImage'];
+                      final senderName = messages[index]['senderName'];
 
-                return Column(
-                  children: [
-                    if (index == 0)
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    controller.isSender(senderId)
-                        ? SentMessage(
-                            text: message,
-                          )
-                        : ReceivedMessage(
-                            profileImage: profileImage,
-                            senderName: senderName,
-                            text: message,
+                      return Column(
+                        children: [
+                          if (index == 0)
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          controller.isSender(senderId)
+                              ? SentMessage(
+                                  text: message,
+                                )
+                              : ReceivedMessage(
+                                  profileImage: profileImage,
+                                  senderName: senderName,
+                                  text: message,
+                                ),
+                          const SizedBox(
+                            height: 10,
                           ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                );
-              },
+                        ],
+                      );
+                    },
+                  ),
+                ),
+                MessageBar(
+                  controller: controller.messageTextController.value,
+                  onCameraPressed: () {}, //TODO: カメラ機能は別途実装
+                  onPhotoPressed: () {}, //TODO: 画像追加機能は別途実装
+                  onSendPressed: _onSendPressed, //TODO: 送信機能は別途実装
+                ),
+              ],
             ),
-            MessageBar(
-              controller: controller.messageTextController.value,
-              onCameraPressed: () {}, //TODO: カメラ機能は別途実装
-              onPhotoPressed: () {}, //TODO: 画像追加機能は別途実装
-              onSendPressed: _onSendPressed, //TODO: 送信機能は別途実装
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 
   void _onSendPressed() {
+    if (controller.messageTextController.value.text == '') {
+      return;
+    }
     final senderId = controller.authService.uid.val;
     final senderName = controller.authService.userName.val;
     final profileImage = controller.authService.profileImage.val;
@@ -121,5 +140,6 @@ class ChatRoomView extends GetView<ChatRoomController> {
     final targetMessageList = controller.chatRooms[targetIndex].messages;
     targetMessageList.insert(
         targetMessageList.length, content.cast<String, String?>());
+    controller.chatService.chatRoom.messages.refresh();
   }
 }
