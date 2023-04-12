@@ -28,7 +28,7 @@ dependencies:
     sdk: flutter
   flutter: 
     sdk: flutter
-  badges: ^3.0.3
+  badges: ^3.1.0
   google_mobile_ads: ^2.3.0
 
 dev_dependencies: 
