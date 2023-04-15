@@ -125,18 +125,18 @@ packages:
     dependency: transitive
     description:
       name: cloud_functions_platform_interface
-      sha256: "8bf863c4cf1af8485bdd5e456b83c04c9f581047be5deabf85f175c25acfc8c2"
+      sha256: "969dbb274f71a8e2c0443ac59ffbae43dfd8702b9e2dea772e29c2008bd1cc09"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.23"
+    version: "5.2.0"
   cloud_functions_web:
     dependency: transitive
     description:
       name: cloud_functions_web
-      sha256: f0f580be7a7e044460c15210d73833fcf6b08ec487ab17f8d52a53af3232609f
+      sha256: "9cf56cdd3cd74821451d0ff8a9eea7a4062c8d0f40c241b544d9286853f8c4cf"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.12"
+    version: "4.4.0"
   collection:
     dependency: transitive
     description:
