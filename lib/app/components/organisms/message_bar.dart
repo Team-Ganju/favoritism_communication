@@ -1,11 +1,19 @@
+import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class MessageBar extends StatelessWidget {
   const MessageBar({
     super.key,
+    required this.onCameraPressed,
+    required this.onPhotoPressed,
+    required this.controller,
+    required this.onSendPressed,
   });
+  final VoidCallback? onCameraPressed;
+  final VoidCallback? onPhotoPressed;
+  final TextEditingController? controller;
+  final VoidCallback? onSendPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +39,7 @@ class MessageBar extends StatelessWidget {
         child: Row(
           children: [
             IconButton(
-              //TODO: カメラ機能は別途実装
-              onPressed: () {},
+              onPressed: onCameraPressed,
               icon: const Icon(
                 Icons.camera_alt_outlined,
                 size: 32,
@@ -40,8 +47,7 @@ class MessageBar extends StatelessWidget {
               padding: EdgeInsets.zero,
             ),
             IconButton(
-              //TODO: 画像追加機能は別途実装
-              onPressed: () {},
+              onPressed: onPhotoPressed,
               icon: const Icon(
                 Icons.photo_outlined,
                 size: 32,
@@ -49,34 +55,12 @@ class MessageBar extends StatelessWidget {
               padding: EdgeInsets.zero,
             ),
             Expanded(
-              child: FormBuilderTextField(
-                name: 'メッセージバー',
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-                maxLength: 500, //TODO: 最大文字数は要検討。（現在はLINEの最大文字数)
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  hintText: 'テキストを追加',
-                  counterText: '',
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: colorMessageBarInputBorder,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                        color: colorMessageBarInputBorderFocused),
-                  ),
-                ),
+              child: MessageForm(
+                controller: controller,
               ),
             ),
             IconButton(
-              //TODO: 送信機能は別途実装
-              onPressed: () {},
+              onPressed: onSendPressed,
               icon: const Icon(
                 Icons.send,
                 size: 32,
