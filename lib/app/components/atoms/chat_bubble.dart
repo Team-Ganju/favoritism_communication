@@ -1,6 +1,8 @@
 import 'package:favoritism_communication/app/styles/styles.dart';
-import 'package:chat_bubbles/chat_bubbles.dart';
+import 'package:flutter_chat_bubble/bubble_type.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart' as cb;
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_4.dart';
 
 class ChatBubble extends StatelessWidget {
   const ChatBubble({
@@ -14,12 +16,15 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BubbleSpecialThree(
-      text: text,
-      isSender: isSender,
-      color: colorChatBubbleBg, //TODO: 将来的にdark mode対応予定
-      tail: true,
-      textStyle: const TextStyle(color: colorChatBubbleText, fontSize: 16),
+    return cb.ChatBubble(
+      clipper: isSender
+          ? ChatBubbleClipper4(type: BubbleType.sendBubble)
+          : ChatBubbleClipper4(type: BubbleType.receiverBubble),
+      backGroundColor: colorChatBubbleBg,
+      child: Text(
+        text,
+        style: const TextStyle(color: colorChatBubbleText, fontSize: 16),
+      ),
     );
   }
 }

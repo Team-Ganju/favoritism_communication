@@ -12,6 +12,17 @@ class SentMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChatBubble(text: text, isSender: true);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ChatBubble(
+          text: text,
+          isSender: true,
+        ),
+        const SizedBox(
+          width: 20,
+        )
+      ],
+    );
   }
 }
