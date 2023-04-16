@@ -10,6 +10,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'package:favoritism_communication/import_firestore_data.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
@@ -17,6 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  insertChatRooms();
 }
 
 class MyApp extends StatelessWidget {
