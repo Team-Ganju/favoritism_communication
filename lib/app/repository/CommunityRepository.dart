@@ -13,7 +13,7 @@ class CommunityRepositoryStub extends ICommunityRepository{
         'communityId': '001',
         'title': 'Flutter大学',
       },
-      
+
       {
         'userId': '001',
         'communityId': '002',
