@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# check git commit branch
+BRANCH_NAME=`git symbolic-ref HEAD | sed -e 's:^refs/heads/::'`
+if test $BRANCH_NAME = main -o $BRANCH_NAME = develop; then
+    echo "${BRANCH_NAME} への直コミットは禁止されています。"
+    exit 1
+fi
+
+# check the result of running script
+function return_value {
+    RET=$?
+    if [ ${RET} -eq 1 ]; then
+        echo “Error”
+        exit 1
+    fi
+}
+
+# check flutter lint
+flutter analyze
+
+return_value
+
+# check flutter android build apk
+flutter build apk
+
+return_value
+
+# check flutter ios build ipa
+flutter build ipa --release
+
+return_value
