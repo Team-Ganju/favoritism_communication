@@ -17,7 +17,7 @@ dependencies:
   chat_bubbles: ^1.4.0
   firebase_core: ^2.9.0
   firebase: 9.0.3
-  firebase_auth: 4.1.2
+  firebase_auth: ^4.6.0
   flutter_easyloading: 3.0.5
   flutter_native_splash: 2.2.14
   flutter_launcher_icons: ^0.11.0
