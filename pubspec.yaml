@@ -15,7 +15,7 @@ dependencies:
   webview_flutter: 3.0.4
   flutter_link_previewer: 3.2.0
   chat_bubbles: ^1.4.0
-  firebase_core: ^2.9.0
+  firebase_core: ^2.13.0
   firebase: 9.0.3
   firebase_auth: 4.1.2
   flutter_easyloading: 3.0.5
