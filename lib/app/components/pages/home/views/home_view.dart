@@ -85,18 +85,20 @@ class HomeView extends GetView<HomeController> {
                         refreshController: controller.refreshController,
                         scrollController: controller.scrollController,
                         enablePullDown: false,
-                        enablePullUp: true,
+                        enablePullUp: true, 
                         onLoading: () {
                           controller.onLoading();
                         },
-                        child: GridView.count(
-                          crossAxisCount: 2,
-                          controller: controller.scrollController,
-                          shrinkWrap: true,
-                          children: List.generate(
-                            100,
-                            (index) {
-                              return Random().nextInt(5) == 0
+                        child: CustomScrollView(
+                          slivers: <Widget>[
+                            SliverGrid(
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 0.9,
+                              ),
+                              delegate: SliverChildBuilderDelegate(
+                                (BuildContext context, int index) {
+                                  return Random().nextInt(5) == 0
                                   ? const Center(
                                       child: UserListInfoItem(
                                           label: "偏愛マップを作成した気の合う人を見つけよう"),
@@ -104,8 +106,11 @@ class HomeView extends GetView<HomeController> {
                                   : Center(
                                       child: dummyUserListProfileItems[
                                           Random().nextInt(4)]);
-                            },
-                          ),
+                                },
+                                childCount: 100,
+                              ),
+                            ),
+                          ]
                         ),
                       )
                     : Column(
