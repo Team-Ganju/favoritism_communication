@@ -8,11 +8,11 @@ class PickupList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Text("ピックアップタイトルピックアップタイトルピックアップタイトル"),
+        Text("ピックアップタイトルピックアップタイトルピックアップタイトル"),
         Row(
-          children: const [
+          children: [
             PickupListItem(),
             PickupListItem(),
             PickupListItem(),
