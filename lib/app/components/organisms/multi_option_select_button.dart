@@ -72,10 +72,10 @@ class MultiOptionSelectButton extends StatelessWidget {
       return emptyChild;
     }
 
-    return Wrap(
+    return const Wrap(
       runSpacing: 4.0,
       spacing: 4.0,
-      children: const <Widget>[],
+      children: <Widget>[],
     );
   }
 }

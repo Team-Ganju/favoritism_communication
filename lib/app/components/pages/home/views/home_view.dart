@@ -108,8 +108,8 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                       )
-                    : Column(
-                        children: const [
+                    : const Column(
+                        children: [
                           SizedBox(height: 30),
                           Center(
                             child: Text(

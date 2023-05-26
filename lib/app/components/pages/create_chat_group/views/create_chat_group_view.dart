@@ -1,9 +1,12 @@
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:favoritism_communication/app/components/organisms/search_bar.dart'
+    as custom_sb;
 import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+
 import '../controllers/create_chat_group_controller.dart';
 
 class CreateChatGroupView extends GetView<CreateChatGroupController> {
@@ -25,7 +28,7 @@ class CreateChatGroupView extends GetView<CreateChatGroupController> {
               onFocusChange: (hasFocus) {
                 controller.isFocusedOnSearchBar.value = hasFocus;
               },
-              child: SearchBar(
+              child: custom_sb.SearchBar(
                 onChanged: (text) {
                   if (text != null) controller.searchService.target(text);
                 },
