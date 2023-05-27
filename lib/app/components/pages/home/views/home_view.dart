@@ -1,13 +1,14 @@
 import 'dart:math';
 
-import 'package:favoritism_communication/app/dummy_data/common_profile_dummy_data.dart';
-import 'package:favoritism_communication/app/styles/styles.dart';
-import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:favoritism_communication/app/components/atoms/atoms.dart';
 import 'package:favoritism_communication/app/components/organisms/organisms.dart';
+import 'package:favoritism_communication/app/components/templates/custom_smartrefresher.dart';
+import 'package:favoritism_communication/app/dummy_data/common_profile_dummy_data.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:badges/badges.dart' as badges;
+
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -85,32 +86,35 @@ class HomeView extends GetView<HomeController> {
                         refreshController: controller.refreshController,
                         scrollController: controller.scrollController,
                         enablePullDown: false,
-                        enablePullUp: true, 
+                        enablePullUp: true,
                         onLoading: () {
                           controller.onLoading();
                         },
                         child: CustomScrollView(
+                          controller: controller.scrollController,
                           slivers: <Widget>[
                             SliverGrid(
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 childAspectRatio: 0.9,
                               ),
                               delegate: SliverChildBuilderDelegate(
                                 (BuildContext context, int index) {
                                   return Random().nextInt(5) == 0
-                                  ? const Center(
-                                      child: UserListInfoItem(
-                                          label: "偏愛マップを作成した気の合う人を見つけよう"),
-                                    )
-                                  : Center(
-                                      child: dummyUserListProfileItems[
-                                          Random().nextInt(4)]);
+                                      ? const Center(
+                                          child: UserListInfoItem(
+                                              label: "偏愛マップを作成した気の合う人を見つけよう"),
+                                        )
+                                      : Center(
+                                          child: dummyUserListProfileItems[
+                                              Random().nextInt(4)],
+                                        );
                                 },
                                 childCount: 100,
                               ),
                             ),
-                          ]
+                          ],
                         ),
                       )
                     : const Column(
