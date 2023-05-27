@@ -27,14 +27,17 @@ class CommonProfile extends StatelessWidget {
           children: [
             Text(userName),
             const SizedBox(width: 16),
-            const Text("共通点 "),
+            const Padding(
+              padding: EdgeInsets.only(right: 2.0),
+              child: Text("共通点", style: TextStyle(fontSize: 13)),
+            ),
             CircleAvatar(
               backgroundColor: Colors.blue,
-              radius: 12,
+              radius: 10,
               child: Text(
                 commonCount.toString(),
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
               ),
             ),
