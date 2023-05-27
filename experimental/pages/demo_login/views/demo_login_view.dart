@@ -1,13 +1,12 @@
+import 'package:favoritism_communication/app/components/atoms/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-
 import 'package:get/get.dart';
 
-import 'package:favoritism_communication/app/components/atoms/custom_elevated_button.dart';
+import '../../../models/demouser.dart';
 import '../../../routes/demo_app_pages.dart';
 import '../controllers/demo_login_controller.dart';
-import '../../../models/demouser.dart';
 
 class DemoLoginView extends GetView<DemoLoginController> {
   DemoLoginView({Key? key}) : super(key: key);
@@ -54,18 +53,16 @@ class DemoLoginView extends GetView<DemoLoginController> {
                                   "");
                           // ユーザーを取得できない場合
                           if (user == null) {
-                            _formKey.currentState?.invalidateField(
-                                name: _fieldNameEmail,
-                                errorText: "メールアドレスが存在しません。");
+                            _formKey.currentState?.fields[_fieldNameEmail]!
+                                .invalidate('メールアドレスが存在しません。');
                             return;
                           }
 
                           Get.offNamed(DemoRoutes.demoHome); // ホーム画面へ遷移
                           return;
                         } else {
-                          _formKey.currentState?.invalidateField(
-                            name: _fieldNameEmail,
-                          );
+                          _formKey.currentState?.fields[_fieldNameEmail]!
+                              .invalidate('');
                           return;
                         }
                       },

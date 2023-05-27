@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
-
-import 'package:favoritism_communication/app/styles/styles.dart';
 import 'package:favoritism_communication/app/components/organisms/nav_bar.dart';
-import 'package:favoritism_communication/app/components/pages/search/controllers/search_controller.dart';
 import 'package:favoritism_communication/app/routes/app_pages.dart';
+import 'package:favoritism_communication/app/styles/styles.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SearchView extends GetView<SearchController> {
   const SearchView({Key? key}) : super(key: key);
