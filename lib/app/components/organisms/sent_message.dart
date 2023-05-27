@@ -15,7 +15,7 @@ class SentMessage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        ChatBubble(
+        CustomChatBubble(
           text: text,
           isSender: true,
         ),

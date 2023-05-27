@@ -54,7 +54,7 @@ class ReceivedMessage extends StatelessWidget {
                 ),
               ],
             ),
-            ChatBubble(
+            CustomChatBubble(
               text: text,
               isSender: false,
             ),
