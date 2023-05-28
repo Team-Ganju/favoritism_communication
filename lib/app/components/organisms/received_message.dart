@@ -18,6 +18,7 @@ class ReceivedMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const SizedBox(
           width: 20,
@@ -33,6 +34,9 @@ class ReceivedMessage extends StatelessWidget {
             Icons.person,
             color: colorChatMemberCardIcon,
           ),
+        ),
+        const SizedBox(
+          width: 5,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +54,7 @@ class ReceivedMessage extends StatelessWidget {
                 ),
               ],
             ),
-            ChatBubble(
+            CustomChatBubble(
               text: text,
               isSender: false,
             ),
