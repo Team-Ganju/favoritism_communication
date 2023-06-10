@@ -49,20 +49,25 @@ class SearchSelectGenreView extends GetView<SearchSelectGenreController> {
               ),
             ),
 
-            FutureBuilder<List<String>>(
+            FutureBuilder<List<SearchGenreInfo>>(
               future: controller.genreForSelect,
-              builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot){
-                List<String> genreTitles = snapshot.data ?? [];
+              builder: (BuildContext context, AsyncSnapshot<List<SearchGenreInfo>> snapshot){
+                List<SearchGenreInfo> genreInfo = snapshot.data ?? [];
+                List<Widget> genreChips = [];
+                for(SearchGenreInfo info in genreInfo){
+                  genreChips.add(
+                    AlternateCircleChip(
+                      isPushed: info.isSelect,
+                      onPressed: () => controller.selectGenre(info.id),
+                      child: Text(info.title),
+                    )
+                  );
+                }
+
                 return Wrap(
                   runSpacing: 4.0,
                   spacing: 4.0,
-                  children: genreTitles.map<Widget>((title) {
-                    return AlternateCircleChip(
-                      isPushed: false,
-                      onPressed: null,
-                      child: Text(title),
-                    );
-                  }).toList(),
+                  children: genreChips,
                 );
               },
             ),
