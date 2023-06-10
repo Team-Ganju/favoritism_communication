@@ -1,12 +1,12 @@
 // ジャンルリポジトリクラスインターフェース
 abstract class IGenreRepository{
-  List<Map<String, dynamic>> fetchUserGenre(String userId);
+  Future<List<Map<String, dynamic>>> fetchUserGenre(String userId);
 }
 
 // テスト用ダミーデータリポジトリクラス
 class GenreRepositoryStub extends IGenreRepository{
   @override
-  List<Map<String, dynamic>> fetchUserGenre(String userId){
+  Future<List<Map<String, dynamic>>> fetchUserGenre(String userId) async{
     return [
       {
         'userId': '001',
