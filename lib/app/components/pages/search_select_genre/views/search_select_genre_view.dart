@@ -12,23 +12,23 @@ class SearchSelectGenreView extends GetView<SearchSelectGenreController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: colorSearchFilterBg,
+      backgroundColor: colorSearchGenreFilterBg,
       appBar: NavBar(
-        backgroundColor: Colors.white,
+        backgroundColor: colorSearchGenreAppBarBg,
         toolbarHeight: 60,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
             size: 36,
           ),
-          color: Colors.grey,
+          color: colorSearchGenreAppBarTitle,
           onPressed: () {
             Get.back();
           },
         ),
         child: const Text("ジャンル",
           style: TextStyle(
-            color: Colors.grey,
+            color: colorSearchGenreAppBarTitle,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           )
@@ -43,7 +43,7 @@ class SearchSelectGenreView extends GetView<SearchSelectGenreController> {
               padding: EdgeInsets.only(bottom: 16.0),
               child: Text("ジャンルを1個選択してください",
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: colorSearchGenreText,
                   fontWeight: FontWeight.bold,
                 )
               ),
