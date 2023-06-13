@@ -48,32 +48,32 @@ class SearchSelectGenreView extends GetView<SearchSelectGenreController> {
                 )
               ),
             ),
-
-            FutureBuilder<List<SearchGenreInfo>>(
-              future: controller.genreForSelect,
-              builder: (BuildContext context, AsyncSnapshot<List<SearchGenreInfo>> snapshot){
-                List<SearchGenreInfo> genreInfo = snapshot.data ?? [];
-                List<Widget> genreChips = [];
-                for(SearchGenreInfo info in genreInfo){
-                  genreChips.add(
-                    AlternateCircleChip(
-                      isPushed: info.isSelect,
-                      onPressed: () => controller.selectGenre(info.id),
-                      child: Text(info.title),
-                    )
-                  );
-                }
-
-                return Wrap(
-                  runSpacing: 4.0,
-                  spacing: 4.0,
-                  children: genreChips,
-                );
-              },
-            ),
+            Obx(() => _buildGenreButton(
+                controller.genreForSelect,
+              ),
+            )
           ],
         ),
       )
+    );
+  }
+
+  Widget _buildGenreButton(List<SearchGenreInfo> genreInfo){
+    List<Widget> genreChips = [];
+    for(SearchGenreInfo info in genreInfo){
+      genreChips.add(
+        AlternateCircleChip(
+          isPushed: info.isSelect,
+          onPressed: () => controller.selectGenre(info.id),
+          child: Text(info.title),
+        ),
+      );
+    }
+
+    return Wrap(
+      runSpacing: 4.0,
+      spacing: 4.0,
+      children: genreChips,
     );
   }
 }

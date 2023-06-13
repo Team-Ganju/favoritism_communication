@@ -14,23 +14,37 @@ class SearchGenreInfo {
 }
 
 class SearchSelectGenreController extends GetxController {
-  //TODO: 最初の読み込み時に非同期でデータを取得する処理
-  //TODO: ジャンルが選択されたときにボタンをアクティブにする処理
+  late final List<Map<String, dynamic>> _genreMapList;
+  final RxList<SearchGenreInfo> genreForSelect = <SearchGenreInfo>[].obs;
+  String _selectGenreId = "";
 
-  void selectGenre(String id){
+  @override
+  void onInit() async{
+    final IGenreRepository genreRepository = Get.find();
+    _genreMapList = await genreRepository.fetchUserGenre("0");  //TODO: ユーザIDを渡す
+    _constructGenreInfoList(_genreMapList);
 
+    super.onInit();
   }
 
-  Future<List<SearchGenreInfo>> get genreForSelect async {
-    final List<SearchGenreInfo> genreInfo = [];   // genreInfoのリスト
-    final IGenreRepository genreRepository = Get.find();
-    final List<Map<String, dynamic>> genreMapList = await genreRepository.fetchUserGenre("0");
-
+  void _constructGenreInfoList(List<Map<String, dynamic>> genreMapList){
+    genreForSelect.clear();
     for(Map<String, dynamic> genreMap in genreMapList){
-      genreInfo.add(
-        SearchGenreInfo(id: genreMap["genreId"], title: genreMap["title"], isSelect: false)
+      final isSelect = genreMap["genreId"] == _selectGenreId;
+      genreForSelect.add(
+          SearchGenreInfo(id: genreMap["genreId"], title: genreMap["title"], isSelect: isSelect)
       );
     }
-    return genreInfo;
+    genreForSelect.refresh();
+  }
+
+  void selectGenre(String id){
+    if(_selectGenreId == id){
+      _selectGenreId = "";
+    }
+    else{
+      _selectGenreId = id;
+    }
+    _constructGenreInfoList(_genreMapList);
   }
 }
