@@ -74,3 +74,9 @@ const colorSearchButtonFg = Colors.white;
 const colorSearchButtonBg = Color.fromRGBO(236, 188, 179, 1);
 const colorClearSearchFilterButtonFg = Colors.grey;
 const colorClearSearchFilterButtonBg = Colors.white;
+// ジャンル画面
+const colorSearchGenreFilterBg = Colors.white; // 背景色
+const colorSearchGenreAppBarBg = Colors.white; // Appbar背景色
+const colorSearchGenreAppBarTitle = Colors.grey; // タイトル文字色
+const colorSearchGenreText = Colors.grey;      // 文字色
+
