@@ -37,7 +37,12 @@ class SearchFilterController extends GetxController {
 
   set genreId(String v){
     updateGenreMap();
-    _genreIds.value = [v];
+    if(v != ""){
+      _genreIds.value = [v];
+    }
+    else{
+      _genreIds.value = [];
+    }
   }
 
   List<String> get selectedCategoryNames {
