@@ -23,8 +23,8 @@ class SearchSelectGenreController extends GetxController {
   void onInit() async{
     final IGenreRepository genreRepository = Get.find();
     _genreMapList = await genreRepository.fetchUserGenre("0");  //TODO: ユーザIDを渡す
+    _selectGenreId = Get.parameters["selected"] ?? "";
     _constructGenreInfoList(_genreMapList);
-
     super.onInit();
   }
 

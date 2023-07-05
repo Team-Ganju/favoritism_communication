@@ -63,8 +63,11 @@ class SearchFilterView extends GetView<SearchFilterController> {
                   ),
                 ),
                 onTap: () async {
-                  controller.genre = await Get.toNamed(
+                  controller.genreId = await Get.toNamed(
                     Routes.searchSelectGenre,
+                    parameters: {
+                      "selected": controller.genreId,
+                    }
                   );
                 },
               )),

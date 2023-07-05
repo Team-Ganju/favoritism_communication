@@ -30,7 +30,12 @@ class SearchFilterController extends GetxController {
     return map;
   }
 
-  set genre(String v){
+  String get genreId {
+    if(_genreIds.value.isEmpty) return "";
+    return _genreIds.value.first;
+  }
+
+  set genreId(String v){
     updateGenreMap();
     _genreIds.value = [v];
   }
