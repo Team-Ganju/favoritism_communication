@@ -23,7 +23,7 @@ class SearchSelectGenreView extends GetView<SearchSelectGenreController> {
           ),
           color: colorSearchGenreAppBarTitle,
           onPressed: () {
-            Get.back();
+            Get.back(result: controller.genreId);
           },
         ),
         child: const Text("ジャンル",

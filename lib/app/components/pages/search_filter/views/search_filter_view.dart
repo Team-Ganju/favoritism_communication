@@ -45,14 +45,14 @@ class SearchFilterView extends GetView<SearchFilterController> {
             padding: const EdgeInsets.all(8.0),
             physics: const NeverScrollableScrollPhysics(),
             children: <Widget>[
-              MultiOptionSelectButton(
+              Obx(() =>MultiOptionSelectButton(
                 selectedItems: controller.selectedGenreNames
-                    .map((name) => AlternateCircleChip(
-                          isPushed: false,
-                          onPressed: null,
-                          child: Text(name),
-                        ))
-                    .toList(),
+                    .map((name) =>AlternateCircleChip(
+                  isPushed: true,
+                  onPressed: null,
+                  child: Text(name),
+                )
+                ).toList(),
                 label: 'ジャンル',
                 emptyChild: const Text(
                   'こだわらない',
@@ -62,10 +62,12 @@ class SearchFilterView extends GetView<SearchFilterController> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                onTap: () => Get.toNamed(
-                  Routes.searchSelectGenre,
-                ),
-              ),
+                onTap: () async {
+                  controller.genre = await Get.toNamed(
+                    Routes.searchSelectGenre,
+                  );
+                },
+              )),
               MultiOptionSelectButton(
                 selectedItems: controller.selectedCategoryNames
                     .map((name) => CustomChip(

@@ -17,6 +17,7 @@ class SearchSelectGenreController extends GetxController {
   late final List<Map<String, dynamic>> _genreMapList;
   final RxList<SearchGenreInfo> genreForSelect = <SearchGenreInfo>[].obs;
   String _selectGenreId = "";
+  String get genreId => _selectGenreId;
 
   @override
   void onInit() async{

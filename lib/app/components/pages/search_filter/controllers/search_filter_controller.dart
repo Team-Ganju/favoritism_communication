@@ -1,16 +1,38 @@
 import 'package:get/get.dart';
 import 'package:favoritism_communication/app/data/gender/gender.dart';
+import 'package:favoritism_communication/app/repository/genre_repository.dart';
 
 class SearchFilterController extends GetxController {
   final Rx<Map<Gender, bool>> _gender = Rx<Map<Gender, bool>>({});
+  final Rx<List<String>> _genreIds = Rx<List<String>>([]);
+  final Rx<Map<String, Map<String, dynamic>>> _genreMap = Rx<Map<String, Map<String, dynamic>>>({}); // idとjsonデータのマップ
 
   @override
-  void onInit() {
-    super.onInit();
+  void onInit() async{
+    updateGenreMap();
     // 初期値で性別は全てTrueにする
     for (Gender gender in Gender.values) {
       changeGender(gender, true);
     }
+    super.onInit();
+  }
+
+  Future updateGenreMap() async {
+    final IGenreRepository genreRepository = Get.find();
+    _genreMap.value = _createGenreMap(await genreRepository.fetchUserGenre("0"));  //TODO: ユーザIDを渡す
+  }
+
+  Map<String, Map<String, dynamic>> _createGenreMap(List<Map<String, dynamic>> mapList){
+    final Map<String, Map<String, dynamic>> map = {};
+    for(Map<String, dynamic> genre in mapList){
+      map[genre["genreId"]] = genre;
+    }
+    return map;
+  }
+
+  set genre(String v){
+    updateGenreMap();
+    _genreIds.value = [v];
   }
 
   List<String> get selectedCategoryNames {
@@ -30,19 +52,16 @@ class SearchFilterController extends GetxController {
   }
 
   List<String> get selectedGenreNames {
-    //TODO: 選択されたジャンルを返す処理
-    return [
-      // "ジャンル1",
-      // "ジャンル2",
-      // "ジャンル3",
-      // "ジャンル4",
-      // "ジャンル5",
-      // "ジャンル6",
-      // "ジャンル7",
-      // "ジャンル8",
-      // "ジャンル9",
-      // "ジャンル10",
-    ];
+    return _genreIds.value.map((e){
+        var title = _genreMap.value[e]?["title"];
+        if(title is String){
+          return title;
+        }
+        else{
+          return "";
+        }
+      }
+    ).toList();
   }
 
   List<String> get belongCommunities {
@@ -61,4 +80,5 @@ class SearchFilterController extends GetxController {
     clone[gender] = value ?? false;
     _gender.value = clone;
   }
+
 }
