@@ -8,8 +8,8 @@ class SearchFilterController extends GetxController {
   final Rx<Map<String, Map<String, dynamic>>> _genreMap = Rx<Map<String, Map<String, dynamic>>>({}); // idとjsonデータのマップ
 
   @override
-  void onInit() async{
-    updateGenreMap();
+  Future<void> onInit() async{
+    await updateGenreMap();
     // 初期値で性別は全てTrueにする
     for (Gender gender in Gender.values) {
       changeGender(gender, true);
@@ -17,7 +17,7 @@ class SearchFilterController extends GetxController {
     super.onInit();
   }
 
-  Future updateGenreMap() async {
+  Future<void> updateGenreMap() async {
     final IGenreRepository genreRepository = Get.find();
     _genreMap.value = _createGenreMap(await genreRepository.fetchUserGenre("0"));  //TODO: ユーザIDを渡す
   }

@@ -20,7 +20,7 @@ class SearchSelectGenreController extends GetxController {
   String get genreId => _selectGenreId;
 
   @override
-  void onInit() async{
+  Future<void> onInit() async{
     final IGenreRepository genreRepository = Get.find();
     _genreMapList = await genreRepository.fetchUserGenre("0");  //TODO: ユーザIDを渡す
     _selectGenreId = Get.parameters["selected"] ?? "";
