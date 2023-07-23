@@ -17,13 +17,14 @@ class SearchSelectGenreController extends GetxController {
   late final List<Map<String, dynamic>> _genreMapList;
   final RxList<SearchGenreInfo> genreForSelect = <SearchGenreInfo>[].obs;
   String _selectGenreId = "";
+  String get genreId => _selectGenreId;
 
   @override
-  void onInit() async{
+  Future<void> onInit() async{
     final IGenreRepository genreRepository = Get.find();
     _genreMapList = await genreRepository.fetchUserGenre("0");  //TODO: ユーザIDを渡す
+    _selectGenreId = Get.parameters["selected"] ?? "";
     _constructGenreInfoList(_genreMapList);
-
     super.onInit();
   }
 
