@@ -6,7 +6,7 @@ environment:
   sdk: '>=2.19.0 <3.0.0'
 
 dependencies: 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
   get: 4.6.5
   flutter_form_builder: ^8.0.0
   form_builder_validators: ^8.6.1
