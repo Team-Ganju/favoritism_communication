@@ -29,7 +29,7 @@ dependencies:
   flutter: 
     sdk: flutter
   badges: ^3.0.3
-  google_mobile_ads: ^2.3.0
+  google_mobile_ads: ^4.0.0
   get_cli: ^1.8.1
 
 dev_dependencies: 
